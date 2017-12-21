@@ -1,5 +1,6 @@
 package com.we.controller;
 
+import com.we.bean.User;
 import com.we.common.Pager;
 import com.we.service.UserService;
 import com.we.vo.RequestResultVO;
@@ -22,6 +23,23 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private UserService userService;
+
+    @RequestMapping("login_page")
+    public String loginPage() {
+        return "user/login_page";
+    }
+
+    @RequestMapping("register_page")
+    public String registerPage() {
+        return "user/register_page";
+    }
+
+    @PostMapping("register")
+    @ResponseBody
+    public RequestResultVO register(User user) {
+        RequestResultVO statusVO = null;
+        return statusVO;
+    }
 
     @PostMapping("update")
     @ResponseBody
