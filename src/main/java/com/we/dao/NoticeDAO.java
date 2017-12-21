@@ -1,7 +1,9 @@
 package com.we.dao;
 
 import com.we.bean.Notice;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface NoticeDAO extends BaseDAO {
     int removeById(Integer nid);
 
