@@ -3,8 +3,6 @@ CREATE DATABASE IF NOT EXISTS d_ssm_pujinziben DEFAULT CHARSET utf8 COLLATE utf8
 USE d_ssm_pujinziben;
 
 /**
-user表中 证件号 类型改为 varchar(100)
-投资表，收款表中的 用户id、借款人id 区分？
 decimal(7, 2) 改为 decimal(10, 2)
 首页信息表重构 只剩id、图片、链接， 二维码和电话直接显示在首页.
 log_czz、 log_money, log_tx 分别改为 cz_log、money_log、 tx_log
@@ -16,7 +14,6 @@ CREATE TABLE `user`(
   uname VARCHAR(50) COMMENT '用户名',
   upwd VARCHAR(100) COMMENT '登录密码',
   phone CHAR(11) UNIQUE COMMENT'手机号',
-  tzm INT COMMENT '推荐码',
   zpwd VARCHAR(100) COMMENT '支付密码',
   idtype VARCHAR(50) COMMENT '证件类型',
   idno VARCHAR(100) COMMENT '证件号',
@@ -25,7 +22,7 @@ CREATE TABLE `user`(
   tid INT COMMENT '推荐人id',
   face VARCHAR(500) COMMENT '头像',
   sex VARCHAR(4) COMMENT '性别',
-  is_vip INT COMMENT '0：不是VIP，1：是VIP'
+  is_vip INT COMMENT '0：不是VIP，1：是VIP' DEFAULT 0
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '前台用户表';
 
 DROP TABLE IF EXISTS rzvip;
@@ -51,7 +48,7 @@ CREATE TABLE borrowapply(
   state INT COMMENT '审核状态',
   type INT COMMENT '借款类型',
   term INT COMMENT '借款期限',
-  deadline DATETIME COMMENT '借款期限'
+  deadline DATETIME COMMENT '截止时间'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '申请借款表';
 
 DROP TABLE IF EXISTS borrowdetail;
@@ -78,7 +75,7 @@ CREATE TABLE sway(
   sid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   way VARCHAR(255) COMMENT '方式',
   fw VARCHAR(500) COMMENT '算法',
-  state INT COMMENT '状态'
+  state INT COMMENT '状态, 0不可用， 1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '还款方式表';
 
 DROP TABLE IF EXISTS shborrow;
@@ -162,14 +159,14 @@ DROP TABLE IF EXISTS bz;
 CREATE TABLE bz(
   lxid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   lxname VARCHAR(200) COMMENT '名称',
-  state INT COMMENT '状态'
+  state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '标种表';
 
 DROP TABLE IF EXISTS jklx;
 CREATE TABLE jklx(
   lxid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   lxname VARCHAR(200) COMMENT '名称',
-  state INT COMMENT '状态'
+  state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '借款类型表';
 
 DROP TABLE IF EXISTS jur;
@@ -247,7 +244,7 @@ CREATE TABLE bankcard (
   rname VARCHAR(200) COMMENT '姓名',
   idno CHAR(18) COMMENT '身份证',
   type VARCHAR(50) COMMENT '所属银行',
-  state INT COMMENT '状态',
+  state INT COMMENT '状态，0冻结，1可用' DEFAULT 1,
   `date` DATETIME COMMENT '绑卡时间'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '银行卡表';
 
@@ -314,7 +311,7 @@ CREATE TABLE letter (
   title VARCHAR(200) COMMENT '标题',
   content TEXT COMMENT '内容',
   `date` DATETIME COMMENT '日期',
-  state INT COMMENT '状态'
+  state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '站内信表';
 
 DROP TABLE IF EXISTS dxmodel;
@@ -331,7 +328,7 @@ CREATE TABLE cz_log (
   banktype VARCHAR(50) COMMENT '所属银行',
   money DECIMAL(10, 2) COMMENT '金额',
   `date` DATETIME COMMENT '时间',
-  state INT COMMENT '状态'
+  state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '充值记录表';
 
 DROP TABLE IF EXISTS money_log;
@@ -362,7 +359,7 @@ CREATE TABLE tx_log (
   banktype VARCHAR(50) COMMENT '所属银行',
   money DECIMAL(10, 2) COMMENT '金额',
   `date` DATETIME COMMENT '时间',
-  state INT COMMENT '状态'
+  state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '提现记录表';
 
 DROP TABLE IF EXISTS reward_setting;
