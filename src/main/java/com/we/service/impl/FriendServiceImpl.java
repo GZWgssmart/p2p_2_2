@@ -5,6 +5,8 @@ import com.we.dao.FriendDAO;
 import com.we.service.FriendService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 @Service
 public class FriendServiceImpl implements FriendService {
 
@@ -12,36 +14,44 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public int removeById(Long id) {
-        return 0;
+        return friendDAO.removeById(id);
     }
 
     @Override
     public int save(Object obj) {
-        return 0;
+        return friendDAO.save(obj);
     }
 
     @Override
     public int saveSelective(Object obj) {
-        return 0;
+        return friendDAO.saveSelective(obj);
     }
 
     @Override
     public Object getById(Long id) {
-        return null;
+        return friendDAO.getById(id);
     }
 
     @Override
     public int updateSelective(Object obj) {
-        return 0;
+        return friendDAO.updateSelective(obj);
     }
 
     @Override
     public int update(Object obj) {
-        return 0;
+        return friendDAO.update(obj);
     }
 
     @Override
     public Pager listCriteria(Long offset, Long limit, Object object) {
-        return null;
+       Pager pager = new Pager(offset,limit);
+       pager.setRows(friendDAO.listCriteria(pager,object));
+       pager.setTotal(friendDAO.countCriteria(object));
+        return pager;
+    }
+
+    @Resource
+    public void setFriendDAO(FriendDAO friendDAO) {
+        this.friendDAO = friendDAO;
     }
 }
