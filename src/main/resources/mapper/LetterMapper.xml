@@ -7,15 +7,23 @@
     <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
+
+
   <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Letter" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+
   <sql id="Base_Column_List" >
     lid, title, date, state
   </sql>
+
+
   <sql id="Blob_Column_List" >
     content
   </sql>
+
+
   <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -24,16 +32,22 @@
     from letter
     where lid = #{lid,jdbcType=INTEGER}
   </select>
+
+
   <delete id="removeById" parameterType="java.lang.Integer" >
     delete from letter
     where lid = #{lid,jdbcType=INTEGER}
   </delete>
+
+
   <insert id="save" parameterType="com.we.bean.Letter" >
     insert into letter (lid, title, date, 
       state, content)
     values (#{lid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
       #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
+
+
   <insert id="saveSelective" parameterType="com.we.bean.Letter" >
     insert into letter
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -71,6 +85,8 @@
       </if>
     </trim>
   </insert>
+
+
   <update id="updateSelective" parameterType="com.we.bean.Letter" >
     update letter
     <set >
@@ -89,6 +105,8 @@
     </set>
     where lid = #{lid,jdbcType=INTEGER}
   </update>
+
+
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Letter" >
     update letter
     set title = #{title,jdbcType=VARCHAR},
@@ -104,4 +122,12 @@
       state = #{state,jdbcType=INTEGER}
     where lid = #{lid,jdbcType=INTEGER}
   </update>
+
+
+  <select id="listCriteria" resultType="com.we.bean.Letter">
+    <![CDATA[
+
+    ]]>
+  </select>
+
 </mapper>
