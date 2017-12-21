@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.YdateDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Ydate" >
+    <id column="yid" property="yid" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="tmoney" property="tmoney" jdbcType="DECIMAL" />
+    <result column="mmoney" property="mmoney" jdbcType="DECIMAL" />
+    <result column="tuser" property="tuser" jdbcType="INTEGER" />
+    <result column="muser" property="muser" jdbcType="INTEGER" />
+    <result column="ttzno" property="ttzno" jdbcType="INTEGER" />
+    <result column="mtzno" property="mtzno" jdbcType="INTEGER" />
+    <result column="tdkno" property="tdkno" jdbcType="INTEGER" />
+    <result column="mdkno" property="mdkno" jdbcType="INTEGER" />
+    <result column="tdkbno" property="tdkbno" jdbcType="INTEGER" />
+    <result column="mdkbno" property="mdkbno" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yid, date, tmoney, mmoney, tuser, muser, ttzno, mtzno, tdkno, mdkno, tdkbno, mdkbno
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ydate
+    where yid = #{yid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from ydate
+    where yid = #{yid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Ydate" >
+    insert into ydate (yid, date, tmoney, 
+      mmoney, tuser, muser, 
+      ttzno, mtzno, tdkno, 
+      mdkno, tdkbno, mdkbno
+      )
+    values (#{yid,jdbcType=INTEGER}, #{date,jdbcType=TIMESTAMP}, #{tmoney,jdbcType=DECIMAL}, 
+      #{mmoney,jdbcType=DECIMAL}, #{tuser,jdbcType=INTEGER}, #{muser,jdbcType=INTEGER}, 
+      #{ttzno,jdbcType=INTEGER}, #{mtzno,jdbcType=INTEGER}, #{tdkno,jdbcType=INTEGER}, 
+      #{mdkno,jdbcType=INTEGER}, #{tdkbno,jdbcType=INTEGER}, #{mdkbno,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Ydate" >
+    insert into ydate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yid != null" >
+        yid,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="tmoney != null" >
+        tmoney,
+      </if>
+      <if test="mmoney != null" >
+        mmoney,
+      </if>
+      <if test="tuser != null" >
+        tuser,
+      </if>
+      <if test="muser != null" >
+        muser,
+      </if>
+      <if test="ttzno != null" >
+        ttzno,
+      </if>
+      <if test="mtzno != null" >
+        mtzno,
+      </if>
+      <if test="tdkno != null" >
+        tdkno,
+      </if>
+      <if test="mdkno != null" >
+        mdkno,
+      </if>
+      <if test="tdkbno != null" >
+        tdkbno,
+      </if>
+      <if test="mdkbno != null" >
+        mdkbno,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yid != null" >
+        #{yid,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tmoney != null" >
+        #{tmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="mmoney != null" >
+        #{mmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tuser != null" >
+        #{tuser,jdbcType=INTEGER},
+      </if>
+      <if test="muser != null" >
+        #{muser,jdbcType=INTEGER},
+      </if>
+      <if test="ttzno != null" >
+        #{ttzno,jdbcType=INTEGER},
+      </if>
+      <if test="mtzno != null" >
+        #{mtzno,jdbcType=INTEGER},
+      </if>
+      <if test="tdkno != null" >
+        #{tdkno,jdbcType=INTEGER},
+      </if>
+      <if test="mdkno != null" >
+        #{mdkno,jdbcType=INTEGER},
+      </if>
+      <if test="tdkbno != null" >
+        #{tdkbno,jdbcType=INTEGER},
+      </if>
+      <if test="mdkbno != null" >
+        #{mdkbno,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Ydate" >
+    update ydate
+    <set >
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tmoney != null" >
+        tmoney = #{tmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="mmoney != null" >
+        mmoney = #{mmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tuser != null" >
+        tuser = #{tuser,jdbcType=INTEGER},
+      </if>
+      <if test="muser != null" >
+        muser = #{muser,jdbcType=INTEGER},
+      </if>
+      <if test="ttzno != null" >
+        ttzno = #{ttzno,jdbcType=INTEGER},
+      </if>
+      <if test="mtzno != null" >
+        mtzno = #{mtzno,jdbcType=INTEGER},
+      </if>
+      <if test="tdkno != null" >
+        tdkno = #{tdkno,jdbcType=INTEGER},
+      </if>
+      <if test="mdkno != null" >
+        mdkno = #{mdkno,jdbcType=INTEGER},
+      </if>
+      <if test="tdkbno != null" >
+        tdkbno = #{tdkbno,jdbcType=INTEGER},
+      </if>
+      <if test="mdkbno != null" >
+        mdkbno = #{mdkbno,jdbcType=INTEGER},
+      </if>
+    </set>
+    where yid = #{yid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Ydate" >
+    update ydate
+    set date = #{date,jdbcType=TIMESTAMP},
+      tmoney = #{tmoney,jdbcType=DECIMAL},
+      mmoney = #{mmoney,jdbcType=DECIMAL},
+      tuser = #{tuser,jdbcType=INTEGER},
+      muser = #{muser,jdbcType=INTEGER},
+      ttzno = #{ttzno,jdbcType=INTEGER},
+      mtzno = #{mtzno,jdbcType=INTEGER},
+      tdkno = #{tdkno,jdbcType=INTEGER},
+      mdkno = #{mdkno,jdbcType=INTEGER},
+      tdkbno = #{tdkbno,jdbcType=INTEGER},
+      mdkbno = #{mdkbno,jdbcType=INTEGER}
+    where yid = #{yid,jdbcType=INTEGER}
+  </update>
+</mapper>

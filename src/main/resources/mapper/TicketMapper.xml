@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.TicketDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Ticket" >
+    <id column="umid" property="umid" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="tkmoney" property="tkmoney" jdbcType="DECIMAL" />
+    <result column="tktime" property="tktime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    umid, type, tkmoney, tktime
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ticket
+    where umid = #{umid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from ticket
+    where umid = #{umid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Ticket" >
+    insert into ticket (umid, type, tkmoney, 
+      tktime)
+    values (#{umid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{tkmoney,jdbcType=DECIMAL}, 
+      #{tktime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Ticket" >
+    insert into ticket
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="umid != null" >
+        umid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="tkmoney != null" >
+        tkmoney,
+      </if>
+      <if test="tktime != null" >
+        tktime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="umid != null" >
+        #{umid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tkmoney != null" >
+        #{tkmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tktime != null" >
+        #{tktime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Ticket" >
+    update ticket
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tkmoney != null" >
+        tkmoney = #{tkmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tktime != null" >
+        tktime = #{tktime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where umid = #{umid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Ticket" >
+    update ticket
+    set type = #{type,jdbcType=INTEGER},
+      tkmoney = #{tkmoney,jdbcType=DECIMAL},
+      tktime = #{tktime,jdbcType=TIMESTAMP}
+    where umid = #{umid,jdbcType=INTEGER}
+  </update>
+</mapper>

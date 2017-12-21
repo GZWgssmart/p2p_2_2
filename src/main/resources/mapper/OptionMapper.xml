@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.OptionDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Option" >
+    <id column="opid" property="opid" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Option" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    opid, phone, date
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from option
+    where opid = #{opid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from option
+    where opid = #{opid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Option" >
+    insert into option (opid, phone, date, 
+      content)
+    values (#{opid,jdbcType=INTEGER}, #{phone,jdbcType=CHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Option" >
+    insert into option
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="opid != null" >
+        opid,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="opid != null" >
+        #{opid,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Option" >
+    update option
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where opid = #{opid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Option" >
+    update option
+    set phone = #{phone,jdbcType=CHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where opid = #{opid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Option" >
+    update option
+    set phone = #{phone,jdbcType=CHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where opid = #{opid,jdbcType=INTEGER}
+  </update>
+</mapper>

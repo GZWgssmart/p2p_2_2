@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.RewardDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Reward" >
+    <id column="umid" property="umid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="tmoney" property="tmoney" jdbcType="DECIMAL" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    umid, uid, tmoney, money, state, date
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from reward
+    where umid = #{umid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from reward
+    where umid = #{umid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Reward" >
+    insert into reward (umid, uid, tmoney, 
+      money, state, date
+      )
+    values (#{umid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{tmoney,jdbcType=DECIMAL}, 
+      #{money,jdbcType=DECIMAL}, #{state,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Reward" >
+    insert into reward
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="umid != null" >
+        umid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="tmoney != null" >
+        tmoney,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="umid != null" >
+        #{umid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="tmoney != null" >
+        #{tmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Reward" >
+    update reward
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="tmoney != null" >
+        tmoney = #{tmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where umid = #{umid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Reward" >
+    update reward
+    set uid = #{uid,jdbcType=INTEGER},
+      tmoney = #{tmoney,jdbcType=DECIMAL},
+      money = #{money,jdbcType=DECIMAL},
+      state = #{state,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where umid = #{umid,jdbcType=INTEGER}
+  </update>
+</mapper>

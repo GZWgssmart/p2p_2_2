@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.HomeImgDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.HomeImg" >
+    <id column="hid" property="hid" jdbcType="INTEGER" />
+    <result column="imgPath" property="imgpath" jdbcType="VARCHAR" />
+    <result column="imgHref" property="imghref" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hid, imgPath, imgHref
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from home_img
+    where hid = #{hid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from home_img
+    where hid = #{hid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.HomeImg" >
+    insert into home_img (hid, imgPath, imgHref
+      )
+    values (#{hid,jdbcType=INTEGER}, #{imgpath,jdbcType=VARCHAR}, #{imghref,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.HomeImg" >
+    insert into home_img
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        hid,
+      </if>
+      <if test="imgpath != null" >
+        imgPath,
+      </if>
+      <if test="imghref != null" >
+        imgHref,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="imgpath != null" >
+        #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="imghref != null" >
+        #{imghref,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.HomeImg" >
+    update home_img
+    <set >
+      <if test="imgpath != null" >
+        imgPath = #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="imghref != null" >
+        imgHref = #{imghref,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hid = #{hid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.HomeImg" >
+    update home_img
+    set imgPath = #{imgpath,jdbcType=VARCHAR},
+      imgHref = #{imghref,jdbcType=VARCHAR}
+    where hid = #{hid,jdbcType=INTEGER}
+  </update>
+</mapper>

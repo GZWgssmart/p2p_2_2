@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.FriendDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Friend" >
+    <id column="fid" property="fid" jdbcType="INTEGER" />
+    <result column="imgPath" property="imgpath" jdbcType="VARCHAR" />
+    <result column="imgHref" property="imghref" jdbcType="VARCHAR" />
+    <result column="imgAlert" property="imgalert" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fid, imgPath, imgHref, imgAlert
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from friend
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from friend
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Friend" >
+    insert into friend (fid, imgPath, imgHref, 
+      imgAlert)
+    values (#{fid,jdbcType=INTEGER}, #{imgpath,jdbcType=VARCHAR}, #{imghref,jdbcType=VARCHAR}, 
+      #{imgalert,jdbcType=VARCHAR})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Friend" >
+    insert into friend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="imgpath != null" >
+        imgPath,
+      </if>
+      <if test="imghref != null" >
+        imgHref,
+      </if>
+      <if test="imgalert != null" >
+        imgAlert,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="imgpath != null" >
+        #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="imghref != null" >
+        #{imghref,jdbcType=VARCHAR},
+      </if>
+      <if test="imgalert != null" >
+        #{imgalert,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Friend" >
+    update friend
+    <set >
+      <if test="imgpath != null" >
+        imgPath = #{imgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="imghref != null" >
+        imgHref = #{imghref,jdbcType=VARCHAR},
+      </if>
+      <if test="imgalert != null" >
+        imgAlert = #{imgalert,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Friend" >
+    update friend
+    set imgPath = #{imgpath,jdbcType=VARCHAR},
+      imgHref = #{imghref,jdbcType=VARCHAR},
+      imgAlert = #{imgalert,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>

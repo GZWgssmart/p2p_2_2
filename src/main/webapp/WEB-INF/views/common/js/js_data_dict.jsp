@@ -1,0 +1,1 @@
+<script src="<%=path%>/static/js/our/data_dict.js"></script>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.BankcardDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Bankcard" >
+    <id column="bcid" property="bcid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="cardno" property="cardno" jdbcType="VARCHAR" />
+    <result column="rname" property="rname" jdbcType="VARCHAR" />
+    <result column="idno" property="idno" jdbcType="CHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bcid, uid, cardno, rname, idno, type, state, date
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bankcard
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from bankcard
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Bankcard" >
+    insert into bankcard (bcid, uid, cardno, 
+      rname, idno, type, state, 
+      date)
+    values (#{bcid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{cardno,jdbcType=VARCHAR}, 
+      #{rname,jdbcType=VARCHAR}, #{idno,jdbcType=CHAR}, #{type,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Bankcard" >
+    insert into bankcard
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bcid != null" >
+        bcid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="cardno != null" >
+        cardno,
+      </if>
+      <if test="rname != null" >
+        rname,
+      </if>
+      <if test="idno != null" >
+        idno,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bcid != null" >
+        #{bcid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="cardno != null" >
+        #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="rname != null" >
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="idno != null" >
+        #{idno,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Bankcard" >
+    update bankcard
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="cardno != null" >
+        cardno = #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="idno != null" >
+        idno = #{idno,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Bankcard" >
+    update bankcard
+    set uid = #{uid,jdbcType=INTEGER},
+      cardno = #{cardno,jdbcType=VARCHAR},
+      rname = #{rname,jdbcType=VARCHAR},
+      idno = #{idno,jdbcType=CHAR},
+      type = #{type,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      date = #{date,jdbcType=TIMESTAMP}
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </update>
+</mapper>

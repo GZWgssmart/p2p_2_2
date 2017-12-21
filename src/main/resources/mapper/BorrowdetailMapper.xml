@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.BorrowdetailDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Borrowdetail" >
+    <id column="bdid" property="bdid" jdbcType="INTEGER" />
+    <result column="fpic" property="fpic" jdbcType="CHAR" />
+    <result column="ypic" property="ypic" jdbcType="VARCHAR" />
+    <result column="qpic" property="qpic" jdbcType="VARCHAR" />
+    <result column="tpic" property="tpic" jdbcType="VARCHAR" />
+    <result column="mpurpose" property="mpurpose" jdbcType="VARCHAR" />
+    <result column="hksource" property="hksource" jdbcType="VARCHAR" />
+    <result column="suggest" property="suggest" jdbcType="VARCHAR" />
+    <result column="guarantee" property="guarantee" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="nprofit" property="nprofit" jdbcType="DECIMAL" />
+    <result column="way" property="way" jdbcType="VARCHAR" />
+    <result column="cpname" property="cpname" jdbcType="VARCHAR" />
+    <result column="baid" property="baid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Borrowdetail" extends="BaseResultMap" >
+    <result column="xmdescrip" property="xmdescrip" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bdid, fpic, ypic, qpic, tpic, mpurpose, hksource, suggest, guarantee, money, nprofit, 
+    way, cpname, baid
+  </sql>
+  <sql id="Blob_Column_List" >
+    xmdescrip
+  </sql>
+  <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from borrowdetail
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from borrowdetail
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Borrowdetail" >
+    insert into borrowdetail (bdid, fpic, ypic, 
+      qpic, tpic, mpurpose, 
+      hksource, suggest, guarantee, 
+      money, nprofit, way, 
+      cpname, baid, xmdescrip
+      )
+    values (#{bdid,jdbcType=INTEGER}, #{fpic,jdbcType=CHAR}, #{ypic,jdbcType=VARCHAR}, 
+      #{qpic,jdbcType=VARCHAR}, #{tpic,jdbcType=VARCHAR}, #{mpurpose,jdbcType=VARCHAR}, 
+      #{hksource,jdbcType=VARCHAR}, #{suggest,jdbcType=VARCHAR}, #{guarantee,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{nprofit,jdbcType=DECIMAL}, #{way,jdbcType=VARCHAR}, 
+      #{cpname,jdbcType=VARCHAR}, #{baid,jdbcType=INTEGER}, #{xmdescrip,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Borrowdetail" >
+    insert into borrowdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bdid != null" >
+        bdid,
+      </if>
+      <if test="fpic != null" >
+        fpic,
+      </if>
+      <if test="ypic != null" >
+        ypic,
+      </if>
+      <if test="qpic != null" >
+        qpic,
+      </if>
+      <if test="tpic != null" >
+        tpic,
+      </if>
+      <if test="mpurpose != null" >
+        mpurpose,
+      </if>
+      <if test="hksource != null" >
+        hksource,
+      </if>
+      <if test="suggest != null" >
+        suggest,
+      </if>
+      <if test="guarantee != null" >
+        guarantee,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="nprofit != null" >
+        nprofit,
+      </if>
+      <if test="way != null" >
+        way,
+      </if>
+      <if test="cpname != null" >
+        cpname,
+      </if>
+      <if test="baid != null" >
+        baid,
+      </if>
+      <if test="xmdescrip != null" >
+        xmdescrip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bdid != null" >
+        #{bdid,jdbcType=INTEGER},
+      </if>
+      <if test="fpic != null" >
+        #{fpic,jdbcType=CHAR},
+      </if>
+      <if test="ypic != null" >
+        #{ypic,jdbcType=VARCHAR},
+      </if>
+      <if test="qpic != null" >
+        #{qpic,jdbcType=VARCHAR},
+      </if>
+      <if test="tpic != null" >
+        #{tpic,jdbcType=VARCHAR},
+      </if>
+      <if test="mpurpose != null" >
+        #{mpurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="hksource != null" >
+        #{hksource,jdbcType=VARCHAR},
+      </if>
+      <if test="suggest != null" >
+        #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null" >
+        #{guarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="nprofit != null" >
+        #{nprofit,jdbcType=DECIMAL},
+      </if>
+      <if test="way != null" >
+        #{way,jdbcType=VARCHAR},
+      </if>
+      <if test="cpname != null" >
+        #{cpname,jdbcType=VARCHAR},
+      </if>
+      <if test="baid != null" >
+        #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="xmdescrip != null" >
+        #{xmdescrip,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Borrowdetail" >
+    update borrowdetail
+    <set >
+      <if test="fpic != null" >
+        fpic = #{fpic,jdbcType=CHAR},
+      </if>
+      <if test="ypic != null" >
+        ypic = #{ypic,jdbcType=VARCHAR},
+      </if>
+      <if test="qpic != null" >
+        qpic = #{qpic,jdbcType=VARCHAR},
+      </if>
+      <if test="tpic != null" >
+        tpic = #{tpic,jdbcType=VARCHAR},
+      </if>
+      <if test="mpurpose != null" >
+        mpurpose = #{mpurpose,jdbcType=VARCHAR},
+      </if>
+      <if test="hksource != null" >
+        hksource = #{hksource,jdbcType=VARCHAR},
+      </if>
+      <if test="suggest != null" >
+        suggest = #{suggest,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null" >
+        guarantee = #{guarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="nprofit != null" >
+        nprofit = #{nprofit,jdbcType=DECIMAL},
+      </if>
+      <if test="way != null" >
+        way = #{way,jdbcType=VARCHAR},
+      </if>
+      <if test="cpname != null" >
+        cpname = #{cpname,jdbcType=VARCHAR},
+      </if>
+      <if test="baid != null" >
+        baid = #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="xmdescrip != null" >
+        xmdescrip = #{xmdescrip,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Borrowdetail" >
+    update borrowdetail
+    set fpic = #{fpic,jdbcType=CHAR},
+      ypic = #{ypic,jdbcType=VARCHAR},
+      qpic = #{qpic,jdbcType=VARCHAR},
+      tpic = #{tpic,jdbcType=VARCHAR},
+      mpurpose = #{mpurpose,jdbcType=VARCHAR},
+      hksource = #{hksource,jdbcType=VARCHAR},
+      suggest = #{suggest,jdbcType=VARCHAR},
+      guarantee = #{guarantee,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      nprofit = #{nprofit,jdbcType=DECIMAL},
+      way = #{way,jdbcType=VARCHAR},
+      cpname = #{cpname,jdbcType=VARCHAR},
+      baid = #{baid,jdbcType=INTEGER},
+      xmdescrip = #{xmdescrip,jdbcType=LONGVARCHAR}
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Borrowdetail" >
+    update borrowdetail
+    set fpic = #{fpic,jdbcType=CHAR},
+      ypic = #{ypic,jdbcType=VARCHAR},
+      qpic = #{qpic,jdbcType=VARCHAR},
+      tpic = #{tpic,jdbcType=VARCHAR},
+      mpurpose = #{mpurpose,jdbcType=VARCHAR},
+      hksource = #{hksource,jdbcType=VARCHAR},
+      suggest = #{suggest,jdbcType=VARCHAR},
+      guarantee = #{guarantee,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      nprofit = #{nprofit,jdbcType=DECIMAL},
+      way = #{way,jdbcType=VARCHAR},
+      cpname = #{cpname,jdbcType=VARCHAR},
+      baid = #{baid,jdbcType=INTEGER}
+    where bdid = #{bdid,jdbcType=INTEGER}
+  </update>
+</mapper>

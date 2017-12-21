@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.DxmodelDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Dxmodel" >
+    <id column="dxid" property="dxid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Dxmodel" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dxid
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dxmodel
+    where dxid = #{dxid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from dxmodel
+    where dxid = #{dxid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Dxmodel" >
+    insert into dxmodel (dxid, content)
+    values (#{dxid,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Dxmodel" >
+    insert into dxmodel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dxid != null" >
+        dxid,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dxid != null" >
+        #{dxid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Dxmodel" >
+    update dxmodel
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where dxid = #{dxid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Dxmodel" >
+    update dxmodel
+    set content = #{content,jdbcType=LONGVARCHAR}
+    where dxid = #{dxid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.HkbDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Hkb" >
+    <id column="skid" property="skid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="rname" property="rname" jdbcType="VARCHAR" />
+    <result column="cpname" property="cpname" jdbcType="VARCHAR" />
+    <result column="rnum" property="rnum" jdbcType="INTEGER" />
+    <result column="tnum" property="tnum" jdbcType="INTEGER" />
+    <result column="ytime" property="ytime" jdbcType="TIMESTAMP" />
+    <result column="rtime" property="rtime" jdbcType="TIMESTAMP" />
+    <result column="bzname" property="bzname" jdbcType="VARCHAR" />
+    <result column="ybx" property="ybx" jdbcType="DECIMAL" />
+    <result column="rbx" property="rbx" jdbcType="DECIMAL" />
+    <result column="ylx" property="ylx" jdbcType="DECIMAL" />
+    <result column="rlx" property="rlx" jdbcType="DECIMAL" />
+    <result column="ybj" property="ybj" jdbcType="DECIMAL" />
+    <result column="rbj" property="rbj" jdbcType="DECIMAL" />
+    <result column="yfx" property="yfx" jdbcType="DECIMAL" />
+    <result column="rfx" property="rfx" jdbcType="DECIMAL" />
+    <result column="yucount" property="yucount" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="baid" property="baid" jdbcType="INTEGER" />
+    <result column="yustartime" property="yustartime" jdbcType="TIMESTAMP" />
+    <result column="huid" property="huid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    skid, uid, rname, cpname, rnum, tnum, ytime, rtime, bzname, ybx, rbx, ylx, rlx, ybj, 
+    rbj, yfx, rfx, yucount, state, baid, yustartime, huid
+  </sql>
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hkb
+    where skid = #{skid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from hkb
+    where skid = #{skid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Hkb" >
+    insert into hkb (skid, uid, rname, 
+      cpname, rnum, tnum, 
+      ytime, rtime, bzname, 
+      ybx, rbx, ylx, rlx, 
+      ybj, rbj, yfx, rfx, 
+      yucount, state, baid, 
+      yustartime, huid)
+    values (#{skid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, 
+      #{cpname,jdbcType=VARCHAR}, #{rnum,jdbcType=INTEGER}, #{tnum,jdbcType=INTEGER}, 
+      #{ytime,jdbcType=TIMESTAMP}, #{rtime,jdbcType=TIMESTAMP}, #{bzname,jdbcType=VARCHAR}, 
+      #{ybx,jdbcType=DECIMAL}, #{rbx,jdbcType=DECIMAL}, #{ylx,jdbcType=DECIMAL}, #{rlx,jdbcType=DECIMAL}, 
+      #{ybj,jdbcType=DECIMAL}, #{rbj,jdbcType=DECIMAL}, #{yfx,jdbcType=DECIMAL}, #{rfx,jdbcType=DECIMAL}, 
+      #{yucount,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{baid,jdbcType=INTEGER}, 
+      #{yustartime,jdbcType=TIMESTAMP}, #{huid,jdbcType=INTEGER})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Hkb" >
+    insert into hkb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skid != null" >
+        skid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="rname != null" >
+        rname,
+      </if>
+      <if test="cpname != null" >
+        cpname,
+      </if>
+      <if test="rnum != null" >
+        rnum,
+      </if>
+      <if test="tnum != null" >
+        tnum,
+      </if>
+      <if test="ytime != null" >
+        ytime,
+      </if>
+      <if test="rtime != null" >
+        rtime,
+      </if>
+      <if test="bzname != null" >
+        bzname,
+      </if>
+      <if test="ybx != null" >
+        ybx,
+      </if>
+      <if test="rbx != null" >
+        rbx,
+      </if>
+      <if test="ylx != null" >
+        ylx,
+      </if>
+      <if test="rlx != null" >
+        rlx,
+      </if>
+      <if test="ybj != null" >
+        ybj,
+      </if>
+      <if test="rbj != null" >
+        rbj,
+      </if>
+      <if test="yfx != null" >
+        yfx,
+      </if>
+      <if test="rfx != null" >
+        rfx,
+      </if>
+      <if test="yucount != null" >
+        yucount,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="baid != null" >
+        baid,
+      </if>
+      <if test="yustartime != null" >
+        yustartime,
+      </if>
+      <if test="huid != null" >
+        huid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skid != null" >
+        #{skid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="rname != null" >
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="cpname != null" >
+        #{cpname,jdbcType=VARCHAR},
+      </if>
+      <if test="rnum != null" >
+        #{rnum,jdbcType=INTEGER},
+      </if>
+      <if test="tnum != null" >
+        #{tnum,jdbcType=INTEGER},
+      </if>
+      <if test="ytime != null" >
+        #{ytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rtime != null" >
+        #{rtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bzname != null" >
+        #{bzname,jdbcType=VARCHAR},
+      </if>
+      <if test="ybx != null" >
+        #{ybx,jdbcType=DECIMAL},
+      </if>
+      <if test="rbx != null" >
+        #{rbx,jdbcType=DECIMAL},
+      </if>
+      <if test="ylx != null" >
+        #{ylx,jdbcType=DECIMAL},
+      </if>
+      <if test="rlx != null" >
+        #{rlx,jdbcType=DECIMAL},
+      </if>
+      <if test="ybj != null" >
+        #{ybj,jdbcType=DECIMAL},
+      </if>
+      <if test="rbj != null" >
+        #{rbj,jdbcType=DECIMAL},
+      </if>
+      <if test="yfx != null" >
+        #{yfx,jdbcType=DECIMAL},
+      </if>
+      <if test="rfx != null" >
+        #{rfx,jdbcType=DECIMAL},
+      </if>
+      <if test="yucount != null" >
+        #{yucount,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="baid != null" >
+        #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="yustartime != null" >
+        #{yustartime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="huid != null" >
+        #{huid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Hkb" >
+    update hkb
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="cpname != null" >
+        cpname = #{cpname,jdbcType=VARCHAR},
+      </if>
+      <if test="rnum != null" >
+        rnum = #{rnum,jdbcType=INTEGER},
+      </if>
+      <if test="tnum != null" >
+        tnum = #{tnum,jdbcType=INTEGER},
+      </if>
+      <if test="ytime != null" >
+        ytime = #{ytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rtime != null" >
+        rtime = #{rtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bzname != null" >
+        bzname = #{bzname,jdbcType=VARCHAR},
+      </if>
+      <if test="ybx != null" >
+        ybx = #{ybx,jdbcType=DECIMAL},
+      </if>
+      <if test="rbx != null" >
+        rbx = #{rbx,jdbcType=DECIMAL},
+      </if>
+      <if test="ylx != null" >
+        ylx = #{ylx,jdbcType=DECIMAL},
+      </if>
+      <if test="rlx != null" >
+        rlx = #{rlx,jdbcType=DECIMAL},
+      </if>
+      <if test="ybj != null" >
+        ybj = #{ybj,jdbcType=DECIMAL},
+      </if>
+      <if test="rbj != null" >
+        rbj = #{rbj,jdbcType=DECIMAL},
+      </if>
+      <if test="yfx != null" >
+        yfx = #{yfx,jdbcType=DECIMAL},
+      </if>
+      <if test="rfx != null" >
+        rfx = #{rfx,jdbcType=DECIMAL},
+      </if>
+      <if test="yucount != null" >
+        yucount = #{yucount,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="baid != null" >
+        baid = #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="yustartime != null" >
+        yustartime = #{yustartime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="huid != null" >
+        huid = #{huid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where skid = #{skid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Hkb" >
+    update hkb
+    set uid = #{uid,jdbcType=INTEGER},
+      rname = #{rname,jdbcType=VARCHAR},
+      cpname = #{cpname,jdbcType=VARCHAR},
+      rnum = #{rnum,jdbcType=INTEGER},
+      tnum = #{tnum,jdbcType=INTEGER},
+      ytime = #{ytime,jdbcType=TIMESTAMP},
+      rtime = #{rtime,jdbcType=TIMESTAMP},
+      bzname = #{bzname,jdbcType=VARCHAR},
+      ybx = #{ybx,jdbcType=DECIMAL},
+      rbx = #{rbx,jdbcType=DECIMAL},
+      ylx = #{ylx,jdbcType=DECIMAL},
+      rlx = #{rlx,jdbcType=DECIMAL},
+      ybj = #{ybj,jdbcType=DECIMAL},
+      rbj = #{rbj,jdbcType=DECIMAL},
+      yfx = #{yfx,jdbcType=DECIMAL},
+      rfx = #{rfx,jdbcType=DECIMAL},
+      yucount = #{yucount,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      baid = #{baid,jdbcType=INTEGER},
+      yustartime = #{yustartime,jdbcType=TIMESTAMP},
+      huid = #{huid,jdbcType=INTEGER}
+    where skid = #{skid,jdbcType=INTEGER}
+  </update>
+</mapper>

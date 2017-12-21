@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.dao.DynamicDAO" >
+  <resultMap id="BaseResultMap" type="com.we.bean.Dynamic" >
+    <id column="dyid" property="dyid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Dynamic" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dyid, title, date, pic
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dynamic
+    where dyid = #{dyid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer" >
+    delete from dynamic
+    where dyid = #{dyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Dynamic" >
+    insert into dynamic (dyid, title, date, 
+      pic, content)
+    values (#{dyid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
+      #{pic,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Dynamic" >
+    insert into dynamic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dyid != null" >
+        dyid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dyid != null" >
+        #{dyid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Dynamic" >
+    update dynamic
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where dyid = #{dyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Dynamic" >
+    update dynamic
+    set title = #{title,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      pic = #{pic,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where dyid = #{dyid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Dynamic" >
+    update dynamic
+    set title = #{title,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      pic = #{pic,jdbcType=VARCHAR}
+    where dyid = #{dyid,jdbcType=INTEGER}
+  </update>
+</mapper>
