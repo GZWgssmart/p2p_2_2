@@ -1,0 +1,16 @@
+﻿一：规范，为了更好的完成权限管理功能和加强团队协作
+	1、Controller 与 URL的命名 参考UserController
+	2、Service中方法的命名 以 save、remove、update、get、list 开头。
+	3、属性的@Autowired注解换成  提供属性的set方法，在方法上加@Resource注解。
+	4、新建js文件：文件路径： static/js/our/模块名/姓名简写/js文件名称，如static/js/our/user/www/login.js
+	5、form表单的验证用 jquery-validate，未使用过的同学可以先搜搜资料
+	6、如果有更好的规范建议大家可以继续往下写，此文件会不定时更新（分配任务）
+
+
+
+（为了加快打字速度，把我们的名字替换成字母）
+
+二：任务
+	1、2017年12月21日15:11:47：lmh：用户借款的申请， www：用户注册（页面与后台代码），lqf：完成网站首页（纯页面）
+	wml、ysf、xdp、qrl 完成相应表Service的测试
+	
