@@ -130,4 +130,23 @@ public class User {
     public void setIsVip(Integer isVip) {
         this.isVip = isVip;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", uname='" + uname + '\'' +
+                ", upwd='" + upwd + '\'' +
+                ", phone='" + phone + '\'' +
+                ", zpwd='" + zpwd + '\'' +
+                ", idtype='" + idtype + '\'' +
+                ", idno='" + idno + '\'' +
+                ", email='" + email + '\'' +
+                ", rname='" + rname + '\'' +
+                ", tid=" + tid +
+                ", face='" + face + '\'' +
+                ", sex='" + sex + '\'' +
+                ", isVip=" + isVip +
+                '}';
+    }
 }

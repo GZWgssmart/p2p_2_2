@@ -1,9 +1,12 @@
 package com.we.controller;
 
 import com.we.bean.User;
+import com.we.common.EncryptUtils;
 import com.we.common.Pager;
+import com.we.enums.RequestResultEnum;
 import com.we.service.UserService;
 import com.we.vo.RequestResultVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +25,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
     private UserService userService;
 
     @RequestMapping("login_page")
@@ -37,7 +41,21 @@ public class UserController {
     @PostMapping("register")
     @ResponseBody
     public RequestResultVO register(User user) {
+        System.out.println(user);
         RequestResultVO statusVO = null;
+        //账号 是否已存在
+        System.out.println(userService.isPhone(user.getPhone()));
+        /*user.setUpwd(EncryptUtils.md5(user.getUpwd()));
+        //无推荐码
+        if(user.getTid() == null || "".equals(user.getTid())){
+            userService.saveSelective(user);
+            statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_SUCCESS);
+        }else{
+            //有推荐码  先判断该推荐码是否存在
+            //推荐码是否存在
+        }*/
+
+
         return statusVO;
     }
 
@@ -55,7 +73,7 @@ public class UserController {
 
     @RequestMapping("all_user_page")
     public String allUserPage() {
-        return "cash/pager_user";
+        return "user/pager_user";
     }
 
     @PostMapping("login")

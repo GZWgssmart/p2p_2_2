@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserDAO userDAO;
 
     @Override
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int saveSelective(Object obj) {
-        return 0;
+        return userDAO.saveSelective(obj);
     }
 
     @Override
@@ -56,5 +57,15 @@ public class UserServiceImpl implements UserService {
     @Resource
     public void setUserDAO(UserDAO userDAO) {
         this.userDAO = userDAO;
+    }
+
+    @Override
+    public String isPhone(String phone) {
+        return userDAO.isPhone(phone);
+    }
+
+    @Override
+    public String isId(Integer id) {
+        return userDAO.isId(id);
     }
 }

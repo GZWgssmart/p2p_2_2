@@ -16,4 +16,8 @@ public interface UserDAO extends BaseDAO {
     int updateSelective(User record);
 
     int update(User record);
+
+    String isPhone(String phone);
+
+    String isId(Integer id);
 }
