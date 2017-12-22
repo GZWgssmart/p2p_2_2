@@ -1,6 +1,5 @@
 package com.we.dao;
 
-import com.we.bean.Friend;
 import org.springframework.stereotype.Repository;
 
 @Repository

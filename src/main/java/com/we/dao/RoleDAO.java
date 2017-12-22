@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.Role;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface RoleDAO extends BaseDAO {
 

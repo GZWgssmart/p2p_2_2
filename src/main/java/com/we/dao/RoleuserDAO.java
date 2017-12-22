@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.Roleuser;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface RoleuserDAO extends BaseDAO {
 

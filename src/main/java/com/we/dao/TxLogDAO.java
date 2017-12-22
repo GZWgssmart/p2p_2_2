@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.TxLog;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface TxLogDAO extends BaseDAO {
 

@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.Ticket;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface TicketDAO extends BaseDAO {
 

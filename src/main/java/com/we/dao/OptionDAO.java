@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.Option;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface OptionDAO extends BaseDAO {
 }

@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.Reward;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface RewardDAO extends BaseDAO {
 

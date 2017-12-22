@@ -1,7 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.Sway;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface SwayDAO extends BaseDAO {
 
 }
