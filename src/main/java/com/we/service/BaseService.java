@@ -13,42 +13,42 @@ public interface BaseService {
      * @param id 主键
      * @return 影响行数
      */
-    int removeById(Long id);
+    Integer removeById(Integer id);
 
     /**
      * 保存数据（会保存空属性）
      * @param obj 实体对象
      * @return 影响行数
      */
-    int save(Object obj);
+    Integer save(Object obj);
 
     /**
      * 保存不为空的数据
      * @param obj 实体对象
      * @return 影响行数
      */
-    int saveSelective(Object obj);
+    Integer saveSelective(Object obj);
 
     /**
      * 根据主键查询一行数据
      * @param id 主键
      * @return 查询的实体对象
      */
-    Object getById(Long id);
+    Object getById(Integer id);
 
     /**
      * 更新对象属性值不为空的所对应的数据库字段
      * @param obj 实体对象
      * @return 影响行数
      */
-    int updateSelective(Object obj);
+    Integer updateSelective(Object obj);
 
     /**
      * 更新对象
      * @param obj 实体对象
      * @return 影响行数
      */
-    int update(Object obj);
+    Integer update(Object obj);
 
     /**
      * 条件分页查询
