@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class LetterServiceTest extends BaseTest {
 
@@ -23,8 +24,9 @@ public class LetterServiceTest extends BaseTest {
     }
 
     @Test
-    public void testUpdate() {
-        Letter letter = new Letter();
+    public void testGetById() {
+        Letter letter = (Letter) letterService.getById(2);
+        System.out.println(letter);
 
     }
 

@@ -1,15 +1,14 @@
 package com.we.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+
 
 public class Letter {
     /**
      * 更新时，id字段不能为空， 用法参考LetterController.update();
      */
-    @NotNull
+
     private Integer lid;
 
     private String title;
@@ -20,6 +19,7 @@ public class Letter {
 
     private String content;
 
+    @NotNull(message = "不能为空")
     public Integer getLid() {
         return lid;
     }

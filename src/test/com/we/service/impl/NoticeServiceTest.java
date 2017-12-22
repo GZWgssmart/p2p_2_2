@@ -21,4 +21,6 @@ public class NoticeServiceTest extends BaseTest {
         noticeService.save(notice);
     }
 
+
+
 }
