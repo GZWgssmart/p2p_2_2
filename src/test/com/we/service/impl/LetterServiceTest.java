@@ -22,5 +22,12 @@ public class LetterServiceTest extends BaseTest {
         letterService.save(letter);
     }
 
+    @Test
+    public void testUpdate() {
+        Letter letter = new Letter();
+
+    }
+
+
 
 }
