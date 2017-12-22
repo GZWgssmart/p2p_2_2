@@ -44,6 +44,9 @@
                 $("#resignForm").serialize(),
                 function (data) {
                     alert(data.message);
+                    if(data.message === "注册成功！"){
+                        window.location.href = "/user/login_page";
+                    }
                 },'json'
             );
         }

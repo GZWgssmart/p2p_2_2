@@ -5,7 +5,12 @@ import org.springframework.stereotype.Repository;
 
 public interface UserDAO extends BaseDAO {
 
-    String isPhone(String phone);
+    /**
+     * 通过号码查询数据库是否有该号码
+     * @param phone
+     * @return
+     */
+    User getByPhone(String phone);
 
-    String isId(Integer id);
+
 }

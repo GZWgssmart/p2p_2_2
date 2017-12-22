@@ -9,8 +9,13 @@ public enum RequestResultEnum {
     LOGIN_FAIL_ACCOUNT(503, "fail", "账号或密码错误"),
     LOGIN_FAIL_CODE(503, "fail", "验证码错误"),
     UPDATE_SUCCESS(204,"success","更新成功"),
-    UPDATE_FAIL(504,"fail","更新失败");
-
+    UPDATE_FAIL(504,"fail","更新失败"),
+    REGISTER_SUCCESS(301, "success", "注册成功！"),
+    REGISTER_FAIL(302, "fail", "注册成功！"),
+    REGISTER_SUCCESS(301, "success", "注册成功！"),
+    REGISTER_FAIL(302, "fail", "注册成功！"),
+    REGISTER_FAIL_HAVE_PHONE(303,"fial","该账号已注册"),
+    REGISTER_FAIL_NOT_TID(304,"fial","推荐码不存在");
 
 
     private Integer code;

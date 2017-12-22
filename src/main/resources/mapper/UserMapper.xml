@@ -189,11 +189,9 @@
     where uid = #{uid,jdbcType=INTEGER}
   </update>
 
-  <select id="isPhone" resultType="string">
-    select phone from user where phone = #{phone}
+  <select id="getByPhone" resultMap="BaseResultMap">
+    select * from user where phone = #{phone}
   </select>
 
-  <select id="isId" resultType="java.lang.Integer">
-    select id from user where id = #{id}
-  </select>
+
 </mapper>
