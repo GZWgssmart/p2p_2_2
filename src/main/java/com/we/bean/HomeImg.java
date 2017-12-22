@@ -1,11 +1,13 @@
 package com.we.bean;
 
+/**
+ * 首页信息
+ */
 public class HomeImg {
-    private Integer hid;
 
-    private String imgpath;
-
-    private String imghref;
+    private Integer hid;     // 主键
+    private String imgpath;  // 图片地址
+    private String imghref;  // 图片对应的连接
 
     public Integer getHid() {
         return hid;

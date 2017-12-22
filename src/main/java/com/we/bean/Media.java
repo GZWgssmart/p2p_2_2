@@ -2,18 +2,17 @@ package com.we.bean;
 
 import java.util.Date;
 
+/**
+ * 媒体报道
+ */
 public class Media {
-    private Integer mid;
 
-    private String title;
-
-    private String pic;
-
-    private Date date;
-
-    private String url;
-
-    private String content;
+    private Integer mid;    // 主键	int	mid
+    private String title;   // 标题	String	title
+    private String pic;     // 封面图片	String	pic
+    private Date date;      // 时间	date	date
+    private String url;     // 地址	String	url
+    private String content; // 内容	String	content
 
     public Integer getMid() {
         return mid;

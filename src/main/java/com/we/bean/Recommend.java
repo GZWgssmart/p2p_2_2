@@ -2,18 +2,17 @@ package com.we.bean;
 
 import java.util.Date;
 
+/**
+ * 推荐管理
+ */
 public class Recommend {
-    private Integer rid;
 
-    private Integer tid;
-
-    private String tname;
-
-    private Integer uid;
-
-    private String rname;
-
-    private Date date;
+    private Integer rid;    // 主键	int	id
+    private Integer tid;    // 推荐人id	int	tid
+    private String tname;   // 推荐人姓名	String	tname
+    private Integer uid;    // 被推荐人id	int	uid
+    private String rname;   // 被推荐人姓名	String	rname
+    private Date date;      // 时间	date	date
 
     public Integer getRid() {
         return rid;
