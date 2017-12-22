@@ -6,6 +6,7 @@ import com.we.enums.RequestResultEnum;
 import com.we.service.NoticeService;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,11 +21,15 @@ public class NoticeController {
 
     @PostMapping("update")
     @ResponseBody
-    public RequestResultVO update(Notice notice) {
+    public RequestResultVO update(Notice notice, BindingResult bindingResult) {
         RequestResultVO vo = null;
         try{
-            noticeService.update(notice);
-            vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+            if(bindingResult.hasErrors()) {
+                vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+            }else{
+                noticeService.updateSelective(notice);
+                vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+            }
         }catch (RuntimeException e) {
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }

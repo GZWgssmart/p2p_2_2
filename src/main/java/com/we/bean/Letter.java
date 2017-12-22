@@ -5,9 +5,6 @@ import java.util.Date;
 
 
 public class Letter {
-    /**
-     * 更新时，id字段不能为空， 用法参考LetterController.update();
-     */
 
     private Integer lid;
 
@@ -19,6 +16,9 @@ public class Letter {
 
     private String content;
 
+    /**
+     * 更新时，id字段不能为空， 用法参考LetterController.update();
+     */
     @NotNull(message = "不能为空")
     public Integer getLid() {
         return lid;

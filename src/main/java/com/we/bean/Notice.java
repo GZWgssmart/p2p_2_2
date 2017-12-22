@@ -1,8 +1,10 @@
 package com.we.bean;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class Notice {
+
     private Integer nid;
 
     private String title;
@@ -11,6 +13,7 @@ public class Notice {
 
     private String content;
 
+   @NotNull(message = "不能为空")
     public Integer getNid() {
         return nid;
     }
