@@ -1,18 +1,15 @@
 package com.we.service;
 
+import com.we.bean.User;
+
 public interface UserService extends BaseService {
 
     /**
-     * 查询数据库是否有该号码
+     * 通过号码查询数据库是否有该号码
      * @param phone
      * @return
      */
-    String isPhone(String phone);
+    User getByPhone(String phone);
 
-    /**
-     * 查询数据库是否有该id
-     * @param id
-     * @return
-     */
-    String isId(Integer id);
+
 }

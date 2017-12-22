@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.User;
 import com.we.common.Pager;
 import com.we.dao.BaseDAO;
 import com.we.dao.UserDAO;
@@ -26,13 +27,9 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
         this.userDAO = userDAO;
     }
 
-    @Override
-    public String isPhone(String phone) {
-        return userDAO.isPhone(phone);
-    }
 
     @Override
-    public String isId(Integer id) {
-        return userDAO.isId(id);
+    public User getByPhone(String phone) {
+        return userDAO.getByPhone(phone);
     }
 }
