@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 @Service
 public class FriendServiceImpl extends AbstractBaseService implements FriendService {
 
+
     private FriendDAO friendDAO;
 
     @Autowired
