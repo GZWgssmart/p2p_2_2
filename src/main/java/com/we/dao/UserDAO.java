@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 public interface UserDAO extends BaseDAO {
 
     /**
-     * é€šè¿‡å·ç æŸ¥è¯¢æ•°æ®åº“æ˜¯å¦æœ‰è¯¥å·ç 
+     * Í¨¹ıºÅÂë²éÑ¯Êı¾İ¿âÊÇ·ñÓĞ¸ÃºÅÂë
      * @param phone
      * @return
      */
