@@ -1,6 +1,5 @@
 package com.we.controller;
 
-
 import com.we.bean.Letter;
 import com.we.enums.RequestResultEnum;
 import com.we.service.LetterService;
