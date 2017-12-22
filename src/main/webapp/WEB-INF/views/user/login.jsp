@@ -25,6 +25,7 @@
         <input id="upwd" name="upwd" id="upwd" type="password" placeholder="请输入密码" />
         <input id="btn" type="button" value="登入" />
     </form>
+    <a href="javaScript:void(0);" id="forgetPwd">忘记密码</a>
 </body>
 <script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
 <script>
@@ -32,8 +33,12 @@
     $("#btn").click(function () {
         var phone = $("#phone").val();
         var upwd = $("#upwd").val();
-        if(/^1(3|4|5|7|8)\d{9}$/.test(phone)){
-            //判断为电话号码
+        if(phone == null || phone == ''){
+            alert("请输入账号");
+        }else if(upwd == null || upwd == ''){
+            alert("请输入密码");
+        }else if(/^1(3|4|5|7|8)\d{9}$/.test(phone)){
+            //判断为手机号码
             $("#phone").attr("name","phone");
             loginFormSubmit();
         }else if (/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(phone)){
@@ -41,7 +46,16 @@
             $("#phone").attr("name","email");
             loginFormSubmit();
         }else{
-            alert("格式错误");
+            alert("账号格式错误");
+        }
+    });
+    
+    $("#forgetPwd").click(function () {
+        var phone = $("#phone").val();
+        if(/^1(3|4|5|7|8)\d{9}$/.test(phone)){
+            window.location.href = "/user/verify_phone_page?phone="+phone;
+        }else{
+            window.location.href = "/user/verify_phone_page";
         }
     });
     
@@ -49,10 +63,15 @@
         $.post("/user/login",
             $("#loginForm").serialize(),
             function (data) {
-                alelt(1);
+               if(data.message === "登录成功！"){
+                   window.location.href = "/";
+               }else{
+                   alert(data.message);
+               }
             },"json"
-
         );
     }
+
+
 </script>
 </html>

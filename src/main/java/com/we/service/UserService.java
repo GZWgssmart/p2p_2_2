@@ -11,5 +11,11 @@ public interface UserService extends BaseService {
      */
     User getByPhone(String phone);
 
+    /**
+     * 通过邮箱或电话号码登入
+     * @param user
+     * @return
+     */
+    User getByPhoneOrEmailAndUpwd(User user);
 
 }

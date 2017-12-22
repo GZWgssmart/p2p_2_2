@@ -4,6 +4,7 @@ import com.we.bean.Recommend;
 import com.we.bean.User;
 import com.we.common.EncryptUtils;
 import com.we.common.Pager;
+import com.we.common.miaodi.IndustrySMS;
 import com.we.enums.RequestResultEnum;
 import com.we.service.RecommendService;
 import com.we.service.UserService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -26,6 +28,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    private String phoneCode = "";
 
     @Autowired
     private UserService userService;
@@ -98,8 +102,63 @@ public class UserController {
     @PostMapping("login")
     @ResponseBody
     public RequestResultVO login(User user, String code, HttpSession session) {
-        System.out.println(user);
         RequestResultVO statusVO = null;
+        user.setUpwd(EncryptUtils.md5(user.getUpwd()));
+        User userLogin = userService.getByPhoneOrEmailAndUpwd(user);
+        if(userLogin == null){
+            //登入失败
+            statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
+        }else{
+            session.setAttribute("user",userLogin);
+            statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
+        }
+        return statusVO;
+    }
+
+    /**
+     * 忘记密码前往验证手机号码页面
+     * @param phone 可有可无   有：将值放入手机号码框  无：单纯跳转页面
+     * @return
+     */
+    @RequestMapping("verify_phone_page")
+    public ModelAndView forgetPwdPage(String phone){
+        ModelAndView mav = new ModelAndView("user/verifyPhone");
+        if(phone !=null || phone != ""){
+            mav.addObject("userPhone", phone);
+        }
+        return mav;
+    }
+
+    /**
+     * 手机号码验证
+     * @param phone
+     * @param code
+     * @return
+     */
+    @RequestMapping("verify_phone")
+    @ResponseBody
+    public RequestResultVO updatePwd(String phone, String code){
+        System.out.println(code);
+        RequestResultVO statusVO = null;
+        //如果验证码为空，，则点击的是获取验证码链接    不为空则点击的是验证按钮
+        if(code == null || code == ""){
+            //判断手机号码是否存在  存在发送验证码  不存在退出
+            if(userService.getByPhone(phone) != null){
+                phoneCode = "123456";
+                        //IndustrySMS.execute(phone);
+                System.out.println(phoneCode);
+                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_SENDCODE);
+            }else{
+                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_NO_PHONE);
+            }
+        }else{
+            //比对验证码
+            System.out.println(phoneCode+"code");
+            if(code.equals(phoneCode)){
+                System.out.println("验证成功");
+            }
+        }
+
         return statusVO;
     }
 

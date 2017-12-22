@@ -11,9 +11,11 @@ public enum RequestResultEnum {
     UPDATE_SUCCESS(204,"success","更新成功"),
     UPDATE_FAIL(504,"fail","更新失败"),
     REGISTER_SUCCESS(301, "success", "注册成功！"),
-    REGISTER_FAIL(302, "fail", "注册失败！"),
-    REGISTER_FAIL_HAVE_PHONE(303,"fial","该账号已注册"),
-    REGISTER_FAIL_NOT_TID(304,"fial","推荐码不存在");
+    REGISTER_FAIL(302, "fail", "注册成功！"),
+    REGISTER_FAIL_HAVE_PHONE(303,"fail","该账号已注册"),
+    UPDATE_UPWD_NO_PHONE(304,"fail","该账号未注册"),
+    REGISTER_FAIL_NOT_TID(305,"fail","推荐码不存在"),
+    UPDATE_UPWD_SENDCODE(306,"fail","验证码已发送，请注意查收");
 
 
     private Integer code;

@@ -32,4 +32,9 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
     public User getByPhone(String phone) {
         return userDAO.getByPhone(phone);
     }
+
+    @Override
+    public User getByPhoneOrEmailAndUpwd(User user) {
+        return userDAO.getByPhoneOrEmailAndUpwd(user);
+    }
 }

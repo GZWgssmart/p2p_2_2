@@ -237,5 +237,11 @@
             <scope>test</scope>
         </dependency>
 
+        <!--秒嘀-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
     </dependencies>
 </project>
