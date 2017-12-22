@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.Shborrow;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface ShborrowDAO extends BaseDAO {
 

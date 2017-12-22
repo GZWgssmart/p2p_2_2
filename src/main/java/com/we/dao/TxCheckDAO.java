@@ -1,6 +1,8 @@
 package com.we.dao;
 
-import com.we.bean.TxCheck;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 public interface TxCheckDAO extends BaseDAO {
 
