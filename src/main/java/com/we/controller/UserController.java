@@ -3,6 +3,7 @@ package com.we.controller;
 import com.we.bean.Recommend;
 import com.we.bean.User;
 import com.we.common.EncryptUtils;
+import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.common.miaodi.IndustrySMS;
 import com.we.enums.RequestResultEnum;
@@ -36,6 +37,36 @@ public class UserController {
 
     @Autowired
     private RecommendService recommendService;
+
+    @RequestMapping("home_page")
+    public String homePage() {
+        return "user/home";
+    }
+
+    @RequestMapping("apply_money_page")
+    public String applyMoneyPage() {
+        return "user/apply_money_page";
+    }
+
+    /**
+     * 用户点击申请借款时，检查用户是否为VIP
+     * @param session HttpSession
+     * @return 请求结果
+     */
+    @RequestMapping("checkVip")
+    @ResponseBody
+    public RequestResultVO checkVip(HttpSession session) {
+        RequestResultVO requestResultVO = null;
+        User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
+        if (OurConstants.IS_VIP.equals(user.getIsVip())) {
+            //是VIP，用js跳转页面 显示申请借款的表单
+            requestResultVO = RequestResultVO.status(RequestResultEnum.HAVE_PERMISSION);
+        } else {
+            // 不是VIP， js弹窗提示
+            requestResultVO = RequestResultVO.status(RequestResultEnum.NO_PERMISSION_BORROW_MONEY);
+        }
+        return requestResultVO;
+    }
 
     @RequestMapping("login_page")
     public String loginPage() {

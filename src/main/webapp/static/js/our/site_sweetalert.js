@@ -28,6 +28,13 @@ var swtAlert = {
             timer: 1500
         });
     },
+    request_fail_no_timer: function (message) {
+        swal({
+            title: '失败！',
+            text: message,
+            type: 'error'
+        });
+    },
     remove_rows: function (rows, url, tableId) {
         swal({
             title: dataDict.manage.removeConfirm,

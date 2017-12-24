@@ -6,7 +6,7 @@
 
 <head>
     <title>首页</title>
-    <%@include file="common/manage/index_head.jsp" %>
+    <%@include file="../common/manage/index_head.jsp" %>
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -19,7 +19,8 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="<%=path%>/static/images/profile_small.jpg"/></span>
+                        <span><img alt="image" class="img-circle"
+                                   src="<%=path%>/static/images/profile_small.jpg"/></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                <span class="block m-t-xs"><strong class="font-bold">昵称</strong></span>
@@ -37,12 +38,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-home"></i>
-                        <span class="nav-label">学生管理</span>
+                        <span class="nav-label">借款管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/student/studentsPage" data-index="0">所有学生</a>
+                            <a class="J_menuItem" onclick="checkVip();" data-index="0">申请借款</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="index_v2.html">修改密码</a>
@@ -124,15 +125,17 @@
     <!--左侧导航结束-->
 
     <!--右侧部分开始-->
-    <%@include file="common/manage/index_right_part.jsp" %>
+    <%@include file="../common/manage/index_right_part.jsp" %>
     <!--右侧部分结束-->
 
     <!--右侧边栏开始-->
-    <%@include file="common/manage/index_right_sidebar.jsp" %>
+    <%@include file="../common/manage/index_right_sidebar.jsp" %>
     <!--右侧边栏结束-->
 </div>
 
-<%@include file="common/manage/index_js.jsp" %>
+<%@include file="../common/manage/index_js.jsp" %>
+<%@include file="../common/js/js_sweetalert.jsp" %>
+<script src="<%=path%>/static/js/our/lmh/user/home_check_vip.js"></script>
 </body>
 
 </html>
