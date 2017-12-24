@@ -1,12 +1,15 @@
 package com.we.dao;
 
 import com.we.bean.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
+
 @Repository
 public interface UserDAO extends BaseDAO {
 
     /**
-     * Í¨¹ıºÅÂë²éÑ¯Êı¾İ¿âÊÇ·ñÓĞ¸ÃºÅÂë
+     * é€šè¿‡æ‰‹æœºå·æŸ¥æ‰¾ç”¨æˆ·
      * @param phone
      * @return
      */
@@ -18,5 +21,12 @@ public interface UserDAO extends BaseDAO {
      * @return
      */
     User getByPhoneOrEmailAndUpwd(User user);
+
+    /**
+     * é€šè¿‡æ‰‹æœºå·ç ä¿®æ”¹ç™»å…¥å¯†ç 
+     * @param phone
+     * @param pwd
+     */
+    void updatePwdByPhone(@Param("phone") String phone, @Param("pwd") String pwd);
 
 }

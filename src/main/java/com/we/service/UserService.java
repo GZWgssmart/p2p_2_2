@@ -18,4 +18,11 @@ public interface UserService extends BaseService {
      */
     User getByPhoneOrEmailAndUpwd(User user);
 
+    /**
+     * 通过手机号码修改登入密码
+     * @param phone
+     * @param pwd
+     */
+    void updatePwdByPhone(String phone, String pwd);
+
 }

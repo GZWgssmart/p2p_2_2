@@ -12,10 +12,7 @@ import com.we.service.UserService;
 import com.we.vo.RequestResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -168,8 +165,7 @@ public class UserController {
      */
     @RequestMapping("verify_phone")
     @ResponseBody
-    public RequestResultVO updatePwd(String phone, String code){
-        System.out.println(code);
+    public RequestResultVO updatePwdVerify(String phone, String code){
         RequestResultVO statusVO = null;
         //如果验证码为空，，则点击的是获取验证码链接    不为空则点击的是验证按钮
         if(code == null || code == ""){
@@ -177,19 +173,34 @@ public class UserController {
             if(userService.getByPhone(phone) != null){
                 phoneCode = "123456";
                         //IndustrySMS.execute(phone);
-                System.out.println(phoneCode);
                 statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_SENDCODE);
             }else{
                 statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_NO_PHONE);
             }
         }else{
             //比对验证码
-            System.out.println(phoneCode+"code");
             if(code.equals(phoneCode)){
-                System.out.println("验证成功");
+                //验证码正确
+                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_VERIFY_SUCCESS);
+            }else{
+                //验证码失败
+                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_VERIFY_FAIL);
             }
         }
+        return statusVO;
+    }
 
+    @RequestMapping("update_pwd_page/{phone}")
+    public ModelAndView ModelAndView(@PathVariable("phone") String phone) {
+        ModelAndView mav = new ModelAndView("user/updatePwd");
+        mav.addObject("phone", phone);
+        return mav;
+    }
+
+    @RequestMapping("updatePwd")
+    public RequestResultVO updatePwd(String phone, String pwd) {
+        RequestResultVO statusVO = null;
+        userService.updatePwdByPhone(phone, EncryptUtils.md5(pwd));
         return statusVO;
     }
 

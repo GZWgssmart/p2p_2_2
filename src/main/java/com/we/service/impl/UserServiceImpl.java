@@ -37,4 +37,9 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
     public User getByPhoneOrEmailAndUpwd(User user) {
         return userDAO.getByPhoneOrEmailAndUpwd(user);
     }
+
+    @Override
+    public void updatePwdByPhone(String phone, String pwd) {
+        userDAO.updatePwdByPhone(phone, pwd);
+    }
 }

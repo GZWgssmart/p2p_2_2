@@ -58,7 +58,12 @@
                     phone:phone,
                     code:code
                 },function (data) {
-                    alert(data.message);
+                    if(data.message === "验证码成功"){
+                        alert(data.message);
+                        window.location.href = "/user/update_pwd_page/"+phone;
+                    }else{
+                        alert(data.message);
+                    }
                 },"json"
             );
         }
