@@ -47,12 +47,12 @@
         <th data-checkbox="true"></th>
         <th data-field="rname">真实姓名</th>
         <th data-field="money">资金</th>
-        <th data-field="bzid">标种类型</th>
-        <th data-field="type">借款类型</th>
-        <th data-field="term">借款期限</th>
-        <th data-field="state">状态</th>
+        <th data-field="bzname">标种类型</th>
+        <th data-field="lxname">借款类型</th>
+        <th data-field="term">借款期限（月）</th>
+        <th data-field="state" data-formatter="pagerBorrow.formatState">状态</th>
         <th data-field="time" data-formatter="setTable.formatDate">申请时间</th>
-        <th data-field="deadline" data-formatter="setTable.formatDate">截止时间</th>
+        <th data-field="deadline" data-formatter="setTable.formatDate">投标截止时间</th>
     </tr>
     </thead>
 </table>
@@ -63,11 +63,12 @@
 <%@include file="../common/js/js_sweetalert.jsp" %>
 <%@include file="../common/js/js_form.jsp" %>
 <%@include file="../common/js/js_data_dict.jsp" %>
-
 <script>
     $(function () {
         setTable.setBootstrapTable('borrowapplyList');
     });
 </script>
+
+<script src="<%=path%>/static/js/our/user/lmh/pager_borrowapply.js"></script>
 </body>
 </html>

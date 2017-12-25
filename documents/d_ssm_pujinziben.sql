@@ -23,7 +23,7 @@ CREATE TABLE `user`(
   face VARCHAR(500) COMMENT '头像',
   sex VARCHAR(4) COMMENT '性别',
   is_vip INT COMMENT '0：不是VIP，1：是VIP' DEFAULT 0
-)ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '前台用户表';
+)ENGINE = InnoDB DEFAULT CHARSET = utf8 AUTO_INCREMENT = 100000 COMMENT '前台用户表';
 
 DROP TABLE IF EXISTS rzvip;
 CREATE TABLE rzvip(
@@ -157,10 +157,12 @@ CREATE TABLE huser(
 
 DROP TABLE IF EXISTS bz;
 CREATE TABLE bz(
-  lxid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
-  lxname VARCHAR(200) COMMENT '名称',
+  bzid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+  bzname VARCHAR(200) COMMENT '名称',
   state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '标种表';
+
+INSERT INTO bz (bzname, state) VALUES ('多金宝', 1), ('普金宝', 1), ('恒金宝', 1);
 
 DROP TABLE IF EXISTS jklx;
 CREATE TABLE jklx(
@@ -168,6 +170,8 @@ CREATE TABLE jklx(
   lxname VARCHAR(200) COMMENT '名称',
   state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '借款类型表';
+
+INSERT INTO jklx(lxname) VALUES ('净值标'), ('抵押标'), ('流转标'), ('信用标'), ('担保标');
 
 DROP TABLE IF EXISTS jur;
 CREATE TABLE jur(

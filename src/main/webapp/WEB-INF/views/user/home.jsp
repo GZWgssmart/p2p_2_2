@@ -46,7 +46,7 @@
                             <a class="J_menuItem" onclick="checkVip();" data-index="0">所有借款</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="index_v2.html">修改密码</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">所有借款（无需VIP）</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="index_v3.html">安全退出</a>
@@ -135,7 +135,7 @@
 
 <%@include file="../common/manage/index_js.jsp" %>
 <%@include file="../common/js/js_sweetalert.jsp" %>
-<script src="<%=path%>/static/js/our/lmh/user/home_check_vip.js"></script>
+<script src="<%=path%>/static/js/our/user/lmh/home_check_vip.js"></script>
 </body>
 
 </html>
