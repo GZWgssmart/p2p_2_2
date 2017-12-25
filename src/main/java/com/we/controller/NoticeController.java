@@ -17,15 +17,15 @@ import javax.annotation.Resource;
 @RequestMapping("/notice")
 public class NoticeController {
 
-    private NoticeService noticeService;
+                    private NoticeService noticeService;
 
-    @PostMapping("update")
-    @ResponseBody
-    public RequestResultVO update(Notice notice, BindingResult bindingResult) {
-        RequestResultVO vo = null;
-        try{
-            if(bindingResult.hasErrors()) {
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+                    @PostMapping("update")
+                    @ResponseBody
+                    public RequestResultVO update(Notice notice, BindingResult bindingResult) {
+                        RequestResultVO vo = null;
+                        try{
+                            if(bindingResult.hasErrors()) {
+                                vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
             }else{
                 noticeService.updateSelective(notice);
                 vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
