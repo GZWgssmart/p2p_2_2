@@ -43,7 +43,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" onclick="checkVip();" data-index="0">申请借款</a>
+                            <a class="J_menuItem" onclick="checkVip();" data-index="0">所有借款</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="index_v2.html">修改密码</a>

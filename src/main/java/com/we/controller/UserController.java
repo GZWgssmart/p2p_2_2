@@ -40,13 +40,13 @@ public class UserController {
         return "user/home";
     }
 
-    @RequestMapping("apply_money_page")
-    public String applyMoneyPage() {
-        return "user/apply_money_page";
+    @RequestMapping("all_borrow_money_page")
+    public String allBorrowMoneyPage() {
+        return "user/all_borrow_money";
     }
 
     /**
-     * 用户点击申请借款时，检查用户是否为VIP
+     * 用户点击 所有借款 时，检查用户是否为VIP
      * @param session HttpSession
      * @return 请求结果
      */
@@ -56,7 +56,7 @@ public class UserController {
         RequestResultVO requestResultVO = null;
         User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
         if (OurConstants.IS_VIP.equals(user.getIsVip())) {
-            //是VIP，用js跳转页面 显示申请借款的表单
+            //是VIP，用js跳转页面 显示所有借款的页面
             requestResultVO = RequestResultVO.status(RequestResultEnum.HAVE_PERMISSION);
         } else {
             // 不是VIP， js弹窗提示

@@ -1,6 +1,7 @@
 package com.we.dao;
 
 import com.we.common.Pager;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -58,7 +59,7 @@ public interface BaseDAO {
      * @param object 条件对象
      * @return 查询结果
      */
-    List<Object> listCriteria(Pager pager, Object object);
+    List<Object> listCriteria(@Param("pager") Pager pager, @Param("query") Object object);
 
     /**
      * 条件计数
@@ -66,5 +67,5 @@ public interface BaseDAO {
      * @param obj 条件对象
      * @return 结果总数
      */
-    Long countCriteria(Object obj);
+    Long countCriteria(@Param("query") Object obj);
 }

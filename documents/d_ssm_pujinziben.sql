@@ -45,7 +45,7 @@ CREATE TABLE borrowapply(
   uid INT COMMENT '借款人id',
   bzid INT COMMENT '标种',
   time DATETIME COMMENT '审核时间',
-  state INT COMMENT '审核状态',
+  state INT COMMENT '审核状态，0不通过，1通过，2审核中，3未填写借款详情' DEFAULT 3,
   type INT COMMENT '借款类型',
   term INT COMMENT '借款期限',
   deadline DATETIME COMMENT '截止时间'

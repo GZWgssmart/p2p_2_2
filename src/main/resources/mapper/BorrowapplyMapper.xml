@@ -149,4 +149,15 @@
       deadline = #{deadline,jdbcType=TIMESTAMP}
     where baid = #{baid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="borrowapply">
+    SELECT * FROM borrowapply WHERE
+      uid = #{query.uid}
+      LIMIT  #{pager.offset}, #{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT count(baid) FROM borrowapply
+      WHERE uid = #{query.uid}
+  </select>
 </mapper>

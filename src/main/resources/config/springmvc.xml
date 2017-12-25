@@ -43,6 +43,7 @@
     <mvc:resources location="/static/images/" mapping="/static/images/**"/>
     <mvc:resources location="/static/css/" mapping="/static/css/**"/>
     <mvc:resources location="/static/js/" mapping="/static/js/**"/>
+    <mvc:resources location="/static/fonts/" mapping="/static/fonts/**"/>
     <mvc:resources location="/static/uploads/" mapping="/static/uploads/**" />
     <mvc:resources location="/static/picture/" mapping="/static/picture/**" />
 
