@@ -20,9 +20,12 @@
     where jid = #{jid,jdbcType=INTEGER}
   </delete>
   <insert id="save" parameterType="com.we.bean.Role" >
-    insert into role (jid, rname, content
+    <selectKey keyProperty="jid" order="AFTER" resultType="java.lang.Integer">
+    SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into role ( rname, content
       )
-    values (#{jid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
+    values (#{rname,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="saveSelective" parameterType="com.we.bean.Role" >
@@ -68,4 +71,36 @@
       content = #{content,jdbcType=VARCHAR}
     where jid = #{jid,jdbcType=INTEGER}
   </update>
+
+
+  <select id="listPager" resultType="com.we.bean.Role">
+    select * from role limit #{pager.offset}, #{pager.limit}
+  </select>
+
+  <select id="countAll" resultType="java.lang.Long">
+    select count(jid) from role
+  </select>
+
+  <select id="listCriteria" resultType="com.we.bean.Role" parameterType="com.we.vo.RoleSerachVO">
+    <![CDATA[
+        select * from role WHERE ;
+    ]]>
+    <include refid="commonCriteriaSQL"/>
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    <![CDATA[
+        select count(jid) from role WHERE ;
+    ]]>
+    <include refid="commonCriteriaSQL"/>
+  </select>
+
+  <sql id="commonCriteriaSQL">
+    <if test="query != null and query.rname != null and query.rname !=''">
+      rname  like concat('%', #{query.rname}, '%')
+    </if>
+    <if test="query != null and query.content != null and query.content !=''">
+      content  like concat('%', #{query.content}, '%')
+    </if>
+  </sql>
 </mapper>

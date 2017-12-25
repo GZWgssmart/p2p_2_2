@@ -30,4 +30,13 @@ public class Jur {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Jur{" +
+                "jid=" + jid +
+                ", jurl='" + jurl + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

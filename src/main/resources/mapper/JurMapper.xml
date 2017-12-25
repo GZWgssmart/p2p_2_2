@@ -68,4 +68,16 @@
       content = #{content,jdbcType=VARCHAR}
     where jid = #{jid,jdbcType=INTEGER}
   </update>
+
+  <select id="listPager" resultType="com.we.bean.Jur">
+    select * from jur limit #{pager.offset}, #{pager.limit}
+  </select>
+
+  <select id="countAll" resultType="java.lang.Long">
+    select count(jid) from jur
+  </select>
+
+  <select id="listByRoleId" resultType="com.we.bean.Jur" parameterType="java.lang.Integer">
+    SELECT j.* FROM  jur j,rolejur rj where rj.jid = j.jid and rj.rid = #{roleId}
+  </select>
 </mapper>

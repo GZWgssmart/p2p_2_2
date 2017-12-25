@@ -68,4 +68,12 @@
       jid = #{jid,jdbcType=INTEGER}
     where rjid = #{rjid,jdbcType=INTEGER}
   </update>
+
+  <insert id="saveRoleJur">
+    insert INTO rolejur(rid,jid) VALUES
+    <foreach collection="jurIds" separator="," item="jurId">
+      (#{roleId},#{jurId})
+    </foreach>
+  </insert>
+
 </mapper>
