@@ -820,6 +820,6 @@ function preloadImages(arr){
 		}
 };
 utils.getBasePath = function(){
-	return "https://www.pujinziben.com/";
+	return "localhost:8080";
 }
 

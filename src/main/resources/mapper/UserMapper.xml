@@ -205,7 +205,43 @@
     </where>
   </select>
 
-  <update id="updatePwdByPhone">
-    update user set upwd = #{pwd} where phone = #{phone}
+  <update id="updateByPhone" parameterType="com.we.bean.User" >
+    update user
+    <set >
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        upwd = #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="zpwd != null" >
+        zpwd = #{zpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="idtype != null" >
+        idtype = #{idtype,jdbcType=VARCHAR},
+      </if>
+      <if test="idno != null" >
+        idno = #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null" >
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="face != null" >
+        face = #{face,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+    </set>
+    where phone = #{phone,jdbcType=VARCHAR}
   </update>
 </mapper>

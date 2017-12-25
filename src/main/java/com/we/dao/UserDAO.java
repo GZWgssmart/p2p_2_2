@@ -23,10 +23,9 @@ public interface UserDAO extends BaseDAO {
     User getByPhoneOrEmailAndUpwd(User user);
 
     /**
-     * 通过手机号码修改登入密码
-     * @param phone
-     * @param pwd
+     * 通过手机号码修改用户信息
+     * @param user
      */
-    void updatePwdByPhone(@Param("phone") String phone, @Param("pwd") String pwd);
+    void updateByPhone(User user);
 
 }

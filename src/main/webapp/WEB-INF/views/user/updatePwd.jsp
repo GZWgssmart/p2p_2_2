@@ -37,16 +37,17 @@
             alert("新密码和确认密码不一致");
         }else{
             var phone = $("#phone").val();
-            $.ajax({
+           $.ajax({
                 type: 'post',
                 url: '/user/updatePwd',
                 dataType : 'json',
                 data: {
                     phone:phone,
-                    pwd:newPwd
+                    upwd:newPwd
                 },
                 success:  function (data) {
-                    alert("更新成功");
+                    alert(data.message);
+                    window.location.href = "/user/login_page";
                 },
                 error: function(data) {
                     alert("修改失败");

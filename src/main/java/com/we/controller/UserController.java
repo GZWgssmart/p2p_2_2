@@ -197,16 +197,25 @@ public class UserController {
         return mav;
     }
 
+    @ResponseBody
     @RequestMapping("updatePwd")
-    public RequestResultVO updatePwd(String phone, String pwd) {
+    public RequestResultVO updatePwd(User user) {
+        System.out.println(user);
         RequestResultVO statusVO = null;
-        userService.updatePwdByPhone(phone, EncryptUtils.md5(pwd));
+        user.setUpwd(EncryptUtils.md5(user.getUpwd()));
+        userService.updateByPhone(user);
+        statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_SUCCESS);
         return statusVO;
     }
 
     @GetMapping("home")
     public String home() {
-        return "home";
+        return "user/home";
+    }
+
+    @GetMapping("safety")
+    public String safety() {
+        return "user/safety";
     }
 
     @Resource

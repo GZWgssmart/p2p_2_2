@@ -20,9 +20,8 @@ public interface UserService extends BaseService {
 
     /**
      * 通过手机号码修改登入密码
-     * @param phone
-     * @param pwd
+     * @param user
      */
-    void updatePwdByPhone(String phone, String pwd);
+    void updateByPhone(User user);
 
 }

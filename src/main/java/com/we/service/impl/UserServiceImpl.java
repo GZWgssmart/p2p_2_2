@@ -39,7 +39,7 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
     }
 
     @Override
-    public void updatePwdByPhone(String phone, String pwd) {
-        userDAO.updatePwdByPhone(phone, pwd);
+    public void updateByPhone(User user) {
+        userDAO.updateByPhone(user);
     }
 }
