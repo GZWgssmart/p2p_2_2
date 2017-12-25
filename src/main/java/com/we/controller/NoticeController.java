@@ -19,7 +19,7 @@ public class NoticeController {
 
     private NoticeService noticeService;
 
-    //Ìø×ªµ½×îĞÂ¹«¸æÒ³Ãæ
+    //è·³è½¬åˆ°æœ€æ–°å…¬å‘Šé¡µé¢
     @RequestMapping("notice")
     public String page() {
         return null;
