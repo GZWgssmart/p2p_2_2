@@ -103,29 +103,6 @@
        data-slide="next">&rsaquo;</a>
 </div>
 
-<%--<div class="banner">
-    <div class="banner-box nivoSlider">
-        <a href="#" alt="网站备案获准">
-            <img src="<%=path %>/static/picture/banner_010.jpg">
-        </a>
-        <a href="#" alt="债权转让" target="_blank">
-            <img src="<%=path %>/static/picture/banner_009.jpg">
-        </a>
-        <a href="#" alt="供应链金融" target="_blank">
-            <img src="<%=path %>/static/picture/banner_001.jpg" >
-        </a>
-        <a href="#" alt="5大安全措施" target="_blank">
-            <img src="<%=path %>/static/picture/banner_002.jpg">
-        </a>
-    </div>
-    <div class="nivo-controlNav">
-        <a class="nivo-control active" rel="0">1</a>
-        <a class="nivo-control" rel="1">2</a>
-        <a class="nivo-control" rel="2">3</a>
-        <a class="nivo-control" rel="3">4</a>
-        <a class="nivo-control" rel="4">5</a>
-    </div>
-</div>--%>
 <!-- news -->
 <div class="news">
     <div class="wrap">
