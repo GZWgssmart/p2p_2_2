@@ -19,8 +19,8 @@
 <body>
 
 <div class="tool-bar" id="tool-bar">
-    <button onclick="cashValidate.searchValid('save-teacher-basic');"
-            class="btn btn-primary" data-toggle="modal" data-target="#saveTeacherModal">添加
+    <button onclick="pagerBorrow.formValidate.save_borrowapply('save-borrowapply-modal', 'save-borrowapply-form');"
+            class="btn btn-primary" data-toggle="modal" data-target="#saveTeacherModal">新增借款
     </button>
     <button onclick="setTable.removeRows('/teacher/removeRows', 'cashList');"
             class="btn btn-danger">删除
@@ -56,6 +56,8 @@
     </tr>
     </thead>
 </table>
+
+<%@include file="include_save_borrowapply.jsp" %>
 
 <%@include file="../common/js/js_jquery.jsp" %>
 <%@include file="../common/js/js_boostrap.jsp" %>
