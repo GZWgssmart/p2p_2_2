@@ -15,7 +15,7 @@
     <title>普金资本-安全可靠专注于供应链金融的国资背景P2P理财平台</title>
     <link rel="stylesheet" href="<%=path %>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/index.css">
-    <link rel="stylesheet" href="<%=path %>/static/css/bootstrap.css">
+    <link rel="stylesheet" href="<%=path %>/static/css/bootstrap.min.css">
 </head>
 <%--<link rel="icon" href="resources/front/v01/src/images/logo_title.jpg" type="image/x-icon" />--%>
 <script type="text/javascript">
