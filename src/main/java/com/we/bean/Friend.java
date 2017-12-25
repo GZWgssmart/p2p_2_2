@@ -1,5 +1,7 @@
 package com.we.bean;
 
+import javax.validation.constraints.NotNull;
+
 public class Friend {
     private Integer fid;
 
@@ -9,6 +11,11 @@ public class Friend {
 
     private String imgalert;
 
+
+    /**
+     * 更新时，id字段不能为空， 用法参考LetterController.update();
+     */
+    @NotNull(message = "不能为空")
     public Integer getFid() {
         return fid;
     }

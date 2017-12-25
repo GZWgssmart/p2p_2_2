@@ -1,40 +1,37 @@
 package com.we.controller;
 
-import com.we.bean.Letter;
+import com.we.bean.Friend;
 import com.we.enums.RequestResultEnum;
-import com.we.service.LetterService;
+import com.we.service.FriendService;
 import com.we.vo.RequestResultVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
-import javax.validation.Valid;
-
 @Controller
-@RequestMapping("/letter")
-public class LetterController {
+@RequestMapping("/friend")
+public class FriendController {
 
-    private LetterService letterService;
+    private FriendService friendService;
 
-    //跳转到站内信页面
-    @RequestMapping("")
+    //跳转到合作伙伴页面
+    @RequestMapping("friend")
     public String page() {
         return null;
     }
 
     @PostMapping("update")
     @ResponseBody
-    public RequestResultVO update(@Valid Letter letter, BindingResult bindingResult) {
+    public RequestResultVO update(Friend friend, BindingResult bindingResult) {
         RequestResultVO vo = null;
-        try {
-            //判断此letter对象是否不符合Letter类中的注解
-            if (bindingResult.hasErrors()) {
+        try{
+            if(bindingResult.hasErrors()) {
                 vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-            } else {
-                letterService.updateSelective(letter);
+            }else {
+                friendService.updateSelective(friend);
                 vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
             }
         }catch (RuntimeException e) {
@@ -43,8 +40,12 @@ public class LetterController {
         return vo;
     }
 
-    @Resource
-    public void setLetterService(LetterService letterService) {
-        this.letterService = letterService;
+
+    @Autowired
+    public void setFriendService(FriendService friendService) {
+        this.friendService = friendService;
     }
+
+
+
 }

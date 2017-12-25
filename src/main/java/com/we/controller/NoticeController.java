@@ -19,6 +19,25 @@ public class NoticeController {
 
     private NoticeService noticeService;
 
+    //跳转到最新公告页面
+    @RequestMapping("notice")
+    public String page() {
+        return null;
+    }
+
+    @PostMapping("save")
+    @ResponseBody
+    public RequestResultVO save(Notice notice) {
+        RequestResultVO vo = null;
+        try{
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }catch (RuntimeException e) {
+            noticeService.saveSelective(notice);
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        }
+        return vo;
+    }
+
     @PostMapping("update")
     @ResponseBody
     public RequestResultVO update(Notice notice, BindingResult bindingResult) {
@@ -35,6 +54,7 @@ public class NoticeController {
         }
         return vo;
     }
+
 
     @Resource
     public void setNoticeService(NoticeService noticeService) {
