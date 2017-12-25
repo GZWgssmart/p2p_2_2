@@ -18,7 +18,7 @@ public enum RequestResultEnum {
     UPDATE_UPWD_SENDCODE(306,"fail","验证码已发送，请注意查收"),
     HAVE_PERMISSION(401, "success", "通过认证"),
     NO_PERMISSION(402, "fail", "无权限操作"),
-    NO_PERMISSION_BORROW_MONEY(403, "fail", "成为VIP（充值10000元，投标1000元）后才能开启借款功能");
+    NO_PERMISSION_BORROW_MONEY(403, "fail", "成为VIP（充值10000元，投标1000元）后才能开启借款功能"),
     UPDATE_UPWD_VERIFY_SUCCESS(307,"sucess","验证码成功"),
     UPDATE_UPWD_VERIFY_FAIL(308,"fail","验证码错误");
 
