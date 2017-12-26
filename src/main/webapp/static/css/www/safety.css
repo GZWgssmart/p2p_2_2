@@ -45,9 +45,13 @@ dl {
 }
 
 .safe-top .safe-t-text {
-    width: 150px;
+    width: 100px;
+    height: 100%;
     line-height: 129px;
-    text-align: center;
+}
+
+.safe-top .safe-t-text div{
+    height: 100px;
 }
 
 .safe-top .safe-t-line {
@@ -127,7 +131,7 @@ dl {
 }
 
 .safe-content .safe-list li>div.safe-list-2 {
-    width: 70%;
+    width: 60%;
     color: #999;
 }
 
@@ -198,4 +202,40 @@ dl {
 .safe-content .safe-list li>div.safe-list-3 a.on {
     color: #999999;
     cursor: default;
+}
+
+.icon {
+    background-image: url(../../images/www/icon.png);
+    background-repeat: no-repeat;
+}
+
+.icon-true {
+    background-position: left -1394px;
+}
+
+.icon-wrong {
+    background-position: left -1352px;
+}
+
+.icon-close {
+    background-position: left -1504px;
+}
+
+.account-right-nav {
+    position: relative;
+}
+
+.account-right-nav .sub-a-nav {
+    width:899px;
+    height: 45px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.account-right-nav .sub-a-nav a {
+    width: 120px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    float: left;
+    position: relative;
 }

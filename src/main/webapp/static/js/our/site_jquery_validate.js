@@ -184,6 +184,11 @@ $(function(){
         return this.optional(element) || !reg.test(value);
     }, "含有中英文特殊字符");
 
+    //邮箱验证
+    jQuery.validator.addMethod("isEmail", function(value, element) {
+        return this.optional(element) || (/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/.test(value));
+    }, "邮箱格式不符合");
+
     //身份证号码的验证规则
     function isIdCardNo(num){
         //if (isNaN(num)) {alert("输入的不是数字！"); return false;} 
@@ -220,5 +225,6 @@ $(function(){
         }
         return true;
     }
+
 
 });

@@ -193,6 +193,10 @@
     select * from user where phone = #{phone}
   </select>
 
+  <select id="getByEmail" resultMap="BaseResultMap">
+    select * from user where email = #{email}
+  </select>
+
   <select id="getByPhoneOrEmailAndUpwd" resultMap="BaseResultMap">
     select * from user
     <where>

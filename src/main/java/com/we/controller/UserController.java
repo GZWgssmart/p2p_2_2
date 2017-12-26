@@ -176,9 +176,8 @@ public class UserController {
         if(code == null || code == ""){
             //判断手机号码是否存在  存在发送验证码  不存在退出
             if(userService.getByPhone(phone) != null){
-                phoneCode = "123456";
-                        //IndustrySMS.execute(phone);
-                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_SENDCODE);
+                phoneCode = IndustrySMS.execute(phone);
+                statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
             }else{
                 statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_NO_PHONE);
             }
@@ -221,6 +220,23 @@ public class UserController {
     @GetMapping("safety")
     public String safety() {
         return "user/safety";
+    }
+
+    @ResponseBody
+    @GetMapping("is_have_email")
+    public boolean isEmail(String email){
+
+        return userService.getByEmail(email) == null ? true :false;
+    }
+
+    @ResponseBody
+    @RequestMapping("add_email")
+    public RequestResultVO addEmail(User user, HttpSession session){
+        RequestResultVO statusVO = null;
+        userService.updateByPhone(user);
+        statusVO = RequestResultVO.status(RequestResultEnum.ADD_EMAIL_SUCCESS);
+        session.setAttribute("user",userService.getByEmail(user.getEmail()));
+        return statusVO;
     }
 
     @Resource

@@ -6,11 +6,18 @@ import org.springframework.stereotype.Repository;
 public interface UserDAO extends BaseDAO {
 
     /**
-     * ͨ�������ѯ���ݿ��Ƿ��иú���
+     * 通过手机查询用户
      * @param phone
      * @return
      */
     User getByPhone(String phone);
+
+    /**
+     * 通过邮箱查询用户
+     * @param email
+     * @return
+     */
+    User getByEmail(String email);
 
     /**
      * 通过邮箱或电话号码登入

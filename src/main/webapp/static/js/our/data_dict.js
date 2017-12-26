@@ -7,6 +7,7 @@ var dataDict = {
     },
     form: {
         mustInput: '必须填写此字段',
-        existPhone: '该手机号已被使用'
+        existPhone: '该手机号已被使用',
+        existEmail: '该邮箱已被使用'
     }
 };

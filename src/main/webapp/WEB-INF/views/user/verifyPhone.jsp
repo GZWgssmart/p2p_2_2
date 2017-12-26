@@ -58,7 +58,7 @@
                     phone:phone,
                     code:code
                 },function (data) {
-                    if(data.message === "验证码成功"){
+                    if(data.message === "验证成功"){
                         alert(data.message);
                         window.location.href = "/user/update_pwd_page/"+phone;
                     }else{
