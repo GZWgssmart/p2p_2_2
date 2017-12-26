@@ -43,7 +43,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" onclick="che-ckVip();" data-index="0">所有借款</a>
+                            <a class="J_menuItem" onclick="checkVip();" data-index="0">所有借款</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">所有借款（无需VIP）</a>
@@ -109,12 +109,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-table"></i>
-                        <span class="nav-label">账户管理</span>
+                        <span class="nav-label">系统管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" onclick="letter();">消息中心</a>
+                            <a class="J_menuItem" href="graph_echarts.html">所有管理员</a>
                         </li>
                     </ul>
                 </li>
