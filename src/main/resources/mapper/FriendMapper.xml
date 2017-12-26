@@ -79,4 +79,12 @@
       imgAlert = #{imgalert,jdbcType=VARCHAR}
     where fid = #{fid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="com.we.bean.Friend" >
+    <![CDATA[
+        select * from friend WHERE friend.fid,friend.imgHref,friend.imgPath,friend.imgAlert
+    ]]>
+  </select>
+
+
 </mapper>

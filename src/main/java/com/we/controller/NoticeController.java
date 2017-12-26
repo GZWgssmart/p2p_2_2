@@ -2,6 +2,7 @@ package com.we.controller;
 
 
 import com.we.bean.Notice;
+import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.NoticeService;
 import com.we.vo.RequestResultVO;
@@ -55,6 +56,11 @@ public class NoticeController {
         return vo;
     }
 
+    @RequestMapping("page_criteria")
+    @ResponseBody
+    public Pager pager(Long offset,Long limit,Notice notice) {
+        return noticeService.listCriteria(offset,limit,notice);
+    }
 
     @Resource
     public void setNoticeService(NoticeService noticeService) {

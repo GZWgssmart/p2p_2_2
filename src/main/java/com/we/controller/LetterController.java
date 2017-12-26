@@ -1,12 +1,14 @@
 package com.we.controller;
 
 import com.we.bean.Letter;
+import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.LetterService;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,6 +43,25 @@ public class LetterController {
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return vo;
+    }
+
+    @PostMapping("save")
+    @ResponseBody
+    public RequestResultVO save(Letter letter) {
+        RequestResultVO vo = null;
+        try{
+            letterService.saveSelective(letter);
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        }catch (RuntimeException e) {
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }
+        return vo;
+    }
+
+    @RequestMapping("pager_criteria")
+    @ResponseBody
+    public Pager pager(Long offset,Long limit,Letter letter) {
+        return letterService.listCriteria(offset,limit,letter);
     }
 
     @Resource

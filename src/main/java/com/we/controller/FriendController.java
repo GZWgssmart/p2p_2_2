@@ -1,6 +1,7 @@
 package com.we.controller;
 
 import com.we.bean.Friend;
+import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.FriendService;
 import com.we.vo.RequestResultVO;
@@ -25,7 +26,7 @@ public class FriendController {
 
     @PostMapping("update")
     @ResponseBody
-    public RequestResultVO update(Friend friend, BindingResult bindingResult) {
+    public RequestResultVO update(Friend friend,BindingResult bindingResult) {
         RequestResultVO vo = null;
         try{
             if(bindingResult.hasErrors()) {
@@ -38,6 +39,24 @@ public class FriendController {
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return vo;
+    }
+
+    @PostMapping("save")
+    @ResponseBody
+    public RequestResultVO save(Friend friend) {
+        RequestResultVO vo = null;
+        try{
+
+        }catch (RuntimeException e) {
+
+        }
+        return null;
+    }
+
+    @RequestMapping("pager_criteria")
+    @ResponseBody
+    public Pager pager(Long offset,Long limit,Friend friend) {
+        return friendService.listCriteria(offset,limit,friend);
     }
 
 
