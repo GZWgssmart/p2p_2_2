@@ -101,13 +101,13 @@
 </div>
 
 <%--绑定邮箱--%>
-<div class="popup bind-email" >
+<div class="popup bind-email" style="display: block">
     <p class="title left">绑定邮箱</p>
     <a class="close icon icon-close" href="javaScript:void(0);"></a>
     <div class="popup-from">
         <div class="label cl">
             <label>添加邮箱</label>
-            <input type="text" id="addEmail" maxlength="30" placeholder="请输入您的邮箱地址" />
+            <input type="text" id="addEmail" maxlength="30" placeholder="输入您的邮箱地址" />
         </div>
         <button type="button" class="btn" id="email-submin">添加邮箱</button>
     </div>
@@ -158,6 +158,13 @@
     }
 
     //邮箱绑定
+    $("#changeEmail").click(function () {
+        $('.bind-email').fadeIn();
+    });
 
+    $('.bind-email .close').click(function(){
+        $('.bind-email').hide();
+        utils.Dialog();
+    });
 </script>
 

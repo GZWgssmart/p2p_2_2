@@ -127,7 +127,7 @@
 	font:10px/19px "微软雅黑";
 	text-align: center;
 	display:block;
-	position:absolute;	
+	position:absolute;
 }
 
 .couponStyle {
@@ -556,12 +556,12 @@ p.tips-title b{
  	padding-left:30px;
  	position:relative;
  }
- 
+
 .slb-all .slb-left p{
 	font:18px/38px 微软雅黑;
-	color:#eb2a2b;	
+	color:#eb2a2b;
 	float:left;
-} 
+}
 
 .slb-all .slb-left p span{
 	font-size:28px;
@@ -583,7 +583,7 @@ p.tips-title b{
 	background:#eb2a2b;
 	font:14px/30px 微软雅黑;
 	color:#fff;
-	text-align: center;	
+	text-align: center;
 	margin:5px 0 0 25px;
 }
 .slb-view .slb-all .slb-right{
@@ -593,15 +593,15 @@ p.tips-title b{
  	float:left;
  	margin:0 53px 40px 0;
 }
- 
+
 .slb-view .slb-all .slb-right li>h2{
 	font:18px/38px 微软雅黑;
 	color:#333;
-} 
+}
 .slb-view .slb-all .slb-right li span{
 	font:24px/38px 微软雅黑;
 	color:#333;
-} 
+}
 .slb-view .slb-govern{
 	float:left;
 }
@@ -609,7 +609,7 @@ p.tips-title b{
 .slb-view .slb-govern .sub-a-nav {
 	width:899px;
     height: 45px;
-    border-top: 1px solid #e4e4e4;    
+    border-top: 1px solid #e4e4e4;
     border-bottom: 1px solid #e4e4e4;
     padding-top: 10px;
     position: relative;
@@ -756,7 +756,7 @@ p.tips-title b{
 }
 
 .tj-text span{
-	color:#f84015;	
+	color:#f84015;
 	font-weight: bolder;
 }
 
@@ -869,7 +869,7 @@ p.tips-title b{
 
 .ipay-list .children1 {
     width: 18%;
-   
+
 }
 .ipay-list .listData .children1{
 	color:#333;
@@ -1370,7 +1370,7 @@ p.tips-title b{
 .taste-list .xj-date .taste-bg-r{
    padding:1px;
    width:58px;
-   float:left; 
+   float:left;
 }
 .taste-list .bg-use .taste-bg-r,
 .taste-list .xj-use .taste-bg-r,
@@ -1378,7 +1378,7 @@ p.tips-title b{
 .taste-list .bg-date .taste-bg-r{
 	width:59px;
 	height:71px;
-	float:left; 
+	float:left;
 }
 .taste-list .bg-use .taste-bg-r a,
 .taste-list .xj-use .taste-bg-r a{
@@ -1407,7 +1407,7 @@ p.tips-title b{
     background-color: #fff !important;
     box-sizing:content-box;
     cursor: pointer;
-    
+
 }
 .taste-list .bg-nouse .taste-bg-r a:hover,
 .taste-list .xj-nouse .taste-bg-r button:hover{

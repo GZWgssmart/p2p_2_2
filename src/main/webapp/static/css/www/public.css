@@ -392,7 +392,7 @@ color: #999;
 
 /*btn*/
 
-.btn {
+/*.btn {
     width: 100%;
     height: 48px;
     font-size: 20px;
@@ -403,7 +403,7 @@ color: #999;
     transition-duration: 0.3s;
     -webkit-transition-duration: 0.3s;
     cursor: pointer;
-}
+}*/
 
 .btn.disabled {
     background-color: #b3b3b3;
@@ -576,7 +576,7 @@ color: #999;
     background-position: left -1504px;
 }
 
-.icon-account {
+.icon1-account {
     background-position: 6px -1564px;
 }
 
@@ -1017,7 +1017,7 @@ color: #999;
     text-indent: 28px;
 }
 
-.top-left span {
+.top-left span1 {
     color: #999;
 }
 
@@ -1068,7 +1068,7 @@ color: #999;
 
 /*nav*/
 
-.nav {
+.nav1 {
     width: 100%;
     height: 100px;
     background-color: #fff;
@@ -1318,7 +1318,7 @@ color: #999;
 .about_wx:hover .line_l_h{display:block;}
 .about_wx .line_l_h{left: -65px;top: -170px;}
 .about_wx .line_l_sj{width:27px;height:14px;position:absolute;top:152px;right:60px;background:url(../../images/www/weixintop.png) -93px -42px no-repeat;}
-.bar .line_02 span{float:left;}
+.bar .line_02 span1{float:left;}
 .bar .line_02 a{width:17px;height:17px;float:left;margin:11px 0 0 12px;background:url(../../images/www/callus.png) no-repeat;z-index:110;}
 .bar .line_02 a:hover{background-position:0 -17px;}
 .bar .line_02 .line_qq{background-position:-24px 0;}
@@ -1327,7 +1327,7 @@ color: #999;
 .bar .line_02 .line_wx:hover{background-position:-49px -17px;}
 .bar .line_02 .line_wx:hover .line_l_h{display:block;}
 .line_02 .line_l_h{display:none;position:absolute;width:150px;background-color:#fff;border:1px solid #ddd;z-index:2;border-radius:3px;}
-.line_02 .line_l_h span{display:block;}
+.line_02 .line_l_h span1{display:block;}
 .line_02 .line_l_text {width:150px;height:45px!important;line-height:45px;text-align:center;font-size:13px;color:#777;font-family:'Microsoft Yahei'}
 .line_02 .line_l_sj{width:27px;height:14px;z-index:1;position:absolute; right: 60px;}
 .line_left_p .line_l_h{left: -170px;top: -50px;}
@@ -1337,7 +1337,7 @@ color: #999;
 .about_wx:hover .line_l_j{display:block;}
 .about_wx .line_l_j{left: -65px;top: -65px;}
 .about_rr .line_l_j{display:none;position:absolute;width:150px;background-color:#fff;border:1px solid #ddd;z-index:2;border-radius:3px;}
-.about_rr .line_l_j span{display:block;}
+.about_rr .line_l_j span1{display:block;}
 .about_rr .line_l_texts{width:150px;height:45px!important;text-align:center;font-size:13px;color:#777;font-family:'Microsoft Yahei'}
 .about_rr .line_l_sj{width:27px;height:14px;z-index:1;position:absolute; right: 60px;top: 45px;}
 /*huifu result*/
@@ -1381,7 +1381,7 @@ color: #999;
 	margin:10px 0 20px 0;
 	color:#999;
 }
-.pj-result .result p.small span{
+.pj-result .result p.small span1{
 	color:#ffa13d;
 	font-size:16px;
 }
