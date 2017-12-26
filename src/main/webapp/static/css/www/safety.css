@@ -1,0 +1,201 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+iframe,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+button,
+input,
+textarea,
+th,
+td,
+fieldset,
+option {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+ul,
+ol,
+dl {
+    list-style-type: none
+}
+
+.safe-top {
+    height: 100px;
+    padding-bottom: 60px;
+}
+
+.safe-top>p {
+    float: left;
+}
+
+.safe-top .safe-t-text {
+    width: 150px;
+    line-height: 129px;
+    text-align: center;
+}
+
+.safe-top .safe-t-line {
+    width: 690px;
+    height: 10px;
+    background-color: #dedede;
+    border-radius: 4px;
+    margin-top: 60px;
+}
+
+.safe-top .safe-t-line em {
+    display: block;
+    width: 33%;
+    height: 10px;
+    background-color: #ffa13d;
+    border-radius: 4px;
+}
+
+.safe-top .safe-t-r {
+    height: 100px;
+    line-height: 129px;
+    color: #ffa13d;
+    padding-left: 10px;
+}
+
+.safe-top .safe-t-text {
+    width: 150px;
+    line-height: 129px;
+    text-align: center;
+}
+
+.safe-top .safe-t-line {
+    width: 690px;
+    height: 10px;
+    background-color: #dedede;
+    border-radius: 4px;
+    margin-top: 60px;
+}
+
+.safe-top .safe-t-line em {
+    display: block;
+    width: 33%;
+    height: 10px;
+    background-color: #ffa13d;
+    border-radius: 4px;
+}
+
+.safe-top .safe-t-r {
+    height: 100px;
+    line-height: 129px;
+    color: #ffa13d;
+    padding-left: 10px;
+}
+
+.safe-content .safe-list {
+    border-top: 1px dashed #e4e4e4;
+}
+
+.safe-content .safe-list li {
+    height: 55px;
+    padding: 12px 20px;
+    border-bottom: 1px dashed #e4e4e4;
+}
+
+.safe-content .safe-list li>div {
+    height: 55px;
+    line-height: 55px;
+    float: left;
+}
+
+.safe-content .safe-list li>div.safe-list-1 {
+    width: 18%;
+}
+
+.safe-content .safe-list li>div.safe-list-1 p {
+    padding-left: 20px;
+}
+
+.safe-content .safe-list li>div.safe-list-2 {
+    width: 70%;
+    color: #999;
+}
+
+.safe-content .safe-list li>div.safe-list-3 {
+    width: 12%;
+}
+
+.safe-content .safe-list li>div.safe-list-3 span,
+.safe-content .safe-list li>div.safe-list-3 a {
+    height: 55px;
+    text-align: right;
+    line-height: 55px;
+}
+
+.safe-content .safe-list li>div.safe-list-3 a {
+    color: #319bff
+}
+
+.safe-content .safe-list li>div.safe-list-3 a.on {
+    color: #999999;
+    cursor: default;
+}
+
+.safe-content .safe-list {
+    border-top: 1px dashed #e4e4e4;
+}
+
+.safe-content .safe-list li {
+    height: 55px;
+    padding: 12px 20px;
+    border-bottom: 1px dashed #e4e4e4;
+}
+
+.safe-content .safe-list li>div {
+    height: 55px;
+    line-height: 55px;
+    float: left;
+}
+
+.safe-content .safe-list li>div.safe-list-1 {
+    width: 18%;
+}
+
+.safe-content .safe-list li>div.safe-list-1 p {
+    padding-left: 20px;
+}
+
+.safe-content .safe-list li>div.safe-list-2 {
+    width: 70%;
+    color: #999;
+}
+
+.safe-content .safe-list li>div.safe-list-3 {
+    width: 12%;
+}
+
+.safe-content .safe-list li>div.safe-list-3 span,
+.safe-content .safe-list li>div.safe-list-3 a {
+    height: 55px;
+    text-align: right;
+    line-height: 55px;
+}
+
+.safe-content .safe-list li>div.safe-list-3 a {
+    color: #319bff
+}
+
+.safe-content .safe-list li>div.safe-list-3 a.on {
+    color: #999999;
+    cursor: default;
+}

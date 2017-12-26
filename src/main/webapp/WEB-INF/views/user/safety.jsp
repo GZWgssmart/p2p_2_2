@@ -3,7 +3,7 @@
 <%
     String path = request.getContextPath();
 %>
-
+<link href="<%=path%>/static/css/www/safety.css" rel="stylesheet">
 <%--top--%>
 <div class="account-right-nav">
     <div class="sub-a-nav">
