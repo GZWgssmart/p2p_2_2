@@ -1,5 +1,7 @@
 package com.we.bean;
 
+import javax.validation.constraints.NotNull;
+
 public class Jklx {
     private Integer lxid;
 
@@ -7,6 +9,7 @@ public class Jklx {
 
     private Integer state;
 
+    @NotNull
     public Integer getLxid() {
         return lxid;
     }

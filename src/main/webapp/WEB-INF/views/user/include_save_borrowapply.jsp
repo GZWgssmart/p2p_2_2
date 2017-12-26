@@ -13,7 +13,7 @@
                 <form id="save-borrowapply-form" class="form-horizontal">
                     <div class="form-group">
                         <label for="input-name" class="col-sm-2 control-label">姓名</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10" >
                             <input name="rname" class="form-control" id="input-name" value="${sessionScope.user.rname}">
                         </div>
                     </div>

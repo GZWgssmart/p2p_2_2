@@ -15,6 +15,12 @@
     <%@include file="../common/css/css_bootstrap.jsp" %>
     <%@include file="../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../common/css/css_sweetalert.jsp" %>
+    <style>
+        /*使表单的错误提示变为红色*/
+        form .form-group div {
+            color:red;
+        }
+    </style>
 </head>
 <body>
 
@@ -72,7 +78,7 @@
     $(function () {
         setTable.setBootstrapTable('borrowapplyList');
         pagerBorrow.select2.loadBzType();//加载 标种下拉框的数据
-
+        pagerBorrow.select2.loadJkType(); //加载 借款类型下拉框的数据
     });
 </script>
 
