@@ -363,8 +363,8 @@ CREATE TABLE tx_log (
   banktype VARCHAR(50) COMMENT '所属银行',
   money DECIMAL(10, 2) COMMENT '金额',
   `date` DATETIME COMMENT '时间',
-  state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
-)ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '提现记录表';
+  state INT COMMENT '0不通过、1通过、2审核中' DEFAULT 2
+)ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT '提现记录表';
 
 DROP TABLE IF EXISTS reward_setting;
 CREATE TABLE reward_setting (

@@ -62,15 +62,19 @@
 <%@include file="../common/js/js_jquery.jsp" %>
 <%@include file="../common/js/js_boostrap.jsp" %>
 <%@include file="../common/js/js_boostrap_table.jsp" %>
+<%@include file="../common/js/js_select2.jsp" %>
 <%@include file="../common/js/js_sweetalert.jsp" %>
 <%@include file="../common/js/js_form.jsp" %>
 <%@include file="../common/js/js_data_dict.jsp" %>
+
+<script src="<%=path%>/static/js/our/user/lmh/pager_borrowapply.js"></script>
 <script>
     $(function () {
         setTable.setBootstrapTable('borrowapplyList');
+        pagerBorrow.select2.loadBzType();//加载 标种下拉框的数据
+
     });
 </script>
 
-<script src="<%=path%>/static/js/our/user/lmh/pager_borrowapply.js"></script>
 </body>
 </html>

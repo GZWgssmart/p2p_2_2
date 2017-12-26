@@ -34,6 +34,18 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="input-bzname" class="col-sm-2 control-label">标种类型</label>
+                        <div class="col-sm-10">
+                            <select name="bzname" id="input-bzname" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-xlname" class="col-sm-2 control-label">借款类型</label>
+                        <div class="col-sm-10">
+                            <select name="lxname" id="input-xlname" class="form-control"></select>
+                        </div>
+                    </div>
                     <div class="modal-footer">
                         <input type="reset" class="btn btn-default" value="重置"/>
                         <a href="javascript:void(0);" onclick="teacherForm.save();" data-dismiss="modal" class="btn btn-primary">保存</a>

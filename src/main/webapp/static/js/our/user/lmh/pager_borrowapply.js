@@ -36,5 +36,15 @@ var pagerBorrow = {
                 }
             });
         }
+    },
+    select2: {
+        //加载 标种下拉框 的数据
+        loadBzType: function () {
+            ourSelect2.idLoadNoSearch('/bz/list_combobox', '请选择标种', 'input-bzname');
+        },
+        //加载 借款类型下拉框 的数据
+        loadJkType: function () {
+            ourSelect2.idLoadNoSearch('/jklx/list_combobox', '请选择借款类型', 'input-lxname');
+        }
     }
 };

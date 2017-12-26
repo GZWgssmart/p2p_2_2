@@ -68,4 +68,8 @@
       state = #{state,jdbcType=INTEGER}
     where lxid = #{lxid,jdbcType=INTEGER}
   </update>
+  
+  <select id="listCombobox" resultType="com.we.vo.ComboboxVO">
+    SELECT bz.bzid AS 'id', bz.bzname AS 'text' FROM bz;
+  </select>
 </mapper>
