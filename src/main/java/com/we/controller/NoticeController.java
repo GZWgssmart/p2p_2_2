@@ -21,7 +21,7 @@ public class NoticeController {
     private NoticeService noticeService;
 
     //跳转到最新公告页面
-    @RequestMapping("notice")
+    @RequestMapping("notice_page")
     public String page() {
         return null;
     }
@@ -31,10 +31,10 @@ public class NoticeController {
     public RequestResultVO save(Notice notice) {
         RequestResultVO vo = null;
         try{
-            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
-        }catch (RuntimeException e) {
             noticeService.saveSelective(notice);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        }catch (RuntimeException e) {
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
         return vo;
     }

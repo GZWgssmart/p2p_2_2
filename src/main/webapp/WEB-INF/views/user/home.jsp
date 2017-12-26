@@ -27,10 +27,6 @@
                                 <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
                                 </span>
                         </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="login.html">安全退出</a>
-                            </li>
-                        </ul>
                     </div>
                     <div class="logo-element">XXX信息管理
                     </div>
@@ -48,9 +44,7 @@
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">所有借款（无需VIP）</a>
                         </li>
-                        <li>
-                            <a class="J_menuItem" href="index_v3.html">安全退出</a>
-                        </li>
+
                     </ul>
 
                 </li>
@@ -109,12 +103,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-table"></i>
-                        <span class="nav-label">系统管理</span>
+                        <span class="nav-label">账号管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="graph_echarts.html">所有管理员</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_letter_page">消息中心</a>
                         </li>
                     </ul>
                 </li>

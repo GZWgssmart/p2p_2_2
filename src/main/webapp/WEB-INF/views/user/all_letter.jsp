@@ -26,7 +26,7 @@
             class="btn btn-success">标为已读
     </button>
     <button onclick="teacherTable.distributeClazz('cashList', 'clazzTeacherList', 'clazzTeacherModal')"
-            class="btn btn-success">标为未读
+            class="btn btn-warning">标为未读
     </button>
 </div>
 <table id="borrowapplyList" class="table table-hover"

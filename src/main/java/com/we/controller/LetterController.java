@@ -21,12 +21,6 @@ public class LetterController {
 
     private LetterService letterService;
 
-    //跳转到站内信页面
-    @RequestMapping("")
-    public String page() {
-        return null;
-    }
-
     @PostMapping("update")
     @ResponseBody
     public RequestResultVO update(@Valid Letter letter, BindingResult bindingResult) {

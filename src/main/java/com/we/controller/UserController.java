@@ -40,6 +40,11 @@ public class UserController {
         return "user/home";
     }
 
+    @RequestMapping("all_letter_page")
+    public String allLetterPage() {
+        return "user/all_letter";
+    }
+
     @RequestMapping("all_borrow_money_page")
     public String allBorrowMoneyPage() {
         return "user/all_borrow_money";
