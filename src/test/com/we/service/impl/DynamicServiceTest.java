@@ -1,6 +1,7 @@
 package com.we.service.impl;
 
 import com.we.bean.Dynamic;
+import com.we.common.Pager;
 import com.we.service.DynamicService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class DynamicServiceTest extends BaseTest {
     @Test
     public void testSave() {
         Dynamic dynamic = new Dynamic();
-        dynamic.setTitle("圣诞活动");
-        dynamic.setContent("活动送姬子，赶快来");
-        dynamic.setPic("1212412");
+        dynamic.setTitle("天火活动");
+        dynamic.setContent("开始就意味这结束");
+        dynamic.setPic("22222222");
         dynamic.setDate(Calendar.getInstance().getTime());
         dynamicService.save(dynamic);
     }
@@ -31,6 +32,12 @@ public class DynamicServiceTest extends BaseTest {
         dynamic.setDyid(1);
         dynamic.setPic("22222222");
         dynamicService.update(dynamic);
+    }
+
+    @Test
+    public void testPager() {
+        Pager pager = dynamicService.listCriteria(0l,1l,null);
+        System.out.println(pager.getRows());
     }
 
 }

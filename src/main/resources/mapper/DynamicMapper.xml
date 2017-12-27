@@ -104,4 +104,18 @@
       pic = #{pic,jdbcType=VARCHAR}
     where dyid = #{dyid,jdbcType=INTEGER}
   </update>
+  
+  <select id="listCriteria" resultType="com.we.bean.Dynamic">
+    <![CDATA[
+      select * from dynamic
+      order by date desc limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="countCriteria" resultType="long">
+    <![CDATA[
+	  select count(dyid) from dynamic
+    ]]>
+  </select>
+
 </mapper>
