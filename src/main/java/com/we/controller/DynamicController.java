@@ -1,6 +1,7 @@
 package com.we.controller;
 
 import com.we.bean.Dynamic;
+import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.common.PathUtils;
 import com.we.enums.RequestResultEnum;
@@ -37,18 +38,18 @@ public class DynamicController {
     public RequestResultVO save(Dynamic dynamic, MultipartFile file) {
         RequestResultVO resultVO = null;
         try {
-            file.transferTo(new File(PathUtils.mkUploads(), file.getOriginalFilename()));
-//            FileUtil.copyFile(new File(dynamic.getPic()),new File("C:/Users/ID.LQF/Desktop/p2p_2_2/src/main/webapp/static/uploads/img/1.jpg"));
+            String imgPath = PathUtils.mkUploadImgs();
+            file.transferTo(new File(imgPath, file.getOriginalFilename()));
+            dynamic.setPic(OurConstants.PERFIX_IMG_PATH + dynamic.getPic());
+            dynamic.setDate(Calendar.getInstance().getTime());
+            dynamicService.save(dynamic);
+            resultVO = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        dynamic.setDate(Calendar.getInstance().getTime());
-        try {
-            dynamicService.save(dynamic);
         } catch (RuntimeException e) {
+            e.printStackTrace();
             resultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
-        resultVO = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         return resultVO;
     }
 

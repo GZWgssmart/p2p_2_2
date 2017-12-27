@@ -6,9 +6,9 @@ import java.io.File;
 
 public class PathUtils {
 
-    public static String mkUploads() {
-        String path = ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/");
-        File file = new File(path, "uploads");
+    public static String mkUploadImgs() {
+        String path = ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/static/uploads/");
+        File file = new File(path, "img");
         if (!file.exists()) {
             file.mkdirs();
         }

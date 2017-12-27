@@ -112,6 +112,9 @@ var setTable = {
         } else {
             return '未填写';
         }
+    },
+    formatImg: function (value) {
+        return '<img class="img-responsive" src="' + contextPath + value + '" />';
     }
 };
 

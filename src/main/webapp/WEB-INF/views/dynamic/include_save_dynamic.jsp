@@ -39,7 +39,7 @@
 
 <script>
     function showForm () {
-        return $("#addForm").validate({
+        return $('#addForm').validate({
             onfocusout: function(element){
                 $(element).valid();
             },
@@ -56,13 +56,31 @@
                 }
             }
         });
-    };
+    }
 
     function save() {
-        var pic = $("#pic").val();
-        $("#realImg").val(pic);
-        if ($('#addForm').valid() === false) return;
-        $.post(contextPath + "/dynamic/save",
+        var $addForm = $('#addForm');
+        if ($addForm.valid() === false) {
+            swtAlert.warn_info(dataDict.form.validForm);
+        } else {
+            var picName = $('#pic').val();
+            picName = picName.substr(picName.lastIndexOf('\\') + 1);
+            $('#realImg').val(picName);
+            $addForm.ajaxSubmit({
+                type: 'POST',
+                url:'/dynamic/save',
+                dataType: 'json',
+                success: function(data){
+                    if(data.result === 'success'){
+                        swtAlert.request_success(data.message);
+                    } else {
+                        swtAlert.request_fail(data.message);
+                    }
+                }
+            });
+        }
+
+        /*$.post(contextPath + "/dynamic/save",
             $("#addForm").serialize(),
             function (data) {
                 if(data.result === "success"){
@@ -71,7 +89,7 @@
                     alert(data.message);
                 }
             },'json'
-        );
+        );*/
     };
 
 </script>

@@ -1,6 +1,7 @@
 package com.we.controller;
 
 import com.we.bean.Borrowapply;
+import com.we.bean.Borrowapply;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BorrowapplyService;
@@ -20,6 +21,19 @@ public class BorrowapplyController {
 
     private BorrowapplyService borrowapplyService;
 
+    @PostMapping("save")
+    @ResponseBody
+    public RequestResultVO save(Borrowapply borrowapply) {
+        RequestResultVO vo = null;
+        try{
+            borrowapplyService.saveSelective(borrowapply);
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        }catch (RuntimeException e) {
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }
+        return vo;
+    }
+    
     /**
      * 分页查看用户的借款基本信息
      * @param offset 开始索引

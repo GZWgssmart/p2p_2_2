@@ -1,16 +1,21 @@
 var submitForm = {
-    save: function (url, formId, tableId) {
+    save: function (url, formId, tableId, modalId) {
         var $form = $('#' + formId);
-        $.post(url, $form.serialize(),
-            function (data) {
-                if (data.result === 'success') {
-                    swtAlert.request_success(data.message);
-                    $form[0].reset();
-                    $('#' + tableId).bootstrapTable('refresh');
-                } else {
-                    swtAlert.request_fail(data.message);
-                }
-            }, 'json');
+        if ($form.valid()) {
+            $.post(url, $form.serialize(),
+                function (data) {
+                    if (data.result === 'success') {
+                        swtAlert.request_success(data.message);
+                        $form[0].reset();
+                        $('#' + tableId).bootstrapTable('refresh');
+                        $('#' + modalId).modal('hide');
+                    } else {
+                        swtAlert.request_fail(data.message);
+                    }
+                }, 'json');
+        } else {
+            swtAlert.warn_info(dataDict.form.validForm);
+        }
     },
     update: function (url, formId, tableId) {
         var $form = $('#' + formId);

@@ -12,4 +12,6 @@ public class OurConstants {
 
     public static final Integer IS_VIP = 1;
     public static final Integer NO_VIP = 0;
+
+    public static final String PERFIX_IMG_PATH = "/static/uploads/img/";
 }

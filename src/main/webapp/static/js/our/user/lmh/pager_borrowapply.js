@@ -26,12 +26,24 @@ var pagerBorrow = {
                     },
                     'money': {
                         required: true,
-                        isFloatGtZero: true
+                        isNumberGtZero: true
+                    },
+                    'bzid': {
+                        required: true
+                    },
+                    'type': {
+                        required: true
+                    },
+                    'deadline': {
+                        required: true
                     }
                 },
                 messages:{
-                    'teacher.phone':{
-                        remote: dataDict.form.existPhone
+                    'bzid':{
+                        required: dataDict.form.noSelected
+                    },
+                    'type':{
+                        required: dataDict.form.noSelected
                     }
                 }
             });
@@ -45,6 +57,11 @@ var pagerBorrow = {
         //加载 借款类型下拉框 的数据
         loadJkType: function () {
             ourSelect2.idLoadNoSearch('/jklx/list_combobox', '请选择借款类型', 'input-lxname');
+        }
+    },
+    submitForm: {
+        save: function () {
+            submitForm.save('/borrowapply/save', 'save-borrowapply-form', 'borrowapply-list', 'save-borrowapply-modal');
         }
     }
 };

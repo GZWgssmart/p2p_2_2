@@ -9,7 +9,8 @@ var swtAlert = {
         swal({
             title: '提示！',
             text: message,
-            type: 'warning'
+            type: 'warning',
+            timer: 1500
         });
     },
     request_success: function (message) {

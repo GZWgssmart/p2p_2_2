@@ -21,7 +21,6 @@ var ourSelect2 = {
         var selectTag = $('#' + id);
         selectTag.select2({
             minimumResultsForSearch: -1,
-            placeholder: placeholder,
             ajax: {
                 url: contextPath + url,
                 dataType: 'json',

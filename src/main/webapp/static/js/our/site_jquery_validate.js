@@ -86,6 +86,11 @@ $(function(){
         return this.optional(element) || /^[-\+]?\d+$/.test(value) || /^[-\+]?\d+(\.\d+)?$/.test(value);
     }, "匹配数值类型，包括整数和浮点数");
 
+    // 判断数值类型 大于0的数字
+    jQuery.validator.addMethod("isNumberGtZero", function(value, element) {
+        return this.optional(element) || /^[1-9]\d*(\.\d+)?$/.test(value);
+    }, "请输入大于0的数字");
+
     // 只能输入[0-9]数字
     jQuery.validator.addMethod("isDigits", function(value, element) {
         return this.optional(element) || /^\d+$/.test(value);

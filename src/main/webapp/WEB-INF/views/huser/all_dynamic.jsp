@@ -16,12 +16,6 @@
     <%@include file="../common/css/css_bootstrap.jsp" %>
     <%@include file="../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../common/css/css_sweetalert.jsp" %>
-    <style>
-        /*使表单的错误提示变为红色*/
-        form .form-group div label {
-            color:red;
-        }
-    </style>
 </head>
 <body>
 
@@ -31,7 +25,7 @@
             class="btn btn-default">修改
     </button>
     <br/>
-    <form id="cash-search-form" class="form-inline">
+    <%--<form id="cash-search-form" class="form-inline">
         <div class="form-group">
             <input style="height: 30px" name="customer" placeholder="标题" type="text" id="search-customer-input"
                    class="form-control form-inline"/>
@@ -45,7 +39,7 @@
                onclick="setTable.doSearch('cash-search-form', 'cashList', contextPath + '/cash/list_cash')"
                class="btn btn-primary">搜索</a>
         </div>
-    </form>
+    </form>--%>
 </div>
 <table id="dynamicList" class="table table-hover"
        data-url="<%=path%>/dynamic/list_dynamic">
@@ -54,7 +48,7 @@
         <th data-checkbox="true"></th>
         <th data-field="title">标题</th>
         <th data-field="content">内容</th>
-        <th data-field="pic">封面图片</th>
+        <th data-field="pic" data-formatter="setTable.formatImg">封面图片</th>
         <th data-field="date" data-formatter="setTable.formatDate">创建时间</th>
     </tr>
     </thead>
@@ -72,6 +66,7 @@
 
 <script src="<%=path%>/static/js/fileinput.js"></script>
 <script src="<%=path%>/static/js/fileinput_locale_zh.js"></script>
+<script src="<%=path%>/static/js/our/jquery-form.js"></script>
 <script>
     $(function () {
         setTable.setBootstrapTable('dynamicList');

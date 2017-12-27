@@ -163,6 +163,7 @@
         <if test="query != null">
             AND b.uid = #{query.uid}
         </if>
+        ORDER BY b.time DESC
         LIMIT #{pager.offset}, #{pager.limit}
     </select>
 
