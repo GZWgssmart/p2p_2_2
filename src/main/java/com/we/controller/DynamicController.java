@@ -2,15 +2,18 @@ package com.we.controller;
 
 import com.we.bean.Dynamic;
 import com.we.common.Pager;
+import com.we.common.PathUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.service.DynamicService;
 import com.we.vo.RequestResultVO;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 
 /**
@@ -31,8 +34,14 @@ public class DynamicController {
 
     @RequestMapping("save")
     @ResponseBody
-    public RequestResultVO save(Dynamic dynamic) {
+    public RequestResultVO save(Dynamic dynamic, MultipartFile file) {
         RequestResultVO resultVO = null;
+        try {
+            file.transferTo(new File(PathUtils.mkUploads(), file.getOriginalFilename()));
+//            FileUtil.copyFile(new File(dynamic.getPic()),new File("C:/Users/ID.LQF/Desktop/p2p_2_2/src/main/webapp/static/uploads/img/1.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         dynamic.setDate(Calendar.getInstance().getTime());
         try {
             dynamicService.save(dynamic);

@@ -17,7 +17,7 @@
                     <div class="form-group" style="margin-top: 20px;">
                         <label for="pic" class="col-sm-2 control-label">封面图片：</label>
                         <div class="col-sm-10">
-                            <input id="pic" class="file" type="file" multiple data-min-file-count="1">
+                            <input id="pic" name="file" class="file" type="file">
                             <input type="hidden" name="pic" id="realImg">
                         </div>
                     </div>

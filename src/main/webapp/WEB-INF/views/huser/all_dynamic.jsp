@@ -16,6 +16,12 @@
     <%@include file="../common/css/css_bootstrap.jsp" %>
     <%@include file="../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../common/css/css_sweetalert.jsp" %>
+    <style>
+        /*使表单的错误提示变为红色*/
+        form .form-group div label {
+            color:red;
+        }
+    </style>
 </head>
 <body>
 
