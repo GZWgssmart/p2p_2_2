@@ -13,6 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>普金资本-安全可靠专注于供应链金融的国资背景P2P理财平台</title>
+    <%@include file="./common/manage/index_head.jsp" %>
     <link rel="stylesheet" href="<%=path %>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/index.css">
     <link rel="stylesheet" href="<%=path %>/static/css/bootstrap.min.css">
