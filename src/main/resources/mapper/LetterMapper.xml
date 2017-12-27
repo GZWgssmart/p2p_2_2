@@ -1,154 +1,156 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.dao.LetterDAO" >
-  <resultMap id="BaseResultMap" type="com.we.bean.Letter" >
-    <id column="lid" property="lid" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="date" property="date" jdbcType="TIMESTAMP" />
-    <result column="state" property="state" jdbcType="INTEGER" />
-  </resultMap>
+<mapper namespace="com.we.dao.LetterDAO">
+    <resultMap id="BaseResultMap" type="com.we.bean.Letter">
+        <id column="lid" property="lid" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+    </resultMap>
 
 
-  <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Letter" extends="BaseResultMap" >
-    <result column="content" property="content" jdbcType="LONGVARCHAR" />
-  </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.we.bean.Letter" extends="BaseResultMap">
+        <result column="content" property="content" jdbcType="LONGVARCHAR"/>
+    </resultMap>
 
 
-  <sql id="Base_Column_List" >
-    lid, title, date, state
-  </sql>
+    <sql id="Base_Column_List">
+        lid, title, date, state
+    </sql>
 
 
-  <sql id="Blob_Column_List" >
-    content
-  </sql>
+    <sql id="Blob_Column_List">
+        content
+    </sql>
 
 
-  <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from letter
-    where lid = #{lid,jdbcType=INTEGER}
-  </select>
+    <select id="getById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from letter
+        where lid = #{lid,jdbcType=INTEGER}
+    </select>
 
 
-  <delete id="removeById" parameterType="java.lang.Integer" >
-    delete from letter
-    where lid = #{lid,jdbcType=INTEGER}
-  </delete>
+    <delete id="removeById" parameterType="java.lang.Integer">
+        DELETE FROM letter
+        WHERE lid = #{lid,jdbcType=INTEGER}
+    </delete>
 
 
-  <insert id="save" parameterType="com.we.bean.Letter" >
-    insert into letter (lid, title, date, 
-      state, content)
-    values (#{lid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
-      #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
-  </insert>
+    <insert id="save" parameterType="com.we.bean.Letter">
+        INSERT INTO letter (lid, title, date,
+                            state, content)
+        VALUES (#{lid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP},
+                #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+    </insert>
 
 
-  <insert id="saveSelective" parameterType="com.we.bean.Letter" >
-    insert into letter
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="lid != null" >
-        lid,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="date != null" >
-        date,
-      </if>
-      <if test="state != null" >
-        state,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="lid != null" >
-        #{lid,jdbcType=INTEGER},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null" >
-        #{date,jdbcType=TIMESTAMP},
-      </if>
-      <if test="state != null" >
-        #{state,jdbcType=INTEGER},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
+    <insert id="saveSelective" parameterType="com.we.bean.Letter">
+        insert into letter
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="lid != null">
+                lid,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="date != null">
+                date,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="lid != null">
+                #{lid,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
 
 
-  <update id="updateSelective" parameterType="com.we.bean.Letter" >
-    update letter
-    <set >
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null" >
-        date = #{date,jdbcType=TIMESTAMP},
-      </if>
-      <if test="state != null" >
-        state = #{state,jdbcType=INTEGER},
-      </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where lid = #{lid,jdbcType=INTEGER}
-  </update>
+    <update id="updateSelective" parameterType="com.we.bean.Letter">
+        update letter
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                date = #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where lid = #{lid,jdbcType=INTEGER}
+    </update>
 
 
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Letter" >
-    update letter
-    set title = #{title,jdbcType=VARCHAR},
-      date = #{date,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER},
-      content = #{content,jdbcType=LONGVARCHAR}
-    where lid = #{lid,jdbcType=INTEGER}
-  </update>
-  <update id="update" parameterType="com.we.bean.Letter" >
-    update letter
-    set title = #{title,jdbcType=VARCHAR},
-      date = #{date,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER}
-    where lid = #{lid,jdbcType=INTEGER}
-  </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.we.bean.Letter">
+        UPDATE letter
+        SET title   = #{title,jdbcType=VARCHAR},
+            date    = #{date,jdbcType=TIMESTAMP},
+            state   = #{state,jdbcType=INTEGER},
+            content = #{content,jdbcType=LONGVARCHAR}
+        WHERE lid = #{lid,jdbcType=INTEGER}
+    </update>
+    <update id="update" parameterType="com.we.bean.Letter">
+        UPDATE letter
+        SET title = #{title,jdbcType=VARCHAR},
+            date  = #{date,jdbcType=TIMESTAMP},
+            state = #{state,jdbcType=INTEGER}
+        WHERE lid = #{lid,jdbcType=INTEGER}
+    </update>
 
-  <!--<select id="listCriteria" resultType="com.we.vo.BorrowapplyVO">
-    SELECT
-    b.baid,b.rname,b.money, b.state, b.deadline, b.term, b.time,
-    bz.bzname,
-    jklx.lxname
-    FROM borrowapply b, bz, jklx, user u
-    WHERE
-    b.uid = u.uid
-    AND b.bzid = bz.bzid
-    AND b.type = jklx.lxid
-    <if test="query != null">
-      AND b.uid = #{query.uid}
-    </if>
-    LIMIT #{pager.offset}, #{pager.limit}
-  </select>-->
+    <select id="listCriteria" resultType="com.we.vo.UserLetterVO">
+        SELECT
+        ul.luid AS 'id', ul.state, l.content, l.title, l.date
+        FROM letter l,user_letter ul, user u
+        WHERE
+        u.uid = ul.uid
+        AND ul.lid = l.lid
+        AND l.state = 1
+        AND ul.state != 0
+        <if test="query != null">
+            AND ul.uid = #{query.uid}
+        </if>
+        ORDER BY ul.state DESC, l.date DESC
+        LIMIT #{pager.offset},#{pager.limit}
+    </select>
 
-  <select id="listCriteria" resultType="com.we.bean.Letter">
-    SELECT
-    letter.lid,letter.title,letter.date,letter.content,letter.state
-    u.luid
-    FROM letter letter,user_letter u
-    WHERE
-    <if test="query != null">
-      AND letter.uid = #{query.uid}
-    </if>
-    LIMIT #{pager.offset},#{pager.limit}
-  </select>
+    <select id="countCriteria" resultType="java.lang.Long">
+        SELECT
+        count(ul.luid)
+        FROM letter l,user_letter ul, user u
+        WHERE
+        u.uid = ul.uid
+        AND ul.lid = l.lid
+        AND l.state = 1
+        AND ul.state != 0
+        <if test="query != null">
+            AND ul.uid = #{query.uid}
+        </if>
+    </select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.we.controller;
 
 import com.we.bean.Letter;
+import com.we.bean.UserLetter;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.LetterService;
@@ -8,7 +9,6 @@ import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -59,10 +59,17 @@ public class LetterController {
         return vo;
     }
 
+    /**
+     * 条件分页查询用户的 站内信
+     * @param offset 开始索引
+     * @param limit 查询个数
+     * @param userLetter 用于接收页面传递的uid
+     * @return 带结果的分页对象
+     */
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pager(Long offset,Long limit,Letter letter) {
-        return letterService.listCriteria(offset,limit,letter);
+    public Pager pager(Long offset, Long limit, UserLetter userLetter) {
+        return letterService.listCriteria(offset,limit, userLetter);
     }
 
     @Resource

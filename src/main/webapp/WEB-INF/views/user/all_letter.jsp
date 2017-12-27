@@ -29,15 +29,15 @@
             class="btn btn-warning">标为未读
     </button>
 </div>
-<table id="letterList" class="table table-hover"
+<table id="letter-list" class="table table-hover"
        data-url="<%=path%>/letter/pager_criteria?uid=${sessionScope.user.uid}">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="title">标题</th>
+        <th data-field="title" data-formatter="pagerUserLetter.formatTitle">标题</th>
         <th data-field="content">内容</th>
-        <th data-field="state" data-formatter="pagerBorrow.formatState">状态</th>
-        <th data-field="time" data-formatter="setTable.formatDate">时间</th>
+        <th data-field="state" data-formatter="pagerUserLetter.formatState">状态</th>
+        <th data-field="date" data-formatter="setTable.formatDate">时间</th>
     </tr>
     </thead>
 </table>
@@ -50,10 +50,10 @@
 <%@include file="../common/js/js_data_dict.jsp" %>
 <script>
     $(function () {
-        setTable.setBootstrapTable('borrowapplyList');
+        setTable.setBootstrapTable('letter-list');
     });
 </script>
 
-<script src="<%=path%>/static/js/our/user/lmh/pager_borrowapply.js"></script>
+<script src="<%=path%>/static/js/our/user/lmh/pager_user_letter.js"></script>
 </body>
 </html>
