@@ -123,11 +123,32 @@
     where lid = #{lid,jdbcType=INTEGER}
   </update>
 
+  <!--<select id="listCriteria" resultType="com.we.vo.BorrowapplyVO">
+    SELECT
+    b.baid,b.rname,b.money, b.state, b.deadline, b.term, b.time,
+    bz.bzname,
+    jklx.lxname
+    FROM borrowapply b, bz, jklx, user u
+    WHERE
+    b.uid = u.uid
+    AND b.bzid = bz.bzid
+    AND b.type = jklx.lxid
+    <if test="query != null">
+      AND b.uid = #{query.uid}
+    </if>
+    LIMIT #{pager.offset}, #{pager.limit}
+  </select>-->
 
   <select id="listCriteria" resultType="com.we.bean.Letter">
-    <![CDATA[
-
-    ]]>
+    SELECT
+    letter.lid,letter.title,letter.date,letter.content,letter.state
+    u.luid
+    FROM letter letter,user_letter u
+    WHERE
+    <if test="query != null">
+      AND letter.uid = #{query.uid}
+    </if>
+    LIMIT #{pager.offset},#{pager.limit}
   </select>
 
 </mapper>

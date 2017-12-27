@@ -14,12 +14,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.Calendar;
 
 @Controller
 @RequestMapping("/letter")
 public class LetterController {
 
     private LetterService letterService;
+
+    @RequestMapping("index_pager")
+    public String pager() {
+        return "user/index_details";
+    }
 
     @PostMapping("update")
     @ResponseBody
@@ -44,6 +50,7 @@ public class LetterController {
     public RequestResultVO save(Letter letter) {
         RequestResultVO vo = null;
         try{
+            letter.setDate(Calendar.getInstance().getTime());
             letterService.saveSelective(letter);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {

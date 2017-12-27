@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="<%=path %>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/about.css">
-    <link rel="icon" href="<%=path %>/static/images/xdp/notice_title.jpg" type="image/x-icon">
+    <link rel="icon" href="<%=path %>/static/images/xdp/index.jpg" type="image/x-icon">
     <script src="./最新公告_files/share.js.下载"></script></head>
 
 </head>

@@ -3,17 +3,12 @@ package com.we.controller;
 import com.we.bean.Borrowapply;
 import com.we.bean.Borrowapply;
 import com.we.common.Pager;
-import com.we.enums.RequestResultEnum;
 import com.we.service.BorrowapplyService;
-import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/borrowapply")

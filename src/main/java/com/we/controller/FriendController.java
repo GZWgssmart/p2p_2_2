@@ -46,11 +46,12 @@ public class FriendController {
     public RequestResultVO save(Friend friend) {
         RequestResultVO vo = null;
         try{
-
+            friendService.save(friend);
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {
-
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
-        return null;
+        return vo;
     }
 
     @RequestMapping("pager_criteria")

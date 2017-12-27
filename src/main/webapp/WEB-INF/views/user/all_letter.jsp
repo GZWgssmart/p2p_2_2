@@ -22,15 +22,15 @@
     <button onclick="setTable.removeRows('/teacher/removeRows', 'cashList');"
             class="btn btn-danger">删除
     </button>
-    <button onclick=""
+    <button onclick="setTable.readyRows('/user/read','letterList');"
             class="btn btn-success">标为已读
     </button>
-    <button onclick=""
+    <button onclick="setTable.unreadyRows('/user/unreadyRows','letterList')"
             class="btn btn-warning">标为未读
     </button>
 </div>
 <table id="letterList" class="table table-hover"
-       data-url="<%=path%>/borrowapply/list_borrowapply?uid=${sessionScope.user.uid}">
+       data-url="<%=path%>/letter/pager_criteria?uid=${sessionScope.user.uid}">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
