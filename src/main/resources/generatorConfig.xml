@@ -264,6 +264,12 @@
                selectByExampleQueryId="false">
         </table>
 
+        <table tableName="user_letter" domainObjectName="UserLetter"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
         <table tableName="user_ticket" domainObjectName="UserTicket"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
@@ -281,5 +287,6 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
+
     </context>
 </generatorConfiguration>

@@ -77,7 +77,7 @@
 <script>
     $(function () {
         setTable.setBootstrapTable('borrowapplyList');
-        pagerBorrow.select2.loadBzType();//加载 标种下拉框的数据
+//        pagerBorrow.select2.loadBzType();//加载 标种下拉框的数据
         pagerBorrow.select2.loadJkType(); //加载 借款类型下拉框的数据
     });
 </script>
