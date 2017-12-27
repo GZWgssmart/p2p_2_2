@@ -318,6 +318,14 @@ CREATE TABLE letter (
   state INT COMMENT '状态，0不可用，1可用' DEFAULT 1
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '站内信表';
 
+DROP TABLE IF EXISTS user_letter;
+CREATE TABLE user_letter(
+  luid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+  uid INT COMMENT '用户id',
+  lid INT COMMENT '站内信id',
+  state INT COMMENT '状态，0删除，1已读，2未读' DEFAULT 2
+)ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '用户站内信关联表';
+
 DROP TABLE IF EXISTS dxmodel;
 CREATE TABLE dxmodel (
   dxid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
