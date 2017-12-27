@@ -192,38 +192,15 @@ $(function(){
     //身份证号码的验证规则
     function isIdCardNo(num){
         //if (isNaN(num)) {alert("输入的不是数字！"); return false;} 
-        var len = num.length, re;
+        var len = num.length;
         if (len === 15)
-            re = new RegExp(/^(\d{6})()?(\d{2})(\d{2})(\d{2})(\d{2})(\w)$/);
+            return /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/.test(num);
         else if (len === 18)
-            re = new RegExp(/^(\d{6})()?(\d{4})(\d{2})(\d{2})(\d{3})(\w)$/);
+            return /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/.test(num);
         else {
             //alert("输入的数字位数不对。"); 
             return false;
         }
-        var a = num.match(re);
-        if (a != null)
-        {
-            if (len===15)
-            {
-                var D = new Date("19"+a[3]+"/"+a[4]+"/"+a[5]);
-                var B = D.getYear()===a[3]&&(D.getMonth()+1)===a[4]&&D.getDate()===a[5];
-            }
-            else
-            {
-                var D = new Date(a[3]+"/"+a[4]+"/"+a[5]);
-                var B = D.getFullYear()===a[3]&&(D.getMonth()+1)===a[4]&&D.getDate()===a[5];
-            }
-            if (!B) {
-                //alert("输入的身份证号 "+ a[0] +" 里出生日期不对。"); 
-                return false;
-            }
-        }
-        if(!re.test(num)){
-            //alert("身份证最后一位只能是数字和字母。");
-            return false;
-        }
-        return true;
     }
 
 

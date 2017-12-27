@@ -147,9 +147,106 @@
     });
 
     $("#phoneCode").click(function () {
+        getPhone(${sessionScope.user.phone});
+    })
+    //验证手机号
+    function vrifyPhone() {
+        var code = $("#code").val();
+        if(code == null || code == ""){
+            swtAlert.request_fail("验证码不能为空")
+        }else{
+            $.post("/user/verify_phone",
+                {
+                    phone:${sessionScope.user.phone},
+                    code:code
+                },
+                function (data) {
+                    if(data.message === "验证成功"){
+                        swtAlert.request_success(data.messgae);
+                        $("#verifyPhoneModal").modal("hide");
+                        $("#updatePhoneModal").modal("show");
+                    }
+                },"json"
+            );
+        }
+
+    }
+
+    //修改手机号--验证新手机号码
+    $("#phoneCode1").click(function () {
+        var newPhone = $("#newPhone").val();
+        if(verifyNewPhone(newPhone)){
+            $.post("/user/no_register_verify_phone",
+                {
+                    phone:newPhone
+                },
+                function (data) {
+                    if(data.message === "验证码已发送，请注意查收"){
+                        swtAlert.request_success(data.message);
+                    }else{
+                        swtAlert.request_fail(data.message);
+                    }
+                }
+            );
+        }
+    })
+
+    function updatePhone() {
+        var newPhone = $("#newPhone").val();
+        var code = $("#codePhone").val();
+        if(code == null || code == ""){
+            swtAlert.request_fail("验证码不能为空")
+        }else if(verifyNewPhone(newPhone)) {
+            $.post("/user/no_register_verify_phone",
+                {
+                    phone:newPhone,
+                    code:code
+                },
+                function (data) {
+                    if(data.message === "验证成功"){
+                        $.ajax({
+                            type: 'post',
+                            url: '/user/update_user',
+                            dataType : 'json',
+                            data: $("#updatePhoneForm").serialize(),
+                            success:  function (data) {
+                                swtAlert.request_success(data.message);
+                                $("#updatePhoneModal").modal("hide");
+                                window.location.reload();
+                            },
+                            error: function(data) {
+                                swtAlert.request_fail("修改失败");
+                            }
+                        });
+                    }else{
+                        swtAlert.request_fail(data.message);
+                    }
+                }
+            );
+        }
+    }
+    
+    function verifyNewPhone(newPhone) {
+
+        if(newPhone == null || newPhone == ""){
+            swtAlert.request_fail("手机号不能为空");
+            return false;
+        }else if(!(/^1(3|4|5|7|8)\d{9}$/.test(newPhone))){
+            swtAlert.request_fail("手机格式错误");
+            return false;
+        }else if("${sessionScope.user.phone}" === newPhone){
+            swtAlert.request_fail("不能与原手机号一致");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    //获取已经注册的手机号的验证码
+    function getPhone(phone) {
         $.post("/user/verify_phone",
             {
-                phone:${sessionScope.user.phone}
+                phone:phone
             },
             function (data) {
                 if(data.message === "验证码发送成功,请注意查收"){
@@ -157,25 +254,21 @@
                 }
             },"json"
         );
-    })
-    //验证手机号
-    function vrifyPhone() {
+    }
+
+    //获取未注册的手机号的验证码
+    function getPhone(phone) {
         $.post("/user/verify_phone",
             {
-                phone:${sessionScope.user.phone},
-                code:$("#code").val()
+                phone:phone
             },
             function (data) {
-                if(data.message === "验证成功"){
+                if(data.message === "验证码发送成功,请注意查收"){
                     swtAlert.request_success(data.messgae)
-                    $("#verifyPhoneModal").modal("hide");
-                }else{
-                    swtAlert.request_fail(data.message)
                 }
             },"json"
         );
     }
-    
 
     //绑定邮箱
     $("#changeEmail").click(function () {
@@ -221,6 +314,89 @@
         );
     }
 
+    //身份认证
+    $("#changeRname").click(function () {
+        $("#updateRnameModal").modal("show");
+        return $("#userForm").validate({
+            onfocusout: function(element){
+                $(element).valid();
+            },
+            debug:false,
+            onkeyup:false,
+            rules:{
+                'rname':{
+                    required: true
+                },
+                'idno':{
+                    required: true,
+                    isIdCardNo:true
+                }
+            },
+            messages:{
+
+            }
+        });
+    });
+
+    function updateRame() {
+        if ($('#userForm').valid() === false) return;
+        $.ajax({
+            type: 'post',
+            url: '/user/update_user',
+            dataType : 'json',
+            data: $("#userForm").serialize(),
+            success:  function (data) {
+                if(data.message === "修改成功"){
+                    swtAlert.request_success(data.message);
+                    $("#updateRnameModal").modal("hide");
+                    window.location.reload();
+                }
+            },
+            error: function(data) {
+                swtAlert.request_fail("修改失败");
+            }
+        });
+    }
+
+    $("#changePwd").click(function () {
+        $("#updatePwdModal").modal("show");
+    });
+
+    //修改密码
+    function updatePwd() {
+        var oldPwd = $("#oldPwd").val();
+        var newPwd = $("#newPwd").val();
+        var copPwd = $("#copPwd").val();
+        if(oldPwd == newPwd){
+            swtAlert.request_fail("新密码不能与原始密码一致");
+        }else if(newPwd.length < 6){
+            swtAlert.request_fail("密码长度至少六位");
+        }else if(newPwd != copPwd){
+            swtAlert.request_fail("确认密码错误");
+        }else{
+            $.ajax({
+                type: 'post',
+                url: '/user/update_user',
+                dataType : 'json',
+                data: {
+                    uid:${sessionScope.user.uid},
+                    upwd:newPwd,
+                    old:oldPwd
+                },
+                success:  function (data) {
+                    if(data.message === "修改成功"){
+                        swtAlert.request_success("密码修改成功，请重新登入");
+                        window.location.href = "/user/login_page";
+                    }else{
+                        swtAlert.request_fail(data.message);
+                    }
+                },
+                error: function(data) {
+                    swtAlert.request_fail("修改密码失败");
+                }
+            });
+        }
+    }
     //进度条
     function Em(num) {
         if(num == 30){

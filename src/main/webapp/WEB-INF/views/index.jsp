@@ -52,7 +52,7 @@
         <div class="logo"><img src="<%=path %>/static/picture/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
             <ul>
-                <li><a href="#">我的账户</a></li>
+                <li><a href="/user/login_page">我的账户</a></li>
                 <li><a href="about.html">信息披露 </a></li>
                 <li><a href="safety.html">安全保障</a></li>
                 <li>

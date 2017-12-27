@@ -19,10 +19,12 @@ public enum RequestResultEnum {
     HAVE_PERMISSION(401, "success", "通过认证"),
     NO_PERMISSION(402, "fail", "无权限操作"),
     NO_PERMISSION_BORROW_MONEY(403, "fail", "成为VIP（充值10000元，投标1000元）后才能开启借款功能"),
-    UPDATE_UPWD_VERIFY_SUCCESS(307,"success","验证成功"),
-    UPDATE_UPWD_VERIFY_FAIL(308,"fail","验证码错误"),
+    VERIFY_SUCCESS(307,"success","验证成功"),
+    VERIFY_FAIL(308,"fail","验证码错误"),
     UPDATE_UPWD_SUCCESS(309,"success","修改密码成功"),
-    ADD_EMAIL_SUCCESS(310,"success","添加邮箱成功");
+    ADD_EMAIL_SUCCESS(310,"success","添加邮箱成功"),
+    UPDATE_PHONE_SUCCESS(311,"success","修改成功"),
+    OLD_PWD_FAIL(312,"fail","原始密码错误");
 
     private Integer code;
     private String result;

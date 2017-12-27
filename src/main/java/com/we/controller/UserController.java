@@ -163,7 +163,7 @@ public class UserController {
     }
 
     /**
-     * 手机号码验证
+     * 已经注册的手机号码验证
      * @param phone
      * @param code
      * @return
@@ -176,7 +176,7 @@ public class UserController {
         if(code == null || code == ""){
             //判断手机号码是否存在  存在发送验证码  不存在退出
             if(userService.getByPhone(phone) != null){
-                phoneCode = IndustrySMS.execute(phone);
+                phoneCode = "123456";//IndustrySMS.execute(phone);
                 statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
             }else{
                 statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_NO_PHONE);
@@ -185,11 +185,68 @@ public class UserController {
             //比对验证码
             if(code.equals(phoneCode)){
                 //验证码正确
-                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_VERIFY_SUCCESS);
+                statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_SUCCESS);
             }else{
                 //验证码失败
-                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_VERIFY_FAIL);
+                statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_FAIL);
             }
+        }
+        return statusVO;
+    }
+
+    /**
+     * 未注册的手机号码验证
+     * @param phone
+     * @param code
+     * @return
+     */
+    @RequestMapping("no_register_verify_phone")
+    @ResponseBody
+        public RequestResultVO getVerify(String phone, String code){
+        RequestResultVO statusVO = null;
+        //如果验证码为空，，则点击的是获取验证码链接    不为空则点击的是验证按钮
+        if(code == null || code == ""){
+            //判断手机号码是否已经使用  未使用发送验证码  不存在退出
+            if(userService.getByPhone(phone) == null){
+                phoneCode = "654321";//IndustrySMS.execute(phone);
+                statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
+            }else{
+                statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_FAIL_HAVE_PHONE);
+            }
+        }else{
+            //比对验证码
+            if(code.equals(phoneCode)){
+                //验证码正确
+                statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_SUCCESS);
+            }else{
+                //验证码失败
+                statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_FAIL);
+            }
+        }
+        return statusVO;
+    }
+
+    @ResponseBody
+    @RequestMapping("update_user")
+    public RequestResultVO updatePhoneByUid(User user,String old, HttpSession session){
+        RequestResultVO statusVO = null;
+        if(user.getUpwd() != null || user.getUpwd() != ""){
+            //修改密码
+            User user1 = (User) userService.getById(user.getUid());
+            if(user1.getUpwd().equals(EncryptUtils.md5(old))){
+                //原始密码正确
+                user.setUpwd(EncryptUtils.md5(user.getUpwd()));
+                userService.updateSelective(user);
+                statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_PHONE_SUCCESS);
+                session.removeAttribute("user");
+            }else{
+                //原始密码错误
+                statusVO = RequestResultVO.status(RequestResultEnum.OLD_PWD_FAIL);
+            }
+        }else{
+            userService.updateSelective(user);
+            statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_PHONE_SUCCESS);
+            session.setAttribute("user",userService.getById(user.getUid()));
         }
         return statusVO;
     }
@@ -238,6 +295,8 @@ public class UserController {
         session.setAttribute("user",userService.getByEmail(user.getEmail()));
         return statusVO;
     }
+
+
 
     @Resource
     public void setUserService(UserService userService) {
