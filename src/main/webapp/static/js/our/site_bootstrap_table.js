@@ -12,11 +12,11 @@ var setTable = {
             height: $(window).height()//table的高度
         });
     },
-    removeRows: function (url, tableId) {
+    removeRows: function(url,tableId) {
         var rows = $('#' + tableId).bootstrapTable('getSelections');
-        if (rows.length > 0) {
-            swtAlert.remove_rows(rows, url, tableId);
-        } else {
+        if(rows.length > 0) {
+            swtAlert.remove_rows(rows,url,tableId);
+        }else {
             swtAlert.warn_info(dataDict.manage.noSelected);
         }
     },

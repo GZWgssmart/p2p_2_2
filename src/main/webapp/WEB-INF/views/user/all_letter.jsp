@@ -22,14 +22,14 @@
     <button onclick="setTable.removeRows('/teacher/removeRows', 'cashList');"
             class="btn btn-danger">删除
     </button>
-    <button onclick="teacherTable.distributeClazz('cashList', 'clazzTeacherList', 'clazzTeacherModal')"
+    <button onclick=""
             class="btn btn-success">标为已读
     </button>
-    <button onclick="teacherTable.distributeClazz('cashList', 'clazzTeacherList', 'clazzTeacherModal')"
+    <button onclick=""
             class="btn btn-warning">标为未读
     </button>
 </div>
-<table id="borrowapplyList" class="table table-hover"
+<table id="letterList" class="table table-hover"
        data-url="<%=path%>/borrowapply/list_borrowapply?uid=${sessionScope.user.uid}">
     <thead>
     <tr>
