@@ -22,36 +22,21 @@
     <button onclick="pagerBorrow.formValidate.save_borrowapply('save-borrowapply-modal', 'save-borrowapply-form');"
             class="btn btn-primary" data-toggle="modal" data-target="#saveTeacherModal">新增借款
     </button>
-    <button onclick="setTable.updateSelectionsStatus('/teacher/updateSelectionsStatus', 'cashList');"
-            class="btn btn-danger">删除
-    </button>
-    <button onclick="setTable.openUpdateModal('cashList', 'update-teacher-basic', 'teacher', 'updateTeacherModal')"
-            class="btn btn-default">修改
-    </button>
-    <button onclick="teacherTable.distributeClazz('cashList', 'clazzTeacherList', 'clazzTeacherModal')"
-            class="btn btn-success">分配班级
-    </button>
-    <br/>
-    <form id="cash-search-form" class="form-inline">
-        <div class="form-group">
-            <a href="javascript:void(0);"
-               onclick="setTable.doSearch('cash-search-form', 'cashList', contextPath + '/cash/list_cash')"
-               class="btn btn-primary">搜索</a>
-        </div>
-    </form>
 </div>
 <table id="borrowapply-list" class="table table-hover"
-       data-url="<%=path%>/borrowapply/list_borrowapply?uid=${sessionScope.user.uid}">
+       data-url="<%=path%>/borrowapply/list_criteria?uid=${sessionScope.user.uid}">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="rname">真实姓名</th>
-        <th data-field="money">资金</th>
+        <th data-field="rname">申请人</th>
+        <th data-field="money">金额（元）</th>
         <th data-field="bzname">标种类型</th>
         <th data-field="lxname">借款类型</th>
         <th data-field="term">借款期限（月）</th>
-        <th data-field="state" data-formatter="pagerBorrow.formatState">状态</th>
-        <th data-field="time" data-formatter="setTable.formatDate">申请时间</th>
+        <th data-field="state" data-formatter="pagerBorrow.formatState">审核状态</th>
+        <th data-field="excuse">审核理由</th>
+        <th data-field="checkTime" data-formatter="setTable.formatDate">审核时间</th>
+        <th data-field="applyTime" data-formatter="setTable.formatDate">申请时间</th>
         <th data-field="deadline" data-formatter="setTable.formatDate">投标截止时间</th>
     </tr>
     </thead>

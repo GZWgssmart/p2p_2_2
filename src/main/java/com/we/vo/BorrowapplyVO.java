@@ -12,6 +12,8 @@ public class BorrowapplyVO {
 
     private String lxname;
 
+    private String excuse;
+
     private BigDecimal money;
 
     private Integer state;
@@ -20,7 +22,9 @@ public class BorrowapplyVO {
 
     private Date deadline;
 
-    private Date time;
+    private Date applyTime;
+
+    private Date checkTime;
 
     public Integer getBaid() {
         return baid;
@@ -46,12 +50,20 @@ public class BorrowapplyVO {
         this.money = money;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getApplyTime() {
+        return applyTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setApplyTime(Date applyTime) {
+        this.applyTime = applyTime;
+    }
+
+    public Date getCheckTime() {
+        return checkTime;
+    }
+
+    public void setCheckTime(Date checkTime) {
+        this.checkTime = checkTime;
     }
 
     public Integer getState() {
@@ -92,5 +104,13 @@ public class BorrowapplyVO {
 
     public void setLxname(String lxname) {
         this.lxname = lxname;
+    }
+
+    public String getExcuse() {
+        return excuse;
+    }
+
+    public void setExcuse(String excuse) {
+        this.excuse = excuse;
     }
 }

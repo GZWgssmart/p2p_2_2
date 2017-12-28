@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 
 @Controller
 @RequestMapping("/borrowapply")
@@ -24,6 +25,7 @@ public class BorrowapplyController {
     public RequestResultVO save(Borrowapply borrowapply) {
         RequestResultVO vo = null;
         try{
+            borrowapply.setTime(Calendar.getInstance().getTime());
             borrowapplyService.saveSelective(borrowapply);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {
@@ -39,9 +41,9 @@ public class BorrowapplyController {
      * @param borrowapply 条件查询对象
      * @return 带结果的分页对象
      */
-    @RequestMapping("list_borrowapply")
+    @RequestMapping("list_criteria")
     @ResponseBody
-    public Pager listBorrowapply(Long offset, Long limit, Borrowapply borrowapply) {
+    public Pager listCriteria(Long offset, Long limit, Borrowapply borrowapply) {
         return borrowapplyService.listCriteria(offset, limit, borrowapply);
     }
 

@@ -37,6 +37,9 @@
                 #{deadline,jdbcType=TIMESTAMP})
     </insert>
     <insert id="saveSelective" parameterType="com.we.bean.Borrowapply">
+        <selectKey keyProperty="baid" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into borrowapply
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="baid != null">
@@ -150,26 +153,31 @@
         WHERE baid = #{baid,jdbcType=INTEGER}
     </update>
 
-    <select id="listCriteria" resultType="com.we.vo.BorrowapplyVO">
-        SELECT
-        b.baid,b.rname,b.money, b.state, b.deadline, b.term, b.time,
-        bz.bzname,
-        jklx.lxname
-        FROM borrowapply b, bz, jklx, user u
+    <sql id="queryCriteria">
+        FROM borrowapply b, bz, jklx j, user u, shborrow s
         WHERE
         b.uid = u.uid
         AND b.bzid = bz.bzid
-        AND b.type = jklx.lxid
+        AND b.type = j.lxid
+        AND bz.state = 1
+        AND j.state = 1
+        AND s.baid = b.baid
         <if test="query != null">
             AND b.uid = #{query.uid}
         </if>
+    </sql>
+
+    <select id="listCriteria" resultType="com.we.vo.BorrowapplyVO">
+        SELECT
+        b.baid,b.rname,b.money, s.isok AS 'state', b.deadline, b.term, b.time AS 'applyTime',
+        s.date AS 'checkTime', s.excuse, bz.bzname, j.lxname
+        <include refid="queryCriteria"/>
         ORDER BY b.time DESC
         LIMIT #{pager.offset}, #{pager.limit}
     </select>
 
     <select id="countCriteria" resultType="java.lang.Long">
-        SELECT count(baid)
-        FROM borrowapply
-        WHERE uid = #{query.uid}
+        SELECT count(b.baid)
+        <include refid="queryCriteria"/>
     </select>
 </mapper>
