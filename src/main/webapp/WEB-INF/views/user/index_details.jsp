@@ -35,21 +35,21 @@
         <div class="nav-bar">
             <ul>
                 <li><a href="#">我的账户</a></li>
-                <li><a href="about.html">信息披露 </a></li>
-                <li><a href="safety.html">安全保障</a></li>
+                <li><a href="#">信息披露 </a></li>
+                <li><a href="#">安全保障</a></li>
                 <li>
-                    <a href="investlist.html">投资理财</a>
+                    <a href="#">投资理财</a>
                     <div class="sub-nav">
-                        <a href="investlist.html#006">恒金保</a>
-                        <a href="investlist.html#004">普金保</a>
-                        <a href="investlist.html#003">多金宝</a>
-                        <a href="investlist.html#005">新手标</a>
-                        <a href="creditorlist.html">债权转让</a>
+                        <a href="#">恒金保</a>
+                        <a href="#">普金保</a>
+                        <a href="#">多金宝</a>
+                        <a href="#">新手标</a>
+                        <a href="#">债权转让</a>
                         <p class="left"></p>
                         <p class="right"></p>
                     </div>
                 </li>
-                <li><a href="https://www.pujinziben.com/">首页</a></li>
+                <li><a href="#">首页</a></li>
             </ul>
         </div>
     </div>

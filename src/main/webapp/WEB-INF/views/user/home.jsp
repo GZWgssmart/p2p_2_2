@@ -103,7 +103,7 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-table"></i>
-                        <span class="nav-label">账号管理</span>
+                        <span class="nav-label">信息管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
