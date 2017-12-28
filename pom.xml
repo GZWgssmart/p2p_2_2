@@ -85,6 +85,8 @@
         <standard-version>1.1.2</standard-version>
 
         <junit.version>4.12</junit.version>
+
+        <uEditor.version>1.1.2-offical</uEditor.version>
     </properties>
 
     <dependencies>
@@ -243,5 +245,12 @@
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.songxinqiang</groupId>
+            <artifactId>com.baidu.ueditor</artifactId>
+            <version>${uEditor.version}</version>
+        </dependency>
+
     </dependencies>
 </project>

@@ -53,4 +53,9 @@ public class DynamicController {
         return resultVO;
     }
 
+    @RequestMapping("uEditor")
+    public String uEditor() {
+        return "dynamic/uEditor";
+    }
+
 }
