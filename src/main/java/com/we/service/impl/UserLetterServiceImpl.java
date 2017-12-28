@@ -7,6 +7,9 @@ import com.we.service.UserLetterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserLetterServiceImpl extends AbstractBaseService implements UserLetterService {
 
@@ -33,6 +36,12 @@ public class UserLetterServiceImpl extends AbstractBaseService implements UserLe
 
     @Override
     public Integer updateStatus(String ids, String status) {
-        return userLetterDAO.updateStatus(ids,status);
+        List<Integer> idList = new ArrayList<>();
+        String[] split = ids.split(",");
+        for (String s : split) {
+            idList.add(Integer.valueOf(s));
+        }
+//        return userLetterDAO.updateStatus(idList,Integer.valueOf(status));
+        return null;
     }
 }
