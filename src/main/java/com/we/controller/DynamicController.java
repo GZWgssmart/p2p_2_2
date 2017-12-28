@@ -35,7 +35,7 @@ public class DynamicController {
 
     @RequestMapping("save")
     @ResponseBody
-    public RequestResultVO save(Dynamic dynamic, MultipartFile file) {
+    public RequestResultVO save(Dynamic dynamic) {
         RequestResultVO resultVO = null;
         try {
             String imgPath = PathUtils.mkUploadImgs();
