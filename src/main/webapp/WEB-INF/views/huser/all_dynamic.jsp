@@ -47,7 +47,7 @@
     <tr>
         <th data-checkbox="true"></th>
         <th data-field="title">标题</th>
-        <th data-field="content">内容</th>
+        <%--<th data-field="content">内容</th>--%>
         <th data-field="pic" data-formatter="setTable.formatImg">封面图片</th>
         <th data-field="date" data-formatter="setTable.formatDate">创建时间</th>
     </tr>

@@ -46,6 +46,7 @@
     <mvc:resources location="/static/fonts/" mapping="/static/fonts/**"/>
     <mvc:resources location="/static/uploads/" mapping="/static/uploads/**" />
     <mvc:resources location="/static/picture/" mapping="/static/picture/**" />
+    <mvc:resources location="/static/ueditor/" mapping="/static/ueditor/**" />
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">
