@@ -83,24 +83,27 @@
 
   <select id="listCriteria" resultType="com.we.bean.Role" parameterType="com.we.vo.RoleSerachVO">
     <![CDATA[
-        select * from role WHERE ;
+        select * from role
     ]]>
     <include refid="commonCriteriaSQL"/>
   </select>
 
   <select id="countCriteria" resultType="java.lang.Long">
     <![CDATA[
-        select count(jid) from role WHERE ;
+        select count(jid) from role
     ]]>
     <include refid="commonCriteriaSQL"/>
   </select>
 
   <sql id="commonCriteriaSQL">
-    <if test="query != null and query.rname != null and query.rname !=''">
-      rname  like concat('%', #{query.rname}, '%')
-    </if>
-    <if test="query != null and query.content != null and query.content !=''">
-      content  like concat('%', #{query.content}, '%')
-    </if>
+    <where>
+        <if test="query != null and query.rname != null and query.rname !=''">
+          and rname  like concat('%', #{query.rname}, '%')
+        </if>
+        <if test="query != null and query.content != null and query.content !=''">
+          and content  like concat('%', #{query.content}, '%')
+        </if>
+    </where>
+
   </sql>
 </mapper>

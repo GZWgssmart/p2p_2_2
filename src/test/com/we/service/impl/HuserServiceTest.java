@@ -31,16 +31,7 @@ public class HuserServiceTest extends BaseTest{
         huserService.save(huser);
     }
 
-    @Test
-    public void listByCriteria(){
-        RoleSerachVO roleSerachVO = new RoleSerachVO();
-        roleSerachVO.setRname("审");
-        Pager pager = huserService.listCriteria(Long.valueOf(1),Long.valueOf(1),roleSerachVO);
-        for(Object o : pager.getRows()){
-            Role role = (Role) o;
-            System.out.println(role);
-        }
-    }
+
 
 
     @Test

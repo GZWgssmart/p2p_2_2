@@ -29,6 +29,7 @@ public class NoticeController {
     @PostMapping("save")
     @ResponseBody
     public RequestResultVO save(Notice notice) {
+
         RequestResultVO vo = null;
         try{
             noticeService.saveSelective(notice);

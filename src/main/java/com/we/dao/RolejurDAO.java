@@ -1,5 +1,6 @@
 package com.we.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,5 +10,5 @@ import java.util.List;
 public interface RolejurDAO extends BaseDAO {
 
 
-    void saveRoleJur(Integer RoleId, List<Integer> JurIds);
+    void saveRoleJur(@Param("roleId") Integer roleId,@Param("jurIds") List<Integer> jurIds);
 }
