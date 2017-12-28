@@ -48,6 +48,23 @@
                     </ul>
 
                 </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-table"></i>
+                        <span class="nav-label">平台通知</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path %>/huser/all_letter_page">站内信</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path %>/notice_pager/">最新公告</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="#">
                         <i class="fa fa fa-bar-chart-o"></i>
@@ -100,18 +117,7 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-table"></i>
-                        <span class="nav-label">系统管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="graph_echarts.html">所有管理员</a>
-                        </li>
-                    </ul>
-                </li>
+
 
             </ul>
         </div>

@@ -22,11 +22,6 @@ public class LetterController {
 
     private LetterService letterService;
 
-    @RequestMapping("index_pager")
-    public String pager() {
-        return "user/index_details";
-    }
-
     @PostMapping("update")
     @ResponseBody
     public RequestResultVO update(@Valid Letter letter, BindingResult bindingResult) {
@@ -68,7 +63,7 @@ public class LetterController {
      */
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pager(Long offset, Long limit, UserLetter userLetter) {
+    public Pager pagerCriteria(Long offset, Long limit, UserLetter userLetter) {
         return letterService.listCriteria(offset,limit, userLetter);
     }
 

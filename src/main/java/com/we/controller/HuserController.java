@@ -2,6 +2,7 @@ package com.we.controller;
 
 import com.sun.xml.internal.ws.handler.ServerSOAPHandlerTube;
 import com.we.bean.Huser;
+import com.we.bean.UserLetter;
 import com.we.common.Pager;
 import com.we.service.HuserService;
 import com.we.vo.AllHuserVO;
@@ -23,6 +24,11 @@ public class HuserController {
     @Autowired
     private HuserService huserService;
 
+    @RequestMapping("all_letter_page")
+    public String allLetterPage() {
+        return "huser/all_letter";
+    }
+
     @RequestMapping("home")
     public String home() {
         return "huser/home";
@@ -43,6 +49,19 @@ public class HuserController {
     public Pager allAdmin(Long offset, Long limit) {
         Pager pager = huserService.listCriteria(offset, limit, Huser.class);
         return pager;
+    }
+
+    /***
+     * 条件分页查询用户 站内信
+     * @param offset 开始索引
+     * @param limit 查询个数
+     * @param huser 用于接收页面传替的huid
+     * @return 带结果的分页的对象
+     */
+    @RequestMapping("pager_criteria")
+    @ResponseBody
+    public Pager pagerCriteria(Long offset,Long limit,Huser huser) {
+        return huserService.listCriteria(offset,limit,huser);
     }
 
 }
