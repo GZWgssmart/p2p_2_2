@@ -79,4 +79,11 @@
       state = #{state,jdbcType=INTEGER}
     where luid = #{luid,jdbcType=INTEGER}
   </update>
+
+  <update id="removeRows" parameterType="java.lang.String">
+    UPDATE  user_letter
+    set state = 0
+    WHERE luid IN (#{ids})
+  </update>
+
 </mapper>

@@ -20,15 +20,6 @@ var setTable = {
             swtAlert.warn_info(dataDict.manage.noSelected);
         }
     },
-    //标为已读
-    readyRows: function(url,tanleId) {
-        var rows = $('#' + tanleId).bootstrapTable('getSelections');
-        if(rows.length > 0) {
-            swtAlert.remove_rows(rows,url,tableId);
-        }else {
-            swtAlert.warn_info(dataDict.manage.noSelected);
-        }
-    },
     isSingleSelected: function (tableId) {
         var row = $('#' + tableId).bootstrapTable('getSelections');
         if (row.length === 1) {

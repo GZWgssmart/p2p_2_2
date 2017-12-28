@@ -11,5 +11,15 @@ var pagerUserLetter = {
             return '<strong>' + value + '</strong>';
         }
         return value;
+    },
+    removeRows: function() {
+        setTable.removeRows('/user_letter/remove_rows', 'letter-list');
+    },
+    readRows: function () {
+        
+    },
+    unreadRows: function () {
+        
     }
+
 };

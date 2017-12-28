@@ -27,7 +27,6 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
         this.userDAO = userDAO;
     }
 
-
     @Override
     public User getByPhone(String phone) {
         return userDAO.getByPhone(phone);
