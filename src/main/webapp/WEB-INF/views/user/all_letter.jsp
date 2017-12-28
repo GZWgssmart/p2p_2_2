@@ -22,10 +22,10 @@
     <button onclick="pagerUserLetter.removeRows();"
             class="btn btn-danger">删除
     </button>
-    <button onclick="setTable.readRows('/user/read','letterList');"
+    <button onclick="pagerUserLetter.readRows();"
             class="btn btn-success">标为已读
     </button>
-    <button onclick="setTable.unreadRows('/user/unreadyRows','letterList')"
+    <button onclick="pagerUserLetter.unreadRows()"
             class="btn btn-warning">标为未读
     </button>
 </div>

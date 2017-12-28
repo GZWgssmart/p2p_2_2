@@ -3,9 +3,10 @@ package com.we.service;
 public interface UserLetterService extends BaseService {
 
     /***
-     * 删除选中的多行数据
+     *
      * @param ids 多个id
-     * @return 影响行数
+     * @param status 信息的状态
+     * @return影响的行数
      */
-    Integer removeRows(String ids);
+    Integer updateStatus(String ids,String status);
 }

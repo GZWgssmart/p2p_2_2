@@ -1,5 +1,6 @@
 package com.we.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -8,9 +9,11 @@ import java.util.List;
 public interface UserLetterDAO extends BaseDAO {
 
     /***
-     * 删除选中的多行数据
-     * @param ids 多个id
-     * @return 影响行数
+     *
+     * @param ids 多个Id
+     * @param status 信息的状态
+     * @return 影响的行数
      */
-    Integer removeRows(String ids);
+    Integer updateStatus(@Param("ids") String ids, @Param("status") String status);
+
 }

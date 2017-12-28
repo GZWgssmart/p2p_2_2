@@ -36,7 +36,7 @@ var swtAlert = {
             type: 'error'
         });
     },
-    remove_rows: function (rows, url, tableId) {
+    updateStatuses: function (rows, url, tableId) {
         swal({
             title: dataDict.manage.removeConfirm,
             text: dataDict.manage.removeMsg,

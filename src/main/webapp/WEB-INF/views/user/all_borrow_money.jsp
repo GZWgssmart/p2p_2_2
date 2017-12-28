@@ -22,7 +22,7 @@
     <button onclick="pagerBorrow.formValidate.save_borrowapply('save-borrowapply-modal', 'save-borrowapply-form');"
             class="btn btn-primary" data-toggle="modal" data-target="#saveTeacherModal">新增借款
     </button>
-    <button onclick="setTable.removeRows('/teacher/removeRows', 'cashList');"
+    <button onclick="setTable.updateSelectionsStatus('/teacher/updateSelectionsStatus', 'cashList');"
             class="btn btn-danger">删除
     </button>
     <button onclick="setTable.openUpdateModal('cashList', 'update-teacher-basic', 'teacher', 'updateTeacherModal')"

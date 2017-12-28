@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserLetterServiceImpl extends AbstractBaseService implements UserLetterService {
 
-    public UserLetterDAO userLetterDAO;
+    private UserLetterDAO userLetterDAO;
 
     @Autowired
     public void setUserLetterDAO(UserLetterDAO userLetterDAO) {
@@ -32,7 +32,7 @@ public class UserLetterServiceImpl extends AbstractBaseService implements UserLe
     }
 
     @Override
-    public Integer removeRows(String ids) {
-        return userLetterDAO.removeRows(ids);
+    public Integer updateStatus(String ids, String status) {
+        return userLetterDAO.updateStatus(ids,status);
     }
 }

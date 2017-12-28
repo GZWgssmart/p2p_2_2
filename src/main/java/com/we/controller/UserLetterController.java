@@ -22,13 +22,13 @@ public class UserLetterController {
      * 删除选中的数据
      * @return
      */
-    @PostMapping("remove_rows")
+    @PostMapping("update_status")
     @ResponseBody
-    public RequestResultVO removeRows(String id) {
+    public RequestResultVO removeRows(String id,String state) {
         System.out.println(id);
         RequestResultVO vo = null;
         try{
-            userletterService.removeRows(id);
+            userletterService.updateStatus(id,state);
             vo = RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
         }catch (RuntimeException e) {
             vo = RequestResultVO.status(RequestResultEnum.REMOVE_FAIL);
