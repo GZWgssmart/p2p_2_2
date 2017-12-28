@@ -13,13 +13,13 @@ var pagerUserLetter = {
         return value;
     },
     removeRows: function() {
-        setTable.updateSelectionsStatus('/user_letter/update_status?state=0', 'letter-list');
+        setTable.removeRows('/user_letter/update_status?state=0', 'letter-list');
     },
     readRows: function () {
-        setTable.updateSelectionsStatus('/user_letter/update_status?state=1', 'letter-list');
+        setTable.updateStatus('/user_letter/update_status?state=1', 'letter-list');
     },
     unreadRows: function () {
-        setTable.updateSelectionsStatus('/user_letter/update_status?state=2', 'letter-list');
+        setTable.updateStatus('/user_letter/update_status?state=2', 'letter-list');
     }
 
 };

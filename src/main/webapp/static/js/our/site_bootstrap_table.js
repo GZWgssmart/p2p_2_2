@@ -12,26 +12,41 @@ var setTable = {
             height: $(window).height()//table的高度
         });
     },
-    updateSelectionsStatus: function(url, tableId) {
+    removeRows: function (url, tableId) {
         var rows = $('#' + tableId).bootstrapTable('getSelections');
-        if(rows.length > 0) {
-            swtAlert.updateStatuses(rows,url,tableId);
-        }else {
+        if (rows.length > 0) {
+            swtAlert.removeRows(rows, url, tableId);
+        } else {
             swtAlert.warn_info(dataDict.manage.noSelected);
+        }
+    },
+    updateStatus: function (url, tableId) {
+        var rows = setTable.isSelected(tableId);
+        if (rows) {
+            var ids = setTable.convertSelectedId(rows);
+            $.post(contextPath + url + '&id=' + ids,
+                function (data) {
+                    if (data.result === 'success') {
+                        swtAlert.request_success(data.message);
+                        $('#' + tableId).bootstrapTable('refresh');
+                    } else {
+                        swtAlert.request_fail(data.message);
+                    }
+                }, 'json');
         }
     },
     isSingleSelected: function (tableId) {
         var row = $('#' + tableId).bootstrapTable('getSelections');
         if (row.length === 1) {
-            return true;
+            return row[0];
         }
         swtAlert.warn_info(dataDict.manage.singleSelect);
         return false;
     },
     isSelected: function (tableId) {
         var row = $('#' + tableId).bootstrapTable('getSelections');
-        if (row.length > 1) {
-            return true;
+        if (row.length >= 1) {
+            return row;
         }
         swtAlert.warn_info(dataDict.manage.noSelected);
         return false;

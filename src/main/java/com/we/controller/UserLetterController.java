@@ -15,22 +15,22 @@ import javax.annotation.Resource;
 @RequestMapping("/user_letter")
 public class UserLetterController {
 
-   @Autowired
    private UserLetterService userletterService;
 
     /***
-     * 删除选中的数据
+     * 更改选中数据的状态
      * @return
      */
     @PostMapping("update_status")
     @ResponseBody
-    public RequestResultVO removeRows(String id,String state) {
+    public RequestResultVO updateStatus(String id,String state) {
         System.out.println(id);
         RequestResultVO vo = null;
         try{
             userletterService.updateStatus(id,state);
             vo = RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
         }catch (RuntimeException e) {
+            e.printStackTrace();
             vo = RequestResultVO.status(RequestResultEnum.REMOVE_FAIL);
         }
         return vo;

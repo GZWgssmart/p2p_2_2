@@ -14,6 +14,6 @@ public interface UserLetterDAO extends BaseDAO {
      * @param status 信息的状态
      * @return 影响的行数
      */
-    Integer updateStatus(@Param("ids") String ids, @Param("status") String status);
+    Integer updateStatus(@Param("ids") List<Integer> ids, @Param("status") String status);
 
 }

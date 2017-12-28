@@ -24,6 +24,6 @@ public class JklxServiceImpl extends AbstractBaseService implements JklxService 
 
     @Override
     public List<ComboboxVO> listCombobox() {
-        return null;
+        return jklxDAO.listCombobox();
     }
 }
