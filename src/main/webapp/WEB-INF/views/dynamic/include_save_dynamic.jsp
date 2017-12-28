@@ -66,6 +66,12 @@
         alert(ue.getContent());
     }
 
+    var ue = UE.getEditor('content');
+
+    function getContent() {
+        alert(ue.getContent());
+    }
+
     function save() {
         var $addForm = $('#addForm');
         if ($addForm.valid() === false) {

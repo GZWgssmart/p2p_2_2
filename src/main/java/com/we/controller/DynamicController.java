@@ -35,7 +35,7 @@ public class DynamicController {
 
     @RequestMapping("save")
     @ResponseBody
-    public RequestResultVO save(Dynamic dynamic) {
+    public RequestResultVO save(Dynamic dynamic, MultipartFile file) {
         RequestResultVO resultVO = null;
         try {
             String imgPath = PathUtils.mkUploadImgs();
@@ -46,6 +46,7 @@ public class DynamicController {
             resultVO = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         } catch (IOException e) {
             e.printStackTrace();
+            resultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         } catch (RuntimeException e) {
             e.printStackTrace();
             resultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
