@@ -79,4 +79,13 @@
       state = #{state,jdbcType=INTEGER}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="sway">
+    SELECT * FROM sway
+    LIMIT #{pager.offset}, #{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT count(sid) FROM sway
+  </select>
 </mapper>
