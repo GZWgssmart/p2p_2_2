@@ -23,15 +23,15 @@ public class UserLetterController {
      */
     @PostMapping("update_status")
     @ResponseBody
-    public RequestResultVO updateStatus(String id,String state) {
+    public RequestResultVO updateStatus(String id, String state) {
         System.out.println(id);
         RequestResultVO vo = null;
         try{
-            userletterService.updateStatus(id,state);
-            vo = RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
+            userletterService.updateStatus(id, state);
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
         }catch (RuntimeException e) {
             e.printStackTrace();
-            vo = RequestResultVO.status(RequestResultEnum.REMOVE_FAIL);
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return vo;
     }

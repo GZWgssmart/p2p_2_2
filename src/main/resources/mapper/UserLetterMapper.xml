@@ -80,10 +80,13 @@
     where luid = #{luid,jdbcType=INTEGER}
   </update>
 
-  <update id="updateStatus" parameterType="java.lang.String">
+  <update id="updateStatus">
     UPDATE  user_letter
     set state = #{status}
-    WHERE luid IN (#{ids})
+    WHERE luid IN
+    <foreach open="(" close=")" collection="ids" separator="," item="id">
+      #{id}
+    </foreach>
   </update>
 
 </mapper>

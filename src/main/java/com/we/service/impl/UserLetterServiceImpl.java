@@ -41,7 +41,6 @@ public class UserLetterServiceImpl extends AbstractBaseService implements UserLe
         for (String s : split) {
             idList.add(Integer.valueOf(s));
         }
-//        return userLetterDAO.updateStatus(idList,Integer.valueOf(status));
-        return null;
+        return userLetterDAO.updateStatus(idList,Integer.valueOf(status));
     }
 }
