@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.dao.HuserDAO" >
-  <resultMap id="BaseResultMap" type="com.we.bean.Huser" >
-    <id column="huid" property="huid" jdbcType="INTEGER" />
-    <result column="rname" property="rname" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="CHAR" />
-    <result column="huname" property="huname" jdbcType="VARCHAR" />
-    <result column="oid" property="oid" jdbcType="INTEGER" />
-    <result column="oname" property="oname" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.we.dao.HuserDAO">
+    <resultMap id="BaseResultMap" type="com.we.bean.Huser">
+        <id column="huid" property="huid" jdbcType="INTEGER"/>
+        <result column="rname" property="rname" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="CHAR"/>
+        <result column="huname" property="huname" jdbcType="VARCHAR"/>
+        <result column="oid" property="oid" jdbcType="INTEGER"/>
+        <result column="oname" property="oname" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     huid, rname, sex, phone, huname, oid, oname, email
   </sql>
-  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from huser
-    where huid = #{huid,jdbcType=INTEGER}
-  </select>
-  <delete id="removeById" parameterType="java.lang.Integer" >
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from huser
+        where huid = #{huid,jdbcType=INTEGER}
+    </select>
+    <delete id="removeById" parameterType="java.lang.Integer">
     delete from huser
     where huid = #{huid,jdbcType=INTEGER}
   </delete>
-  <insert id="save" parameterType="com.we.bean.Huser" >
+    <insert id="save" parameterType="com.we.bean.Huser">
     insert into huser (huid, rname, sex, 
       phone, huname, oid, oname, 
       email)
@@ -32,89 +32,89 @@
       #{phone,jdbcType=CHAR}, #{huname,jdbcType=VARCHAR}, #{oid,jdbcType=INTEGER}, #{oname,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR})
   </insert>
-  <insert id="saveSelective" parameterType="com.we.bean.Huser" >
-    insert into huser
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="huid != null" >
-        huid,
-      </if>
-      <if test="rname != null" >
-        rname,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="phone != null" >
-        phone,
-      </if>
-      <if test="huname != null" >
-        huname,
-      </if>
-      <if test="oid != null" >
-        oid,
-      </if>
-      <if test="oname != null" >
-        oname,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="huid != null" >
-        #{huid,jdbcType=INTEGER},
-      </if>
-      <if test="rname != null" >
-        #{rname,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=CHAR},
-      </if>
-      <if test="huname != null" >
-        #{huname,jdbcType=VARCHAR},
-      </if>
-      <if test="oid != null" >
-        #{oid,jdbcType=INTEGER},
-      </if>
-      <if test="oname != null" >
-        #{oname,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateSelective" parameterType="com.we.bean.Huser" >
-    update huser
-    <set >
-      <if test="rname != null" >
-        rname = #{rname,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=CHAR},
-      </if>
-      <if test="huname != null" >
-        huname = #{huname,jdbcType=VARCHAR},
-      </if>
-      <if test="oid != null" >
-        oid = #{oid,jdbcType=INTEGER},
-      </if>
-      <if test="oname != null" >
-        oname = #{oname,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where huid = #{huid,jdbcType=INTEGER}
-  </update>
-  <update id="update" parameterType="com.we.bean.Huser" >
+    <insert id="saveSelective" parameterType="com.we.bean.Huser">
+        insert into huser
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="huid != null">
+                huid,
+            </if>
+            <if test="rname != null">
+                rname,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="huname != null">
+                huname,
+            </if>
+            <if test="oid != null">
+                oid,
+            </if>
+            <if test="oname != null">
+                oname,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="huid != null">
+                #{huid,jdbcType=INTEGER},
+            </if>
+            <if test="rname != null">
+                #{rname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=CHAR},
+            </if>
+            <if test="huname != null">
+                #{huname,jdbcType=VARCHAR},
+            </if>
+            <if test="oid != null">
+                #{oid,jdbcType=INTEGER},
+            </if>
+            <if test="oname != null">
+                #{oname,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSelective" parameterType="com.we.bean.Huser">
+        update huser
+        <set>
+            <if test="rname != null">
+                rname = #{rname,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=CHAR},
+            </if>
+            <if test="huname != null">
+                huname = #{huname,jdbcType=VARCHAR},
+            </if>
+            <if test="oid != null">
+                oid = #{oid,jdbcType=INTEGER},
+            </if>
+            <if test="oname != null">
+                oname = #{oname,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where huid = #{huid,jdbcType=INTEGER}
+    </update>
+    <update id="update" parameterType="com.we.bean.Huser">
     update huser
     set rname = #{rname,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
@@ -126,5 +126,16 @@
     where huid = #{huid,jdbcType=INTEGER}
   </update>
 
+    <select id="listCriteria" resultType="com.we.vo.AllHuserVO">
+      select h.huid, h.rname, h.sex, h.email, r.rname as roleRname from huser h, role r, roleuser ru
+      where ru.huid = h.huid
+      and r.jid = ru.rid
+      limit #{pager.offset},#{pager.limit}
+    </select>
 
+    <select id="countCriteria" resultType="long">
+      select count(h.huid) from huser h, role r, roleuser ru
+      where ru.huid = h.huid
+      and r.jid = ru.rid
+    </select>
 </mapper>
