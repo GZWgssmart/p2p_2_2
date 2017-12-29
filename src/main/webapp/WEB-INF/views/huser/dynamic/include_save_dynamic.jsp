@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label for="content" class="col-sm-1 control-label">内&nbsp;&nbsp;容：</label>
                         <div class="col-sm-10">
-                            <script id="content" name="content" type="text/plain"></script>
+                            <script id="content" name="content" type="text/plain" ></script>
                         </div>
                     </div>
                 </form>
@@ -37,73 +37,3 @@
     </div>
 </div>
 
-<script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
-<script src="<%=path %>/static/ueditor/ueditor.all.js"></script>
-<script>
-    function showForm () {
-        return $('#addForm').validate({
-            onfocusout: function(element){
-                $(element).valid();
-            },
-            debug:false,
-            onkeyup:false,
-            rules:{
-                'title':{
-                    required: true
-                }
-            },
-            messages:{
-                'title': {
-
-                }
-            }
-        });
-    }
-
-    var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
-    }
-
-    var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
-    }
-
-    function save() {
-        var $addForm = $('#addForm');
-        if ($addForm.valid() === false) {
-            swtAlert.warn_info(dataDict.form.validForm);
-        } else {
-            var picName = $('#pic').val();
-            picName = picName.substr(picName.lastIndexOf('\\') + 1);
-            $('#realImg').val(picName);
-            $addForm.ajaxSubmit({
-                type: 'POST',
-                url:'/dynamic/save',
-                dataType: 'json',
-                success: function(data){
-                    if(data.result === 'success'){
-                        swtAlert.request_success(data.message);
-                    } else {
-                        swtAlert.request_fail(data.message);
-                    }
-                }
-            });
-        }
-
-        /*$.post(contextPath + "/dynamic/save",
-            $("#addForm").serialize(),
-            function (data) {
-                if(data.result === "success"){
-                    window.location.href = contextPath + "/huser/all_dynamic_page";
-                } else {
-                    alert(data.message);
-                }
-            },'json'
-        );*/
-    };
-
-</script>

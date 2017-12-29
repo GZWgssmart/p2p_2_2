@@ -54,9 +54,9 @@ public class DynamicController {
         return resultVO;
     }
 
-    @RequestMapping("uEditor")
+    @RequestMapping("ueditor")
     public String uEditor() {
-        return "dynamic/uEditor";
+        return "huser/dynamic/uEditor";
     }
 
 }

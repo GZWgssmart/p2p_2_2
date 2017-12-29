@@ -129,7 +129,7 @@ var setTable = {
         }
     },
     formatImg: function (value) {
-        return '<img class="img-responsive" src="' + contextPath + value + '" />';
+        return '<img style="width: 200px;height: 100px;" class="img-responsive" src="' + contextPath + value + '" />';
     }
 };
 
