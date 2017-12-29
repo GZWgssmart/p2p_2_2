@@ -56,7 +56,7 @@ public class FriendController {
 
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pager(Long offset,Long limit,Friend friend) {
+    public Pager pagerCriteria(Long offset,Long limit,Friend friend) {
         return friendService.listCriteria(offset,limit,friend);
     }
 

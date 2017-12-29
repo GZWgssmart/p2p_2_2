@@ -61,7 +61,7 @@ public class BzController {
 
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pager_criteria(Long offset,Long limit,Bz bz) {
+    public Pager pagerCriteria(Long offset,Long limit,Bz bz) {
         return bzService.listCriteria(offset,limit,bz);
     }
 

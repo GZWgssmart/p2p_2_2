@@ -59,7 +59,7 @@ public class NoticeController {
 
     @RequestMapping("page_criteria")
     @ResponseBody
-    public Pager pager(Long offset,Long limit,Notice notice) {
+    public Pager pagerCriteria(Long offset,Long limit,Notice notice) {
         return noticeService.listCriteria(offset,limit,notice);
     }
 

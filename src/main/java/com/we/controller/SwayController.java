@@ -54,7 +54,7 @@ public class SwayController {
     }
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager Pager(Long offset, Long limit, Sway sway) {
+    public Pager pagerCriteria(Long offset, Long limit, Sway sway) {
         return swayService.listCriteria(offset, limit, sway);
     }
 
