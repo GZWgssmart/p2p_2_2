@@ -12,8 +12,8 @@ var pagerBorrow = {
     },
     formValidate: {
         save_borrowapply: function (modalId, formId) {
-            $('#' + modalId).modal('show');
-            return $('#' + formId).validate({
+            setTable.showModal('save-borrowapply-modal');
+            return $('#save-borrowapply-form').validate({
                 onfocusout: function(element){
                     $(element).valid();
                 },
@@ -47,6 +47,57 @@ var pagerBorrow = {
                     }
                 }
             });
+        },
+        save_borrowapply_detail: function () {
+            var row = setTable.isSingleSelected('borrowapply-list');
+            if (row) {
+                setTable.showModal('save-borrowapply-detail-modal');
+                $('#baid-input').val(row.baid);
+                $('#detail-money-input').val(row.money);
+                $('#nprofit-input').val(pagerBorrow.initYearProfit(row.lxname));
+                return $('#save-borrowapply-detail-form').validate({
+                    onfocusout: function(element){
+                        $(element).valid();
+                    },
+                    debug:false,
+                    onkeyup:false,
+                    rules:{
+                        'fpic':{
+                            required: true,
+                            isIdCardNo: true
+                        },
+                        'qpic': {
+                          required: true
+                        },
+                        'mpurpose': {
+                            required: true
+                        },
+                        'hksource': {
+                            required: true
+                        },
+                        'suggest': {
+                          required: true
+                        },
+                        'xmdescrip': {
+                            required: true
+                        },
+                        'guarantee': {
+                            required: true
+                        },
+                        'nprofit': {
+                            required: true,
+                            minValue: 0,
+                            maxValue: 100
+                        },
+                        'way': {
+                            required: true
+                        }
+                    },
+                    messages:{
+
+                    }
+                });
+            }
         }
     },
     select2: {
@@ -62,6 +113,20 @@ var pagerBorrow = {
     submitForm: {
         save: function () {
             submitForm.save('/borrowapply/save', 'save-borrowapply-form', 'borrowapply-list', 'save-borrowapply-modal');
+        },
+        saveDetail: function () {
+
+        }
+    },
+    initYearProfit: function (lxname) {
+        if (lxname === '普金保') {
+            return 8.0;
+        } else if (lxname === '恒金保') {
+            return 9.0;
+        } else if (lxname === '多金宝') {
+            return 10.0;
+        } else  if (lxname === '新手标') {
+            return 11.0;
         }
     }
 };

@@ -51,6 +51,12 @@ var setTable = {
         swtAlert.warn_info(dataDict.manage.noSelected);
         return false;
     },
+    showModal: function (modalId) {
+        $('#' + modalId).modal('show');
+    },
+    hideModal: function (modalId) {
+      $('#' + modalId).modal('hide');
+    },
     convertSelectedId: function (rows) {
         var ids = '';
         for (var i = 0, len = rows.length; i < len; i++) {

@@ -12,10 +12,10 @@
 <html>
 <head>
     <title>公司动态页面</title>
-    <link href="<%=path%>/static/css/fileinput.css" rel="stylesheet">
     <%@include file="../common/css/css_bootstrap.jsp" %>
     <%@include file="../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../common/css/css_sweetalert.jsp" %>
+    <%@include file="../common/css/css_sileinput.jsp" %>
 </head>
 <body>
 
@@ -23,26 +23,6 @@
     <button class="btn btn-primary" data-toggle="modal" onclick="pagerHuserDynamic.lookContent();">查看内容</button>
     <button class="btn btn-primary" data-toggle="modal" data-target="#saveDynamicModal" onclick="showForm();">添加</button>
     <button class="btn btn-default" data-toggle="modal" onclick="pagerHuserDynamic.updateDynamic();">修改</button>
-    <%--<button onclick="setTable.openUpdateModal('cashList', 'update-teacher-basic', 'teacher', 'updateTeacherModal')"--%>
-            <%--class="btn btn-default">修改--%>
-    <%--</button>--%>
-
-    <br/>
-    <%--<form id="cash-search-form" class="form-inline">
-        <div class="form-group">
-            <input style="height: 30px" name="customer" placeholder="标题" type="text" id="search-customer-input"
-                   class="form-control form-inline"/>
-        </div>
-        <div class="form-group">
-            <input style="height: 30px" name="money" placeholder="时间" type="text" id="search-money-input"
-                   class="form-control form-inline"/>
-        </div>
-        <div class="form-group">
-            <a href="javascript:void(0);"
-               onclick="setTable.doSearch('cash-search-form', 'cashList', contextPath + '/cash/list_cash')"
-               class="btn btn-primary">搜索</a>
-        </div>
-    </form>--%>
 </div>
 <table id="dynamic-list" class="table table-hover"
        data-url="<%=path%>/dynamic/list_dynamic">
@@ -67,10 +47,8 @@
 <%@include file="../common/js/js_sweetalert.jsp" %>
 <%@include file="../common/js/js_form.jsp" %>
 <%@include file="../common/js/js_data_dict.jsp" %>
+<%@include file="../common/js/js_fileinput.jsp" %>
 
-<script src="<%=path%>/static/js/fileinput.js"></script>
-<script src="<%=path%>/static/js/fileinput_locale_zh.js"></script>
-<script src="<%=path%>/static/js/our/jquery-form.js"></script>
 <script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
 <script src="<%=path %>/static/ueditor/ueditor.all.js"></script>
 <script src="<%=path%>/static/js/our/huser/lqf/pager_huser_dynamic.js"></script>
@@ -81,7 +59,7 @@
 
     $("#pic").fileinput({
         'allowedFileExtensions' : ['jpg', 'png','gif'],
-        showUpload: false, //是否显示上传按钮
+        showUpload: false //是否显示上传按钮
     });
 
 </script>

@@ -1,0 +1,1 @@
+<link href="<%=path%>/static/css/fileinput.css" rel="stylesheet">
