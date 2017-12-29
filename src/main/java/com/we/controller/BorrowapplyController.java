@@ -41,9 +41,9 @@ public class BorrowapplyController {
      * @param borrowapply 条件查询对象
      * @return 带结果的分页对象
      */
-    @RequestMapping("list_criteria")
+    @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager listCriteria(Long offset, Long limit, Borrowapply borrowapply) {
+    public Pager pagerCriteria(Long offset, Long limit, Borrowapply borrowapply) {
         return borrowapplyService.listCriteria(offset, limit, borrowapply);
     }
 

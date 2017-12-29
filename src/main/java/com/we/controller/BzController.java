@@ -53,6 +53,7 @@ public class BzController {
             bzService.saveSelective(bz);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {
+            e.printStackTrace();
             vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
         return vo;
@@ -60,7 +61,7 @@ public class BzController {
 
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pager(Long offset,Long limit,Bz bz) {
+    public Pager pager_criteria(Long offset,Long limit,Bz bz) {
         return bzService.listCriteria(offset,limit,bz);
     }
 

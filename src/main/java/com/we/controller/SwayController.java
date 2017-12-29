@@ -52,9 +52,9 @@ public class SwayController {
         }
         return vo;
     }
-    @RequestMapping("list_sway")
+    @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager listSway(Long offset, Long limit, Sway sway) {
+    public Pager Pager(Long offset, Long limit, Sway sway) {
         return swayService.listCriteria(offset, limit, sway);
     }
 

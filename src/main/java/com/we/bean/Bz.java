@@ -3,27 +3,26 @@ package com.we.bean;
 import javax.validation.constraints.NotNull;
 
 public class Bz {
-    private Integer lxid;
+    private Integer bzid;
 
-    private String lxname;
+    private String bzname;
 
     private Integer state;
 
-    @NotNull
-    public Integer getLxid() {
-        return lxid;
+    public Integer getBzid() {
+        return bzid;
     }
 
-    public void setLxid(Integer lxid) {
-        this.lxid = lxid;
+    public void setBzid(Integer bzid) {
+        this.bzid = bzid;
     }
 
-    public String getLxname() {
-        return lxname;
+    public String getBzname() {
+        return bzname;
     }
 
-    public void setLxname(String lxname) {
-        this.lxname = lxname == null ? null : lxname.trim();
+    public void setBzname(String bzname) {
+        this.bzname = bzname;
     }
 
     public Integer getState() {

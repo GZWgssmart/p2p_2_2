@@ -27,9 +27,9 @@ public class DynamicController {
     @Autowired
     private DynamicService dynamicService;
 
-    @RequestMapping("list_dynamic")
+    @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager listPager(Long offset, Long limit) {
+    public Pager pager_criteria(Long offset, Long limit) {
         return dynamicService.listCriteria(offset,limit,null);
     }
 

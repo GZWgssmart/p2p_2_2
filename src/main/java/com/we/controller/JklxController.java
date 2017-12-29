@@ -60,7 +60,7 @@ public class JklxController {
 
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pager(Long offset,Long limit,Jklx jklx) {
+    public Pager pager_criteria(Long offset,Long limit,Jklx jklx) {
         return jklxService.listCriteria(offset,limit,jklx);
     }
 

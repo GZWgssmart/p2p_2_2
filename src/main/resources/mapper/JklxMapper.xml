@@ -72,4 +72,12 @@
   <select id="listCombobox" resultType="com.we.vo.ComboboxVO">
     SELECT lxid AS 'id', lxname AS 'text' FROM jklx WHERE state = 1;
   </select>
+  <select id="listCriteria" resultType="jklx">
+    SELECT * FROM jklx
+    LIMIT #{pager.offset}, #{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT count(lxid) FROM jklx
+  </select>
 </mapper>
