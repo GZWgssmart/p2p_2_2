@@ -1,42 +1,77 @@
 package com.we.bean;
 
 public class Jur {
-    private Integer jid;
 
-    private String jurl;
+    private Integer id;
+    private Integer parentId;
+    private String name;
+    private String url;
+    private String perms;
+    private Integer type;
+    private String inco;
+    private Integer orderNum;
 
-    private String content;
-
-    public Integer getJid() {
-        return jid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setJid(Integer jid) {
-        this.jid = jid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getJurl() {
-        return jurl;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setJurl(String jurl) {
-        this.jurl = jurl == null ? null : jurl.trim();
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
-    public String getContent() {
-        return content;
+    public String getName() {
+        return name;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Jur{" +
-                "jid=" + jid +
-                ", jurl='" + jurl + '\'' +
-                ", content='" + content + '\'' +
-                '}';
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getPerms() {
+        return perms;
+    }
+
+    public void setPerms(String perms) {
+        this.perms = perms;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getInco() {
+        return inco;
+    }
+
+    public void setInco(String inco) {
+        this.inco = inco;
+    }
+
+    public Integer getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
     }
 }

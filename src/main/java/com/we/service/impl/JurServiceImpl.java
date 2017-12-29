@@ -8,6 +8,8 @@ import com.we.service.JurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JurServiceImpl extends AbstractBaseService implements JurService {
 
@@ -34,6 +36,11 @@ public class JurServiceImpl extends AbstractBaseService implements JurService {
         Pager pager = new Pager();
         pager.setRows(jurDAO.listByRoleId(roleId));
         return pager;
+    }
+
+    @Override
+    public List<Object> listTreeVO() {
+        return jurDAO.listTreeVO();
     }
 
 

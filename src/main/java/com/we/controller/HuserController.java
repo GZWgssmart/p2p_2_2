@@ -39,7 +39,7 @@ public class HuserController {
         return "huser/all_dynamic";
     }
 
-    @RequestMapping("all_admin_page")
+        @RequestMapping("all_admin_page")
     public String allAdminPage() {
         return "huser/allAdmin";
     }

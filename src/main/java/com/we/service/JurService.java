@@ -19,4 +19,5 @@ public interface JurService extends BaseService {
     
     Pager listByRoleId(Integer roleId);
 
+    List<Object> listTreeVO();
 }

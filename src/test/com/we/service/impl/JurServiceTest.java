@@ -17,10 +17,10 @@ public class JurServiceTest extends BaseTest {
 //        jur.setJurl("user/save");
 //        jur.setContent("user:save");
 
-        Jur jur = new Jur();
-        jur.setJurl("borrow/pass");
-        jur.setContent("borrower:pass");
-        jurService.save(jur);
+//        Jur jur = new Jur();
+//        jur.setJurl("borrow/pass");
+//        jur.setContent("borrower:pass");
+//        jurService.save(jur);
     }
 
     @Test

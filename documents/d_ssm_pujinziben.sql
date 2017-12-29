@@ -174,11 +174,17 @@ CREATE TABLE jklx(
 INSERT INTO jklx(lxname) VALUES ('净值标'), ('抵押标'), ('流转标'), ('信用标'), ('担保标');
 
 DROP TABLE IF EXISTS jur;
-CREATE TABLE jur(
-  jid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
-  jurl VARCHAR(1000) COMMENT '权限url',
-  content VARCHAR(500) COMMENT '内容'
-)ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '权限表';
+CREATE TABLE `jur` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `parent_id` bigint COMMENT '父菜单ID，一级菜单为0',
+  `name` varchar(50) COMMENT '菜单名称',
+  `url` varchar(200) COMMENT '菜单URL',
+  `perms` varchar(500) COMMENT '授权(多个用逗号分隔，如：user:list,user:create)',
+  `type` int COMMENT '类型   0：目录   1：菜单   2：按钮',
+  `icon` varchar(50) COMMENT '菜单图标',
+  `order_num` int COMMENT '排序',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 DROP TABLE IF EXISTS role;
 CREATE TABLE role (

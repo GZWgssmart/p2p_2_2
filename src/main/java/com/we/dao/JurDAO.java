@@ -15,4 +15,6 @@ public interface JurDAO extends BaseDAO {
     Long countAll();
 
     List<Object> listByRoleId(Integer roleId);
+
+    List<Object> listTreeVO();
 }

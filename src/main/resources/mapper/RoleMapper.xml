@@ -23,9 +23,10 @@
     <selectKey keyProperty="jid" order="AFTER" resultType="java.lang.Integer">
     SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into role ( rname, content
+    insert into role ( rname, content,create_time
       )
-    values (#{rname,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
+    values (#{rname,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+      #{createTime}
       )
   </insert>
   <insert id="saveSelective" parameterType="com.we.bean.Role" >
@@ -74,7 +75,10 @@
 
 
   <select id="listPager" resultType="com.we.bean.Role">
-    select * from role limit #{pager.offset}, #{pager.limit}
+    select * from role
+    <if test="pager.offset != null and pager.limit!= null" >
+      limit #{pager.offset}, #{pager.limit}
+    </if>
   </select>
 
   <select id="countAll" resultType="java.lang.Long">
