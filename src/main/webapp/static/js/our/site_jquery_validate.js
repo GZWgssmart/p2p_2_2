@@ -123,6 +123,11 @@ $(function(){
         return this.optional(element) || (tel.test(value));
     }, "请正确填写您的电话号码。");
 
+    jQuery.validator.addMethod("isBankCard", function(value, element) {
+        var card = /^([1-9]{1})(\d{14}|\d{18})$/;
+        return this.optional(element) || (card.test(value));
+    }, "请正确填写您的银行卡号");
+
     // 联系电话(手机/电话皆可)验证   
     jQuery.validator.addMethod("isTel", function(value,element) {
         var length = value.length;

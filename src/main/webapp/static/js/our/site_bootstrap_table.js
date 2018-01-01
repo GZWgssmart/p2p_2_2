@@ -69,8 +69,8 @@ var setTable = {
         return ids;
     },
     openUpdateModal: function (tableId, formId, prefix, modalId) {
-        if (setTable.singleSelect(tableId)) {
-            var row = $('#' + tableId).bootstrapTable('getSelections');
+        var row = $('#' + tableId).bootstrapTable('getSelections');
+        if (row) {
             var reRow = setTable.rebuildRow(row[0], prefix);
             var myForm = $('#' + formId);
             myForm.form('load', reRow);

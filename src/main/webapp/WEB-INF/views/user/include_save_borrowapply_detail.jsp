@@ -14,6 +14,7 @@
                     <input type="hidden" id="baid-input" name="baid"/>
                     <input type="hidden" id="detail-money-input" name="money"/>
                     <input type="hidden" name="ypic" id="ypic-input">
+                    <input type="hidden" name="cpname" id="cpname-input">
                     <div class="form-group">
                         <label for="fpic-input" class="col-sm-2 control-label">法人身份证</label>
                         <div class="col-sm-10">
@@ -60,6 +61,12 @@
                         <label for="guarantee-input" class="col-sm-2 control-label">保障措施</label>
                         <div class="col-sm-10">
                             <textarea style="height: 100px;" name="guarantee" id="guarantee-input" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hksource-input" class="col-sm-2 control-label">还款来源</label>
+                        <div class="col-sm-10">
+                            <textarea style="height: 100px;" name="hksource" id="hksource-input" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="form-group">

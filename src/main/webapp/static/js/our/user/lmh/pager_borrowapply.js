@@ -54,7 +54,7 @@ var pagerBorrow = {
                 setTable.showModal('save-borrowapply-detail-modal');
                 $('#baid-input').val(row.baid);
                 $('#detail-money-input').val(row.money);
-                $('#nprofit-input').val(pagerBorrow.initYearProfit(row.lxname));
+                $('#nprofit-input').val(pagerBorrow.initYearProfitCpname(row.lxname));
                 return $('#save-borrowapply-detail-form').validate({
                     onfocusout: function(element){
                         $(element).valid();
@@ -67,7 +67,8 @@ var pagerBorrow = {
                             isIdCardNo: true
                         },
                         'qpic': {
-                          required: true
+                            required: true,
+                            isBankCard: true
                         },
                         'mpurpose': {
                             required: true
@@ -76,7 +77,7 @@ var pagerBorrow = {
                             required: true
                         },
                         'suggest': {
-                          required: true
+                            required: true
                         },
                         'xmdescrip': {
                             required: true
@@ -86,8 +87,8 @@ var pagerBorrow = {
                         },
                         'nprofit': {
                             required: true,
-                            minValue: 0,
-                            maxValue: 100
+                            min: 0,
+                            max: 100
                         },
                         'way': {
                             required: true
@@ -115,10 +116,15 @@ var pagerBorrow = {
             submitForm.save('/borrowapply/save', 'save-borrowapply-form', 'borrowapply-list', 'save-borrowapply-modal');
         },
         saveDetail: function () {
-
+            submitForm.setFileName('ypic-input', 'ypic-file');
+            submitForm.ajaxSave('/borrowdetail/save', 'save-borrowapply-detail-form', 'borrowapply-list', 'save-borrowapply-detail-modal');
         }
     },
-    initYearProfit: function (lxname) {
+    initYearProfitCpname: function (lxname) {
+        var cpInput = $('#cpname-input');
+        var nowDate = new Date();
+        alert('pjb' + nowDate);
+        /*
         if (lxname === '普金保') {
             return 8.0;
         } else if (lxname === '恒金保') {
@@ -127,6 +133,6 @@ var pagerBorrow = {
             return 10.0;
         } else  if (lxname === '新手标') {
             return 11.0;
-        }
+        }*/
     }
 };
