@@ -20,6 +20,14 @@
     from usermoney
     where umid = #{umid,jdbcType=INTEGER}
   </select>
+
+  <select id="getByUd" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from usermoney
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+
   <delete id="removeById" parameterType="java.lang.Integer" >
     delete from usermoney
     where umid = #{umid,jdbcType=INTEGER}

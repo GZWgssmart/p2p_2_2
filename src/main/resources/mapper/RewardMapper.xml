@@ -103,4 +103,8 @@
       date = #{date,jdbcType=TIMESTAMP}
     where umid = #{umid,jdbcType=INTEGER}
   </update>
+  
+  <select id="getByIdAndTime" resultType="com.we.bean.Reward">
+    select * from reward where uid = #{id} and date = #{time}
+  </select>
 </mapper>

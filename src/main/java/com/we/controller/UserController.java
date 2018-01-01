@@ -185,12 +185,14 @@ public class UserController {
             //比对验证码
             if(code.equals(phoneCode)){
                 //验证码正确
+                phoneCode ="";
                 statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_SUCCESS);
             }else{
                 //验证码失败
                 statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_FAIL);
             }
         }
+
         return statusVO;
     }
 
@@ -218,6 +220,7 @@ public class UserController {
             if(code.equals(phoneCode)){
                 //验证码正确
                 statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_SUCCESS);
+                phoneCode ="";
             }else{
                 //验证码失败
                 statusVO = RequestResultVO.status(RequestResultEnum.VERIFY_FAIL);
