@@ -92,4 +92,19 @@ public class Usermoney {
     public void setJlmoney(BigDecimal jlmoney) {
         this.jlmoney = jlmoney;
     }
+
+    @Override
+    public String toString() {
+        return "Usermoney{" +
+                "umid=" + umid +
+                ", uid=" + uid +
+                ", zymoney=" + zymoney +
+                ", kymoney=" + kymoney +
+                ", symoney=" + symoney +
+                ", tzmoney=" + tzmoney +
+                ", djmoney=" + djmoney +
+                ", dsmoney=" + dsmoney +
+                ", jlmoney=" + jlmoney +
+                '}';
+    }
 }

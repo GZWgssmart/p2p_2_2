@@ -2,6 +2,8 @@ package com.we.service;
 
 import com.we.bean.User;
 
+import java.util.List;
+
 public interface UserService extends BaseService {
 
     /**
@@ -30,5 +32,11 @@ public interface UserService extends BaseService {
      * @param user
      */
     void updateByPhone(User user);
+
+    /**
+     * 查询投资过的用户
+     * @return
+     */
+    List<Integer> getUserId();
 
 }

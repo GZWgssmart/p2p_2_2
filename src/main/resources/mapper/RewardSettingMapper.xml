@@ -79,4 +79,7 @@
       percent = #{percent,jdbcType=DOUBLE}
     where rwid = #{rwid,jdbcType=INTEGER}
   </update>
+  <select id="getPercentByMoney" resultType="double">
+     select percent from reward_setting where minmoney <![CDATA[<=]]> #{money} and #{money} <![CDATA[<]]> maxmoney
+  </select>
 </mapper>

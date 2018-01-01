@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created on 2017/12/21 14:27
@@ -45,5 +46,10 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
     @Override
     public void updateByPhone(User user) {
         userDAO.updateByPhone(user);
+    }
+
+    @Override
+    public List<Integer> getUserId() {
+        return userDAO.getUserId();
     }
 }

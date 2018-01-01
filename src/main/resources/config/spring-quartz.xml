@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress SpringFacetInspection -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="cronJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="name" value="cronJobDetail" />
+        <property name="group" value="group1" />
+        <property name="jobClass" value="com.we.quertz.reward" />
+        <property name="durability" value="true" />
+    </bean>
+
+    <bean id="cronJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="cronJobTrigger" />
+        <property name="group" value="group1" />
+        <property name="jobDetail" ref="cronJobDetail" />
+        <property name="cronExpression" value="00 00 0 30 3,6,9,12 ? *" />
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="cronJobDetail" />
+            </list>
+        </property>
+        <property name="triggers">
+            <list>
+                <ref bean="cronJobTrigger" />
+            </list>
+        </property>
+    </bean>
+
+</beans>

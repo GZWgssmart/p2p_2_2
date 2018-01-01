@@ -19,4 +19,9 @@ public class RewardSettingServiceImpl extends AbstractBaseService implements Rew
         super.setBaseDAO(rewardSettingDAO);
         this.rewardSettingDAO = rewardSettingDAO;
     }
+
+    @Override
+    public Double getPercentByMoney(Integer money) {
+        return rewardSettingDAO.getPercentByMoney(money);
+    }
 }

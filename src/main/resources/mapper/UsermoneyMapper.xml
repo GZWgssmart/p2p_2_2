@@ -21,6 +21,13 @@
     from usermoney
     where umid = #{umid,jdbcType=INTEGER}
   </select>
+
+  <select id="getByUid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from usermoney
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
   <delete id="removeById" parameterType="java.lang.Integer" >
     delete from usermoney
     where umid = #{umid,jdbcType=INTEGER}
@@ -126,6 +133,35 @@
     </set>
     where umid = #{umid,jdbcType=INTEGER}
   </update>
+
+  <update id="updateByUid" parameterType="com.we.bean.Usermoney" >
+    update usermoney
+    <set >
+      <if test="zymoney != null" >
+        zymoney = #{zymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="kymoney != null" >
+        kymoney = #{kymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="symoney != null" >
+        symoney = #{symoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tzmoney != null" >
+        tzmoney = #{tzmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="djmoney != null" >
+        djmoney = #{djmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="dsmoney != null" >
+        dsmoney = #{dsmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="jlmoney != null" >
+        jlmoney = #{jlmoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+
   <update id="update" parameterType="com.we.bean.Usermoney" >
     update usermoney
     set uid = #{uid,jdbcType=INTEGER},

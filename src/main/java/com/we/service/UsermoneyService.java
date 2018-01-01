@@ -9,4 +9,6 @@ public interface UsermoneyService extends BaseService {
 
     Usermoney getByUid(Integer uid);
 
+    void updateByUid(Object obj);
+
 }

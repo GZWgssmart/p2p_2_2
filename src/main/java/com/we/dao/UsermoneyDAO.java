@@ -5,4 +5,6 @@ import com.we.bean.Usermoney;
 public interface UsermoneyDAO extends BaseDAO {
 
     Usermoney getByUid(Integer uid);
+
+    void updateByUid(Object obj);
 }

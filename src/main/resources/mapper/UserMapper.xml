@@ -248,4 +248,8 @@
     </set>
     where phone = #{phone,jdbcType=VARCHAR}
   </update>
+
+  <select id="getUserId" resultType="integer">
+    select u.uid from user u, usermoney um where u.uid = um.uid;
+  </select>
 </mapper>

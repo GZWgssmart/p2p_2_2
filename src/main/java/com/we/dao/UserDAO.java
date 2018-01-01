@@ -2,6 +2,9 @@ package com.we.dao;
 
 import com.we.bean.User;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public interface UserDAO extends BaseDAO {
 
@@ -31,5 +34,11 @@ public interface UserDAO extends BaseDAO {
      * @param user
      */
     void updateByPhone(User user);
+
+    /**
+     * 查询投资过的用户
+     * @return
+     */
+    List<Integer> getUserId();
 
 }
