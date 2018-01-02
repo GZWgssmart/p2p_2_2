@@ -4,9 +4,9 @@ public interface UserLetterService extends BaseService {
 
     /***
      *
-     * @param ids å¤šä¸ªid
-     * @param status ä¿¡æ¯çš„çŠ¶æ€
-     * @returnå½±å“çš„è¡Œæ•°
+     * @param ids ¶à¸öid
+     * @param status ĞÅÏ¢µÄ×´Ì¬
+     * @returnÓ°ÏìµÄĞĞÊı
      */
     Integer updateStatus(String ids,String status);
 }
