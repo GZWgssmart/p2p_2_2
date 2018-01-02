@@ -81,8 +81,14 @@ public class UserController {
 
     @PostMapping("register")
     @ResponseBody
-    public RequestResultVO register(User user) {
+    public RequestResultVO register(User user, String pcode) {
         RequestResultVO statusVO = null;
+        //手机验证码
+        if(!(pcode == null || pcode == "" || phoneCode.equals(pcode))){
+            statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_CODE);
+            return statusVO;
+        }
+
         //账号 是否已存在
         if(userService.getByPhone(user.getPhone()) != null) {
             //数据库已存在该账号
@@ -104,6 +110,7 @@ public class UserController {
                     recommend.setTid(user.getTid());
                     recommend.setUid(user.getUid());
                     recommendService.saveSelective(recommend);
+                    phoneCode = "";
                     statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_SUCCESS);
                 }else{
                     //推荐码不存在
@@ -298,7 +305,14 @@ public class UserController {
         return statusVO;
     }
 
-
+    @ResponseBody
+    @RequestMapping("get_phone_code")
+    public RequestResultVO getPhoneCode(String phone){
+        RequestResultVO statusVO = null;
+        phoneCode = "123456";//IndustrySMS.execute(phone);
+        statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
+        return statusVO;
+    }
 
     @Resource
     public void setUserService(UserService userService) {

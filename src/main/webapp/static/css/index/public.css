@@ -1,5 +1,4 @@
-﻿@charset "utf-8";
-* {
+﻿* {
     word-wrap: break-word
 }
 
@@ -280,6 +279,19 @@ color: #999;
     padding-left: 40px;
     margin: 10px 0;
     color: #e62538;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transition-duration: .3s;
+    -webkit-transition-duration: .3s;
+    -moz-transition-duration: .3s;
+}
+
+.ok-msg {
+    height: 22px;
+    line-height: 22px;
+    background-color: #ffeded;
+    padding-left: 40px;
+    margin: 10px 0;
     opacity: 0;
     filter: alpha(opacity=0);
     transition-duration: .3s;
