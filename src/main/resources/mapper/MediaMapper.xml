@@ -86,7 +86,7 @@
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="pic != null" >
+      <if test="pic != null and !pic.equals('')" >
         pic = #{pic,jdbcType=VARCHAR},
       </if>
       <if test="date != null" >
@@ -118,4 +118,18 @@
       url = #{url,jdbcType=VARCHAR}
     where mid = #{mid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="com.we.bean.Media">
+    <![CDATA[
+      select * from media
+      order by date desc limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="countCriteria" resultType="long">
+    <![CDATA[
+	  select count(mid) from media
+    ]]>
+  </select>
+
 </mapper>

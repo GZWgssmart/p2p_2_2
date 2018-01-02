@@ -40,6 +40,11 @@ public class HuserController {
         return "huser/all_dynamic";
     }
 
+    @RequestMapping("all_media_page")
+    public String allMediaPage() {
+        return "huser/all_media";
+    }
+
         @RequestMapping("all_admin_page")
     public String allAdminPage() {
         return "huser/allAdmin";
