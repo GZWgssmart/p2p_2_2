@@ -80,7 +80,7 @@
       <if test="date != null" >
         date = #{date,jdbcType=TIMESTAMP},
       </if>
-      <if test="pic != null" >
+      <if test="pic != null and !pic.equals('')" >
         pic = #{pic,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
@@ -100,7 +100,7 @@
   <update id="update" parameterType="com.we.bean.Dynamic" >
     update dynamic
     set title = #{title,jdbcType=VARCHAR},
-      date = #{date,jdbcType=TIMESTAMP},
+--       date = #{date,jdbcType=TIMESTAMP},
       pic = #{pic,jdbcType=VARCHAR}
     where dyid = #{dyid,jdbcType=INTEGER}
   </update>

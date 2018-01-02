@@ -29,9 +29,9 @@ public class DynamicServiceTest extends BaseTest {
     @Test
     public void testUpdate() {
         Dynamic dynamic = new Dynamic();
-        dynamic.setDyid(1);
-        dynamic.setPic("22222222");
-        dynamicService.update(dynamic);
+        dynamic.setDyid(45);
+        dynamic.setTitle("123");
+        dynamicService.updateSelective(dynamic);
     }
 
     @Test

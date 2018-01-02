@@ -54,6 +54,30 @@ public class DynamicController {
         return resultVO;
     }
 
+    @RequestMapping("update")
+    @ResponseBody
+    public RequestResultVO update(Dynamic dynamic, MultipartFile file) {
+        RequestResultVO resultVO = null;
+        try {
+            dynamic.setDyid(dynamic.getDyid());
+            if (!dynamic.getPic().equals("")) {
+                String imgPath = PathUtils.mkUploadImgs();
+                file.transferTo(new File(imgPath, file.getOriginalFilename()));
+                dynamic.setPic(OurConstants.PERFIX_IMG_PATH + dynamic.getPic());
+            }
+            dynamic.setContent(dynamic.getContent());
+            dynamicService.updateSelective(dynamic);
+            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        } catch (IOException e) {
+            e.printStackTrace();
+            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        }
+        return resultVO;
+    }
+
     @RequestMapping("ueditor")
     public String uEditor() {
         return "huser/dynamic/uEditor";

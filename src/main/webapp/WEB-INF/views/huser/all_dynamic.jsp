@@ -25,7 +25,7 @@
     <button class="btn btn-default" data-toggle="modal" onclick="pagerHuserDynamic.updateDynamic();">修改</button>
 </div>
 <table id="dynamic-list" class="table table-hover"
-       data-url="<%=path%>/dynamic/list_dynamic">
+       data-url="<%=path%>/dynamic/pager_criteria">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
@@ -60,6 +60,11 @@
     $("#pic").fileinput({
         'allowedFileExtensions' : ['jpg', 'png','gif'],
         showUpload: false //是否显示上传按钮
+    });
+
+    $("#pic1").fileinput({
+        'allowedFileExtensions' : ['jpg', 'png','gif'],
+        showUpload: false, //是否显示上传按钮
     });
 
 </script>
