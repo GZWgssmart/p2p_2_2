@@ -138,4 +138,7 @@
       where ru.huid = h.huid
       and r.jid = ru.rid
     </select>
+
+
+
 </mapper>

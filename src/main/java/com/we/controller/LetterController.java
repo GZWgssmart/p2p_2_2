@@ -55,7 +55,7 @@ public class LetterController {
     }
 
     /**
-     * 条件分页查询用户的 站内信
+     * 条件分页查询前台用户的 站内信
      * @param offset 开始索引
      * @param limit 查询个数
      * @param userLetter 用于接收页面传递的uid
@@ -65,6 +65,19 @@ public class LetterController {
     @ResponseBody
     public Pager pagerCriteria(Long offset, Long limit, UserLetter userLetter) {
         return letterService.listCriteria(offset,limit, userLetter);
+    }
+
+    /**
+     * 后台用户查看所有站内信
+     * @param offset 开始索引
+     * @param limit 查询个数
+     * @param letter 用于接收页面传递的uid
+     * @return 带结果的分页对象
+     */
+    @RequestMapping("all_pager_criteria")
+    @ResponseBody
+    public Pager listAllCriteria(Long offset, Long limit, Letter letter) {
+        return letterService.listAllLetter(offset,limit, letter);
     }
 
     @Resource

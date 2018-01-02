@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.Letter;
 import com.we.common.Pager;
 import com.we.dao.LetterDAO;
 import com.we.service.AbstractBaseService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class LetterServiceImpl extends AbstractBaseService implements LetterService {
@@ -18,5 +20,18 @@ public class LetterServiceImpl extends AbstractBaseService implements LetterServ
     public void setLetterDAO(LetterDAO letterDAO) {
         super.setBaseDAO(letterDAO);
         this.letterDAO = letterDAO;
+    }
+
+    @Override
+    public Pager listAllLetter(Long offset, Long limit, Object query) {
+        Pager pager = new Pager(offset,limit);
+        pager.setRows(letterDAO.listAllLetter(pager, query));
+        pager.setTotal(letterDAO.countAllLetter(query));
+        return pager;
+    }
+
+    @Override
+    public Long countAllLetter(Object obj) {
+        return letterDAO.countAllLetter(obj);
     }
 }

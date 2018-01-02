@@ -48,6 +48,23 @@
                     </ul>
 
                 </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-table"></i>
+                        <span class="nav-label">信息管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/user/all_letter_page">消息中心</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/letter/index_pager">最新公告</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="#">
                         <i class="fa fa fa-bar-chart-o"></i>
@@ -100,21 +117,7 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-table"></i>
-                        <span class="nav-label">信息管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/user/all_letter_page">消息中心</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/letter/index_pager">最新公告</a>
-                        </li>
-                    </ul>
-                </li>
+
 
             </ul>
         </div>

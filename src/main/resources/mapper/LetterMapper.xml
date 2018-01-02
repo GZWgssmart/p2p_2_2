@@ -153,6 +153,19 @@
         </if>
     </select>
 
+    <select id="countAllLetter" resultType="java.lang.Long">
+        <![CDATA[
+	  select count(lid) from letter
+    ]]>
+    </select>
+
+    <select id="listAllLetter" resultType="com.we.bean.Letter">
+      <![CDATA[
+      select * from letter
+      order by date desc limit #{pager.offset} ,#{pager.limit}
+    ]]>
+    </select>
+
 
 
 </mapper>
