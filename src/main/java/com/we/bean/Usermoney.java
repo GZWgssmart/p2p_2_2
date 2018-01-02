@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 public class Usermoney {
     private Integer umid;
 
+    private Integer uid;
+
     private BigDecimal zymoney;
 
     private BigDecimal kymoney;
@@ -25,6 +27,14 @@ public class Usermoney {
 
     public void setUmid(Integer umid) {
         this.umid = umid;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public BigDecimal getZymoney() {

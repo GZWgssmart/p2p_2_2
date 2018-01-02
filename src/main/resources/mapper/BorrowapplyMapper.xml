@@ -169,7 +169,7 @@
 
     <select id="listCriteria" resultType="com.we.vo.BorrowapplyVO">
         SELECT
-        b.baid,b.rname,b.money, s.isok AS 'state', b.deadline, b.term, b.time AS 'applyTime',
+        b.baid,b.rname,b.money, b.state, b.deadline, b.term, b.time AS 'applyTime',
         s.date AS 'checkTime', s.excuse, bz.bzname, j.lxname
         <include refid="queryCriteria"/>
         ORDER BY b.time DESC

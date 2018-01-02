@@ -14,4 +14,9 @@ public class OurConstants {
     public static final Integer NO_VIP = 0;
 
     public static final String PERFIX_IMG_PATH = "/static/uploads/img/";
+
+    /**
+     * 申请借款的状态：审核中
+     */
+    public static final Integer BORROW_CHECK = 2;
 }

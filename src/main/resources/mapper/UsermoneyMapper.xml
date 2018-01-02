@@ -3,6 +3,7 @@
 <mapper namespace="com.we.dao.UsermoneyDAO" >
   <resultMap id="BaseResultMap" type="com.we.bean.Usermoney" >
     <id column="umid" property="umid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="zymoney" property="zymoney" jdbcType="DECIMAL" />
     <result column="kymoney" property="kymoney" jdbcType="DECIMAL" />
     <result column="symoney" property="symoney" jdbcType="DECIMAL" />
@@ -12,7 +13,7 @@
     <result column="jlmoney" property="jlmoney" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
-    umid, zymoney, kymoney, symoney, tzmoney, djmoney, dsmoney, jlmoney
+    umid, uid, zymoney, kymoney, symoney, tzmoney, djmoney, dsmoney, jlmoney
   </sql>
   <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,31 +21,28 @@
     from usermoney
     where umid = #{umid,jdbcType=INTEGER}
   </select>
-
-  <select id="getByUd" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select
-    <include refid="Base_Column_List" />
-    from usermoney
-    where uid = #{uid,jdbcType=INTEGER}
-  </select>
-
   <delete id="removeById" parameterType="java.lang.Integer" >
     delete from usermoney
     where umid = #{umid,jdbcType=INTEGER}
   </delete>
   <insert id="save" parameterType="com.we.bean.Usermoney" >
-    insert into usermoney (umid, zymoney, kymoney, 
-      symoney, tzmoney, djmoney, 
-      dsmoney, jlmoney)
-    values (#{umid,jdbcType=INTEGER}, #{zymoney,jdbcType=DECIMAL}, #{kymoney,jdbcType=DECIMAL}, 
-      #{symoney,jdbcType=DECIMAL}, #{tzmoney,jdbcType=DECIMAL}, #{djmoney,jdbcType=DECIMAL}, 
-      #{dsmoney,jdbcType=DECIMAL}, #{jlmoney,jdbcType=DECIMAL})
+    insert into usermoney (umid, uid, zymoney, 
+      kymoney, symoney, tzmoney, 
+      djmoney, dsmoney, jlmoney
+      )
+    values (#{umid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{zymoney,jdbcType=DECIMAL}, 
+      #{kymoney,jdbcType=DECIMAL}, #{symoney,jdbcType=DECIMAL}, #{tzmoney,jdbcType=DECIMAL}, 
+      #{djmoney,jdbcType=DECIMAL}, #{dsmoney,jdbcType=DECIMAL}, #{jlmoney,jdbcType=DECIMAL}
+      )
   </insert>
   <insert id="saveSelective" parameterType="com.we.bean.Usermoney" >
     insert into usermoney
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="umid != null" >
         umid,
+      </if>
+      <if test="uid != null" >
+        uid,
       </if>
       <if test="zymoney != null" >
         zymoney,
@@ -72,6 +70,9 @@
       <if test="umid != null" >
         #{umid,jdbcType=INTEGER},
       </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
       <if test="zymoney != null" >
         #{zymoney,jdbcType=DECIMAL},
       </if>
@@ -98,6 +99,9 @@
   <update id="updateSelective" parameterType="com.we.bean.Usermoney" >
     update usermoney
     <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
       <if test="zymoney != null" >
         zymoney = #{zymoney,jdbcType=DECIMAL},
       </if>
@@ -124,7 +128,8 @@
   </update>
   <update id="update" parameterType="com.we.bean.Usermoney" >
     update usermoney
-    set zymoney = #{zymoney,jdbcType=DECIMAL},
+    set uid = #{uid,jdbcType=INTEGER},
+      zymoney = #{zymoney,jdbcType=DECIMAL},
       kymoney = #{kymoney,jdbcType=DECIMAL},
       symoney = #{symoney,jdbcType=DECIMAL},
       tzmoney = #{tzmoney,jdbcType=DECIMAL},

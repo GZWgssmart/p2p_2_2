@@ -219,6 +219,7 @@ CREATE TABLE `dynamic` (
 DROP TABLE IF EXISTS usermoney;
 CREATE TABLE usermoney (
   umid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+  uid INT COMMENT '用户id',
   zymoney DECIMAL(10, 2) COMMENT '总资产',
   kymoney DECIMAL(10, 2) COMMENT '可用余额',
   symoney DECIMAL(10, 2) COMMENT '收益总额',

@@ -1,10 +1,12 @@
 package com.we.controller;
 
+import com.we.bean.Borrowapply;
 import com.we.bean.Borrowdetail;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.common.PathUtils;
 import com.we.enums.RequestResultEnum;
+import com.we.service.BorrowapplyService;
 import com.we.service.BorrowdetailService;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,7 @@ import java.util.Calendar;
 public class BorrowdetailController {
 
     private BorrowdetailService borrowdetailService;
+    private BorrowapplyService borrowapplyService;
 
     @PostMapping("save")
     @ResponseBody
@@ -33,6 +36,10 @@ public class BorrowdetailController {
             file.transferTo(new File(imgPath, file.getOriginalFilename()));
             borrowdetail.setYpic(OurConstants.PERFIX_IMG_PATH + borrowdetail.getYpic());
             borrowdetailService.save(borrowdetail);
+            Borrowapply borrowapply = new Borrowapply();
+            borrowapply.setBaid(borrowdetail.getBaid());
+            borrowapply.setState(OurConstants.BORROW_CHECK);
+            borrowapplyService.updateSelective(borrowapply);
             resultVO = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         } catch (IOException e) {
             e.printStackTrace();
@@ -47,5 +54,10 @@ public class BorrowdetailController {
     @Resource
     public void setBorrowdetailService(BorrowdetailService borrowdetailService) {
         this.borrowdetailService = borrowdetailService;
+    }
+
+    @Resource
+    public void setBorrowapplyService(BorrowapplyService borrowapplyService) {
+        this.borrowapplyService = borrowapplyService;
     }
 }

@@ -27,7 +27,7 @@
             class="btn btn-success">填写详情</button>
 </div>
 <table id="borrowapply-list" class="table table-hover"
-       data-url="<%=path%>/borrowapply/list_criteria?uid=${sessionScope.user.uid}">
+       data-url="<%=path%>/borrowapply/pager_criteria?uid=${sessionScope.user.uid}">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
