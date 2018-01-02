@@ -11,51 +11,48 @@ var pagerBorrow = {
         }
     },
     formValidate: {
-        save_borrowapply: function (modalId, formId) {
+        save_borrowapply: function () {
             setTable.showModal('save-borrowapply-modal');
-            return $('#save-borrowapply-form').validate({
-                onfocusout: function(element){
-                    $(element).valid();
-                },
-                debug:false,
-                onkeyup:false,
-                rules:{
-                    'rname':{
-                        required: true,
-                        isName: true
-                    },
-                    'money': {
-                        required: true,
-                        isNumberGtZero: true
-                    },
-                    'bzid': {
-                        required: true
-                    },
-                    'type': {
-                        required: true
-                    },
-                    'deadline': {
-                        required: true
-                    }
-                },
-                messages:{
-                    'bzid':{
-                        required: dataDict.form.noSelected
-                    },
-                    'type':{
-                        required: dataDict.form.noSelected
-                    }
-                }
-            });
+            return pagerBorrow.formValidate.valid.basic_validate('save-borrowapply-form');
+        },
+        update_borrowapply: function () {
+            setTable.openUpdateModal('borrowapply-list', 'update-borrowapply-form', 'update-borrowapply-modal');
+            return pagerBorrow.formValidate.valid.basic_validate('update-borrowapply-form');
         },
         save_borrowapply_detail: function () {
             var row = setTable.isSingleSelected('borrowapply-list');
             if (row) {
-                setTable.showModal('save-borrowapply-detail-modal');
-                $('#baid-input').val(row.baid);
-                $('#detail-money-input').val(row.money);
-                $('#nprofit-input').val(pagerBorrow.initYearProfitCpname(row.lxname));
-                return $('#save-borrowapply-detail-form').validate({
+                if (row.state === 3) {
+                    setTable.showModal('save-borrowapply-detail-modal');
+                    $('#baid-input').val(row.baid);
+                    $('#detail-money-input').val(row.money);
+                    $('#nprofit-input').val(pagerBorrow.initYearProfitCpname(row.lxname));
+                    return pagerBorrow.formValidate.valid.detail_validate('save-borrowapply-detail-form');
+                } else {
+                    swtAlert.warn_info('请选择\'未填写借款详情\'的数据进行填写');
+                }
+            }
+        },
+        update_borrow_detail: function () {
+            var row = setTable.isSingleSelected('borrowapply-list');
+            if (row) {
+                if (row.state === 2) {
+                    setTable.showModal('update-borrowapply-detail-modal');
+                    alert(row.ypic);
+                    $.get('/borrowdetail/getByApplyId/' + row.baid,
+                        function (data) {
+                            $('#ypic-img').attr('src', contextPath + data.ypic);
+                            $('#update-borrowapply-detail-form').form('load', data);
+                        }, 'json');
+                    return pagerBorrow.formValidate.valid.detail_validate('update-borrowapply-detail-form');
+                } else {
+                    swtAlert.warn_info('请选择\'审核中\'的数据进行修改');
+                }
+            }
+        },
+        valid: {
+            detail_validate: function (detailFormId) {
+                return $('#' + detailFormId).validate({
                     onfocusout: function(element){
                         $(element).valid();
                     },
@@ -98,17 +95,53 @@ var pagerBorrow = {
 
                     }
                 });
+            },
+            basic_validate: function (basicFormId) {
+                return $('#' + basicFormId).validate({
+                    onfocusout: function(element){
+                        $(element).valid();
+                    },
+                    debug:false,
+                    onkeyup:false,
+                    rules:{
+                        'rname':{
+                            required: true,
+                            isName: true
+                        },
+                        'money': {
+                            required: true,
+                            isNumberGtZero: true
+                        },
+                        'bzid': {
+                            required: true
+                        },
+                        'type': {
+                            required: true
+                        },
+                        'deadline': {
+                            required: true
+                        }
+                    },
+                    messages:{
+                        'bzid':{
+                            required: dataDict.form.noSelected
+                        },
+                        'type':{
+                            required: dataDict.form.noSelected
+                        }
+                    }
+                });
             }
         }
     },
     select2: {
         //加载 标种下拉框 的数据
         loadBzType: function () {
-            ourSelect2.idLoadNoSearch('/bz/list_combobox', '请选择标种', 'input-bzname');
+            ourSelect2.classLoadNoSearch('/bz/list_combobox', '请选择标种', 'bz-select2');
         },
         //加载 借款类型下拉框 的数据
         loadJkType: function () {
-            ourSelect2.idLoadNoSearch('/jklx/list_combobox', '请选择借款类型', 'input-lxname');
+            ourSelect2.classLoadNoSearch('/jklx/list_combobox', '请选择借款类型', 'jkxl-select2');
         }
     },
     submitForm: {
@@ -118,6 +151,13 @@ var pagerBorrow = {
         saveDetail: function () {
             submitForm.setFileName('ypic-input', 'ypic-file');
             submitForm.ajaxSave('/borrowdetail/save', 'save-borrowapply-detail-form', 'borrowapply-list', 'save-borrowapply-detail-modal');
+        },
+        updateBasic: function () {
+            submitForm.update('/borrowapply/update', 'update-borrowapply-form', 'borrowapply-list', 'update-borrowapply-modal');
+        },
+        updateDetail: function () {
+            submitForm.setFileName('update-ypic-input', 'update-ypic-file');
+            submitForm.ajaxSave('/borrowdetail/update', 'update-borrowapply-detail-form', 'borrowapply-list', 'update-borrowapply-detail-modal');
         }
     },
     initYearProfitCpname: function (lxname) {

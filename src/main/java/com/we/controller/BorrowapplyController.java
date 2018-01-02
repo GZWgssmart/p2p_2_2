@@ -2,16 +2,19 @@ package com.we.controller;
 
 import com.we.bean.Borrowapply;
 import com.we.bean.Borrowapply;
+import com.we.bean.Letter;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BorrowapplyService;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.Calendar;
 
 @Controller
@@ -30,6 +33,24 @@ public class BorrowapplyController {
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {
             vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }
+        return vo;
+    }
+
+    @PostMapping("update")
+    @ResponseBody
+    public RequestResultVO update(@Valid Borrowapply borrowapply, BindingResult bindingResult) {
+        RequestResultVO vo = null;
+        try {
+            if (bindingResult.hasErrors()) {
+                vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+            } else {
+                borrowapplyService.updateSelective(borrowapply);
+                vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+            }
+        }catch (RuntimeException e) {
+            e.printStackTrace();
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return vo;
     }

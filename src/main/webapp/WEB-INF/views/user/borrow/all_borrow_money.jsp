@@ -12,10 +12,10 @@
 <html>
 <head>
     <title>Title</title>
-    <%@include file="../common/css/css_bootstrap.jsp" %>
-    <%@include file="../common/css/css_bootstrap-table.jsp" %>
-    <%@include file="../common/css/css_sweetalert.jsp" %>
-    <%@include file="../common/css/css_sileinput.jsp" %>
+    <%@include file="../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../common/css/css_sweetalert.jsp" %>
+    <%@include file="../../common/css/css_sileinput.jsp" %>
 </head>
 <body>
 
@@ -23,8 +23,15 @@
     <button onclick="pagerBorrow.formValidate.save_borrowapply();"
             class="btn btn-primary">新增借款
     </button>
+    <button onclick="pagerBorrow.formValidate.update_borrowapply();"
+            class="btn btn-primary">修改基本信息
+    </button>
     <button onclick="pagerBorrow.formValidate.save_borrowapply_detail();"
-            class="btn btn-success">填写详情</button>
+            class="btn btn-success">填写详情
+    </button>
+    <button onclick="pagerBorrow.formValidate.update_borrow_detail();"
+            class="btn btn-success">修改详情
+    </button>
 </div>
 <table id="borrowapply-list" class="table table-hover"
        data-url="<%=path%>/borrowapply/pager_criteria?uid=${sessionScope.user.uid}">
@@ -46,16 +53,18 @@
 </table>
 
 <%@include file="include_save_borrowapply.jsp" %>
+<%@include file="include_update_borrowapply.jsp" %>
 <%@include file="include_save_borrowapply_detail.jsp" %>
+<%@include file="include_update_borrowapply_detail.jsp" %>
 
-<%@include file="../common/js/js_jquery.jsp" %>
-<%@include file="../common/js/js_boostrap.jsp" %>
-<%@include file="../common/js/js_boostrap_table.jsp" %>
-<%@include file="../common/js/js_select2.jsp" %>
-<%@include file="../common/js/js_sweetalert.jsp" %>
-<%@include file="../common/js/js_form.jsp" %>
-<%@include file="../common/js/js_data_dict.jsp" %>
-<%@include file="../common/js/js_fileinput.jsp" %>
+<%@include file="../../common/js/js_jquery.jsp" %>
+<%@include file="../../common/js/js_boostrap.jsp" %>
+<%@include file="../../common/js/js_boostrap_table.jsp" %>
+<%@include file="../../common/js/js_select2.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
+<%@include file="../../common/js/js_form.jsp" %>
+<%@include file="../../common/js/js_data_dict.jsp" %>
+<%@include file="../../common/js/js_fileinput.jsp" %>
 
 <script src="<%=path%>/static/js/our/user/lmh/pager_borrowapply.js"></script>
 <script>
@@ -64,8 +73,8 @@
         pagerBorrow.select2.loadBzType();//加载 标种下拉框的数据
         pagerBorrow.select2.loadJkType(); //加载 借款类型下拉框的数据
     });
-    $('#ypic-file').fileinput({
-        'allowedFileExtensions' : ['jpg', 'png','gif'],
+    $('.file-preview').fileinput({
+        'allowedFileExtensions': ['jpg', 'png', 'gif'],
         showUpload: false//是否显示上传按钮
     });
 </script>

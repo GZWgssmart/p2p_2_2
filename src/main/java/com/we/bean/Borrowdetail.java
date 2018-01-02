@@ -1,8 +1,11 @@
 package com.we.bean;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class Borrowdetail {
+
+    @NotNull
     private Integer bdid;
 
     private String fpic;

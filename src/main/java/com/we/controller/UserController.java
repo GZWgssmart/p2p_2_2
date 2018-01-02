@@ -5,7 +5,6 @@ import com.we.bean.User;
 import com.we.common.EncryptUtils;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
-import com.we.common.miaodi.IndustrySMS;
 import com.we.enums.RequestResultEnum;
 import com.we.service.RecommendService;
 import com.we.service.UserService;
@@ -47,7 +46,7 @@ public class UserController {
 
     @RequestMapping("all_borrow_money_page")
     public String allBorrowMoneyPage() {
-        return "user/all_borrow_money";
+        return "user/borrow/all_borrow_money";
     }
 
     /**

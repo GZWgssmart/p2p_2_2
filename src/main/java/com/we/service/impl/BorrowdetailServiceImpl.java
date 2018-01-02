@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.Borrowdetail;
 import com.we.dao.BorrowdetailDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.BorrowdetailService;
@@ -18,5 +19,10 @@ public class BorrowdetailServiceImpl extends AbstractBaseService implements Borr
     public void setBorrowdetailDAO(BorrowdetailDAO borrowdetailDAO) {
         super.setBaseDAO(borrowdetailDAO);
         this.borrowdetailDAO = borrowdetailDAO;
+    }
+
+    @Override
+    public Borrowdetail getByApplyId(Integer baid) {
+        return borrowdetailDAO.getByApplyId(baid);
     }
 }

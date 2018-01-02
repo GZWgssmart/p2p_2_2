@@ -68,15 +68,13 @@ var setTable = {
         }
         return ids;
     },
-    openUpdateModal: function (tableId, formId, prefix, modalId) {
-        var row = $('#' + tableId).bootstrapTable('getSelections');
+    openUpdateModal: function (tableId, formId, modalId) {
+        var row = setTable.isSingleSelected(tableId);
         if (row) {
-            var reRow = setTable.rebuildRow(row[0], prefix);
-            var myForm = $('#' + formId);
-            myForm.form('load', reRow);
+            $('#' + formId).form('load', row);
             $('#' + modalId).modal('show');
-            cashValidate.searchValid(formId).resetForm();
         }
+        return row;
     },
     rebuildRow: function (row, prefix) {
         var data = {};

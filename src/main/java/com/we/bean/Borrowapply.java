@@ -2,10 +2,12 @@ package com.we.bean;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class Borrowapply {
+    @NotNull
     private Integer baid;
 
     private String rname;

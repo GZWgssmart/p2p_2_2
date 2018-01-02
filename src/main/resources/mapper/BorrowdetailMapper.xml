@@ -233,4 +233,9 @@
       baid = #{baid,jdbcType=INTEGER}
     where bdid = #{bdid,jdbcType=INTEGER}
   </update>
+
+  <select id="getByApplyId" parameterType="java.lang.Integer" resultType="borrowdetail">
+      SELECT * FROM borrowdetail
+      WHERE baid = #{baid}
+  </select>
 </mapper>

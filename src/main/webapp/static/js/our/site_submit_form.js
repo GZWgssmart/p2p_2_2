@@ -8,7 +8,7 @@ var submitForm = {
                         swtAlert.request_success(data.message);
                         $form[0].reset();
                         $('#' + tableId).bootstrapTable('refresh');
-                        $('#' + modalId).modal('hide');
+                        setTable.hideModal(modalId);
                     } else {
                         swtAlert.request_fail(data.message);
                     }
@@ -17,17 +17,20 @@ var submitForm = {
             swtAlert.warn_info(dataDict.form.validForm);
         }
     },
-    update: function (url, formId, tableId) {
+    update: function (url, formId, tableId, modalId) {
         var $form = $('#' + formId);
-        $.post(url, $form.serialize(),
-            function (data) {
-                if (data.result === 'success') {
-                    swtAlert.request_success(data.message);
-                    $('#' + tableId).bootstrapTable('refresh');
-                } else {
-                    swtAlert.request_fail(data.message);
-                }
-            }, 'json');
+        if ($form.valid()) {
+            $.post(url, $form.serialize(),
+                function (data) {
+                    if (data.result === 'success') {
+                        swtAlert.request_success(data.message);
+                        $('#' + tableId).bootstrapTable('refresh');
+                        setTable.hideModal(modalId);
+                    } else {
+                        swtAlert.request_fail(data.message);
+                    }
+                }, 'json');
+        }
     },
     login: function (url, formId, okUrl) {
         var $form = $('#' + formId);
@@ -47,8 +50,8 @@ var submitForm = {
                 type: 'POST',
                 url: url,
                 dataType: 'json',
-                success: function(data){
-                    if(data.result === 'success'){
+                success: function (data) {
+                    if (data.result === 'success') {
                         swtAlert.request_success(data.message);
                         $form[0].reset();
                         $('#' + tableId).bootstrapTable('refresh');

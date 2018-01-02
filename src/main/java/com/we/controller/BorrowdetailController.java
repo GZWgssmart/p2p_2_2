@@ -10,9 +10,7 @@ import com.we.service.BorrowapplyService;
 import com.we.service.BorrowdetailService;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -26,6 +24,32 @@ public class BorrowdetailController {
 
     private BorrowdetailService borrowdetailService;
     private BorrowapplyService borrowapplyService;
+
+    @PostMapping("update")
+    @ResponseBody
+    public RequestResultVO update(Borrowdetail borrowdetail, MultipartFile file) {
+        RequestResultVO resultVO = null;
+        try {
+            String imgPath = PathUtils.mkUploadImgs();
+            file.transferTo(new File(imgPath, file.getOriginalFilename()));
+            borrowdetail.setYpic(OurConstants.PERFIX_IMG_PATH + borrowdetail.getYpic());
+            borrowdetailService.updateSelective(borrowdetail);
+            resultVO = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        } catch (IOException e) {
+            e.printStackTrace();
+            resultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            resultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }
+        return resultVO;
+    }
+
+    @GetMapping("getByApplyId/{baid}")
+    @ResponseBody
+    public Borrowdetail getByApplyId(@PathVariable Integer baid) {
+        return borrowdetailService.getByApplyId(baid);
+    }
 
     @PostMapping("save")
     @ResponseBody
