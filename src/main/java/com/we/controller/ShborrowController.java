@@ -1,10 +1,10 @@
 package com.we.controller;
 
 
-import com.we.bean.Notice;
+import com.we.bean.Shborrow;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
-import com.we.service.NoticeService;
+import com.we.service.ShborrowService;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,34 +15,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping("/notice")
-public class NoticeController {
+@RequestMapping("/shborrow")
+public class ShborrowController {
 
-    private NoticeService noticeService;
-
-    @PostMapping("save")
-    @ResponseBody
-    public RequestResultVO save(Notice notice) {
-
-        RequestResultVO vo = null;
-        try{
-            noticeService.saveSelective(notice);
-            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
-        }catch (RuntimeException e) {
-            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
-        }
-        return vo;
-    }
+    private ShborrowService shborrowService;
 
     @PostMapping("update")
     @ResponseBody
-    public RequestResultVO update(Notice notice, BindingResult bindingResult) {
+    public RequestResultVO update(Shborrow shborrow, BindingResult bindingResult) {
         RequestResultVO vo = null;
         try{
             if(bindingResult.hasErrors()) {
                 vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
             }else{
-                noticeService.updateSelective(notice);
+                shborrowService.updateSelective(shborrow);
                 vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
             }
         }catch (RuntimeException e) {
@@ -53,12 +39,12 @@ public class NoticeController {
 
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pagerCriteria(Long offset,Long limit,Notice notice) {
-        return noticeService.listCriteria(offset,limit,notice);
+    public Pager pagerCriteria(Long offset,Long limit,Shborrow shborrow) {
+        return shborrowService.listCriteria(offset,limit,shborrow);
     }
 
     @Resource
-    public void setNoticeService(NoticeService noticeService) {
-        this.noticeService = noticeService;
+    public void setShborrowService(ShborrowService shborrowService) {
+        this.shborrowService = shborrowService;
     }
 }

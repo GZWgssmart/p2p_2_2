@@ -12,10 +12,10 @@
 <html>
 <head>
     <title>媒体报道</title>
-    <%@include file="../common/css/css_bootstrap.jsp" %>
-    <%@include file="../common/css/css_bootstrap-table.jsp" %>
-    <%@include file="../common/css/css_sweetalert.jsp" %>
-    <%@include file="../common/css/css_sileinput.jsp" %>
+    <%@include file="../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../common/css/css_sweetalert.jsp" %>
+    <%@include file="../../common/css/css_sileinput.jsp" %>
 </head>
 <body>
 
@@ -37,18 +37,18 @@
     </thead>
 </table>
 
-<%@include file="media/include_watch_media_content.jsp"%>
-<%@include file="media/include_save_media.jsp"%>
-<%@include file="media/include_update_media.jsp"%>
+<%@include file="include_watch_media_content.jsp"%>
+<%@include file="include_save_media.jsp"%>
+<%@include file="include_update_media.jsp"%>
 
-<%@include file="../common/js/js_jquery.jsp" %>
-<%@include file="../common/js/js_boostrap.jsp" %>
-<%@include file="../common/js/js_boostrap_table.jsp" %>
-<%@include file="../common/js/js_select2.jsp" %>
-<%@include file="../common/js/js_sweetalert.jsp" %>
-<%@include file="../common/js/js_form.jsp" %>
-<%@include file="../common/js/js_data_dict.jsp" %>
-<%@include file="../common/js/js_fileinput.jsp" %>
+<%@include file="../../common/js/js_jquery.jsp" %>
+<%@include file="../../common/js/js_boostrap.jsp" %>
+<%@include file="../../common/js/js_boostrap_table.jsp" %>
+<%@include file="../../common/js/js_select2.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
+<%@include file="../../common/js/js_form.jsp" %>
+<%@include file="../../common/js/js_data_dict.jsp" %>
+<%@include file="../../common/js/js_fileinput.jsp" %>
 
 <script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
 <script src="<%=path %>/static/ueditor/ueditor.all.js"></script>

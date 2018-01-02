@@ -12,10 +12,10 @@
 <html>
 <head>
     <title>公司动态页面</title>
-    <%@include file="../common/css/css_bootstrap.jsp" %>
-    <%@include file="../common/css/css_bootstrap-table.jsp" %>
-    <%@include file="../common/css/css_sweetalert.jsp" %>
-    <%@include file="../common/css/css_sileinput.jsp" %>
+    <%@include file="../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../common/css/css_sweetalert.jsp" %>
+    <%@include file="../../common/css/css_sileinput.jsp" %>
 </head>
 <body>
 
@@ -36,18 +36,18 @@
     </thead>
 </table>
 
-<%@include file="dynamic/include_watch_dynamic_content.jsp"%>
-<%@include file="dynamic/include_save_dynamic.jsp"%>
-<%@include file="dynamic/include_update_dynamic.jsp"%>
+<%@include file="include_watch_dynamic_content.jsp"%>
+<%@include file="include_save_dynamic.jsp"%>
+<%@include file="include_update_dynamic.jsp"%>
 
-<%@include file="../common/js/js_jquery.jsp" %>
-<%@include file="../common/js/js_boostrap.jsp" %>
-<%@include file="../common/js/js_boostrap_table.jsp" %>
-<%@include file="../common/js/js_select2.jsp" %>
-<%@include file="../common/js/js_sweetalert.jsp" %>
-<%@include file="../common/js/js_form.jsp" %>
-<%@include file="../common/js/js_data_dict.jsp" %>
-<%@include file="../common/js/js_fileinput.jsp" %>
+<%@include file="../../common/js/js_jquery.jsp" %>
+<%@include file="../../common/js/js_boostrap.jsp" %>
+<%@include file="../../common/js/js_boostrap_table.jsp" %>
+<%@include file="../../common/js/js_select2.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
+<%@include file="../../common/js/js_form.jsp" %>
+<%@include file="../../common/js/js_data_dict.jsp" %>
+<%@include file="../../common/js/js_fileinput.jsp" %>
 
 <script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
 <script src="<%=path %>/static/ueditor/ueditor.all.js"></script>

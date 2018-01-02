@@ -12,9 +12,9 @@
 <html>
 <head>
     <title>Title</title>
-    <%@include file="../common/css/css_bootstrap.jsp" %>
-    <%@include file="../common/css/css_bootstrap-table.jsp" %>
-    <%@include file="../common/css/css_sweetalert.jsp" %>
+    <%@include file="../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../common/css/css_sweetalert.jsp" %>
 </head>
 <body>
 
@@ -42,12 +42,12 @@
     </thead>
 </table>
 
-<%@include file="../common/js/js_jquery.jsp" %>
-<%@include file="../common/js/js_boostrap.jsp" %>
-<%@include file="../common/js/js_boostrap_table.jsp" %>
-<%@include file="../common/js/js_sweetalert.jsp" %>
-<%@include file="../common/js/js_form.jsp" %>
-<%@include file="../common/js/js_data_dict.jsp" %>
+<%@include file="../../common/js/js_jquery.jsp" %>
+<%@include file="../../common/js/js_boostrap.jsp" %>
+<%@include file="../../common/js/js_boostrap_table.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
+<%@include file="../../common/js/js_form.jsp" %>
+<%@include file="../../common/js/js_data_dict.jsp" %>
 <script>
     $(function () {
         setTable.setBootstrapTable('letter-list');

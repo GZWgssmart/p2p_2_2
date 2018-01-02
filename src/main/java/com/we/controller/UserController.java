@@ -41,7 +41,7 @@ public class UserController {
 
     @RequestMapping("all_letter_page")
     public String allLetterPage() {
-        return "user/all_letter";
+        return "user/letter/all_letter";
     }
 
     @RequestMapping("all_borrow_money_page")

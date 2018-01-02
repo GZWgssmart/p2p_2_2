@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DynamicServiceImpl extends AbstractBaseService implements DynamicService {
 
-    public DynamicDAO dynamicDAO;
+    private DynamicDAO dynamicDAO;
 
     @Autowired
     public void setDynamicDAO(DynamicDAO dynamicDAO) {

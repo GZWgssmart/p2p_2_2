@@ -12,9 +12,9 @@
 <html>
 <head>
     <title>站内信</title>
-    <%@include file="../common/css/css_bootstrap.jsp" %>
-    <%@include file="../common/css/css_bootstrap-table.jsp" %>
-    <%@include file="../common/css/css_sweetalert.jsp" %>
+    <%@include file="../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../common/css/css_sweetalert.jsp" %>
 </head>
 <body>
 
@@ -40,14 +40,14 @@
 </table>
 
 <!--跳转到在线编辑器页面-->
-<%@include file="../huser/incluse_save_letter.jsp"%>
+<%@include file="include_save_letter.jsp"%>
 
-<%@include file="../common/js/js_jquery.jsp" %>
-<%@include file="../common/js/js_boostrap.jsp" %>
-<%@include file="../common/js/js_boostrap_table.jsp" %>
-<%@include file="../common/js/js_sweetalert.jsp" %>
-<%@include file="../common/js/js_form.jsp" %>
-<%@include file="../common/js/js_data_dict.jsp" %>
+<%@include file="../../common/js/js_jquery.jsp" %>
+<%@include file="../../common/js/js_boostrap.jsp" %>
+<%@include file="../../common/js/js_boostrap_table.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
+<%@include file="../../common/js/js_form.jsp" %>
+<%@include file="../../common/js/js_data_dict.jsp" %>
 <script>
     $(function () {
         setTable.setBootstrapTable('letter-list');
