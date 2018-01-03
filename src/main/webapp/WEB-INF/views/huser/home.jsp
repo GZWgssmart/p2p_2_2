@@ -35,6 +35,20 @@
                     <div class="logo-element">XXX信息管理
                     </div>
                 </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">首页信息</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_homeimg_page">所有信息</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="#">
                         <i class="fa fa-home"></i>
@@ -58,19 +72,6 @@
                     <ul class="nav nav-second-level">
                         <li>
                             <a class="J_menuItem" href="<%=path%>/huser/all_media_page">所有报道</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-home"></i>
-                        <span class="nav-label">首页信息</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_homeimg_page">所有信息</a>
                         </li>
                     </ul>
                 </li>

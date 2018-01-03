@@ -45,7 +45,7 @@ public class HuserController {
 
     @RequestMapping("all_homeimg_page")
     public String allHomeImgPage() {
-        return "huser/all_homeimg";
+        return "huser/homeimg/all_homeimg";
     }
 
         @RequestMapping("all_admin_page")

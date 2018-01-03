@@ -20,6 +20,7 @@ var pagerHuserDynamic = {
                     updateUe.setContent(row.content);
                 }
             })
+            return showForm1();
         }
     }
 
@@ -39,11 +40,6 @@ function showForm () {
         rules:{
             'title':{
                 required: true
-            }
-        },
-        messages:{
-            'title': {
-
             }
         }
     });
@@ -89,7 +85,7 @@ var updateUe = UE.getEditor('updateContent',{
     initialFrameHeight: 400
 });
 
-function showForm () {
+function showForm1 () {
     return $('#updateForm').validate({
         onfocusout: function(element){
             $(element).valid();
@@ -99,11 +95,6 @@ function showForm () {
         rules:{
             'title':{
                 required: true
-            }
-        },
-        messages:{
-            'title': {
-
             }
         }
     });
