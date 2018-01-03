@@ -163,16 +163,16 @@ var pagerBorrow = {
         var cpInput = $('#cpname-input');
         var dateNum = new Date() / 1000 * 1000;
         if (lxname === '普金保') {
-            cpInput.val('pjb' + dateNum);
+            cpInput.val('PJB' + dateNum);
             return 8.0;
         } else if (lxname === '恒金保') {
-            cpInput.val('hjb' + dateNum);
+            cpInput.val('HJB' + dateNum);
             return 9.0;
         } else if (lxname === '多金宝') {
-            cpInput.val('djb' + dateNum);
+            cpInput.val('DJB' + dateNum);
             return 10.0;
         } else  if (lxname === '新手标') {
-            cpInput.val('sxb' + dateNum);
+            cpInput.val('SXB' + dateNum);
             return 11.0;
         }
     }

@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="ypic-img" class="col-sm-2 control-label">原始执照图片：</label>
+                        <label for="ypic-img" class="col-sm-2 control-label">营业执照图片：</label>
                         <div class="col-sm-10">
                             <img id="ypic-img" src="" alt="" class="img img-responsive"/>
                         </div>
