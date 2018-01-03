@@ -22,6 +22,11 @@ public class LetterController {
 
     private LetterService letterService;
 
+    @RequestMapping("all_letter_page")
+    public String allDynamicPage() {
+        return "huser/letter/all_letter";
+    }
+
     @PostMapping("update")
     @ResponseBody
     public RequestResultVO update(@Valid Letter letter, BindingResult bindingResult) {
@@ -39,6 +44,27 @@ public class LetterController {
         }
         return vo;
     }
+
+    /***
+     *
+     * @param letter
+     * @return
+     */
+    @RequestMapping("update_pager")
+    @ResponseBody
+    public RequestResultVO update(Letter letter) {
+        RequestResultVO resultVO = null;
+        try {
+            letter.setContent(letter.getContent());
+            letterService.updateSelective(letter);
+            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        }
+        return resultVO;
+    }
+
 
     @PostMapping("save")
     @ResponseBody

@@ -24,7 +24,6 @@ public class UserLetterController {
     @PostMapping("update_status")
     @ResponseBody
     public RequestResultVO updateStatus(String id, String state) {
-        System.out.println(id);
         RequestResultVO vo = null;
         try{
             userletterService.updateStatus(id, state);
