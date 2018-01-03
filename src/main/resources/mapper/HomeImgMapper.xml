@@ -53,7 +53,7 @@
   <update id="updateSelective" parameterType="com.we.bean.HomeImg" >
     update home_img
     <set >
-      <if test="imgpath != null" >
+      <if test="imgpath != null and !imgpath.equals('')" >
         imgPath = #{imgpath,jdbcType=VARCHAR},
       </if>
       <if test="imghref != null" >
@@ -68,4 +68,18 @@
       imgHref = #{imghref,jdbcType=VARCHAR}
     where hid = #{hid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="com.we.bean.HomeImg">
+    <![CDATA[
+      select * from home_img
+      order by hid desc limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="countCriteria" resultType="long">
+    <![CDATA[
+	  select count(hid) from home_img
+    ]]>
+  </select>
+
 </mapper>

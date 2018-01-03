@@ -43,6 +43,11 @@ public class HuserController {
         return "huser/media/all_media";
     }
 
+    @RequestMapping("all_homeimg_page")
+    public String allHomeImgPage() {
+        return "huser/all_homeimg";
+    }
+
         @RequestMapping("all_admin_page")
     public String allAdminPage() {
         return "huser/allAdmin";
