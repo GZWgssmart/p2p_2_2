@@ -18,6 +18,11 @@ public class HuserController {
     @Autowired
     private HuserService huserService;
 
+    @RequestMapping("notice_pager")
+    public String allNoticePager() {
+        return "notice/all_notice";
+    }
+
     @RequestMapping("all_shborrow_page")
     public String allBorrowCheckPage() {
         return "huser/shborrow/all_shborrow";

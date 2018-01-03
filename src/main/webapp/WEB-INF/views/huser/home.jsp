@@ -87,7 +87,7 @@
                             <a class="J_menuItem" href="<%=path %>/huser/all_letter_page">站内信</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path %>/notice_pager/">最新公告</a>
+                            <a class="J_menuItem" href="<%=path %>/huser/notice_pager/">最新公告</a>
                         </li>
                     </ul>
                 </li>

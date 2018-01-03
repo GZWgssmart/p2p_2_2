@@ -29,7 +29,8 @@ function update() {
     if (updateForm.valid() === false) {
         swtAlert.warn_info(dataDict.form.validForm);
     } else {
-        updateForm.ajaxSubmit({
+        submitForm.update('/letter/update_huser','updateForm','letter-list','update-letter-modal');
+        /*updateForm.ajaxSubmit({
             type: 'POST',
             url:'/letter/update_pager',
             dataType: 'json',
@@ -40,6 +41,6 @@ function update() {
                     swtAlert.request_fail(data.message);
                 }
             }
-        });
+        });*/
     }
 };
