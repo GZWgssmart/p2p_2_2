@@ -20,29 +20,33 @@
 <body>
 
 <div class="tool-bar" id="tool-bar">
-    <button onclick="pagerBorrow.formValidate.save_borrowapply();"
+    <button onclick="allShborrow.okCheck();"
             class="btn btn-primary">通过审核
     </button>
-    <button onclick="pagerBorrow.formValidate.update_borrowapply();"
+    <button onclick="allShborrow.showCheckForm();"
             class="btn btn-primary">拒绝通过
     </button>
+    <button class="btn btn-success" onclick="allShborrow.lookDetail();">查看详情</button>
 </div>
 <table id="shborrow-list" class="table table-hover"
-       data-url="<%=path%>/shborrow/pager_criteria">
+       data-url="<%=path%>/shborrow/pager_criteria?huid=${sessionScope.user.huid}">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
         <th data-field="rname">申请人</th>
         <th data-field="money">金额（元）</th>
-        <th data-field="term">借款期限（月）</th>
-        <th data-field="isok" data-formatter="allShborrow.formatter.formatIsok">审核状态</th>
-        <th data-field="excuse">审核理由</th>
-        <th data-field="date" data-formatter="setTable.formatDate">审核时间</th>
+        <th data-field="term">期限（月）</th>
+        <th data-field="state" data-formatter="allShborrow.formatter.formatState">审核状态</th>
+        <th data-field="excuse">拒绝理由</th>
+        <th data-field="checkTime" data-formatter="setTable.formatDate">审核时间</th>
         <th data-field="applyTime" data-formatter="setTable.formatDate">申请时间</th>
         <th data-field="deadline" data-formatter="setTable.formatDate">投标截止时间</th>
     </tr>
     </thead>
 </table>
+
+<%@include file="include_look_detail.jsp"%>
+<%@include file="include_save_check.jsp"%>
 
 <%@include file="../../common/js/js_jquery.jsp" %>
 <%@include file="../../common/js/js_boostrap.jsp" %>
@@ -57,8 +61,6 @@
 <script>
     $(function () {
         setTable.setBootstrapTable('shborrow-list');
-        pagerBorrow.select2.loadBzType();//加载 标种下拉框的数据
-        pagerBorrow.select2.loadJkType(); //加载 借款类型下拉框的数据
     });
 </script>
 

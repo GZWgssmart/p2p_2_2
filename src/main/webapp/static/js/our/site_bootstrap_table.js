@@ -55,7 +55,16 @@ var setTable = {
         $('#' + modalId).modal('show');
     },
     hideModal: function (modalId) {
-      $('#' + modalId).modal('hide');
+        $('#' + modalId).modal('hide');
+    },
+    requestCall: function (data, tableId, modalId) {
+        if (data.result === 'success') {
+            swtAlert.request_success(data.message);
+            setTable.hideModal(modalId);
+            $('#' + tableId).bootstrapTable('refresh');
+        } else {
+            swtAlert.request_fail(data.message);
+        }
     },
     convertSelectedId: function (rows) {
         var ids = '';

@@ -38,7 +38,6 @@ var pagerBorrow = {
             if (row) {
                 if (row.state === 2) {
                     setTable.showModal('update-borrowapply-detail-modal');
-                    alert(row.ypic);
                     $.get('/borrowdetail/getByApplyId/' + row.baid,
                         function (data) {
                             $('#ypic-img').attr('src', contextPath + data.ypic);

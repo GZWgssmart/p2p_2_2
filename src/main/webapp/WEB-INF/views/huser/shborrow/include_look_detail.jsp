@@ -1,21 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="modal fade bs-example-modal-lg" id="update-borrowapply-detail-modal" tabindex="-1" role="dialog"
+<div class="modal fade bs-example-modal-lg" id="look-detail-modal" tabindex="-1" role="dialog"
      aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">修改详情</h4>
+                <h4 class="modal-title" id="myModalLabel">借款详情</h4>
             </div>
             <div class="modal-body">
-                <form id="update-borrowapply-detail-form" class="form-horizontal">
-                    <input type="hidden" name="baid"/>
-                    <input type="hidden" name="bdid"/>
-                    <input type="hidden" name="money"/>
-                    <input type="hidden" name="ypic" id="update-ypic-input">
-                    <input type="hidden" name="cpname">
+                <form id="look-detail-form" class="form-horizontal">
                     <div class="form-group">
                         <label for="update-fpic-input" class="col-sm-2 control-label">法人身份证</label>
                         <div class="col-sm-10">
@@ -38,12 +33,6 @@
                         <label for="ypic-img" class="col-sm-2 control-label">原始执照图片：</label>
                         <div class="col-sm-10">
                             <img id="ypic-img" src="" alt="" class="img img-responsive"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="update-ypic-file" class="col-sm-2 control-label">营业执照图片：</label>
-                        <div class="col-sm-10">
-                            <input id="update-ypic-file" name="file" class="form-control file-preview" type="file">
                         </div>
                     </div>
                     <div class="form-group">
@@ -81,10 +70,6 @@
                         <div class="col-sm-10">
                             <textarea style="height: 100px;" name="way" id="update-way-input" class="form-control"></textarea>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="reset" class="btn btn-default" value="重置"/>
-                        <a href="javascript:void(0);" onclick="pagerBorrow.submitForm.updateDetail();" class="btn btn-primary">保存</a>
                     </div>
                 </form>
             </div>
