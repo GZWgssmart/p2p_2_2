@@ -100,9 +100,6 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/cash/all_cash_page">所有流水</a>
-                        </li>
-                        <li>
                             <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">借款申请</a>
                         </li>
                     </ul>
@@ -111,12 +108,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop"></i>
-                        <span class="nav-label">班级管理</span>
+                        <span class="nav-label">奖励设置</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">所有设计师</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/rewardSetting">所有奖励</a>
                         </li>
                     </ul>
                 </li>

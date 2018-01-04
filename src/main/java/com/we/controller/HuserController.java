@@ -23,6 +23,11 @@ public class HuserController {
     @Autowired
     private RoleuserService roleuserService;
 
+    @RequestMapping("rewardSetting")
+    public String allRewardPager() {
+        return "huser/reward/reward_setting";
+    }
+
     @RequestMapping("notice_pager")
     public String allNoticePager() {
         return "huser/notice/all_notice";
