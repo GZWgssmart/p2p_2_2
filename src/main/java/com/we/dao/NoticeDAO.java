@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface NoticeDAO extends BaseDAO {
 
-    List<Object> listAllNoticer(@Param("pager") Pager pager,
+    List<Object> listAllNotice(@Param("pager") Pager pager,
                                @Param("query") Object object);
 
     Long countAllNotice(@Param("query")Object obj);

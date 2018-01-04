@@ -22,8 +22,8 @@
     <button onclick="pagerUserLetter.removeRows();"
             class="btn btn-danger">删除
     </button>
-    <button onclick="pagerUserLetter.readRows();"
-            class="btn btn-success">添加
+    <button class="btn btn-success" data-toggle="modal"
+            data-target="#saveLetterModal" onclick="showForm();">添加</button>
     </button>
     <button onclick="pagerUserLetter.unreadRows()"
             class="btn btn-warning">修改

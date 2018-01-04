@@ -24,7 +24,7 @@ public class NoticeServiceImpl extends AbstractBaseService implements NoticeServ
     @Override
     public Pager listAllNotice(Long offset, Long limit, Object query) {
         Pager pager = new Pager(offset,limit);
-        pager.setRows(noticeDAO.listAllNoticer(pager, query));
+        pager.setRows(noticeDAO.listAllNotice(pager, query));
         pager.setTotal(noticeDAO.countAllNotice(query));
         return pager;
     }
