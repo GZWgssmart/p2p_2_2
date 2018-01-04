@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<div class="tool-bar" id="tool-bar">
+<%--<div class="tool-bar" id="tool-bar">
     <button onclick="pagerUserLetter.removeRows();"
             class="btn btn-danger">删除
     </button>
@@ -28,7 +28,7 @@
     <button onclick="pagerUserLetter.unreadRows()"
             class="btn btn-warning">修改
     </button>
-</div>
+</div>--%>
 <table id="letter-list" class="table table-hover"
        data-url="<%=path%>/notice/pager_criteria?uid=${sessionScope.user.uid}">
     <thead>

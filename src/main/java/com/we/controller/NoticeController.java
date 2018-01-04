@@ -1,6 +1,7 @@
 package com.we.controller;
 
 
+import com.we.bean.Letter;
 import com.we.bean.Notice;
 import com.we.bean.UserLetter;
 import com.we.common.Pager;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 
 @Controller
 @RequestMapping("/notice")
@@ -21,12 +23,31 @@ public class NoticeController {
 
     private NoticeService noticeService;
 
+    /***
+     * 更新最新公告
+     * @param notice
+     * @return
+     */
+    @RequestMapping("update_huser")
+    @ResponseBody
+    public RequestResultVO updatePager(Notice notice) {
+        RequestResultVO resultVO = null;
+        try {
+            noticeService.updateSelective(notice);
+            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        }
+        return resultVO;
+    }
+
     @PostMapping("save")
     @ResponseBody
     public RequestResultVO save(Notice notice) {
-
         RequestResultVO vo = null;
         try{
+            notice.setDate(Calendar.getInstance().getTime());
             noticeService.saveSelective(notice);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {
@@ -59,9 +80,9 @@ public class NoticeController {
      * @param notice 用于接收页面传递的uid
      * @return 带结果的分页对象
      */
-    @RequestMapping("all_pager_criteria")
+    @RequestMapping("huser_pager_criteria")
     @ResponseBody
-    public Pager pagerCriteria(Long offset,Long limit,Notice notice) {
+    public Pager huserPagerCriteria(Long offset,Long limit,Notice notice) {
         return noticeService.listAllNotice(offset,limit,notice);
     }
 

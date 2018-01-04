@@ -1,8 +1,8 @@
-var pagerHuserLetter = {
-    updateLetter: function () {
-        var row = setTable.isSingleSelected('letter-list');
+var pagerNoticeLetter = {
+    updateNotice: function () {
+        var row = setTable.isSingleSelected('notice-list');
         if (row) {
-            $('#update-letter-modal').modal('show');
+            $('#update-notice-modal').modal('show');
             $('#dyid').val(row.dyid);
             if (row.title != null ){
                 $('#title1').val(row.title);
@@ -17,18 +17,18 @@ var pagerHuserLetter = {
 };
 
 /**
- *更新站内信内容
+ *更新最新公告内容
  */
 var updateUe = UE.getEditor('updateContent',{
     initialFrameHeight: 400
 });
 
-/**更新站内信信息*/
+/**更新最新公告信息*/
 function update() {
     var updateForm = $('#updateForm');
     if (updateForm.valid() === false) {
         swtAlert.warn_info(dataDict.form.validForm);
     } else {
-        submitForm.update('/letter/update_huser','updateForm','letter-list','update-letter-modal');
+        submitForm.update('/notice/update_huser','updateForm','notice-list','update-notice-modal');
     }
 };

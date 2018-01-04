@@ -20,12 +20,12 @@
 
 <div class="tool-bar" id="tool-bar">
     <button class="btn btn-primary" data-toggle="modal"
-            data-target="#saveLetterModal" onclick="showForm();">添加</button>
+            data-target="#saveNoticeModal" onclick="showForm();">添加</button>
     <button class="btn btn-default" data-toggle="modal"
-            onclick="pagerHuserLetter.updateLetter();">修改</button>
+            onclick="pagerNoticeLetter.updateNotice();">修改</button>
 </div>
-<table id="letter-list" class="table table-hover"
-       data-url="<%=path%>/notice/all_pager_criteria">
+<table id="notice-list" class="table table-hover"
+       data-url="<%=path%>/notice/huser_pager_criteria">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
@@ -48,12 +48,12 @@
 <%@include file="../../common/js/js_data_dict.jsp" %>
 <script>
     $(function () {
-        setTable.setBootstrapTable('letter-list');
+        setTable.setBootstrapTable('notice-list');
     });
 </script>
 
 <script src="<%=path%>/static/js/our/jquery-form.js"></script>
 <script src="<%=path%>/static/js/our/user/lmh/pager_user_letter.js"></script>
-<script src="<%=path%>/static/js/our/huser/xdp/pager_huser_letter.js"></script>
+<script src="<%=path%>/static/js/our/huser/xdp/pager_huser_notice.js"></script>
 </body>
 </html>

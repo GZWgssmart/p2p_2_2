@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="modal fade" id="saveLetterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="saveNoticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width: 100%;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">添加站内信</h4>
+                <h4 class="modal-title" id="myModalLabel">添加最新公告</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" role="form" id="addForm" enctype="multipart/form-data">
@@ -71,7 +71,7 @@
         if ($addForm.valid() === false) {
             swtAlert.warn_info(dataDict.form.validForm);
         } else {
-            submitForm.save('/letter/save','addForm','letter-list','saveLetterModal');
+            submitForm.save('/notice/save','addForm','notice-list','saveNoticeModal');
         }
     };
 
