@@ -29,4 +29,19 @@ public class RolejurServiceImpl extends AbstractBaseService implements RolejurSe
         rolejurDAO.saveRoleJur(roleId,jurIdsList);
     }
 
+    @Override
+    public void deletes(String roleIds) {
+        String [] roleIdsArray = roleIds.split(",");
+        List<Integer> roleIdsList = new ArrayList<>();
+        for (String classId:roleIdsArray){
+            roleIdsList.add(Integer.valueOf(classId));
+        }
+        rolejurDAO.deletes(roleIdsList);
+    }
+
+    @Override
+    public List<Integer> listJurIds(Integer roleId) {
+        return rolejurDAO.listJurIds(roleId);
+    }
+
 }

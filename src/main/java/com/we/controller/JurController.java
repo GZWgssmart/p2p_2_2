@@ -1,6 +1,7 @@
 package com.we.controller;
 
 import com.we.service.JurService;
+import com.we.service.RolejurService;
 import com.we.vo.JurTreeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ public class JurController {
 
     @Autowired
     private JurService jurService;
+    @Autowired
+    private RolejurService rolejurService;
 
     @RequestMapping("list")
     @ResponseBody
@@ -25,12 +28,25 @@ public class JurController {
 
     @RequestMapping("list_treeVO")
     @ResponseBody
-    public List<JurTreeVO> listTreeVo(){
+    public List<JurTreeVO> listTreeVo(String  roleId){
         List<JurTreeVO> jurTreeVOS = new ArrayList<>();
         for(Object o:jurService.listTreeVO()){
             JurTreeVO jurTreeVO = (JurTreeVO) o;
             jurTreeVOS.add(jurTreeVO);
         }
-        return jurTreeVOS;
+        if(roleId != null && roleId != ""){
+            List<Integer> jurids = rolejurService.listJurIds(Integer.valueOf(roleId));
+            for(JurTreeVO jurTreeVO : jurTreeVOS){
+                for(Integer id : jurids){
+                    if(jurTreeVO.getId() == id){
+                        jurTreeVO.setChecked(true);
+                    }
+                }
+            }
+            return jurTreeVOS;
+        }else{
+            return jurTreeVOS;
+        }
+
     }
 }

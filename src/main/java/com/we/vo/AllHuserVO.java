@@ -5,30 +5,42 @@ package com.we.vo;
  */
 public class AllHuserVO {
 
-    private Integer hid;
+    private Integer id;
 
-    private String rname;
+    private String roleName;
+
+    private String userName;
+
+    private String name;
 
     private String sex;
 
     private String email;
 
-    private String roleRname;//角色名
+    private String phone;
 
-    public Integer getHid() {
-        return hid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setHid(Integer hid) {
-        this.hid = hid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getRname() {
-        return rname;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRname(String rname) {
-        this.rname = rname;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSex() {
@@ -47,22 +59,32 @@ public class AllHuserVO {
         this.email = email;
     }
 
-    public String getRoleRname() {
-        return roleRname;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setRoleRname(String roleRname) {
-        this.roleRname = roleRname;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override
     public String toString() {
         return "AllHuserVO{" +
-                "hid=" + hid +
-                ", rname='" + rname + '\'' +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", email='" + email + '\'' +
-                ", roleRname='" + roleRname + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

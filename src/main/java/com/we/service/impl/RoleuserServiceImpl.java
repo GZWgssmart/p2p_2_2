@@ -27,6 +27,21 @@ public class RoleuserServiceImpl extends AbstractBaseService implements Roleuser
         roleuserDAO.saveRoleuser(userId,roleIdsList);
     }
 
+    @Override
+    public void deletes(String huserIds) {
+        String [] huserIdsArray = huserIds.split(",");
+        List<Integer> huserIdsList = new ArrayList<>();
+        for (String classId:huserIdsArray){
+            huserIdsList.add(Integer.valueOf(classId));
+        }
+        roleuserDAO.deletes(huserIdsList);
+    }
+
+    @Override
+    public List<Integer> listRoleIds(Integer huserId) {
+        return roleuserDAO.listRoleIds(huserId);
+    }
+
 
     @Override
     public Pager listCriteria(Long offset, Long limit, Object object) {

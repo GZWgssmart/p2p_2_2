@@ -7,51 +7,19 @@
     <title>Title</title>
     <link href="<%=path%>/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=path%>/static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">
+    <link rel="stylesheet" href="<%=path%>/static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <%@include file="../common/css/css_sweetalert.jsp" %>
 </head>
 <body>
-<%--<div class="tool-bar" id="tool-bar">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#saveDynamicModal" >查看详情</button>
-    <a href="<%=path%>/role/add_role_page" class="btn btn-default">添加角色
-    </a>
-    <br/>
-    <form id="cash-search-form" class="form-inline">
-        <div class="form-group">
-            <input style="height: 30px" name="customer" placeholder="标题" type="text" id="search-customer-input"
-                   class="form-control form-inline"/>
-        </div>
-        <div class="form-group">
-            <input style="height: 30px" name="money" placeholder="时间" type="text" id="search-money-input"
-                   class="form-control form-inline"/>
-        </div>
-        <div class="form-group">
-            <a href="javascript:void(0);"
-               onclick="setTable.doSearch('cash-search-form', 'cashList', contextPath + '/cash/list_cash')"
-               class="btn btn-primary">搜索</a>
-        </div>
-    </form>
-</div>
-<table id="allRole" class="table table-hover"
-       data-url="<%=path%>/role/list_pager">
-    <thead>
-    <tr>
-        <th data-checkbox="true"></th>
-        <th data-field="rname" >角色名称</th>
-        <th data-field="content">备注</th>
-        <th data-field="createTime"  data-formatter=formatDate>创建时间</th>
-    </tr>
-    </thead>
-</table>--%>
 <div>
-    <h4>所有员工</h4>
+    <h4>所有角色</h4>
     <div id="toolbar">
+        <a  class="btn btn-primary" style="text-decoration:none" href="<%=path%>/role/add_role_page">添加角色</a>
         <button id="seeButton" class="btn btn-primary" onclick="seeDetail()">查看详情</button>
-        <button class="btn btn-primary" onclick="empSaleCount()">查看员工销售量</button>
-        <button id="getButton" class="btn btn-primary" onclick="show1()">修改</button>
-        <button id="enableButton" class="btn btn-primary" onclick="enable()">激活</button>
-        <button id="fireButton" class="btn btn-warning" onclick="fire()">冻结</button>
-
+        <button class="btn btn-primary" onclick="deleteRole()">删除</button>
     </div>
-    <table id="table1"
+    <table id="allRole"
            data-toggle="table"
            data-show-columns="false"
            data-height="460"
@@ -61,7 +29,7 @@
            data-cookie-id-table="saveId"
            data-pagination="true"
            data-search="false"
-           data-url="<%=path%>/role/list_pager";
+           data-url="<%=path%>/role/list_pager"
            data-side-pagination="server">
         <thead>
         <tr>
@@ -75,19 +43,160 @@
     </table>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">角色详情</h4>
+            </div>
+            <div class="modal-body">
+                <div >
+                    <form class="form-horizontal" id="addRole">
+                        <input id="jid" name="jid" type="hidden">
+                        <div class="form-group">
+                            <div class="col-sm-2 control-label">角色名称</div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="rname" name="rname" placeholder="角色名称"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2 control-label">备注</div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="content" name="content" placeholder="备注"/>
+                            </div>
+                        </div>
+                        <div class="form-inline clearfix" style="margin-top:30px;margin-left:26px;">
+                            <div class="form-group col-md-6">
+                                <strong class="col-sm-5 control-label">功能权限</strong>
+                                <div class="col-sm-10 col-lg-offset-3">
+                                    <ul id="jurTree" class="ztree"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="updateRole()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
-<!-- 全局js -->
+<%@include file="../common/js/js_sweetalert.jsp" %>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
 <script src="<%=path%>/static/js/bootstrap.min.js"></script>
 <script src="<%=path%>/static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-<script src="<%=path%>/static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
-<script src="<%=path%>/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 <script src="<%=path%>/static/js/our/site_bootstrap_table.js"></script>
+<script src="<%=path%>/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.exedit.js"></script>
+
 <script>
     $(function () {
         setTable.setBootstrapTable('allRole');
     });
+    var contextPath = '';
 
+
+
+    function seeDetail() {
+        var select= $("#allRole").bootstrapTable('getSelections');
+        if(select.length === 1){
+            var roleId = select[0].jid;
+            $(":text").val("");
+            $(":hidden").val("");
+            $('#myModal').modal();
+            $('#rname').val(select[0].rname);
+            $('#content').val(select[0].content);
+            $('#jid').val(select[0].jid);
+            var setting = {
+                check: {
+                    enable: true,
+                    chkStyle: "checkbox",
+                    chkboxType: { "Y": "ps", "N": "ps" }
+                },
+                data: {
+                    simpleData: {
+                        enable: true,
+                        idKey : "id",       // 结点的id,对应到Json中的id
+                        pIdKey : "parentId",// 结点的pId,对应到Json中的parentId
+                        rootPId : -1
+                    }
+                },
+                callback:{
+                    onAsyncSuccess:expandAll
+                },
+                async : {
+                    enable : true,  // 采用异步方式获取所有节点数据,默认false
+                    url : "/jur/list_treeVO?roleId="+roleId
+                }
+            };
+
+            function expandAll() {
+                var treeObj = $.fn.zTree.getZTreeObj("jurTree");
+                treeObj.expandAll(true);
+            }
+
+            $(document).ready(function(){
+                $.fn.zTree.init($("#jurTree"), setting);
+            });
+
+        }else{
+            swal("请选择一行数据","","warning");
+        }
+    }
+
+    function updateRole() {
+        var treeObj = $.fn.zTree.getZTreeObj("jurTree");
+        var nodes1 = treeObj.getCheckedNodes(true);
+        var jurIds = "";
+        for(i = 0; i<nodes1.length; i++){
+            jurIds = jurIds + nodes1[i].id + ",";
+        }
+
+        $.post("" + "/role/update?jurIds="+jurIds,
+            $("#addRole").serialize(),
+            function (data) {
+                if (data.result === 'success') {
+                    swal(data.message,"","success");
+                    $('#allRole').bootstrapTable("refresh");
+                    $('#myModal').modal('hide');
+
+                } else {
+                    swal(data.message,"","error");
+                }
+            }
+        );
+    }
+
+    function deleteRole() {
+        var select= $("#allRole").bootstrapTable('getSelections');
+        if(select.length > 0){
+            var roleIds = "";
+            for(i = 0; i < select.length; i++){
+               roleIds = roleIds + select[i].jid +',';
+            }
+            $.post(contextPath + "/role/deletes",
+                {"roleIds":roleIds},
+                function (data) {
+                    if (data.result == 'success') {
+                        $("#allRole").bootstrapTable('refresh');
+                        swal(data.message,"","success");
+                    } else {
+                        swal(data.message,"","error");
+                    }
+                }, "json"
+            );
+        }else{
+            swal("请选择数据","","warning");
+        }
+    }
+    
     function formatDate(value) {
         if (value == undefined || value == null || value == '') {
             return "";
@@ -116,5 +225,7 @@
             }
             return year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
         }
+    }
+
 </script>
 </html>

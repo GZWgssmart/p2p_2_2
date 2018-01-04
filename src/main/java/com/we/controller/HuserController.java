@@ -2,7 +2,10 @@ package com.we.controller;
 
 import com.we.bean.Huser;
 import com.we.common.Pager;
+import com.we.enums.RequestResultEnum;
 import com.we.service.HuserService;
+import com.we.service.RoleuserService;
+import com.we.vo.RequestResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,8 @@ public class HuserController {
 
     @Autowired
     private HuserService huserService;
+    @Autowired
+    private RoleuserService roleuserService;
 
     @RequestMapping("notice_pager")
     public String allNoticePager() {
@@ -53,14 +58,20 @@ public class HuserController {
         return "huser/homeimg/all_homeimg";
     }
 
-        @RequestMapping("all_admin_page")
+    @RequestMapping("all_admin_page")
     public String allAdminPage() {
         return "huser/allAdmin";
     }
 
+    @RequestMapping("add_huser_page")
+    public String addHuserPage() {
+        return "huser/add_huser";
+    }
+
+
     @ResponseBody
-    @RequestMapping("all_admin")
-    public Pager allAdmin(Long offset, Long limit) {
+    @RequestMapping("list_pager")
+    public Pager listPager(Long offset, Long limit) {
         Pager pager = huserService.listCriteria(offset, limit, Huser.class);
         return pager;
     }
@@ -77,5 +88,32 @@ public class HuserController {
     public Pager pagerCriteria(Long offset,Long limit,Huser huser) {
         return huserService.listCriteria(offset,limit,huser);
     }
+
+    @RequestMapping("add")
+    @ResponseBody
+    public RequestResultVO add(Huser huser, String roleIds) {
+        huserService.save(huser);
+        roleuserService.saveRoleuser(huser.getHuid(),roleIds);
+        return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+    }
+
+    @RequestMapping("update")
+    @ResponseBody
+    public RequestResultVO update(Huser huser, String roleIds) {
+        huserService.update(huser);
+        roleuserService.deletes(String.valueOf(huser.getHuid()));
+        roleuserService.saveRoleuser(huser.getHuid(),roleIds);
+        return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+    }
+
+    @RequestMapping("deletes")
+    @ResponseBody
+    public RequestResultVO deletes(String huserIds) {
+        huserService.deletes(huserIds);
+        roleuserService.deletes(huserIds);
+        return RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
+    }
+
+
 
 }

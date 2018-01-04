@@ -25,6 +25,9 @@
     where huid = #{huid,jdbcType=INTEGER}
   </delete>
     <insert id="save" parameterType="com.we.bean.Huser">
+    <selectKey keyProperty="huid" order="AFTER" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into huser (huid, rname, sex, 
       phone, huname, oid, oname, 
       email)
@@ -126,19 +129,21 @@
     where huid = #{huid,jdbcType=INTEGER}
   </update>
 
-    <select id="listCriteria" resultType="com.we.vo.AllHuserVO">
-      select h.huid, h.rname, h.sex, h.email, r.rname as roleRname from huser h, role r, roleuser ru
-      where ru.huid = h.huid
-      and r.jid = ru.rid
-      limit #{pager.offset},#{pager.limit}
+    <select id="listCriteria" resultType="com.we.bean.Huser">
+        select * from huser
+        <if test="pager.offset != null and pager.limit != null">
+            limit #{pager.offset},#{pager.limit}
+        </if>
     </select>
 
     <select id="countCriteria" resultType="long">
-      select count(h.huid) from huser h, role r, roleuser ru
-      where ru.huid = h.huid
-      and r.jid = ru.rid
+      select count(huid) from huser
     </select>
 
-
-
+    <delete id="deletes" >
+        delete from huser WHERE huid IN
+        <foreach collection="huserIds" item="huserId" separator="," open="(" close=")">
+            #{huserId}
+        </foreach>
+    </delete>
 </mapper>

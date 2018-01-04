@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.Role;
 import com.we.common.Pager;
 import com.we.dao.RoleDAO;
 import com.we.service.AbstractBaseService;
@@ -29,6 +30,21 @@ public class RoleServiceImpl extends AbstractBaseService implements RoleService{
         pager.setRows(roleDAO.listPager(pager));
         pager.setTotal(roleDAO.countAll());
         return pager;
+    }
+
+    @Override
+    public void deletes(String roleIds) {
+        String [] roleIdsArray = roleIds.split(",");
+        List<Integer> roleIdsList = new ArrayList<>();
+        for (String classId:roleIdsArray){
+            roleIdsList.add(Integer.valueOf(classId));
+        }
+        roleDAO.deletes(roleIdsList);
+    }
+
+    @Override
+    public List<Object> listTreeVO() {
+        return roleDAO.listTreeVO();
     }
 
     @Override

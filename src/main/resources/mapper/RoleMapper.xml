@@ -99,6 +99,17 @@
     <include refid="commonCriteriaSQL"/>
   </select>
 
+  <select id="deletes" >
+    delete from role WHERE jid IN
+    <foreach collection="roleIds" item="roleId" separator="," open="(" close=")">
+      #{roleId}
+    </foreach>
+  </select>
+
+  <select id="listTreeVO" resultType="com.we.vo.RoleZTreeVO">
+    select r.jid as id,rname as name from role r
+  </select>
+
   <sql id="commonCriteriaSQL">
     <where>
         <if test="query != null and query.rname != null and query.rname !=''">

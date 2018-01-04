@@ -11,4 +11,8 @@ public interface RolejurDAO extends BaseDAO {
 
 
     void saveRoleJur(@Param("roleId") Integer roleId,@Param("jurIds") List<Integer> jurIds);
+
+    void deletes(@Param("roleIds") List<Integer> roleIds);
+
+    List<Integer> listJurIds(@Param("roleId")Integer roleId);
 }

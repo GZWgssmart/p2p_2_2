@@ -30,6 +30,7 @@ $(document).ready(function(){
     $.fn.zTree.init($("#jurTree"), setting);
 });
 
+
 function addRole() {
     var treeObj = $.fn.zTree.getZTreeObj("jurTree");
     var nodes1 = treeObj.getCheckedNodes(true);
@@ -41,11 +42,15 @@ function addRole() {
     $.post("" + "/role/add?jurIds="+jurIds,
         $("#add_role").serialize(),
         function (data) {
-            if (data.result === 'ok') {
-                alert("ok")
+            if (data.result === 'success') {
+                swal(data.message,"","success");
+                $(":text").val("");
+                var treeObj = $.fn.zTree.getZTreeObj("jurTree");
+                treeObj.checkAllNodes(false);
             } else {
-                showAlert(data.message);
+                swal(data.message,"","error");
             }
         }
     );
 }
+

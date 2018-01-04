@@ -12,6 +12,7 @@
 </head>
 <body>
 <div class="container">
+    <input id="roleId" value="${requestScope.roleId}">
     <div  style="margin-top: 30px;">
         <form class="form-horizontal" id="add_role">
             <div class="form-group">
@@ -52,5 +53,10 @@
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.exedit.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/our/role/qrl/add_role_page.js"></script>
+<script>
+    $(function(){
+        var roleId = $("roleId").val();
+        alert(roleId);
+    })
+</script>
 </html>

@@ -5,5 +5,6 @@ package com.we.service;
  */
 public interface HuserService extends BaseService {
 
+    void deletes(String huserIds);
 
 }

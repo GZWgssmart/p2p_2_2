@@ -21,4 +21,7 @@ public interface RoleDAO extends BaseDAO {
     List<Object> listCriteria(@Param("pager") Pager pager,@Param("query") Object object);
 
 
+    void deletes(@Param("roleIds") List<Integer> roleIds);
+
+    List<Object> listTreeVO();
 }
