@@ -3,7 +3,7 @@ var pagerHuserLetter = {
         var row = setTable.isSingleSelected('letter-list');
         if (row) {
             $('#update-letter-modal').modal('show');
-            $('#dyid').val(row.dyid);
+            $('#lid').val(row.lid);
             if (row.title != null ){
                 $('#title1').val(row.title);
             }

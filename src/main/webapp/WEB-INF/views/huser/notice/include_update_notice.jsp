@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" role="form" id="updateForm">
-                    <input type="hidden" id="dyid" name="dyid">
+                    <input type="hidden" id="nid" name="nid">
                     <div class="form-group">
                         <label for="title1" class="col-sm-1 control-label">标&nbsp;&nbsp;题：</label>
                         <div class="col-sm-10">

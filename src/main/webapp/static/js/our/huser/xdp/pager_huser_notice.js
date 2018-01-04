@@ -3,7 +3,7 @@ var pagerNoticeLetter = {
         var row = setTable.isSingleSelected('notice-list');
         if (row) {
             $('#update-notice-modal').modal('show');
-            $('#dyid').val(row.dyid);
+            $('#nid').val(row.nid);
             if (row.title != null ){
                 $('#title1').val(row.title);
             }
