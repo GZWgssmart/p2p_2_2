@@ -1,17 +1,22 @@
-package com.we.bean;
+package com.we.dto;
 
-import com.we.dto.TzbDTO;
-
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Tzb {
+public class TzbDTO {
     private Integer sid;
 
+    @NotNull
     private Integer uid;
 
+    @NotNull
     private Integer juid;
 
+    @NotNull
+    private Integer tid;
+
+    @NotNull
     private BigDecimal money;
 
     private Date time;
@@ -20,6 +25,7 @@ public class Tzb {
 
     private String cpname;
 
+    @NotNull
     private Integer baid;
 
     public Integer getSid() {
@@ -86,18 +92,11 @@ public class Tzb {
         this.baid = baid;
     }
 
-    public Tzb() {
+    public Integer getTid() {
+        return tid;
     }
 
-    public Tzb(TzbDTO tzbDTO) {
-        this.sid = tzbDTO.getSid();
-        this.uid = tzbDTO.getUid();
-        this.juid = tzbDTO.getJuid();
-        this.money = tzbDTO.getMoney();
-        this.time = tzbDTO.getTime();
-        this.nprofit = tzbDTO.getNprofit();
-        this.cpname = tzbDTO.getCpname();
-        this.baid = tzbDTO.getBaid();
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
-
 }

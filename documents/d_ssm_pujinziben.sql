@@ -48,7 +48,8 @@ CREATE TABLE borrowapply(
   state INT COMMENT '审核状态，0不通过，1通过，2审核中，3未填写借款详情' DEFAULT 3,
   type INT COMMENT '借款类型，多金宝。。。',
   term INT COMMENT '借款期限',
-  deadline DATETIME COMMENT '截止时间'
+  deadline DATETIME COMMENT '截止时间',
+  symoney DECIMAL(10, 2) COMMENT '剩余可投余额'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '申请借款表';
 
 DROP TABLE IF EXISTS borrowdetail;

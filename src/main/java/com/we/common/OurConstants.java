@@ -13,10 +13,35 @@ public class OurConstants {
     public static final Integer IS_VIP = 1;
     public static final Integer NO_VIP = 0;
 
+    /**
+     * 上传图片： 图片的路径前缀
+     */
     public static final String PERFIX_IMG_PATH = "/static/uploads/img/";
 
     /**
      * 申请借款的状态：审核中
      */
     public static final Integer BORROW_CHECK = 2;
+
+
+    /**
+     * 资金流向记录的类型：充值
+     */
+    public static final Integer MONEY_LOG_CZ = 0;
+
+    /**
+     * 资金流向记录的类型：提现
+     */
+    public static final Integer MONEY_LOG_TX = 1;
+
+    /**
+     * 资金流向记录的类型：投资
+     */
+    public static final Integer MONEY_LOG_TZ = 2;
+
+    /**
+     * 资金流向记录的类型：回款
+     */
+    public static final Integer MONEY_LOG_HK = 3;
+
 }

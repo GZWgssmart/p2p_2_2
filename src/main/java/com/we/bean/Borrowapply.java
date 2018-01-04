@@ -29,6 +29,8 @@ public class Borrowapply {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deadline;
 
+    private BigDecimal symoney;
+
     public Integer getBaid() {
         return baid;
     }
@@ -107,5 +109,13 @@ public class Borrowapply {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+    public BigDecimal getSymoney() {
+        return symoney;
+    }
+
+    public void setSymoney(BigDecimal symoney) {
+        this.symoney = symoney;
     }
 }

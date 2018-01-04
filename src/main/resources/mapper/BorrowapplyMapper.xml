@@ -12,9 +12,10 @@
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="term" property="term" jdbcType="INTEGER"/>
         <result column="deadline" property="deadline" jdbcType="TIMESTAMP"/>
+        <result column="symoney" property="deadline" jdbcType="DECIMAL"/>
     </resultMap>
     <sql id="Base_Column_List">
-        baid, rname, money, uid, bzid, time, state, type, term, deadline
+        baid, rname, money, uid, bzid, time, state, type, term, deadline, symoney
     </sql>
     <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -30,11 +31,11 @@
         INSERT INTO borrowapply (baid, rname, money,
                                  uid, bzid, time,
                                  state, type, term,
-                                 deadline)
+                                 deadline, symoney)
         VALUES (#{baid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL},
                 #{uid,jdbcType=INTEGER}, #{bzid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP},
                 #{state,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{term,jdbcType=INTEGER},
-                #{deadline,jdbcType=TIMESTAMP})
+                #{deadline,jdbcType=TIMESTAMP}, #{symoney, jdbc=DECIMAL})
     </insert>
     <insert id="saveSelective" parameterType="com.we.bean.Borrowapply">
         <selectKey keyProperty="baid" order="AFTER" resultType="java.lang.Integer">
@@ -72,6 +73,9 @@
             <if test="deadline != null">
                 deadline,
             </if>
+            <if test="symoney != null">
+                symoney,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="baid != null">
@@ -103,6 +107,9 @@
             </if>
             <if test="deadline != null">
                 #{deadline,jdbcType=TIMESTAMP},
+            </if>
+            <if test="money != null">
+                #{money,jdbcType=DCIMAL},
             </if>
         </trim>
     </insert>
@@ -136,6 +143,9 @@
             <if test="deadline != null">
                 deadline = #{deadline,jdbcType=TIMESTAMP},
             </if>
+            <if test="symoney != null">
+                symoney = #{symoney,jdbcType=DECIMAL},
+            </if>
         </set>
         where baid = #{baid,jdbcType=INTEGER}
     </update>
@@ -149,7 +159,8 @@
             state    = #{state,jdbcType=INTEGER},
             type     = #{type,jdbcType=INTEGER},
             term     = #{term,jdbcType=INTEGER},
-            deadline = #{deadline,jdbcType=TIMESTAMP}
+            deadline = #{deadline,jdbcType=TIMESTAMP},
+            symoney = #{symoney, jdbcType=DECIMAL}
         WHERE baid = #{baid,jdbcType=INTEGER}
     </update>
 

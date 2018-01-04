@@ -2,6 +2,7 @@ package com.we.controller;
 
 import com.we.bean.Tzb;
 import com.we.common.Pager;
+import com.we.dto.TzbDTO;
 import com.we.enums.RequestResultEnum;
 import com.we.service.TzbService;
 import com.we.vo.RequestResultVO;
@@ -28,7 +29,7 @@ public class TzbController {
 
     @PostMapping("save")
     @ResponseBody
-    public RequestResultVO save(Tzb tzb) {
+    public RequestResultVO save(TzbDTO tzb) {
         RequestResultVO vo = null;
         try{
             tzbService.save(tzb);

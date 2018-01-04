@@ -63,4 +63,18 @@ public class MoneyLog {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public MoneyLog(Integer uid, Integer type, BigDecimal out, Date date) {
+        this.uid = uid;
+        this.type = type;
+        this.out = out;
+        this.date = date;
+    }
+
+    public MoneyLog(Integer uid, Integer type, Date date, BigDecimal in) {
+        this.uid = uid;
+        this.type = type;
+        this.date = date;
+        this.in = in;
+    }
 }

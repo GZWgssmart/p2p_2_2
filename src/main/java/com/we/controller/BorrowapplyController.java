@@ -29,6 +29,7 @@ public class BorrowapplyController {
         RequestResultVO vo = null;
         try{
             borrowapply.setTime(Calendar.getInstance().getTime());
+            borrowapply.setSymoney(borrowapply.getMoney());
             borrowapplyService.saveSelective(borrowapply);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {
