@@ -92,4 +92,48 @@
       date = #{date,jdbcType=TIMESTAMP}
     where nid = #{nid,jdbcType=INTEGER}
   </update>
+
+  <select id="countAllNotice" resultType="java.lang.Long">
+    <![CDATA[
+	  select count(nid) from notice
+    ]]>
+  </select>
+
+  <select id="listAllNotice" resultType="com.we.bean.Notice">
+    <![CDATA[
+      select * from notice
+      order by date desc limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="listCriteria" resultType="com.we.vo.UserLetterVO">
+    SELECT
+    ul.luid AS 'id', ul.state, n.content, n.title, n.date
+    FROM notice n,user_letter ul, user u
+    WHERE
+    u.uid = ul.uid
+    AND ul.lid = n.nid
+--     AND n.state = 1
+    AND ul.state != 0
+    <if test="query != null">
+      AND ul.uid = #{query.uid}
+    </if>
+    ORDER BY ul.state DESC, n.date DESC
+    LIMIT #{pager.offset},#{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT
+    count(ul.luid)
+    FROM notice n,user_letter ul, user u
+    WHERE
+    u.uid = ul.uid
+    AND ul.lid = n.nid
+--     AND n.state = 1
+    AND ul.state != 0
+    <if test="query != null">
+      AND ul.uid = #{query.uid}
+    </if>
+  </select>
+
 </mapper>

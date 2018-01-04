@@ -60,7 +60,7 @@
                             <a class="J_menuItem" href="<%=path%>/user/all_letter_page">消息中心</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/letter/index_pager">最新公告</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_notice_page">最新公告</a>
                         </li>
                     </ul>
                 </li>

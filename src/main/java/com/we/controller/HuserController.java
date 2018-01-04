@@ -25,7 +25,7 @@ public class HuserController {
 
     @RequestMapping("notice_pager")
     public String allNoticePager() {
-        return "notice/all_notice";
+        return "huser/notice/all_notice";
     }
 
     @RequestMapping("all_shborrow_page")

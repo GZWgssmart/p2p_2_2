@@ -2,6 +2,7 @@ package com.we.controller;
 
 
 import com.we.bean.Notice;
+import com.we.bean.UserLetter;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.NoticeService;
@@ -51,10 +52,30 @@ public class NoticeController {
         return vo;
     }
 
-    @RequestMapping("pager_criteria")
+    /**
+     * 后台用户查看所有站内信
+     * @param offset 开始索引
+     * @param limit 查询个数
+     * @param notice 用于接收页面传递的uid
+     * @return 带结果的分页对象
+     */
+    @RequestMapping("all_pager_criteria")
     @ResponseBody
     public Pager pagerCriteria(Long offset,Long limit,Notice notice) {
-        return noticeService.listCriteria(offset,limit,notice);
+        return noticeService.listAllNotice(offset,limit,notice);
+    }
+
+    /***
+     * 前台用户查看所有的最新公告
+     * @param offset 开始搜引
+     * @param limit 查询个数
+     * @param userLetter 用户接收页面传替过来的uid
+     * @return 返回带有结果的分页对象
+     */
+    @RequestMapping("pager_criteria")
+    @ResponseBody
+    public Pager pagerCriteria(Long offset, Long limit, UserLetter userLetter) {
+        return noticeService.listCriteria(offset,limit, userLetter);
     }
 
     @Resource

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class NoticeServiceImpl extends AbstractBaseService implements NoticeService {
@@ -18,5 +19,18 @@ public class NoticeServiceImpl extends AbstractBaseService implements NoticeServ
     public void setNoticeDAO(NoticeDAO noticeDAO) {
         super.setBaseDAO(noticeDAO);
         this.noticeDAO = noticeDAO;
+    }
+
+    @Override
+    public Pager listAllNotice(Long offset, Long limit, Object query) {
+        Pager pager = new Pager(offset,limit);
+        pager.setRows(noticeDAO.listAllNoticer(pager, query));
+        pager.setTotal(noticeDAO.countAllNotice(query));
+        return pager;
+    }
+
+    @Override
+    public Long countAllNotice(Object obj) {
+        return noticeDAO.countAllNotice(obj);
     }
 }

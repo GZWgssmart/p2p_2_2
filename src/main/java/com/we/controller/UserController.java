@@ -44,6 +44,11 @@ public class UserController {
         return "user/letter/all_letter";
     }
 
+    @RequestMapping("all_notice_page")
+    public String allNoticePage() {
+        return "user/notice/all_notice";
+    }
+
     @RequestMapping("all_borrow_money_page")
     public String allBorrowMoneyPage() {
         return "user/borrow/all_borrow_money";
