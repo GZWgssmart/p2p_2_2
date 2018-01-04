@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <%@include file="../common/css/css_sweetalert.jsp" %>
+    <%@include file="../common/css/css_bootstrap-table.jsp" %>
 </head>
 <body>
 <div>
@@ -86,12 +87,14 @@
 </div>
 
 </body>
-<%@include file="../common/js/js_sweetalert.jsp" %>
+
 <script src="<%=path%>/static/js/jquery.min.js"></script>
 <script src="<%=path%>/static/js/bootstrap.min.js"></script>
 <script src="<%=path%>/static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
 <script src="<%=path%>/static/js/our/site_bootstrap_table.js"></script>
 <script src="<%=path%>/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<%@include file="../common/js/js_sweetalert.jsp" %>
+<%@include file="../common/js/js_form.jsp" %>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.exedit.js"></script>
@@ -149,29 +152,48 @@
         }else{
             swal("请选择一行数据","","warning");
         }
+
+        return $('#addRole').validate({
+            onfocusout: function(element){
+                $(element).valid();
+            },
+            debug:false,
+            onkeyup:false,
+            rules:{
+                'rname':{
+                    required: true,
+                    isName: true
+                },
+            },
+            messages:{
+            }
+        });
     }
 
     function updateRole() {
-        var treeObj = $.fn.zTree.getZTreeObj("jurTree");
-        var nodes1 = treeObj.getCheckedNodes(true);
-        var jurIds = "";
-        for(i = 0; i<nodes1.length; i++){
-            jurIds = jurIds + nodes1[i].id + ",";
+        if($('#addRole').valid()){
+            var treeObj = $.fn.zTree.getZTreeObj("jurTree");
+            var nodes1 = treeObj.getCheckedNodes(true);
+            var jurIds = "";
+            for(i = 0; i<nodes1.length; i++){
+                jurIds = jurIds + nodes1[i].id + ",";
+            }
+
+            $.post("" + "/role/update?jurIds="+jurIds,
+                $("#addRole").serialize(),
+                function (data) {
+                    if (data.result === 'success') {
+                        swal(data.message,"","success");
+                        $('#allRole').bootstrapTable("refresh");
+                        $('#myModal').modal('hide');
+
+                    } else {
+                        swal(data.message,"","error");
+                    }
+                }
+            );
         }
 
-        $.post("" + "/role/update?jurIds="+jurIds,
-            $("#addRole").serialize(),
-            function (data) {
-                if (data.result === 'success') {
-                    swal(data.message,"","success");
-                    $('#allRole').bootstrapTable("refresh");
-                    $('#myModal').modal('hide');
-
-                } else {
-                    swal(data.message,"","error");
-                }
-            }
-        );
     }
 
     function deleteRole() {

@@ -68,6 +68,11 @@ public class HuserController {
         return "huser/add_huser";
     }
 
+    @RequestMapping("all_huser_page")
+    public String allHuserPage() {
+        return "huser/all_huser_page";
+    }
+
 
     @ResponseBody
     @RequestMapping("list_pager")
@@ -83,6 +88,8 @@ public class HuserController {
      * @param huser 用于接收页面传替的huid
      * @return 带结果的分页的对象
      */
+
+
     @RequestMapping("pager_criteria")
     @ResponseBody
     public Pager pagerCriteria(Long offset,Long limit,Huser huser) {
@@ -93,7 +100,9 @@ public class HuserController {
     @ResponseBody
     public RequestResultVO add(Huser huser, String roleIds) {
         huserService.save(huser);
-        roleuserService.saveRoleuser(huser.getHuid(),roleIds);
+        if(roleIds != null && roleIds != ""){
+            roleuserService.saveRoleuser(huser.getHuid(),roleIds);
+        }
         return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
     }
 

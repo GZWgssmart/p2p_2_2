@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <%@include file="../common/css/css_sweetalert.jsp"%>
+    <%@include file="../common/css/css_bootstrap-table.jsp" %>
 </head>
 <body>
 <div class="container">
@@ -72,13 +73,14 @@
     </form>
 </div>
 </div>
-<%@include file="../common/js/js_sweetalert.jsp"%>
 <script src="<%=path%>/static/js/bootstrap.min.js"></script>
 <script src="<%=path%>/static/js/our/site_bootstrap_table.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.exedit.js"></script>
+<%@include file="../common/js/js_sweetalert.jsp"%>
+<%@include file="../common/js/js_form.jsp" %>
 <script>
     var setting = {
         check: {
@@ -113,27 +115,60 @@
 
 
     function addHuser() {
-        var treeObj = $.fn.zTree.getZTreeObj("roleTree");
-        var nodes1 = treeObj.getCheckedNodes(true);
-        var roleIds = "";
-        for(i = 0; i<nodes1.length; i++){
-            roleIds = roleIds + nodes1[i].id + ",";
+        if($("#addHuser").valid()){
+            var treeObj = $.fn.zTree.getZTreeObj("roleTree");
+            var nodes1 = treeObj.getCheckedNodes(true);
+            var roleIds = "";
+            for(i = 0; i<nodes1.length; i++){
+                roleIds = roleIds + nodes1[i].id + ",";
+            }
+
+            $.post("" + "/huser/add?roleIds="+roleIds,
+                $("#addHuser").serialize(),
+                function (data) {
+                    if (data.result === 'success') {
+                        swal(data.message,"","success");
+                        $(":text").val("");
+                        var treeObj = $.fn.zTree.getZTreeObj("roleTree");
+                        treeObj.checkAllNodes(false);
+                    } else {
+                        swal(data.message,"","error");
+                    }
+                }
+            );
         }
 
-        $.post("" + "/huser/add?roleIds="+roleIds,
-            $("#addHuser").serialize(),
-            function (data) {
-                if (data.result === 'success') {
-                    swal(data.message,"","success");
-                    $(":text").val("");
-                    var treeObj = $.fn.zTree.getZTreeObj("roleTree");
-                    treeObj.checkAllNodes(false);
-                } else {
-                    swal(data.message,"","error");
-                }
-            }
-        );
     }
+
+    $(function () {
+        return $('#addHuser').validate({
+            onfocusout: function(element){
+                $(element).valid();
+            },
+            debug:false,
+            onkeyup:false,
+            rules:{
+                'huname':{
+                    required: true,
+                    isName: true
+                },
+                'email': {
+                    required: true,
+                    isEmail: true
+                },
+                'phone': {
+                    required: true,
+                    isPhone: true
+                },
+                'rname': {
+                    required: true,
+                    isName: true
+                },
+            },
+            messages:{
+            }
+        });
+    })
 </script>
 </body>
 </html>

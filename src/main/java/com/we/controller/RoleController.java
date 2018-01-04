@@ -44,7 +44,9 @@ public class RoleController {
     public RequestResultVO add(Role role, String jurIds){
         role.setCreateTime(Calendar.getInstance().getTime());
         roleService.save(role);
+        if(jurIds != null && jurIds != ""){
         rolejurService.saveRoleJur(role.getJid(),jurIds);
+        }
         return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
     }
 

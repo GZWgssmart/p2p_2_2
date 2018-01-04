@@ -1,15 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String path  = request.getContextPath();
+    String path = request.getContextPath();
 %>
 <html>
 <head>
     <title>Title</title>
     <link href="<%=path%>/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<%=path%>/static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <%@include file="../common/css/css_sweetalert.jsp" %>
+    <%@include file="../common/css/css_bootstrap-table.jsp" %>
 </head>
 <body class="gray-bg">
 <div class="tool-bar" id="tool-bar">
@@ -20,11 +20,12 @@
     </form>
 </div>
 <table id="allHuser" class="table table-hover"
-       data-url="<%=path%>/huser/list_pager">
+       data-url="<%=path%>/huser/list_pager"
+       data-click-to-select="true">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="huid"  data-visible="false">用户id</th>
+        <th data-field="huid" data-visible="false">用户id</th>
         <th data-field="huname">用户名</th>
         <th data-field="rname">真实姓名</th>
         <th data-field="email">邮箱</th>
@@ -38,11 +39,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="myModalLabel">用户详情</h4>
             </div>
             <div class="modal-body">
-                <div >
+                <div>
                     <form class="form-horizontal" id="addHuser">
                         <input id="huid" name="huid" type="hidden">
                         <div class="form-group">
@@ -54,13 +56,13 @@
                         <div class="form-group">
                             <div class="col-sm-2 control-label">邮箱</div>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  name="email" id="email" placeholder="邮箱"/>
+                                <input type="text" class="form-control" name="email" id="email" placeholder="邮箱"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-2 control-label">手机</div>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  name="phone" id="phone" placeholder="手机"/>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="手机"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -100,13 +102,14 @@
 </div>
 </body>
 <!-- 全局js -->
-<%@include file="../common/js/js_sweetalert.jsp" %>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
 <script src="<%=path%>/static/js/bootstrap.min.js"></script>
 <script src="<%=path%>/static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
 <script src="<%=path%>/static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
 <script src="<%=path%>/static/js/our/site_bootstrap_table.js"></script>
 <script src="<%=path%>/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<%@include file="../common/js/js_form.jsp" %>
+<%@include file="../common/js/js_sweetalert.jsp" %>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.exedit.js"></script>
@@ -118,31 +121,31 @@
     var contextPath = "";
 
     function deleteHuser() {
-        var select= $("#allHuser").bootstrapTable('getSelections');
-        if(select.length > 0){
+        var select = $("#allHuser").bootstrapTable('getSelections');
+        if (select.length > 0) {
             var huserIds = "";
-            for(i = 0; i < select.length; i++){
-                huserIds = huserIds + select[i].huid +',';
+            for (i = 0; i < select.length; i++) {
+                huserIds = huserIds + select[i].huid + ',';
             }
             $.post(contextPath + "/huser/deletes",
-                {"huserIds":huserIds},
+                {"huserIds": huserIds},
                 function (data) {
                     if (data.result == 'success') {
                         $("#allHuser").bootstrapTable('refresh');
-                        swal(data.message,"","success");
+                        swal(data.message, "", "success");
                     } else {
-                        swal(data.message,"","error");
+                        swal(data.message, "", "error");
                     }
                 }, "json"
             );
-        }else{
-            swal("请选择数据","","warning");
+        } else {
+            swal("请选择数据", "", "warning");
         }
     }
 
     function seeDetail() {
-        var select= $("#allHuser").bootstrapTable('getSelections');
-        if(select.length === 1){
+        var select = $("#allHuser").bootstrapTable('getSelections');
+        if (select.length === 1) {
             var huserId = select[0].huid;
             $(":text").val("");
             $("#huid").val("");
@@ -153,32 +156,32 @@
             $('#huname').val(select[0].huname);
             $('#phone').val(select[0].phone);
             $('#email').val(select[0].email);
-            if(select[0].sex ==='男'){
-                $('#men').prop('checked',true);
-            }else if (select[0].sex ==='女'){
-                $('#men').prop('checked',false);
-                $('#women').prop('checked',true);
+            if (select[0].sex === '男') {
+                $('#men').prop('checked', true);
+            } else if (select[0].sex === '女') {
+                $('#men').prop('checked', false);
+                $('#women').prop('checked', true);
             }
 
             var setting = {
                 check: {
                     enable: true,
                     chkStyle: "checkbox",
-                    chkboxType: { "Y": "ps", "N": "ps" }
+                    chkboxType: {"Y": "ps", "N": "ps"}
                 },
                 data: {
                     simpleData: {
                         enable: true,
-                        idKey : "id",       // 结点的id,对应到Json中的id
-                        rootPId : -1
+                        idKey: "id",       // 结点的id,对应到Json中的id
+                        rootPId: -1
                     }
                 },
-                callback:{
-                    onAsyncSuccess:expandAll
+                callback: {
+                    onAsyncSuccess: expandAll
                 },
-                async : {
-                    enable : true,  // 采用异步方式获取所有节点数据,默认false
-                    url : "/role/list_treeVO?huserId="+huserId
+                async: {
+                    enable: true,  // 采用异步方式获取所有节点数据,默认false
+                    url: "/role/list_treeVO?huserId=" + huserId
                 }
             };
 
@@ -187,34 +190,67 @@
                 treeObj.expandAll(true);
             }
 
-            $(document).ready(function(){
+            $(document).ready(function () {
                 $.fn.zTree.init($("#roleTree"), setting);
             });
+
+
+
         }else{
-            swal("请选择一行数据","","warning");
+            swal("请选择一行数据", "", "warning");
         }
+
+            return $('#addHuser').validate({
+                onfocusout: function(element){
+                    $(element).valid();
+                },
+                debug:false,
+                onkeyup:false,
+                rules:{
+                    'huname':{
+                        required: true,
+                        isName: true
+                    },
+                    'email': {
+                        required: true,
+                        isEmail: true
+                    },
+                    'phone': {
+                        required: true,
+                        isPhone: true
+                    },
+                    'rname': {
+                        required: true,
+                        isName: true
+                    },
+                },
+                messages:{
+                }
+            });
     }
 
     function updateHuser() {
-        var treeObj = $.fn.zTree.getZTreeObj("roleTree");
-        var nodes1 = treeObj.getCheckedNodes(true);
-        var roleIds = "";
-        for(i = 0; i<nodes1.length; i++){
-            roleIds = roleIds + nodes1[i].id + ",";
-        }
-
-        $.post("" + "/huser/update?roleIds="+roleIds,
-            $("#addHuser").serialize(),
-            function (data) {
-                if (data.result === 'success') {
-                    swal(data.message,"","success");
-                    $('#allHuser').bootstrapTable("refresh");
-                    $('#myModal').modal('hide');
-                } else {
-                    swal(data.message,"","error");
-                }
+        if($('#addHuser').valid()){
+            var treeObj = $.fn.zTree.getZTreeObj("roleTree");
+            var nodes1 = treeObj.getCheckedNodes(true);
+            var roleIds = "";
+            for (i = 0; i < nodes1.length; i++) {
+                roleIds = roleIds + nodes1[i].id + ",";
             }
-        );
+
+            $.post("" + "/huser/update?roleIds=" + roleIds,
+                $("#addHuser").serialize(),
+                function (data) {
+                    if (data.result === 'success') {
+                        swal(data.message, "", "success");
+                        $('#allHuser').bootstrapTable("refresh");
+                        $('#myModal').modal('hide');
+                    } else {
+                        swal(data.message, "", "error");
+                    }
+                }
+            );
+        }
     }
 </script>
 </html>

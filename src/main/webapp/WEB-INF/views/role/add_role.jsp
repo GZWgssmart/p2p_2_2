@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <%@include file="../common/css/css_sweetalert.jsp" %>
+    <%@include file="../common/css/css_bootstrap-table.jsp" %>
 </head>
 <body>
 <div class="container">
@@ -52,5 +53,6 @@
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.core.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript" src="<%=path%>/static/ztree/js/jquery.ztree.exedit.js"></script>
+<%@include file="../common/js/js_form.jsp" %>
 <script type="text/javascript" src="<%=path%>/static/js/our/role/qrl/add_role_page.js"></script>
 </html>

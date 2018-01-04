@@ -32,25 +32,46 @@ $(document).ready(function(){
 
 
 function addRole() {
-    var treeObj = $.fn.zTree.getZTreeObj("jurTree");
-    var nodes1 = treeObj.getCheckedNodes(true);
-    var jurIds = "";
-    for(i = 0; i<nodes1.length; i++){
-        jurIds = jurIds + nodes1[i].id + ",";
-    }
-
-    $.post("" + "/role/add?jurIds="+jurIds,
-        $("#add_role").serialize(),
-        function (data) {
-            if (data.result === 'success') {
-                swal(data.message,"","success");
-                $(":text").val("");
-                var treeObj = $.fn.zTree.getZTreeObj("jurTree");
-                treeObj.checkAllNodes(false);
-            } else {
-                swal(data.message,"","error");
-            }
+    if($('#add_role').valid()){
+        var treeObj = $.fn.zTree.getZTreeObj("jurTree");
+        var nodes1 = treeObj.getCheckedNodes(true);
+        var jurIds = "";
+        for(i = 0; i<nodes1.length; i++){
+            jurIds = jurIds + nodes1[i].id + ",";
         }
-    );
+
+        $.post("" + "/role/add?jurIds="+jurIds,
+            $("#add_role").serialize(),
+            function (data) {
+                if (data.result === 'success') {
+                    swal(data.message,"","success");
+                    $(":text").val("");
+                    var treeObj = $.fn.zTree.getZTreeObj("jurTree");
+                    treeObj.checkAllNodes(false);
+                } else {
+                    swal(data.message,"","error");
+                }
+            }
+        );
+    }
 }
 
+
+$(function () {
+    return $('#add_role').validate({
+        onfocusout: function(element){
+            $(element).valid();
+        },
+        debug:false,
+        onkeyup:false,
+        rules:{
+            'rname':{
+                required: true,
+                isName: true
+            },
+        },
+        messages:{
+
+        }
+    });
+})
