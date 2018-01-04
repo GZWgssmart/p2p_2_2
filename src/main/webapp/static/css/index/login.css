@@ -336,7 +336,7 @@ body {
     height: 46px;
     cursor: move;
     border: 1px solid #d9d9d9;
-    background: url(../images/icon.png) no-repeat left -1095px;
+    background: url(../../images/index/icon.png) no-repeat left -1095px;
     background-color: #fff;
     position: absolute;
     left: -1px;

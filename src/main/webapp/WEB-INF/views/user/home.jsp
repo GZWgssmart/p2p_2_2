@@ -81,10 +81,16 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop"></i>
-                        <span class="nav-label">班级管理</span>
+                        <span class="nav-label">账户设置</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">我的银行卡</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/user/safety">安全设置</a>
+                        </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">所有设计师</a>
                         </li>
@@ -137,5 +143,12 @@
 <%@include file="../common/js/js_sweetalert.jsp" %>
 <script src="<%=path%>/static/js/our/user/lmh/home_check_vip.js"></script>
 </body>
-
+<script>
+    $(function () {
+        if(${sessionScope.user.uid == null}){
+            swtAlert.request_fail_no_timer("未登入,请先登入");
+            window.location.href = "/user/login_page";
+        }
+    })
+</script>
 </html>

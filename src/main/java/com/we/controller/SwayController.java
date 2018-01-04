@@ -22,10 +22,17 @@ public class SwayController {
 
     private SwayService swayService;
 
+    @RequestMapping("all_sway_page")
+    public String AllSwayPage(){
+        return "sway/allSway";
+    }
+
+
     @RequestMapping("save")
     @ResponseBody
     public RequestResultVO save(Sway sway) {
         RequestResultVO vo = null;
+        sway.setState(0);
         try{
             swayService.saveSelective(sway);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
@@ -52,10 +59,10 @@ public class SwayController {
         }
         return vo;
     }
-    @RequestMapping("pager_criteria")
+    @RequestMapping("all_sway")
     @ResponseBody
-    public Pager pagerCriteria(Long offset, Long limit, Sway sway) {
-        return swayService.listCriteria(offset, limit, sway);
+    public Pager pagerCriteria(Long offset, Long limit) {
+        return swayService.listCriteria(offset, limit, Sway.class);
     }
 
     @Resource
