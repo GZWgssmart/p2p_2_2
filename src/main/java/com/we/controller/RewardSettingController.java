@@ -18,6 +18,19 @@ public class RewardSettingController {
 
     private RewardSettingService rewardSettingService;
 
+    @RequestMapping("update")
+    @ResponseBody
+    public RequestResultVO update(RewardSetting rewardSetting) {
+        RequestResultVO vo = null;
+        try{
+            rewardSettingService.update(rewardSetting);
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        }catch (RuntimeException e) {
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        }
+        return vo;
+    }
+
     /***
      * 投资奖励的增加
      * @param rewardSetting

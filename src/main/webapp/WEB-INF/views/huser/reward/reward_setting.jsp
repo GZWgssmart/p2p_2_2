@@ -22,7 +22,7 @@
     <button class="btn btn-primary" data-toggle="modal"
             data-target="#saveRewardSettingModal" onclick="showForm();">添加奖励</button>
     <button class="btn btn-default" data-toggle="modal"
-            onclick="pagerHuserLetter.updateLetter();">修改奖励</button>
+            onclick="pagerHuserRewardSetting.updateRewardSetting();">修改奖励</button>
 </div>
 <table id="rewardSetting-list" class="table table-hover"
        data-url="<%=path%>/rewardSetting/pager_criteria">
@@ -44,12 +44,15 @@
 <%@include file="../../common/js/js_sweetalert.jsp" %>
 <%@include file="../../common/js/js_form.jsp" %>
 <%@include file="../../common/js/js_data_dict.jsp" %>
+<script src="<%=path%>/static/js/our/huser/xdp/pager_huser_rewardSetting.js"></script>
 <script>
     $(function () {
         setTable.setBootstrapTable('rewardSetting-list');
+        jQuery.validator.addMethod('checkMoney', function (value, element) {
+            return this.optional(element) || ($('#minmoney').val() < $('#maxmoney').val());
+        }, '最小金额必须小于最大金额');
     });
 </script>
 
-<script src="<%=path%>/static/js/our/jquery-form.js"></script>
 </body>
 </html>

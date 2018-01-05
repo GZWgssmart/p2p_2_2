@@ -51,7 +51,8 @@
                 },
                 'minmoney':{
                     required: true,
-                    isNumberGtZero:true
+                    isNumberGtZero:true,
+                    checkMoney:true
                 },
                 'percent':{
                     required: true,
@@ -80,8 +81,6 @@
         } else {
             submitForm.save('/rewardSetting/save','addForm','rewardSetting-list','saveRewardSettingModal');
         }
-    };
+    }
 
 </script>
-</body>
-</html>
