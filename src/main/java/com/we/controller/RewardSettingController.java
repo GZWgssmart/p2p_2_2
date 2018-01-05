@@ -2,7 +2,9 @@ package com.we.controller;
 
 import com.we.bean.RewardSetting;
 import com.we.common.Pager;
+import com.we.enums.RequestResultEnum;
 import com.we.service.RewardSettingService;
+import com.we.vo.RequestResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,25 @@ import javax.annotation.Resource;
 public class RewardSettingController {
 
     private RewardSettingService rewardSettingService;
+
+    /***
+     * 投资奖励的增加
+     * @param rewardSetting
+     * @return 带结果的返回
+     */
+    @RequestMapping("save")
+    @ResponseBody
+    public RequestResultVO save(RewardSetting rewardSetting) {
+        RequestResultVO vo = null;
+        try{
+            rewardSettingService.save(rewardSetting);
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        }catch (RuntimeException e) {
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }
+        return vo;
+    }
+
 
     /***
      * 投资奖励设置分页查询

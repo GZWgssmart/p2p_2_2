@@ -82,4 +82,18 @@
   <select id="getPercentByMoney" resultType="double">
      select percent from reward_setting where minmoney <![CDATA[<=]]> #{money} and #{money} <![CDATA[<]]> maxmoney
   </select>
+
+  <select id="listCriteria" resultType="com.we.bean.RewardSetting">
+    SELECT
+    *
+    FROM reward_setting
+    LIMIT #{pager.offset},#{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT
+    count(rs.rwid)
+    FROM reward_setting rs
+  </select>
+
 </mapper>
