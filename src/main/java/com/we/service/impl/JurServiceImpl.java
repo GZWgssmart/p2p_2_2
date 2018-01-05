@@ -8,6 +8,7 @@ import com.we.service.JurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,6 +42,16 @@ public class JurServiceImpl extends AbstractBaseService implements JurService {
     @Override
     public List<Object> listTreeVO() {
         return jurDAO.listTreeVO();
+    }
+
+    @Override
+    public void deletes(String jurIds) {
+        String [] jurIdsArray = jurIds.split(",");
+        List<Integer> jurIdsList = new ArrayList<>();
+        for (String classId:jurIdsArray){
+            jurIdsList.add(Integer.valueOf(classId));
+        }
+        jurDAO.deletes(jurIdsList);
     }
 
 

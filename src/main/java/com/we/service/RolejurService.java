@@ -21,6 +21,11 @@ public interface RolejurService extends BaseService {
     void deletes(String roleIds);
 
     /**
+     * 根据权限id批量删除绑定
+     */
+    void deletesByJurIds(String jurIds);
+
+    /**
      * 获取角色的权限id集合
      */
     List<Integer> listJurIds(Integer roleId);

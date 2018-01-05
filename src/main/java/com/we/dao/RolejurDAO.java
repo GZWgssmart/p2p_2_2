@@ -14,5 +14,7 @@ public interface RolejurDAO extends BaseDAO {
 
     void deletes(@Param("roleIds") List<Integer> roleIds);
 
+    void deletesByjurIds(@Param("jurIds") List<Integer> jurIds);
+
     List<Integer> listJurIds(@Param("roleId")Integer roleId);
 }

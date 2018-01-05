@@ -29,11 +29,10 @@
         SELECT LAST_INSERT_ID()
     </selectKey>
     insert into huser (huid, rname, sex, 
-      phone, huname, oid, oname, 
-      email)
+      phone, huname,email,create_time)
     values (#{huid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=CHAR}, #{huname,jdbcType=VARCHAR}, #{oid,jdbcType=INTEGER}, #{oname,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR})
+      #{phone,jdbcType=CHAR}, #{huname,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR},#{createTime})
   </insert>
     <insert id="saveSelective" parameterType="com.we.bean.Huser">
         insert into huser
@@ -130,10 +129,11 @@
   </update>
 
     <select id="listCriteria" resultType="com.we.bean.Huser">
-        select * from huser
+        select * from huser order by create_time desc
         <if test="pager.offset != null and pager.limit != null">
             limit #{pager.offset},#{pager.limit}
         </if>
+
     </select>
 
     <select id="countCriteria" resultType="long">

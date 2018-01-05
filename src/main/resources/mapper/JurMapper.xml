@@ -20,10 +20,7 @@
     where jid = #{jid,jdbcType=INTEGER}
   </delete>
   <insert id="save" parameterType="com.we.bean.Jur" >
-    insert into jur (jid, jurl, content
-      )
-    values (#{jid,jdbcType=INTEGER}, #{jurl,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
-      )
+    insert into jur(name, url, perms,create_time) VALUES (#{name},#{url},#{perms},#{createTime})
   </insert>
   <insert id="saveSelective" parameterType="com.we.bean.Jur" >
     insert into jur
@@ -70,14 +67,15 @@
   </update>
 
   <select id="listPager" resultType="com.we.bean.Jur">
-    select * from jur
+    select * from jur order by create_time desc
     <if test="pager.offset != null and pager.limit!= null" >
       limit #{pager.offset}, #{pager.limit}
     </if>
+
   </select>
 
   <select id="listTreeVO" resultType="com.we.vo.JurTreeVO">
-    select id,parent_id,name from jur
+    select id,name from jur order by create_time desc
   </select>
 
 
@@ -85,7 +83,12 @@
     select count(id) from jur
   </select>
 
-
+  <delete id="deletes">
+    delete from jur WHERE  id IN
+    <foreach collection="jurIds" item="jurId" separator="," open="(" close=")">
+      #{jurId}
+    </foreach>
+  </delete>
 
   <select id="listByRoleId" resultType="com.we.bean.Jur" parameterType="java.lang.Integer">
     SELECT j.* FROM  jur j,rolejur rj where rj.jid = j.jid and rj.rid = #{roleId}

@@ -17,4 +17,6 @@ public interface JurDAO extends BaseDAO {
     List<Object> listByRoleId(Integer roleId);
 
     List<Object> listTreeVO();
+
+    void deletes(@Param("jurIds") List<Integer> jurIds);
 }

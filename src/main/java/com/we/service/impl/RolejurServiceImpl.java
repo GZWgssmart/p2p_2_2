@@ -40,6 +40,16 @@ public class RolejurServiceImpl extends AbstractBaseService implements RolejurSe
     }
 
     @Override
+    public void deletesByJurIds(String jurIds) {
+        String [] jurIdsArray = jurIds.split(",");
+        List<Integer> jurIdsList = new ArrayList<>();
+        for (String classId:jurIdsArray){
+            jurIdsList.add(Integer.valueOf(classId));
+        }
+        rolejurDAO.deletesByjurIds(jurIdsList);
+    }
+
+    @Override
     public List<Integer> listJurIds(Integer roleId) {
         return rolejurDAO.listJurIds(roleId);
     }

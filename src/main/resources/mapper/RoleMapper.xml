@@ -75,10 +75,11 @@
 
 
   <select id="listPager" resultType="com.we.bean.Role">
-    select * from role
+    select * from role  order by create_time desc
     <if test="pager.offset != null and pager.limit!= null" >
       limit #{pager.offset}, #{pager.limit}
     </if>
+
   </select>
 
   <select id="countAll" resultType="java.lang.Long">
@@ -107,7 +108,7 @@
   </select>
 
   <select id="listTreeVO" resultType="com.we.vo.RoleZTreeVO">
-    select r.jid as id,rname as name from role r
+    select r.jid as id,rname as name from role r order by create_time desc
   </select>
 
   <sql id="commonCriteriaSQL">

@@ -20,4 +20,10 @@ public interface JurService extends BaseService {
     Pager listByRoleId(Integer roleId);
 
     List<Object> listTreeVO();
+
+    /**
+     * 批量删除权限
+     * @param jurIds
+     */
+    void deletes(String jurIds);
 }

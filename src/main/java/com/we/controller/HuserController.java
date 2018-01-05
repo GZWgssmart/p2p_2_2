@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Calendar;
+
 /**
  * Created by ID.LQF on 2017/12/25.
  */
@@ -104,6 +106,7 @@ public class HuserController {
     @RequestMapping("add")
     @ResponseBody
     public RequestResultVO add(Huser huser, String roleIds) {
+        huser.setCreateTime(Calendar.getInstance().getTime());
         huserService.save(huser);
         if(roleIds != null && roleIds != ""){
             roleuserService.saveRoleuser(huser.getHuid(),roleIds);

@@ -83,6 +83,13 @@
     </foreach>
   </delete>
 
+  <delete id="deletesByjurIds">
+    delete from rolejur WHERE  jid IN
+    <foreach collection="jurIds" item="jurId" separator="," open="(" close=")">
+      #{jurId}
+    </foreach>
+  </delete>
+
   <select id="listJurIds" resultType="java.lang.Integer">
     select jid from rolejur where rid = #{roleId};
   </select>

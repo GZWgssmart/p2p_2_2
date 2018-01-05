@@ -1,15 +1,14 @@
 package com.we.bean;
 
+import java.util.Date;
+
 public class Jur {
 
     private Integer id;
-    private Integer parentId;
     private String name;
     private String url;
     private String perms;
-    private Integer type;
-    private String inco;
-    private Integer orderNum;
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -17,14 +16,6 @@ public class Jur {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
     }
 
     public String getName() {
@@ -51,27 +42,11 @@ public class Jur {
         this.perms = perms;
     }
 
-    public Integer getType() {
-        return type;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getInco() {
-        return inco;
-    }
-
-    public void setInco(String inco) {
-        this.inco = inco;
-    }
-
-    public Integer getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(Integer orderNum) {
-        this.orderNum = orderNum;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

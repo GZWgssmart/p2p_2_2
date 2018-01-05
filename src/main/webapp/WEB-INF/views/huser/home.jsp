@@ -108,12 +108,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop"></i>
-                        <span class="nav-label">奖励设置</span>
+                        <span class="nav-label">后台用户管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/rewardSetting">所有奖励</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_huser_page">所有后台用户</a>
                         </li>
                     </ul>
                 </li>
@@ -121,12 +121,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-flask"></i>
-                        <span class="nav-label">建材商管理</span>
+                        <span class="nav-label">角色管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="graph_echarts.html">所有建材商</a>
+                            <a class="J_menuItem" href="<%=path%>/role/all_role_page">所有角色</a>
                         </li>
                     </ul>
                 </li>
@@ -134,12 +134,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-picture-o"></i>
-                        <span class="nav-label">业主管理</span>
+                        <span class="nav-label">权限管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="graph_echarts.html">所有业主</a>
+                            <a class="J_menuItem" href="<%=path%>/jur/all_jur_page">所有权限</a>
                         </li>
                     </ul>
                 </li>

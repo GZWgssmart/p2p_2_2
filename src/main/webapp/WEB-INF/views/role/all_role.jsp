@@ -7,7 +7,7 @@
     <title>Title</title>
     <link href="<%=path%>/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=path%>/static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">
+    <%--<link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">--%>
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <%@include file="../common/css/css_sweetalert.jsp" %>
     <%@include file="../common/css/css_bootstrap-table.jsp" %>
@@ -26,6 +26,7 @@
            data-height="460"
            data-toolbar="#toolbar"
            data-click-to-select="true"
+           data-show-refresh="true"
            data-cookie="true"
            data-cookie-id-table="saveId"
            data-pagination="true"

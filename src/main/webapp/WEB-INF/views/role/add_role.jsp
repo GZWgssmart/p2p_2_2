@@ -6,7 +6,6 @@
 <head>
     <title>Title</title>
     <link href="<%=path%>/static/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=path%>/static/ztree/css/demo.css" type="text/css">
     <link rel="stylesheet" href="<%=path%>/static/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <%@include file="../common/css/css_sweetalert.jsp" %>
     <%@include file="../common/css/css_bootstrap-table.jsp" %>

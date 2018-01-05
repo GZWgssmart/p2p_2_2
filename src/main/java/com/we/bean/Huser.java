@@ -1,5 +1,7 @@
 package com.we.bean;
 
+import java.util.Date;
+
 public class Huser {
     private Integer huid;
 
@@ -11,11 +13,9 @@ public class Huser {
 
     private String huname;
 
-    private Integer oid;
-
-    private String oname;
-
     private String email;
+
+    private Date createTime;
 
     public Integer getHuid() {
         return huid;
@@ -57,27 +57,19 @@ public class Huser {
         this.huname = huname == null ? null : huname.trim();
     }
 
-    public Integer getOid() {
-        return oid;
-    }
-
-    public void setOid(Integer oid) {
-        this.oid = oid;
-    }
-
-    public String getOname() {
-        return oname;
-    }
-
-    public void setOname(String oname) {
-        this.oname = oname == null ? null : oname.trim();
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
