@@ -123,7 +123,19 @@
                     </ul>
                 </li>
 
-
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span class="nav-label">好友推荐</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/recommend/invite_friends">好友推荐</a>
+                            <%--<a class="J_menuItem" href="<%=path%>/recommend/invite_friends">推荐列表</a>--%>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </div>

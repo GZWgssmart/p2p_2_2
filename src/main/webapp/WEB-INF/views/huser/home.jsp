@@ -80,7 +80,7 @@
 
                 <li>
                     <a href="#">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-video-camera"></i>
                         <span class="nav-label">媒体报道</span>
                         <span class="fa arrow"></span>
                     </a>
