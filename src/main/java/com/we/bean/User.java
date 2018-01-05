@@ -1,5 +1,7 @@
 package com.we.bean;
 
+import java.util.Date;
+
 public class User {
     private Integer uid;
 
@@ -26,6 +28,8 @@ public class User {
     private String sex;
 
     private Integer isVip;
+
+    private Date registerTime;
 
     public Integer getUid() {
         return uid;
@@ -131,6 +135,14 @@ public class User {
         this.isVip = isVip;
     }
 
+    public Date getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -147,6 +159,7 @@ public class User {
                 ", face='" + face + '\'' +
                 ", sex='" + sex + '\'' +
                 ", isVip=" + isVip +
+                ", registerTime=" + registerTime +
                 '}';
     }
 }

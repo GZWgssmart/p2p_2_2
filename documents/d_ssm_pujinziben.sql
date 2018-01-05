@@ -22,7 +22,8 @@ CREATE TABLE `user`(
   tid INT COMMENT '推荐人id',
   face VARCHAR(500) COMMENT '头像',
   sex VARCHAR(4) COMMENT '性别',
-  is_vip INT COMMENT '0：不是VIP，1：是VIP' DEFAULT 0
+  is_vip INT COMMENT '0：不是VIP，1：是VIP' DEFAULT 0,
+  register_time DATETIME COMMENT '注册时间'
 )ENGINE = InnoDB DEFAULT CHARSET = utf8 AUTO_INCREMENT = 100000 COMMENT '前台用户表';
 
 DROP TABLE IF EXISTS rzvip;

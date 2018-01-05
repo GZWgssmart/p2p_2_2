@@ -1,178 +1,185 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.dao.UserDAO" >
-  <resultMap id="BaseResultMap" type="com.we.bean.User" >
-    <id column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="uname" property="uname" jdbcType="VARCHAR" />
-    <result column="upwd" property="upwd" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="CHAR" />
-    <result column="zpwd" property="zpwd" jdbcType="VARCHAR" />
-    <result column="idtype" property="idtype" jdbcType="VARCHAR" />
-    <result column="idno" property="idno" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="rname" property="rname" jdbcType="VARCHAR" />
-    <result column="tid" property="tid" jdbcType="INTEGER" />
-    <result column="face" property="face" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="is_vip" property="isVip" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.dao.UserDAO">
+  <resultMap id="BaseResultMap" type="com.we.bean.User">
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="upwd" jdbcType="VARCHAR" property="upwd" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="zpwd" jdbcType="VARCHAR" property="zpwd" />
+    <result column="idtype" jdbcType="VARCHAR" property="idtype" />
+    <result column="idno" jdbcType="VARCHAR" property="idno" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="rname" jdbcType="VARCHAR" property="rname" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="face" jdbcType="VARCHAR" property="face" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="is_vip" jdbcType="INTEGER" property="isVip" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    uid, uname, upwd, phone, zpwd, idtype, idno, email, rname, tid, face, sex, is_vip
+  <sql id="Base_Column_List">
+    uid, uname, upwd, phone, zpwd, idtype, idno, email, rname, tid, face, sex, is_vip, 
+    register_time
   </sql>
-  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
     where uid = #{uid,jdbcType=INTEGER}
   </select>
-  <delete id="removeById" parameterType="java.lang.Integer" >
+  <delete id="removeById" parameterType="java.lang.Integer">
     delete from user
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
-  <insert id="save" parameterType="com.we.bean.User" >
+  <insert id="save" parameterType="com.we.bean.User">
     insert into user (uid, uname, upwd, 
-      phone, zpwd, idtype,
-      idno, email, rname, 
-      tid, face, sex, is_vip
+      phone, zpwd, idtype, idno, 
+      email, rname, tid, 
+      face, sex, is_vip, register_time
       )
     values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=CHAR}, #{zpwd,jdbcType=VARCHAR}, #{idtype,jdbcType=VARCHAR},
-      #{idno,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, 
-      #{tid,jdbcType=INTEGER}, #{face,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{isVip,jdbcType=INTEGER}
+      #{phone,jdbcType=CHAR}, #{zpwd,jdbcType=VARCHAR}, #{idtype,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, 
+      #{face,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{isVip,jdbcType=INTEGER}, #{registerTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="saveSelective" parameterType="com.we.bean.User" >
-
-    <selectKey keyProperty="uid" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
+  <insert id="saveSelective" parameterType="com.we.bean.User">
     insert into user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
         uid,
       </if>
-      <if test="uname != null" >
+      <if test="uname != null">
         uname,
       </if>
-      <if test="upwd != null" >
+      <if test="upwd != null">
         upwd,
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone,
       </if>
-      <if test="zpwd != null" >
+      <if test="zpwd != null">
         zpwd,
       </if>
-      <if test="idtype != null" >
+      <if test="idtype != null">
         idtype,
       </if>
-      <if test="idno != null" >
+      <if test="idno != null">
         idno,
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email,
       </if>
-      <if test="rname != null" >
+      <if test="rname != null">
         rname,
       </if>
-      <if test="tid != null" >
+      <if test="tid != null">
         tid,
       </if>
-      <if test="face != null" >
+      <if test="face != null">
         face,
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex,
       </if>
-      <if test="isVip != null" >
+      <if test="isVip != null">
         is_vip,
       </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="uname != null" >
+      <if test="uname != null">
         #{uname,jdbcType=VARCHAR},
       </if>
-      <if test="upwd != null" >
+      <if test="upwd != null">
         #{upwd,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         #{phone,jdbcType=CHAR},
       </if>
-      <if test="zpwd != null" >
+      <if test="zpwd != null">
         #{zpwd,jdbcType=VARCHAR},
       </if>
-      <if test="idtype != null" >
+      <if test="idtype != null">
         #{idtype,jdbcType=VARCHAR},
       </if>
-      <if test="idno != null" >
+      <if test="idno != null">
         #{idno,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="rname != null" >
+      <if test="rname != null">
         #{rname,jdbcType=VARCHAR},
       </if>
-      <if test="tid != null" >
+      <if test="tid != null">
         #{tid,jdbcType=INTEGER},
       </if>
-      <if test="face != null" >
+      <if test="face != null">
         #{face,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="isVip != null" >
+      <if test="isVip != null">
         #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateSelective" parameterType="com.we.bean.User" >
+  <update id="updateSelective" parameterType="com.we.bean.User">
     update user
-    <set >
-      <if test="uname != null" >
+    <set>
+      <if test="uname != null">
         uname = #{uname,jdbcType=VARCHAR},
       </if>
-      <if test="upwd != null" >
+      <if test="upwd != null">
         upwd = #{upwd,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone = #{phone,jdbcType=CHAR},
       </if>
-      <if test="zpwd != null" >
+      <if test="zpwd != null">
         zpwd = #{zpwd,jdbcType=VARCHAR},
       </if>
-      <if test="idtype != null" >
+      <if test="idtype != null">
         idtype = #{idtype,jdbcType=VARCHAR},
       </if>
-      <if test="idno != null" >
+      <if test="idno != null">
         idno = #{idno,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="rname != null" >
+      <if test="rname != null">
         rname = #{rname,jdbcType=VARCHAR},
       </if>
-      <if test="tid != null" >
+      <if test="tid != null">
         tid = #{tid,jdbcType=INTEGER},
       </if>
-      <if test="face != null" >
+      <if test="face != null">
         face = #{face,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex = #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="isVip != null" >
+      <if test="isVip != null">
         is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <update id="update" parameterType="com.we.bean.User" >
+  <update id="update" parameterType="com.we.bean.User">
     update user
     set uname = #{uname,jdbcType=VARCHAR},
       upwd = #{upwd,jdbcType=VARCHAR},
@@ -185,7 +192,8 @@
       tid = #{tid,jdbcType=INTEGER},
       face = #{face,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
-      is_vip = #{isVip,jdbcType=INTEGER}
+      is_vip = #{isVip,jdbcType=INTEGER},
+      register_time = #{registerTime,jdbcType=TIMESTAMP}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
 
@@ -209,40 +217,40 @@
     </where>
   </select>
 
-  <update id="updateByPhone" parameterType="com.we.bean.User" >
+  <update id="updateByPhone" parameterType="com.we.bean.User">
     update user
-    <set >
-      <if test="uname != null" >
+    <set>
+      <if test="uname != null">
         uname = #{uname,jdbcType=VARCHAR},
       </if>
-      <if test="upwd != null" >
+      <if test="upwd != null">
         upwd = #{upwd,jdbcType=VARCHAR},
       </if>
-      <if test="zpwd != null" >
+      <if test="zpwd != null">
         zpwd = #{zpwd,jdbcType=VARCHAR},
       </if>
-      <if test="idtype != null" >
+      <if test="idtype != null">
         idtype = #{idtype,jdbcType=VARCHAR},
       </if>
-      <if test="idno != null" >
+      <if test="idno != null">
         idno = #{idno,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="rname != null" >
+      <if test="rname != null">
         rname = #{rname,jdbcType=VARCHAR},
       </if>
-      <if test="tid != null" >
+      <if test="tid != null">
         tid = #{tid,jdbcType=INTEGER},
       </if>
-      <if test="face != null" >
+      <if test="face != null">
         face = #{face,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null" >
+      <if test="sex != null">
         sex = #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="isVip != null" >
+      <if test="isVip != null">
         is_vip = #{isVip,jdbcType=INTEGER},
       </if>
     </set>

@@ -37,8 +37,8 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         }
         Borrowapply borrowapply = (Borrowapply) borrowapplyDAO.getById(tzbDTO.getBaid());
         BigDecimal symoney = borrowapply.getSymoney();
-        //判断标的可投余额是否大于所投金额
-        if (symoney.compareTo(money) == 1) {
+        //判断标的可投余额是否 大于等于 所投金额
+        if (symoney.compareTo(money) != -1) {
             //判断用户资金是否充足
             if (kymoney != null && money != null && kymoney.compareTo(money) != -1) {
                 usermoney.setKymoney(kymoney.subtract(money));
@@ -60,10 +60,11 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 result += borrowapplyDAO.updateSelective(borrowapply);//更新剩余可投金额
                 MoneyLog moneyLog = new MoneyLog(tzbDTO.getUid(), OurConstants.MONEY_LOG_TZ, money, Calendar.getInstance().getTime());
                 result += moneyLogDAO.saveSelective(moneyLog);// 增加资金流向记录
+                //剩余可投金额等于已投金额，生成还款表、收款表数据
+                if (symoney.compareTo(money) == 0) {
+
+                }
             }
-            //已投金额等于剩余可投金额：生成还款表数据
-        } else if (symoney.compareTo(money) == 0) {
-            
         }
         return result;
     }
