@@ -11,7 +11,10 @@
 <body class="gray-bg">
 <div class="tool-bar" id="tool-bar">
     <button class="btn btn-primary"onclick="addSwayButton();">添加</button>
-    <button onclick="" class="btn btn-default">修改</button>
+    <button onclick="updateSwayButton();" class="btn btn-default">修改</button>
+    <button onclick="remove();" class="btn btn-danger">删除</button>
+    <button onclick="updateState('激活');" class="btn btn-default">激活</button>
+    <button onclick="updateState('冻结');" class="btn btn-default">冻结</button>
 </div>
 <table id="allSway" class="table table-hover"
        data-url="<%=path%>/sway/all_sway">
@@ -74,9 +77,115 @@
         $.post("/sway/save",
             $("#addSwayForm").serialize(),
             function (data) {
-                alert(data.message);
+                if(data.message === "保存成功！"){
+                    swtAlert.request_success("保存成功");
+                    $("#addSway").modal("hide");
+                    $("#allSway").bootstrapTable("refresh");
+                }else{
+                    swtAlert.request_fail(data.message);
+                }
              }, "json"
         );
+    }
+
+    function changeOne(tableId) {
+        var row = $("#"+tableId).bootstrapTable('getSelections');
+        if(row.length == 1){
+            return row[0];
+        }else{
+            swtAlert.request_fail_no_timer("请选择一行数据");
+            return false;
+        }
+    }
+
+    function updateSwayButton() {
+        var row = changeOne("allSway");
+        if(row == false){
+            return;
+        }
+        $("#updateSway").modal("show");
+        $("#way").val(row.way);
+        $("#fw").val(row.fw);
+        $("#sid").val(row.sid);
+        return $("#updateSwayForm").validate({
+            onfocusout: function(element){
+                $(element).valid();
+            },
+            debug:false,
+            onkeyup:false,
+            rules:{
+                'sway':{
+                    required: true
+                },
+                'fw':{
+                    required: true
+                }
+            }
+        });
+    }
+
+    function updateSway() {
+        if ($('#updateSwayForm').valid() === false) return;
+        $.post("/sway/update",
+            $("#updateSwayForm").serialize(),
+            function (data) {
+                if(data.message == "更新成功"){
+                    swtAlert.request_success(data.message);
+                    $("#updateSway").modal("hide");
+                    $("#allSway").bootstrapTable("refresh");
+                }else{
+                    swtAlert.request_fail(data.message);
+                }
+            },"json"
+        );
+    }
+
+    function remove() {
+        var row = $("#allSway").bootstrapTable('getSelections');
+        if(row.length == 0){
+            swtAlert.request_fail_no_timer("请选择数据");
+        }else{
+            var ids = [];
+            for(var i =0, len = row.length;i < len;i++){
+                ids.push(row[i].sid);
+            }
+            $.ajax({
+                type: 'post',
+                url: '/sway/remove',
+                dataType : 'json',
+                data: {
+                    "ids":ids.join()
+                },
+                success:  function (data){
+                    swtAlert.success(data.message);
+                    var row = $("#allSway").bootstrapTable('getSelections');
+                },
+                error:function () {
+                    swtAlert.request_fail("删除失败")
+                }
+            });
+        }
+    }
+    function updateState(state) {
+        var row = changeOne("allSway");
+        if(row == false){
+            return;
+        }
+        if((state == "激活" && row.state == 1) || (state == "冻结" && row.state == 0)){
+            swtAlert.request_fail_no_timer("已是"+state+"状态");
+        }else{
+            $.post("/sway/updateState",
+                {
+                    sid:row.sid,
+                    state:state
+                },function (data) {
+                    if(data.message === "更新成功"){
+                        swtAlert.request_success(state+"成功");
+                        $("#allSway").bootstrapTable("refresh");
+                    }
+                },"json"
+            );
+        }
     }
 </script>
 </html>

@@ -6,6 +6,8 @@ import com.we.service.SwayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by hasee on 2017/12/22.
  */
@@ -17,5 +19,10 @@ public class SwayServiceImpl extends AbstractBaseService implements SwayService 
     public void setSwayDAO(SwayDAO swayDAO){
         super.setBaseDAO(swayDAO);
         this.swayDAO = swayDAO;
+    }
+
+    @Override
+    public void removeByIds(List<Integer> ids) {
+        swayDAO.removeByIds(ids);
     }
 }

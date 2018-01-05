@@ -20,6 +20,16 @@
     delete from sway
     where sid = #{sid,jdbcType=INTEGER}
   </delete>
+
+  <delete id="removeByIds">
+    delete from sway
+    where sid in
+    <foreach item="item" index="index" collection="list" open="("
+             separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
   <insert id="save" parameterType="com.we.bean.Sway" >
     insert into sway (sid, way, fw, 
       state)
