@@ -51,6 +51,21 @@
 
                 <li>
                     <a href="#">
+                        <i class="fa fa fa-bar-chart-o"></i>
+                        <span class="nav-label">投资奖励设置</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/rewardSetting" data-index="0">奖励设置</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <li>
+                    <a href="#">
                         <i class="fa fa-home"></i>
                         <span class="nav-label">公司动态</span>
                         <span class="fa arrow"></span>

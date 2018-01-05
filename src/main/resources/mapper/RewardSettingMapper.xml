@@ -86,7 +86,8 @@
   <select id="listCriteria" resultType="com.we.bean.RewardSetting">
     SELECT
     *
-    FROM reward_setting
+    FROM reward_setting rs
+     ORDER BY rs.percent DESC
     LIMIT #{pager.offset},#{pager.limit}
   </select>
 
