@@ -2,8 +2,10 @@ package com.we.service.impl;
 
 import com.we.bean.*;
 import com.we.common.OurConstants;
+import com.we.common.loan.*;
 import com.we.dao.*;
 import com.we.dto.TzbDTO;
+import com.we.enums.RequestResultEnum;
 import com.we.service.AbstractBaseService;
 import com.we.service.TzbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 @Service
 public class TzbServiceImpl extends AbstractBaseService implements TzbService {
@@ -20,6 +23,9 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     private TicketDAO ticketDAO;
     private MoneyLogDAO moneyLogDAO;
     private BorrowapplyDAO borrowapplyDAO;
+    private BorrowdetailDAO borrowdetailDAO;
+    private HkbDAO hkbDAO;
+    private ShborrowDAO shborrowDAO;
 
     @Override
     public Integer save(TzbDTO tzbDTO) {
@@ -32,7 +38,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         Usermoney usermoney = usermoneyDAO.getByUid(uid);
         BigDecimal kymoney = usermoney.getKymoney();
         BigDecimal money = tzbDTO.getMoney();
-        if (ticket != null) {
+        if (kymoney != null && ticket != null) {
             kymoney = kymoney.add(ticket.getTkmoney());
         }
         Borrowapply borrowapply = (Borrowapply) borrowapplyDAO.getById(tzbDTO.getBaid());
@@ -40,7 +46,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         //判断标的可投余额是否 大于等于 所投金额
         if (symoney.compareTo(money) != -1) {
             //判断用户资金是否充足
-            if (kymoney != null && money != null && kymoney.compareTo(money) != -1) {
+            if (kymoney != null && kymoney.compareTo(money) != -1) {
                 usermoney.setKymoney(kymoney.subtract(money));
                 usermoney.setTzmoney(usermoney.getTzmoney().add(money));
                 //更新用户资金的数据，是否还需更新收益总额，待收金额？
@@ -54,11 +60,71 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 result += moneyLogDAO.saveSelective(moneyLog);// 增加资金流向记录
                 //剩余可投金额等于已投金额，生成还款表数据
                 if (symoney.compareTo(money) == 0) {
-
+                    Borrowdetail borrowdetail = borrowdetailDAO.getByApplyId(borrowapply.getBaid());
+                    result += hkbDAO.saveList(gainHkbData(borrowapply, borrowdetail));
                 }
             }
         }
         return result;
+    }
+
+    private List<Hkb> gainHkbData(Borrowapply borrowapply, Borrowdetail borrowdetail) {
+        List<Hkb> hkbList = null;
+        Integer bz = borrowapply.getBzid();
+        BigDecimal money = borrowapply.getMoney();
+        Integer term = borrowapply.getTerm();
+        Integer baid = borrowapply.getBaid();
+        String rname = borrowapply.getRname();
+        Integer uid = borrowapply.getUid();
+        Integer huid = shborrowDAO.getByBaid(baid).getHuid();//未实现
+
+        String cpname = borrowdetail.getCpname();
+        BigDecimal nprofit = borrowdetail.getNprofit();
+        if (OurConstants.BZ_XXHB.equals(bz)) {
+
+        } else if (OurConstants.BZ_ACM.equals(bz) || OurConstants.BZ_ACPIM.equals(bz)) {
+            String bzname = "";
+            LoanCalculatorAdapter calculator = null;
+            if (OurConstants.BZ_ACM.equals(bz)) {
+                bzname = "等额本金";
+                calculator = new ACMLoanCalculator();
+            } else {
+                bzname = "等额本息";
+                calculator = new ACPIMLoanCalculator();
+            }
+            Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, LoanUtil.PERCENT),
+                    term,
+                    LoanUtil.rate(nprofit.doubleValue(), LoanUtil.RATEDISCOUNT),
+                    LoanUtil.RATE_TYPE_YEAR);
+            List<LoanByMonth> allLoans = loan.getAllLoans();
+            for (int i = 0, len = allLoans.size(); i < len; i++) {
+                LoanByMonth loanByMonth = allLoans.get(i);
+                Hkb hkb = new Hkb();
+                hkb.setUid(uid);
+                hkb.setRname(rname);
+                hkb.setCpname(cpname);
+                hkb.setTnum(term);
+                Calendar calendar = Calendar.getInstance();
+                calendar.add(Calendar.MONTH, (i + 1));
+                hkb.setYtime(calendar.getTime());
+                hkb.setBzname(bzname);
+                hkb.setState(OurConstants.TZB_WH);
+                hkb.setBaid(baid);
+                calendar.add(Calendar.DAY_OF_MONTH, 1);
+                hkb.setYustartime(calendar.getTime());
+                hkb.setHuid(huid);
+
+                BigDecimal interest = loanByMonth.getInterest();
+                BigDecimal payPrincipal = loanByMonth.getPayPrincipal();
+                hkb.setYlx(interest);
+                hkb.setYbj(payPrincipal);
+                hkb.setYbx(interest.add(payPrincipal));
+                hkbList.add(hkb);
+            }
+        } else if (OurConstants.BZ_YCHQ.equals(bz)) {
+
+        }
+        return hkbList;
     }
 
     @Override
@@ -95,5 +161,20 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     @Autowired
     public void setBorrowapplyDAO(BorrowapplyDAO borrowapplyDAO) {
         this.borrowapplyDAO = borrowapplyDAO;
+    }
+
+    @Autowired
+    public void setBorrowdetailDAO(BorrowdetailDAO borrowdetailDAO) {
+        this.borrowdetailDAO = borrowdetailDAO;
+    }
+
+    @Autowired
+    public void setHkbDAO(HkbDAO hkbDAO) {
+        this.hkbDAO = hkbDAO;
+    }
+
+    @Autowired
+    public void setShborrowDAO(ShborrowDAO shborrowDAO) {
+        this.shborrowDAO = shborrowDAO;
     }
 }

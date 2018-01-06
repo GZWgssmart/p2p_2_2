@@ -44,4 +44,35 @@ public class OurConstants {
      */
     public static final Integer MONEY_LOG_HK = 3;
 
+    /**
+     * 标种id：先息后本
+     */
+    public static final Integer BZ_XXHB = 1;
+
+    /**
+     * 标种id：等额本金
+     */
+    public static final Integer BZ_ACM = 2;
+
+    /**
+     * 标种id：等额本息
+     */
+    public static final Integer BZ_ACPIM= 3;
+
+    /**
+     * 标种id：一次还清
+     */
+    public static final Integer BZ_YCHQ = 4;
+
+
+    /**
+     * 投资表：未还状态
+     */
+    public static final Integer TZB_WH = 0;
+
+    /**
+     * 投资表：已还状态
+     */
+    public static final Integer TZB_YH = 1;
+
 }

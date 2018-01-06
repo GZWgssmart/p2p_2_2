@@ -48,6 +48,16 @@ public class Hkb {
 
     private Integer huid;
 
+    public Hkb() {
+    }
+
+    /*public Hkb(Borrowapply borrowapply, Borrowdetail borrowdetail) {
+        this.uid = borrowapply.getUid();
+        this.rname = borrowapply.getRname();
+        this.rnum = 0;
+        this.tnum = borrowapply.getTerm();
+        this.
+    }*/
     public Integer getSkid() {
         return skid;
     }
