@@ -173,4 +173,8 @@
       mdkbno = #{mdkbno,jdbcType=INTEGER}
     where yid = #{yid,jdbcType=INTEGER}
   </update>
+
+  <select id="getByDate" resultMap="BaseResultMap">
+    select * from ydate where date = #{time}
+  </select>
 </mapper>

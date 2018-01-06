@@ -288,4 +288,8 @@
       huid = #{huid,jdbcType=INTEGER}
     where skid = #{skid,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllMoney" resultType="double">
+    select sum(ybj) from hkb;
+  </select>
 </mapper>

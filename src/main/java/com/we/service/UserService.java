@@ -39,4 +39,14 @@ public interface UserService extends BaseService {
      */
     List<Integer> getUserId();
 
+    /**
+     * 查询月注册数
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    Long countMonthById(String beginTime, String endTime);
+
+
+
 }

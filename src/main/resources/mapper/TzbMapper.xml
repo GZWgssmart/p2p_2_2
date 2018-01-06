@@ -125,4 +125,12 @@
       baid = #{baid,jdbcType=INTEGER}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
+  <select id="countAllMoney" resultType="long">
+    select sum(money) from tzb;
+  </select>
+  <select id="countUid" resultType="long">
+    <![CDATA[
+      select COUNT(DISTINCT uid) from tzb where time > #{beginTime} and time < #{endTime};
+    ]]>
+  </select>
 </mapper>

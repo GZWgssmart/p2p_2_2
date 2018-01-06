@@ -260,4 +260,14 @@
   <select id="getUserId" resultType="integer">
     select u.uid from user u, usermoney um where u.uid = um.uid;
   </select>
+
+  <select id="countCriteria" resultType="long">
+    select count(uid) from user
+  </select>
+
+  <select id="countMonthById" resultType="long">
+    <![CDATA[
+      select count(uid) from user where register_time > #{beginTime} and register_time < #{endTime};
+    ]]>
+  </select>
 </mapper>

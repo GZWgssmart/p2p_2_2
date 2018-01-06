@@ -32,6 +32,26 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
         return i1 + i2;
     }
 
+    @Override
+    public Long countAllBorrowUse() {
+        return borrowapplyDAO.countAllBorrowUse();
+    }
+
+    @Override
+    public Long countMonthBorrowUse(String beginTime, String endTime) {
+        return borrowapplyDAO.countMonthBorrowUse(beginTime, endTime);
+    }
+
+    @Override
+    public Long countAllBorrow() {
+        return borrowapplyDAO.countAllBorrow();
+    }
+
+    @Override
+    public Long countMonthBorrow(String beginTime, String endTime) {
+        return borrowapplyDAO.countMonthBorrow(beginTime, endTime);
+    }
+
     @Autowired
     public void setBorrowapplyDAO(BorrowapplyDAO borrowapplyDAO) {
         super.setBaseDAO(borrowapplyDAO);
@@ -42,4 +62,5 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
     public void setShborrowDAO(ShborrowDAO shborrowDAO) {
         this.shborrowDAO = shborrowDAO;
     }
+
 }

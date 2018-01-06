@@ -52,4 +52,11 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
     public List<Integer> getUserId() {
         return userDAO.getUserId();
     }
+
+    @Override
+    public Long countMonthById(String beginTime, String endTime) {
+        return userDAO.countMonthById(beginTime, endTime);
+    }
+
+
 }

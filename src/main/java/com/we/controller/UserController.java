@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * Created on 2017/12/8 19:07
@@ -103,6 +104,7 @@ public class UserController {
              user.setUpwd(EncryptUtils.md5(user.getUpwd()));
             if(user.getTid() == null || "".equals(user.getTid())){
                 //无推荐码
+                user.setRegisterTime(new Date());
                 userService.saveSelective(user);
                 statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_SUCCESS);
             }else{
@@ -110,10 +112,12 @@ public class UserController {
                 //推荐码是否存在
                 if(userService.getById(user.getTid()) != null){
                     //推荐码存在
+                    user.setRegisterTime(new Date());
                     userService.saveSelective(user);
                     Recommend recommend = new Recommend();
                     recommend.setTid(user.getTid());
                     recommend.setUid(user.getUid());
+
                     recommendService.saveSelective(recommend);
                     phoneCode = "";
                     statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_SUCCESS);
