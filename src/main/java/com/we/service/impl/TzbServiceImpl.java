@@ -61,7 +61,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 //剩余可投金额等于已投金额，生成还款表数据
                 if (symoney.compareTo(money) == 0) {
                     Borrowdetail borrowdetail = borrowdetailDAO.getByApplyId(borrowapply.getBaid());
-                    result += hkbDAO.saveList(gainHkbData(borrowapply, borrowdetail));
+                    result += hkbDAO.saveList(gainHkbData(borrowapply, borrowdetail));//未实现
                 }
             }
         }
@@ -80,49 +80,47 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
 
         String cpname = borrowdetail.getCpname();
         BigDecimal nprofit = borrowdetail.getNprofit();
+        String bzname = "";
+        LoanCalculatorAdapter calculator = null;
         if (OurConstants.BZ_XXHB.equals(bz)) {
-
-        } else if (OurConstants.BZ_ACM.equals(bz) || OurConstants.BZ_ACPIM.equals(bz)) {
-            String bzname = "";
-            LoanCalculatorAdapter calculator = null;
-            if (OurConstants.BZ_ACM.equals(bz)) {
-                bzname = "等额本金";
-                calculator = new ACMLoanCalculator();
-            } else {
-                bzname = "等额本息";
-                calculator = new ACPIMLoanCalculator();
-            }
-            Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, LoanUtil.PERCENT),
-                    term,
-                    LoanUtil.rate(nprofit.doubleValue(), LoanUtil.RATEDISCOUNT),
-                    LoanUtil.RATE_TYPE_YEAR);
-            List<LoanByMonth> allLoans = loan.getAllLoans();
-            for (int i = 0, len = allLoans.size(); i < len; i++) {
-                LoanByMonth loanByMonth = allLoans.get(i);
-                Hkb hkb = new Hkb();
-                hkb.setUid(uid);
-                hkb.setRname(rname);
-                hkb.setCpname(cpname);
-                hkb.setTnum(term);
-                Calendar calendar = Calendar.getInstance();
-                calendar.add(Calendar.MONTH, (i + 1));
-                hkb.setYtime(calendar.getTime());
-                hkb.setBzname(bzname);
-                hkb.setState(OurConstants.TZB_WH);
-                hkb.setBaid(baid);
-                calendar.add(Calendar.DAY_OF_MONTH, 1);
-                hkb.setYustartime(calendar.getTime());
-                hkb.setHuid(huid);
-
-                BigDecimal interest = loanByMonth.getInterest();
-                BigDecimal payPrincipal = loanByMonth.getPayPrincipal();
-                hkb.setYlx(interest);
-                hkb.setYbj(payPrincipal);
-                hkb.setYbx(interest.add(payPrincipal));
-                hkbList.add(hkb);
-            }
+            bzname = "先息后本";
+            calculator = new XXHBLoanCalculator();
+        } else if (OurConstants.BZ_ACM.equals(bz)) {
+            bzname = "等额本金";
+            calculator = new ACMLoanCalculator();
+        } else if (OurConstants.BZ_ACPIM.equals(bz)) {
+            bzname = "等额本息";
+            calculator = new ACPIMLoanCalculator();
         } else if (OurConstants.BZ_YCHQ.equals(bz)) {
+            bzname = "一次还清";
+            calculator = new YCHQLoanCalculator();
+        }
+        Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, LoanUtil.PERCENT),
+                term,
+                LoanUtil.rate(nprofit.doubleValue(), LoanUtil.RATEDISCOUNT),
+                LoanUtil.RATE_TYPE_YEAR);
+        List<LoanByMonth> allLoans = loan.getAllLoans();
+        for (int i = 0, len = allLoans.size(); i < len; i++) {
+            LoanByMonth loanByMonth = allLoans.get(i);
+            Hkb hkb = new Hkb();
+            hkb.setUid(uid);
+            hkb.setRname(rname);
+            hkb.setCpname(cpname);
+            hkb.setTnum(term);
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.MONTH, (i + 1));
+            hkb.setYtime(calendar.getTime());
+            hkb.setBzname(bzname);
+            hkb.setState(OurConstants.TZB_WH);
+            hkb.setBaid(baid);
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            hkb.setYustartime(calendar.getTime());
+            hkb.setHuid(huid);
 
+            hkb.setYlx(loanByMonth.getInterest());
+            hkb.setYbj(loanByMonth.getPayPrincipal());
+            hkb.setYbx(loanByMonth.getRepayment());
+            hkbList.add(hkb);
         }
         return hkbList;
     }

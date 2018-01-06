@@ -130,4 +130,9 @@
         SELECT count(s.shid)
         <include refid="queryCriteria"/>
     </select>
+
+    <select id="getByBaid" resultType="shborrow">
+        SELECT * FROM d_ssm_pujinziben.shborrow
+        WHERE baid=#{baid}
+    </select>
 </mapper>

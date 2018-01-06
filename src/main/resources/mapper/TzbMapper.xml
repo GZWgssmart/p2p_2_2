@@ -133,4 +133,8 @@
       select COUNT(DISTINCT uid) from tzb where time > #{beginTime} and time < #{endTime};
     ]]>
   </select>
+
+  <insert id="saveList" parameterType="list">
+
+  </insert>
 </mapper>
