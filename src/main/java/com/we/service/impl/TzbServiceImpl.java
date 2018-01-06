@@ -45,22 +45,14 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 usermoney.setTzmoney(usermoney.getTzmoney().add(money));
                 //更新用户资金的数据，是否还需更新收益总额，待收金额？
                 result += usermoneyDAO.updateSelective(usermoney);
-                Tzb existTzb = tzbDAO.getByUserBorrow(uid, tzbDTO.getBaid());//未实现
-                if (existTzb == null) {
-                    //此用户第一次投此标
-                    tzbDTO.setTime(Calendar.getInstance().getTime());
-                    Tzb tzb = new Tzb(tzbDTO);
-                    result += tzbDAO.saveSelective(tzb);//添加投标记录
-                } else {
-                    //此用户已经投过此标
-                    existTzb.setMoney(existTzb.getMoney().add(money));
-                    result += tzbDAO.updateSelective(existTzb);//更新已投金额
-                }
+                tzbDTO.setTime(Calendar.getInstance().getTime());
+                Tzb tzb = new Tzb(tzbDTO);
+                result += tzbDAO.saveSelective(tzb);//添加投标记录
                 borrowapply.setSymoney(borrowapply.getMoney().subtract(money));
                 result += borrowapplyDAO.updateSelective(borrowapply);//更新剩余可投金额
                 MoneyLog moneyLog = new MoneyLog(tzbDTO.getUid(), OurConstants.MONEY_LOG_TZ, money, Calendar.getInstance().getTime());
                 result += moneyLogDAO.saveSelective(moneyLog);// 增加资金流向记录
-                //剩余可投金额等于已投金额，生成还款表、收款表数据
+                //剩余可投金额等于已投金额，生成还款表数据
                 if (symoney.compareTo(money) == 0) {
 
                 }
