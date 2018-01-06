@@ -2,6 +2,7 @@ var allRewardSetting = {
     showUpdateForm: function () {
         var row = setTable.isSingleSelected('rewardSetting-list');
         if (row) {
+
             $('#update-rewardSetting-modal').modal('show');
             $('#rwid').val(row.rwid);
             if (row.minmoney != null) {
