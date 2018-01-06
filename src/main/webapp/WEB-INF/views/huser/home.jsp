@@ -57,7 +57,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/rewardSetting" data-index="0">奖励设置</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_reward_setting_page" data-index="0">奖励设置</a>
                         </li>
                     </ul>
                 </li>

@@ -30,57 +30,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button id="btn" type="button" class="btn btn-primary" onclick="save();">添加</button>
+                <button id="btn" type="button" class="btn btn-primary" onclick="allRewardSetting.submitSave();">添加</button>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    function showForm () {
-        return $('#addForm').validate({
-            onfocusout: function(element){
-                $(element).valid();
-            },
-            debug:false,
-            onkeyup:false,
-            rules:{
-                'maxmoney':{
-                    required: true,
-                    isNumberGtZero:true
-                },
-                'minmoney':{
-                    required: true,
-                    isNumberGtZero:true,
-                    checkMoney:true
-                },
-                'percent':{
-                    required: true,
-                    isNumberGtZero:true
-                }
-            }
-        });
-    }
-
-   /* var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
-    }
-
-    var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
-    }
-*/
-    function save() {
-        var $addForm = $('#addForm');
-        if ($addForm.valid() === false) {
-            swtAlert.warn_info(dataDict.form.validForm);
-        } else {
-            submitForm.save('/rewardSetting/save','addForm','rewardSetting-list','saveRewardSettingModal');
-        }
-    }
-
-</script>
