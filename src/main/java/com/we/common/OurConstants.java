@@ -1,4 +1,4 @@
-package com.we.common;
+                                                                                                                                                                                                                                                                                                                                                                                                             package com.we.common;
 
 /**
  * Created on 2017/12/8 20:47

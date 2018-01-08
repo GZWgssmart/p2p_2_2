@@ -93,6 +93,11 @@ public class HuserController {
         return pager;
     }
 
+    //后台管理员跳转到提现审核页面
+    @RequestMapping("toUserTxCheck")
+    public String toUserTxCheck(){
+        return "txlog/all_tx_log";
+    }
     /***
      * 条件分页查询用户 站内信
      * @param offset 开始索引

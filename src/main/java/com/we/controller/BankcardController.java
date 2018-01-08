@@ -22,14 +22,9 @@ public class BankcardController {
 
     private BankcardService bankcardService;
 
-    @RequestMapping("toBankcard")
+    @RequestMapping("toBindingBankcard")
     public String toBankcard(){
-        return "bankcard/bankcard";
-    }
-
-    @RequestMapping("toStudyValidateEngine")
-    public String toStudyValidateEngine(){
-        return "studyValidateEngine/study";
+        return "bankcard/add_bankcard";
     }
 
     @RequestMapping("bindingBankcard")
