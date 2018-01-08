@@ -118,7 +118,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/toUserTxCheck">提现审核</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_tx_log_page">提现审核</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">借款申请</a>

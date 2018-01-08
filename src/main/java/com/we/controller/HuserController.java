@@ -94,9 +94,9 @@ public class HuserController {
     }
 
     //后台管理员跳转到提现审核页面
-    @RequestMapping("toUserTxCheck")
+    @RequestMapping("all_tx_log_page")
     public String toUserTxCheck(){
-        return "txlog/all_tx_log";
+        return "huser/txlog/all_tx_log";
     }
     /***
      * 条件分页查询用户 站内信

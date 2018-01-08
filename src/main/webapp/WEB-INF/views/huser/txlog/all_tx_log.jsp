@@ -6,9 +6,9 @@
 <html>
 <head>
     <title>提现审核</title>
-    <%@include file="../common/css/css_bootstrap.jsp" %>
-    <%@include file="../common/css/css_bootstrap-table.jsp" %>
-    <%@include file="../common/css/css_sweetalert.jsp" %>
+    <%@include file="../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../common/css/css_sweetalert.jsp" %>
 </head>
 <body>
 <div class="tool-bar" id="tool-bar">
@@ -27,7 +27,7 @@
             <th data-field="money">提现金额（元）</th>
             <th data-field="bankcard">提现卡号</th>
             <th data-field="banktype">所属银行</th>
-            <th data-field="date">申请时间</th>
+            <th data-field="date" data-formatter="setTable.formatDate">申请时间</th>
             <th data-field="state" data-formatter="pagerBorrow.formatState">审核状态</th>
         </tr>
     </thead>
@@ -62,13 +62,13 @@
     </div>
 </div>
 
-<%@include file="../common/js/js_jquery.jsp" %>
-<%@include file="../common/js/js_boostrap.jsp" %>
-<%@include file="../common/js/js_boostrap_table.jsp" %>
-<%@include file="../common/js/js_select2.jsp" %>
-<%@include file="../common/js/js_sweetalert.jsp" %>
-<%@include file="../common/js/js_form.jsp" %>
-<%@include file="../common/js/js_data_dict.jsp" %>
+<%@include file="../../common/js/js_jquery.jsp" %>
+<%@include file="../../common/js/js_boostrap.jsp" %>
+<%@include file="../../common/js/js_boostrap_table.jsp" %>
+<%@include file="../../common/js/js_select2.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
+<%@include file="../../common/js/js_form.jsp" %>
+<%@include file="../../common/js/js_data_dict.jsp" %>
 
 <script src="<%=path%>/static/js/our/user/lmh/pager_borrowapply.js"></script>
 <script>
