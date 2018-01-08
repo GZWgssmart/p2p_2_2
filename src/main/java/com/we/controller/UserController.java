@@ -35,6 +35,11 @@ public class UserController {
     @Autowired
     private RecommendService recommendService;
 
+    @RequestMapping("welcome_page")
+    public String welcomePage() {
+        return "user/welcome_user";
+    }
+
     @RequestMapping("home_page")
     public String homePage() {
         return "user/home";

@@ -173,7 +173,7 @@
     <!--左侧导航结束-->
 
     <!--右侧部分开始-->
-    <%@include file="../common/manage/index_right_part.jsp" %>
+    <%@include file="../common/manage/index_right_part_huser.jsp" %>
     <!--右侧部分结束-->
 
     <!--右侧边栏开始-->

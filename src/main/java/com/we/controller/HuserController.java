@@ -25,6 +25,11 @@ public class HuserController {
     @Autowired
     private RoleuserService roleuserService;
 
+    @RequestMapping("welcome_page")
+    public String welcomePage() {
+        return "huser/welcome_huser";
+    }
+
     @RequestMapping("friend_pager")
     public String allFriend() {
         return "huser/friend/all_friend";
