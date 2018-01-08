@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <form class="form-horizontal" role="form" id="addForm" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="imghref" class="col-sm-1 control-label">连接：</label>
+                        <label for="imghref" class="col-sm-1 control-label">链接：</label>
                         <div class="col-sm-10">
                             <input id="imghref" type="text" class="form-control" name="imghref" placeholder="请输入连接地址">
                         </div>

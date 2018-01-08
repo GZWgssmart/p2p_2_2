@@ -94,7 +94,8 @@ var setTable = {
     },
     doSearch: function (formId, tableId, url) {
         $('#' + tableId).bootstrapTable('refresh', {
-            url: url + "?" + $('#' + formId).serialize()
+            url: url + "?" + $('#' + formId).serialize(),
+            method: 'post'
         });
     },
     formatName: function (value) {

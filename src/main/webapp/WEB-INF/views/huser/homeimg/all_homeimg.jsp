@@ -28,7 +28,7 @@
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="imghref">封面连接</th>
+        <th data-field="imghref">封面链接</th>
         <th data-field="imgpath" data-formatter="setTable.formatImg">封面图片</th>
     </tr>
     </thead>

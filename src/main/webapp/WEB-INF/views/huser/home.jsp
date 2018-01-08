@@ -66,7 +66,7 @@
 
                 <li>
                     <a href="#">
-                        <i class="fa fa-home"></i>
+                        <i class="fa fa-line-chart"></i>
                         <span class="nav-label">公司动态</span>
                         <span class="fa arrow"></span>
                     </a>
@@ -165,7 +165,18 @@
                     </ul>
                 </li>
 
-
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span class="nav-label">推荐管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_recommend_page">所有推荐</a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </div>

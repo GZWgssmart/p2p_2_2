@@ -1,6 +1,5 @@
 package com.we.service.impl;
 
-import com.we.common.Pager;
 import com.we.dao.RecommendDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.RecommendService;

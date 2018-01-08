@@ -3,12 +3,17 @@ package com.we.controller;
 import com.we.bean.Recommend;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
+import com.we.query.RecommendQuery;
 import com.we.service.RecommendService;
 import com.we.vo.RequestResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * 推荐管理
@@ -39,6 +44,12 @@ public class RecommendController {
             resultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
         return resultVO;
+    }
+
+    @RequestMapping("search")
+    @ResponseBody
+    public Pager search(Long offset, Long limit,RecommendQuery recommendQuery) {
+        return recommendService.listCriteria(offset,limit,recommendQuery);
     }
 
     @RequestMapping("invite_friends")
