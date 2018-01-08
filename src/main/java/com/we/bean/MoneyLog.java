@@ -10,11 +10,25 @@ public class MoneyLog {
 
     private Integer type;
 
-    private BigDecimal in;
+    private BigDecimal inMoney;
 
-    private BigDecimal out;
+    private BigDecimal outMoney;
 
     private Date date;
+
+    public MoneyLog(Integer uid, Integer type, BigDecimal outMoney, Date date) {
+        this.uid = uid;
+        this.type = type;
+        this.outMoney = outMoney;
+        this.date = date;
+    }
+
+    public MoneyLog(Integer uid, Integer type, Date date, BigDecimal inMoney) {
+        this.uid = uid;
+        this.type = type;
+        this.date = date;
+        this.inMoney = inMoney;
+    }
 
     public Integer getMid() {
         return mid;
@@ -40,20 +54,20 @@ public class MoneyLog {
         this.type = type;
     }
 
-    public BigDecimal getIn() {
-        return in;
+    public BigDecimal getInMoney() {
+        return inMoney;
     }
 
-    public void setIn(BigDecimal in) {
-        this.in = in;
+    public void setInMoney(BigDecimal inMoney) {
+        this.inMoney = inMoney;
     }
 
-    public BigDecimal getOut() {
-        return out;
+    public BigDecimal getOutMoney() {
+        return outMoney;
     }
 
-    public void setOut(BigDecimal out) {
-        this.out = out;
+    public void setOutMoney(BigDecimal outMoney) {
+        this.outMoney = outMoney;
     }
 
     public Date getDate() {
@@ -62,19 +76,5 @@ public class MoneyLog {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public MoneyLog(Integer uid, Integer type, BigDecimal out, Date date) {
-        this.uid = uid;
-        this.type = type;
-        this.out = out;
-        this.date = date;
-    }
-
-    public MoneyLog(Integer uid, Integer type, Date date, BigDecimal in) {
-        this.uid = uid;
-        this.type = type;
-        this.date = date;
-        this.in = in;
     }
 }

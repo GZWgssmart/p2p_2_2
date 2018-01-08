@@ -14,7 +14,7 @@ public class XXHBLoanCalculator extends LoanCalculatorAdapter {
     @Override
     public Loan calLoan(BigDecimal totalLoanMoney, int totalMonth, double loanRate, int rateType) {
         Loan loan = new Loan();
-        double monthRate = loanRate / totalMonth;
+        double monthRate = loanRate / totalMonth / 100;
         BigDecimal monthInterest = totalLoanMoney.multiply(new BigDecimal(monthRate));
         List<LoanByMonth> allLoans = new ArrayList<>();
         for (int i = 1; i <= totalMonth; i++) {

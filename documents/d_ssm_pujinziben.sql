@@ -357,8 +357,8 @@ CREATE TABLE money_log (
   mid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   uid INT COMMENT '用户id',
   type INT COMMENT '类型，0充值、1提现、2回款、3系统金额（公司奖励..）',
-  `in` DECIMAL(10, 2) COMMENT '收入',
-  `out` DECIMAL(10, 2) COMMENT '支出',
+  in_money DECIMAL(10, 2) COMMENT '收入',
+  out_money DECIMAL(10, 2) COMMENT '支出',
   `date` DATETIME COMMENT '时间'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '资金流向表';
 

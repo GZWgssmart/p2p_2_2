@@ -134,7 +134,4 @@
     ]]>
   </select>
 
-  <insert id="saveList" parameterType="list">
-
-  </insert>
 </mapper>

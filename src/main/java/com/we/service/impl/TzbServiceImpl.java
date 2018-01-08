@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 //剩余可投金额等于已投金额，生成还款表数据
                 if (symoney.compareTo(money) == 0) {
                     Borrowdetail borrowdetail = borrowdetailDAO.getByApplyId(borrowapply.getBaid());
-                    result += hkbDAO.saveList(gainHkbData(borrowapply, borrowdetail));//未实现
+                    result += hkbDAO.saveList(gainHkbData(borrowapply, borrowdetail));
                 }
             }
         }
@@ -69,14 +70,14 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     }
 
     private List<Hkb> gainHkbData(Borrowapply borrowapply, Borrowdetail borrowdetail) {
-        List<Hkb> hkbList = null;
+        List<Hkb> hkbList = new ArrayList<>();
         Integer bz = borrowapply.getBzid();
         BigDecimal money = borrowapply.getMoney();
         Integer term = borrowapply.getTerm();
         Integer baid = borrowapply.getBaid();
         String rname = borrowapply.getRname();
         Integer uid = borrowapply.getUid();
-        Integer huid = shborrowDAO.getByBaid(baid).getHuid();//未实现
+        Integer huid = shborrowDAO.getByBaid(baid).getHuid();
 
         String cpname = borrowdetail.getCpname();
         BigDecimal nprofit = borrowdetail.getNprofit();

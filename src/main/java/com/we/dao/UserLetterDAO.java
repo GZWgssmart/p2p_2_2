@@ -10,9 +10,9 @@ public interface UserLetterDAO extends BaseDAO {
 
     /***
      *
-     * @param ids ¶à¸öId
-     * @param status ĞÅÏ¢µÄ×´Ì¬
-     * @return Ó°ÏìµÄĞĞÊı
+     * @param ids å¤šä¸ªId
+     * @param status ä¿¡æ¯çš„çŠ¶æ€
+     * @return å½±å“çš„è¡Œæ•°
      */
     Integer updateStatus(@Param("ids") List<Integer> ids, @Param("status") Integer status);
 

@@ -1,103 +1,105 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.dao.MoneyLogDAO" >
-  <resultMap id="BaseResultMap" type="com.we.bean.MoneyLog" >
-    <id column="mid" property="mid" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="in" property="in" jdbcType="DECIMAL" />
-    <result column="out" property="out" jdbcType="DECIMAL" />
-    <result column="date" property="date" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.we.dao.MoneyLogDAO">
+  <resultMap id="BaseResultMap" type="com.we.bean.MoneyLog">
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="in_money" jdbcType="DECIMAL" property="inMoney" />
+    <result column="out_money" jdbcType="DECIMAL" property="outMoney" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    mid, uid, type, in, out, date
+  <sql id="Base_Column_List">
+    mid, uid, type, in_money, out_money, date
   </sql>
-  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+  <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
     <include refid="Base_Column_List" />
     from money_log
     where mid = #{mid,jdbcType=INTEGER}
   </select>
-  <delete id="removeById" parameterType="java.lang.Integer" >
+  <delete id="removeById" parameterType="java.lang.Integer">
     delete from money_log
     where mid = #{mid,jdbcType=INTEGER}
   </delete>
-  <insert id="save" parameterType="com.we.bean.MoneyLog" >
-    insert into money_log (mid, uid, type, 
-      in, out, date)
-    values (#{mid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
-      #{in,jdbcType=DECIMAL}, #{out,jdbcType=DECIMAL}, #{date,jdbcType=TIMESTAMP})
+  <insert id="save" parameterType="com.we.bean.MoneyLog">
+    insert into money_log (mid, uid, type,
+      in_money, out_money, date
+      )
+    values (#{mid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER},
+      #{inMoney,jdbcType=DECIMAL}, #{outMoney,jdbcType=DECIMAL}, #{date,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="saveSelective" parameterType="com.we.bean.MoneyLog" >
+  <insert id="saveSelective" parameterType="com.we.bean.MoneyLog">
     insert into money_log
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="mid != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
         mid,
       </if>
-      <if test="uid != null" >
+      <if test="uid != null">
         uid,
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type,
       </if>
-      <if test="in != null" >
-        in,
+      <if test="inMoney != null">
+        in_money,
       </if>
-      <if test="out != null" >
-        out,
+      <if test="outMoney != null">
+        out_money,
       </if>
-      <if test="date != null" >
+      <if test="date != null">
         date,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="mid != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
         #{mid,jdbcType=INTEGER},
       </if>
-      <if test="uid != null" >
+      <if test="uid != null">
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="in != null" >
-        #{in,jdbcType=DECIMAL},
+      <if test="inMoney != null">
+        #{inMoney,jdbcType=DECIMAL},
       </if>
-      <if test="out != null" >
-        #{out,jdbcType=DECIMAL},
+      <if test="outMoney != null">
+        #{outMoney,jdbcType=DECIMAL},
       </if>
-      <if test="date != null" >
+      <if test="date != null">
         #{date,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateSelective" parameterType="com.we.bean.MoneyLog" >
+  <update id="updateSelective" parameterType="com.we.bean.MoneyLog">
     update money_log
-    <set >
-      <if test="uid != null" >
+    <set>
+      <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="type != null" >
+      <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="in != null" >
-        in = #{in,jdbcType=DECIMAL},
+      <if test="inMoney != null">
+        in_money = #{inMoney,jdbcType=DECIMAL},
       </if>
-      <if test="out != null" >
-        out = #{out,jdbcType=DECIMAL},
+      <if test="outMoney != null">
+        out_money = #{outMoney,jdbcType=DECIMAL},
       </if>
-      <if test="date != null" >
+      <if test="date != null">
         date = #{date,jdbcType=TIMESTAMP},
       </if>
     </set>
     where mid = #{mid,jdbcType=INTEGER}
   </update>
-  <update id="update" parameterType="com.we.bean.MoneyLog" >
+  <update id="update" parameterType="com.we.bean.MoneyLog">
     update money_log
     set uid = #{uid,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
-      in = #{in,jdbcType=DECIMAL},
-      out = #{out,jdbcType=DECIMAL},
+      in_money = #{inMoney,jdbcType=DECIMAL},
+      out_money = #{outMoney,jdbcType=DECIMAL},
       date = #{date,jdbcType=TIMESTAMP}
     where mid = #{mid,jdbcType=INTEGER}
   </update>
