@@ -104,6 +104,9 @@
                         <li>
                             <a class="J_menuItem" href="<%=path %>/huser/notice_pager/">最新公告</a>
                         </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path %>/huser/friend_pager/">合作伙伴</a>
+                        </li>
                     </ul>
                 </li>
 

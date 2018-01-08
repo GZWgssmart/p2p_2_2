@@ -102,7 +102,8 @@
   <select id="listAllNotice" resultType="com.we.bean.Notice">
     <![CDATA[
       select * from notice
-      order by date desc limit #{pager.offset} ,#{pager.limit}
+      order by nid desc
+      limit #{pager.offset} ,#{pager.limit}
     ]]>
   </select>
 
@@ -113,7 +114,6 @@
     WHERE
     u.uid = ul.uid
     AND ul.lid = n.nid
---     AND n.state = 1
     AND ul.state != 0
     <if test="query != null">
       AND ul.uid = #{query.uid}
@@ -129,7 +129,6 @@
     WHERE
     u.uid = ul.uid
     AND ul.lid = n.nid
---     AND n.state = 1
     AND ul.state != 0
     <if test="query != null">
       AND ul.uid = #{query.uid}

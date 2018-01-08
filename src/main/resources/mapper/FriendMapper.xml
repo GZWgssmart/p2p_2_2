@@ -86,5 +86,18 @@
     ]]>
   </select>
 
+  <select id="countAllLetter" resultType="java.lang.Long">
+    <![CDATA[
+	  select count(fid) from friend
+    ]]>
+  </select>
+
+  <select id="listAllLetter" resultType="com.we.bean.Friend">
+      <![CDATA[
+      select * from friend
+      order by fid desc
+      limit #{pager.offset} ,#{pager.limit}
+    ]]>
+    </select>
 
 </mapper>

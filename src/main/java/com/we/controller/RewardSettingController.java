@@ -5,7 +5,6 @@ import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.RewardSettingService;
 import com.we.vo.RequestResultVO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

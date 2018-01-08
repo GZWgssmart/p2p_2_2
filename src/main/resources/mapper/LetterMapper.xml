@@ -162,7 +162,8 @@
     <select id="listAllLetter" resultType="com.we.bean.Letter">
       <![CDATA[
       select * from letter
-      order by date desc limit #{pager.offset} ,#{pager.limit}
+      order by lid desc
+      limit #{pager.offset} ,#{pager.limit}
     ]]>
     </select>
 

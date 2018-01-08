@@ -12,16 +12,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
 @Controller
 @RequestMapping("/friend")
 public class FriendController {
 
     private FriendService friendService;
 
-    //跳转到合作伙伴页面
-    @RequestMapping("friend")
-    public String page() {
-        return null;
+    @RequestMapping("update_pager")
+    @ResponseBody
+    public RequestResultVO updatePager(Friend friend) {
+        RequestResultVO vo = null;
+        try{
+            friendService.updateSelective(friend);
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        }catch (RuntimeException e) {
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        }
+        return vo;
     }
 
     @PostMapping("update")
@@ -57,11 +66,10 @@ public class FriendController {
     @RequestMapping("pager_criteria")
     @ResponseBody
     public Pager pagerCriteria(Long offset,Long limit,Friend friend) {
-        return friendService.listCriteria(offset,limit,friend);
+        return friendService.listAllLetter(offset,limit,friend);
     }
 
-
-    @Autowired
+    @Resource
     public void setFriendService(FriendService friendService) {
         this.friendService = friendService;
     }
