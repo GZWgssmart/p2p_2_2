@@ -24,6 +24,8 @@ public enum RequestResultEnum {
     UPDATE_UPWD_SUCCESS(309,"success","修改密码成功"),
     ADD_EMAIL_SUCCESS(310,"success","添加邮箱成功"),
     UPDATE_PHONE_SUCCESS(311,"success","修改成功"),
+    UPDSTE_TXCHECK_SUCCESS(313,"success","审核通过"),
+    UPDSTE_TXCHECK_NO_SUCCESS(314,"success","提交审核理由成功"),
     OLD_PWD_FAIL(312,"fail","原始密码错误");
 
     private Integer code;

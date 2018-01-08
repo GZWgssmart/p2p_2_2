@@ -13,6 +13,17 @@
   <sql id="Base_Column_List" >
     tid, uid, bankcard, banktype, money, date, state
   </sql>
+
+  <select id="countCriteria" resultType="Long">
+    SELECT count(tid) FROM tx_log;
+  </select>
+
+  <select id="listCriteria" resultType="com.we.bean.TxLog">
+    SELECT * FROM tx_log t
+    ORDER BY t.state DESC, t.date DESC
+    LIMIT #{pager.offset}, #{pager.limit}
+  </select>
+
   <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -104,14 +115,10 @@
     </set>
     where tid = #{tid,jdbcType=INTEGER}
   </update>
+
   <update id="update" parameterType="com.we.bean.TxLog" >
     update tx_log
-    set uid = #{uid,jdbcType=INTEGER},
-      bankcard = #{bankcard,jdbcType=VARCHAR},
-      banktype = #{banktype,jdbcType=VARCHAR},
-      money = #{money,jdbcType=DECIMAL},
-      date = #{date,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER}
+    set state = #{state,jdbcType=INTEGER}
     where tid = #{tid,jdbcType=INTEGER}
   </update>
 </mapper>
