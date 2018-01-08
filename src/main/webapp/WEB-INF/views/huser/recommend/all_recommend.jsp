@@ -16,11 +16,30 @@
     <%@include file="../../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../../common/css/css_sweetalert.jsp" %>
     <%@include file="../../common/css/css_sileinput.jsp" %>
+    <link href="<%=path %>/static/css/our/huser/lqf/recommend.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="tool-bar" id="tool-bar">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#saveRecommendModal" onclick="showForm();">添加</button>
+    <form class="form-horizontal" role="form" id="checkForm" enctype="multipart/form-data">
+        <div class="form-group" style="width: auto">
+
+            <%--<input type="date" id="startTime" name="startTime" class="form-control" style="width: auto">
+            <input type="date" id="endTime" name="endTime" class="form-control" style="width: auto">
+            <input type="button" value="搜索" class="form-control btn-primary" style="width: auto">--%>
+
+            <label style="margin-left: 30px;">
+                <input type="date" id="startTime" name="startTime" class="form-control">
+            </label>
+            <label>至</label>
+            <label>
+                <input type="date" id="endTime" name="endTime" class="form-control">
+            </label>
+            <label>
+                <button type="button" class="btn btn-primary" onclick="search();">搜索</button>
+            </label>
+        </div>
+    </form>
 </div>
 <table id="recommend-list" class="table table-hover"
        data-url="<%=path%>/recommend/pager_criteria">
@@ -36,7 +55,6 @@
     </thead>
 </table>
 
-<%--<%@include file="include_save_homeimg.jsp"%>--%>
 
 <%@include file="../../common/js/js_jquery.jsp" %>
 <%@include file="../../common/js/js_boostrap.jsp" %>
@@ -46,7 +64,7 @@
 <%@include file="../../common/js/js_form.jsp" %>
 <%@include file="../../common/js/js_data_dict.jsp" %>
 
-<%--<script src="<%=path%>/static/js/our/huser/lqf/pager_huser_recommend.js"></script>--%>
+<script src="<%=path%>/static/js/our/huser/lqf/pager_huser_recommend.js"></script>
 <script>
     $(function () {
         setTable.setBootstrapTable('recommend-list');

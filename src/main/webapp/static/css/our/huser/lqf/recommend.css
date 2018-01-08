@@ -1,0 +1,4 @@
+/*使表单的错误提示变为红色*/
+form .form-group label.error {
+    color:red;
+}

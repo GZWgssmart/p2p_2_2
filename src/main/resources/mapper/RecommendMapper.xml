@@ -101,4 +101,27 @@
       date = #{date,jdbcType=TIMESTAMP}
     where rid = #{rid,jdbcType=INTEGER}
   </update>
+
+  <sql id="queryDate">
+    <if test="query != null and query.startTime != null">
+      and `date` <![CDATA[>=]]> #{query.startTime}
+    </if>
+    <if test="query != null and query.endTime != null ">
+      and `date` <![CDATA[<=]]> #{query.endTime}
+    </if>
+  </sql>
+
+  <select id="listCriteria" resultType="com.we.bean.Recommend">
+      select * from recommend
+      WHERE 1=1
+      <include refid="queryDate"/>
+      order by `date` desc limit #{pager.offset} ,#{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long" parameterType="com.we.query.RecommendQuery">
+	  select count(rid) from recommend
+      WHERE 1=1
+      <include refid="queryDate"/>
+  </select>
+
 </mapper>

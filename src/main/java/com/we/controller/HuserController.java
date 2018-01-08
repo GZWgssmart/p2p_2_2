@@ -75,6 +75,11 @@ public class HuserController {
         return "huser/homeimg/all_homeimg";
     }
 
+    @RequestMapping("all_recommend_page")
+    public String allRecommendPage() {
+        return "huser/recommend/all_recommend";
+    }
+
     @RequestMapping("all_admin_page")
     public String allAdminPage() {
         return "huser/allAdmin";
