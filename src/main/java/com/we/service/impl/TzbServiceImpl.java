@@ -51,6 +51,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 usermoney.setKymoney(kymoney.subtract(money));
                 usermoney.setTzmoney(usermoney.getTzmoney().add(money));
                 //更新用户资金的数据，是否还需更新收益总额，待收金额？
+
                 result += usermoneyDAO.updateSelective(usermoney);
                 tzbDTO.setTime(Calendar.getInstance().getTime());
                 Tzb tzb = new Tzb(tzbDTO);
@@ -101,26 +102,35 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 LoanUtil.rate(nprofit.doubleValue(), LoanUtil.RATEDISCOUNT),
                 LoanUtil.RATE_TYPE_YEAR);
         List<LoanByMonth> allLoans = loan.getAllLoans();
-        for (int i = 0, len = allLoans.size(); i < len; i++) {
+        int intZero = 0;
+        for (int i = intZero, len = allLoans.size(); i < len; i++) {
             LoanByMonth loanByMonth = allLoans.get(i);
             Hkb hkb = new Hkb();
             hkb.setUid(uid);
             hkb.setRname(rname);
             hkb.setCpname(cpname);
             hkb.setTnum(term);
+            hkb.setRnum(intZero);
             Calendar calendar = Calendar.getInstance();
             calendar.add(Calendar.MONTH, (i + 1));
             hkb.setYtime(calendar.getTime());
             hkb.setBzname(bzname);
+
+            BigDecimal zero = new BigDecimal(intZero);
+            hkb.setYbx(loanByMonth.getRepayment());
+            hkb.setRbx(zero);
+            hkb.setYlx(loanByMonth.getInterest());
+            hkb.setRlx(zero);
+            hkb.setYbj(loanByMonth.getPayPrincipal());
+            hkb.setRbj(zero);
+            hkb.setYfx(zero);
+            hkb.setRfx(zero);
+            hkb.setYucount(intZero);
             hkb.setState(OurConstants.TZB_WH);
             hkb.setBaid(baid);
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             hkb.setYustartime(calendar.getTime());
             hkb.setHuid(huid);
-
-            hkb.setYlx(loanByMonth.getInterest());
-            hkb.setYbj(loanByMonth.getPayPrincipal());
-            hkb.setYbx(loanByMonth.getRepayment());
             hkbList.add(hkb);
         }
         return hkbList;

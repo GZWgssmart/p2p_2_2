@@ -46,7 +46,7 @@ CREATE TABLE borrowapply(
   uid INT COMMENT '借款人id',
   bzid INT COMMENT '标种，先息后本，等额本金，等额本息',
   time DATETIME COMMENT '申请时间',
-  state INT COMMENT '审核状态，0不通过，1通过，2审核中，3未填写借款详情' DEFAULT 3,
+  state INT COMMENT '审核状态，0不通过，1通过，2审核中，3未填写借款详情, 4，融资完成， 5，融资失败（流标）' DEFAULT 3,
   type INT COMMENT '借款类型，多金宝。。。',
   term INT COMMENT '借款期限',
   deadline DATETIME COMMENT '截止时间',

@@ -1,6 +1,7 @@
 package com.we.dao;
 
 import com.we.bean.Hkb;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,5 +21,5 @@ public interface HkbDAO extends BaseDAO {
      * @param hkbList 还款表List
      * @return 影响行数
      */
-    Integer saveList(List<Hkb> hkbList);
+    Integer saveList(@Param("hkbList") List<Hkb> hkbList);
 }

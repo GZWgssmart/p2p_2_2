@@ -293,10 +293,10 @@
     select sum(ybj) from hkb;
   </select>
 
-  <select id="saveList">
+  <insert id="saveList">
       INSERT INTO hkb (uid, rname,
                        cpname, rnum, tnum,
-                       ytime, rtime, bzname,
+                       ytime, bzname,
                        ybx, rbx, ylx, rlx,
                        ybj, rbj, yfx, rfx,
                        yucount, state, baid,
@@ -305,12 +305,12 @@
       <foreach collection="hkbList" separator="," item="hkb">
           (#{hkb.uid}, #{hkb.rname},
           #{hkb.cpname}, #{hkb.rnum}, #{hkb.tnum},
-          #{hkb.ytime}, #{hkb.rtime}, #{hkb.bzname},
+          #{hkb.ytime}, #{hkb.bzname},
           #{hkb.ybx}, #{hkb.rbx}, #{hkb.ylx}, #{hkb.rlx},
           #{hkb.ybj}, #{hkb.rbj}, #{hkb.yfx}, #{hkb.rfx},
           #{hkb.yucount}, #{hkb.state}, #{hkb.baid},
           #{hkb.yustartime}, #{hkb.huid})
       </foreach>
 
-  </select>
+  </insert>
 </mapper>
