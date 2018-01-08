@@ -30,6 +30,7 @@ public class XXHBLoanCalculator extends LoanCalculatorAdapter {
         lastMonth.setPayPrincipal(totalLoanMoney);
         lastMonth.setRepayment(totalLoanMoney.add(monthInterest));
         allLoans.set(totalMonth - 1, lastMonth);
+        loan.setTotalInterest(monthInterest.multiply(new BigDecimal(totalMonth)));
         loan.setAllLoans(allLoans);
         return loan;
     }

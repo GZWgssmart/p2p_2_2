@@ -18,8 +18,8 @@ public class LoanCalculatorTest extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
-        totalMonth = 36;
-        totalMoney = new BigDecimal(50000);
+        totalMonth = 12;
+        totalMoney = new BigDecimal(24000);
         percent = 0;
         rate = 10.8;
         rateDiscount = 1;

@@ -46,25 +46,44 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         BigDecimal symoney = borrowapply.getSymoney();
         //判断标的可投余额是否 大于等于 所投金额
         if (symoney.compareTo(money) != -1) {
-            //判断用户资金是否充足
+            //判断投资用户的可用余额是否充足
             if (kymoney != null && kymoney.compareTo(money) != -1) {
+                Borrowdetail borrowdetail = borrowdetailDAO.getByApplyId(borrowapply.getBaid());
                 usermoney.setKymoney(kymoney.subtract(money));
                 usermoney.setTzmoney(usermoney.getTzmoney().add(money));
-                //更新用户资金的数据，是否还需更新收益总额，待收金额？
-
+                LoanCalculatorAdapter calculator = gainCalculator(borrowapply.getBzid());
+                Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, LoanUtil.PERCENT),
+                        borrowapply.getTerm(),
+                        LoanUtil.rate(borrowdetail.getNprofit().doubleValue(), LoanUtil.RATEDISCOUNT),
+                        LoanUtil.RATE_TYPE_YEAR);
+                usermoney.setDsmoney(usermoney.getDsmoney().add(loan.getTotalRepayment()));
+                //更新投资用户的可用余额、投资总额、待收总额
                 result += usermoneyDAO.updateSelective(usermoney);
                 tzbDTO.setTime(Calendar.getInstance().getTime());
                 Tzb tzb = new Tzb(tzbDTO);
-                result += tzbDAO.saveSelective(tzb);//添加投标记录
-                borrowapply.setSymoney(borrowapply.getMoney().subtract(money));
-                result += borrowapplyDAO.updateSelective(borrowapply);//更新剩余可投金额
-                MoneyLog moneyLog = new MoneyLog(tzbDTO.getUid(), OurConstants.MONEY_LOG_TZ, money, Calendar.getInstance().getTime());
-                result += moneyLogDAO.saveSelective(moneyLog);// 增加资金流向记录
-                //剩余可投金额等于已投金额，生成还款表数据
+                //添加投资用户的投标记录
+                result += tzbDAO.saveSelective(tzb);
+                borrowapply.setSymoney(borrowapply.getSymoney().subtract(money));
+                //更新当前借款的剩余可投金额
+                result += borrowapplyDAO.updateSelective(borrowapply);
+                MoneyLog moneyLog = new MoneyLog(tzbDTO.getUid(),
+                        OurConstants.MONEY_LOG_TZ, money, Calendar.getInstance().getTime());
+                // 增加投资用户的资金流向记录
+                result += moneyLogDAO.saveSelective(moneyLog);
+                Usermoney borrowUserMoney = usermoneyDAO.getByUid(borrowapply.getUid());
+                //投资时，增加融资用户的冻结金额
+                borrowUserMoney.setDjmoney(borrowUserMoney.getDjmoney().add(money));
+                //当前借款的剩余可投金额等于已投金额（满标）
                 if (symoney.compareTo(money) == 0) {
-                    Borrowdetail borrowdetail = borrowdetailDAO.getByApplyId(borrowapply.getBaid());
+                    // 生成还款表数据
                     result += hkbDAO.saveList(gainHkbData(borrowapply, borrowdetail));
+                    BigDecimal borrowTotalMoney = borrowapply.getMoney();
+                    //满标后，将该标的冻结金额转为可用余额
+                    borrowUserMoney.setKymoney(borrowUserMoney.getKymoney().add(borrowTotalMoney));
+                    borrowUserMoney.setZymoney(borrowUserMoney.getZymoney().add(borrowTotalMoney));
+                    borrowUserMoney.setDjmoney(borrowUserMoney.getDjmoney().subtract(borrowTotalMoney));
                 }
+                result += usermoneyDAO.updateSelective(borrowUserMoney);
             }
         }
         return result;
@@ -82,21 +101,8 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
 
         String cpname = borrowdetail.getCpname();
         BigDecimal nprofit = borrowdetail.getNprofit();
-        String bzname = "";
-        LoanCalculatorAdapter calculator = null;
-        if (OurConstants.BZ_XXHB.equals(bz)) {
-            bzname = "先息后本";
-            calculator = new XXHBLoanCalculator();
-        } else if (OurConstants.BZ_ACM.equals(bz)) {
-            bzname = "等额本金";
-            calculator = new ACMLoanCalculator();
-        } else if (OurConstants.BZ_ACPIM.equals(bz)) {
-            bzname = "等额本息";
-            calculator = new ACPIMLoanCalculator();
-        } else if (OurConstants.BZ_YCHQ.equals(bz)) {
-            bzname = "一次还清";
-            calculator = new YCHQLoanCalculator();
-        }
+        String bzname = gainBzname(bz);
+        LoanCalculatorAdapter calculator = gainCalculator(bz);
         Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, LoanUtil.PERCENT),
                 term,
                 LoanUtil.rate(nprofit.doubleValue(), LoanUtil.RATEDISCOUNT),
@@ -134,6 +140,32 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
             hkbList.add(hkb);
         }
         return hkbList;
+    }
+
+    private String gainBzname(Integer bz) {
+        if (OurConstants.BZ_XXHB.equals(bz)) {
+            return "先息后本";
+        } else if (OurConstants.BZ_ACM.equals(bz)) {
+            return "等额本金";
+        } else if (OurConstants.BZ_ACPIM.equals(bz)) {
+            return "等额本息";
+        } else if (OurConstants.BZ_YCHQ.equals(bz)) {
+            return "一次还清";
+        }
+        return null;
+    }
+
+    private LoanCalculatorAdapter gainCalculator(Integer bz) {
+        if (OurConstants.BZ_XXHB.equals(bz)) {
+            return  new XXHBLoanCalculator();
+        } else if (OurConstants.BZ_ACM.equals(bz)) {
+            return  new ACMLoanCalculator();
+        } else if (OurConstants.BZ_ACPIM.equals(bz)) {
+            return  new ACPIMLoanCalculator();
+        } else if (OurConstants.BZ_YCHQ.equals(bz)) {
+            return  new YCHQLoanCalculator();
+        }
+        return null;
     }
 
     @Override
