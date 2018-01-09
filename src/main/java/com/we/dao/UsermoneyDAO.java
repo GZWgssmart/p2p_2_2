@@ -9,4 +9,6 @@ public interface UsermoneyDAO extends BaseDAO {
     Usermoney getByUid(Integer uid);
 
     void updateByUid(Object obj);
+
+    void updateByTx(Object obj);
 }
