@@ -113,7 +113,7 @@
         AND bz.state = 1
         AND j.state = 1
         AND s.baid = b.baid
-        AND b.state != 3
+        AND b.state in (0, 2)
         AND (s.huid is null or s.huid=#{query.huid})
     </sql>
 

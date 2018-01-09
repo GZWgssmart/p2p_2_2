@@ -42,7 +42,7 @@
                             <a class="J_menuItem" onclick="checkVip();" data-index="0">所有借款</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">所有借款（无需VIP）</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">未发布借款</a>
                         </li>
 
                     </ul>

@@ -34,6 +34,7 @@
     </button>
 </div>
 <table id="borrowapply-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/borrowapply/pager_criteria?uid=${sessionScope.user.uid}">
     <thead>
     <tr>

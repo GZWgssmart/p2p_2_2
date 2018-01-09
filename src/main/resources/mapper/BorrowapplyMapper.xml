@@ -170,6 +170,7 @@
         AND bz.state = 1
         AND j.state = 1
         AND s.baid = b.baid
+        AND b.state in (0, 2, 3)
         <if test="query != null">
             AND b.uid = #{query.uid}
         </if>

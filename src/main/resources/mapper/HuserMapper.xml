@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.HuserMapper">
+<mapper namespace="com.we.dao.HuserDAO">
   <resultMap id="BaseResultMap" type="com.we.bean.Huser">
     <id column="huid" jdbcType="INTEGER" property="huid" />
     <result column="rname" jdbcType="VARCHAR" property="rname" />
@@ -14,7 +14,7 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
   <sql id="Base_Column_List">
-    huid, rname, sex, phone, huname, email, create_time, oid, oname, password
+    huid, rname, sex, phone, huname, email, create_time, oid, oname, `password`
   </sql>
   <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 

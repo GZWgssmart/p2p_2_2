@@ -36,7 +36,7 @@ var pagerBorrow = {
         update_borrow_detail: function () {
             var row = setTable.isSingleSelected('borrowapply-list');
             if (row) {
-                if (row.state === 2) {
+                if (row.state === 2 || row.state === 0) {
                     setTable.showModal('update-borrowapply-detail-modal');
                     $.get('/borrowdetail/getByApplyId/' + row.baid,
                         function (data) {
@@ -45,7 +45,7 @@ var pagerBorrow = {
                         }, 'json');
                     return pagerBorrow.formValidate.valid.detail_validate('update-borrowapply-detail-form');
                 } else {
-                    swtAlert.warn_info('请选择\'审核中\'的数据进行修改');
+                    swtAlert.warn_info('请选择 已填写详情 的数据进行修改');
                 }
             }
         },
