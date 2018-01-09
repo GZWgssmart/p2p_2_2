@@ -16,7 +16,6 @@
     <%@include file="./common/manage/index_head.jsp" %>
     <link rel="stylesheet" href="<%=path %>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/index.css">
-    <link rel="stylesheet" href="<%=path %>/static/css/bootstrap.min.css">
 </head>
 <%--<link rel="icon" href="resources/front/v01/src/images/logo_title.jpg" type="image/x-icon" />--%>
 <script type="text/javascript">
@@ -291,12 +290,19 @@
 </div>
 <div id="ajaxFooter"></div>
 
-<!--[if lt IE 9]>
-<!--<script src="<%=path %>/static/js/index/json2_2cd1eaa.js"></script>-->
-<![endif]-->
+
+<div class="mod-sidebar">
+    <ul>
+        <li><a target="_blank" href="tencent://message/?uin=1332666988&amp;Site=&amp;Menu=yes" class="sidebar-qq"></a></li>
+        <li><a href="javascript:;" class="sidebar-wx"></a></li>
+        <li><a href="http://pujinziben.com/calculator.html" class="sidebar-cl"></a></li>
+        <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券"></a></li>
+        <li><a href="javascript:;" class="sidebar-top"></a></li>
+    </ul>
+</div>
+
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 客服QQ -->
 <%--<script charset="utf-8" type="text/javascript" src="<%=path %>/static/js/index/wpa.js"></script>--%>
 <script type="text/javascript" src="<%=path %>/static/js/index/countup.min.js"></script>
