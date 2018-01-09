@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
+    @RequestMapping("security")
+    public String allSecurity() {
+        return "index/security/security_assurance";
+    }
+
     @RequestMapping("")
     public String index() {
         return "index";

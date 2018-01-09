@@ -53,8 +53,8 @@
         <div class="nav-bar">
             <ul>
                 <li><a href="javaScript:void(0);" id="myHome">我的账户</a></li>
-                <li><a href="about.html">信息披露 </a></li>
-                <li><a href="safety.html">安全保障</a></li>
+                <li><a href="<%=path %>/huser/">信息披露 </a></li>
+                <li><a href="<%=path %>/index/security">安全保障</a></li>
                 <li>
                     <a href="investlist.html">投资理财</a>
                     <div class="sub-nav">
