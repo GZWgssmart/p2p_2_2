@@ -85,6 +85,9 @@ var setTable = {
         }
         return row;
     },
+    loadFormData: function (formId, row) {
+        $('#' + formId).form('load', row);
+    },
     rebuildRow: function (row, prefix) {
         var data = {};
         for (var key in row) {
