@@ -1,6 +1,7 @@
 package com.we.controller;
 
 import com.we.bean.Recommend;
+import com.we.bean.User;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.query.RecommendQuery;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,6 +32,12 @@ public class RecommendController {
     @ResponseBody
     public Pager pagerCriteria(Long offset, Long limit) {
         return recommendService.listCriteria(offset,limit,null);
+    }
+
+    @RequestMapping("pager_friends")
+    @ResponseBody
+    public Pager pagerUserFriends(Long offset, Long limit, RecommendQuery query) {
+        return recommendService.listUserFriends(offset,limit,query);
     }
 
     @RequestMapping("save")
@@ -52,9 +60,20 @@ public class RecommendController {
         return recommendService.listCriteria(offset,limit,recommendQuery);
     }
 
+    @RequestMapping("search_friends")
+    @ResponseBody
+    public Pager searchFriends(Long offset, Long limit,RecommendQuery recommendQuery) {
+        return recommendService.listUserFriends(offset,limit,recommendQuery);
+    }
+
     @RequestMapping("invite_friends")
     public String inviteFriends() {
         return "user/recommend/invite_friends";
+    }
+
+    @RequestMapping("list_invite_friends")
+    public String listInviteFriends() {
+        return "user/recommend/all_invite_friends";
     }
 
 }

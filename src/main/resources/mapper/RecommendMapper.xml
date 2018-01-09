@@ -124,4 +124,26 @@
       <include refid="queryDate"/>
   </select>
 
+  <sql id="queryFriends">
+    <if test="query != null and query.startTime != null">
+      and r.date <![CDATA[>=]]> #{query.startTime}
+    </if>
+    <if test="query != null and query.endTime != null ">
+      and r.date <![CDATA[<=]]> #{query.endTime}
+    </if>
+  </sql>
+
+  <select id="listUserFriends" resultType="com.we.bean.Recommend">
+    select r.* ,u.uid,u.tid from recommend r, `user` u
+    WHERE r.tid = u.uid and #{query.uid } = u.uid
+    <include refid="queryFriends"/>
+    order by r.date desc limit #{pager.offset} ,#{pager.limit}
+  </select>
+
+  <select id="countUserFriends" resultType="java.lang.Long" parameterType="com.we.query.RecommendQuery">
+    select count(r.rid) from recommend r, `user` u
+    WHERE r.tid = u.uid and #{query.uid } = u.uid
+    <include refid="queryFriends"/>
+  </select>
+
 </mapper>

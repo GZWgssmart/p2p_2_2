@@ -93,8 +93,14 @@ var setTable = {
         return data;
     },
     doSearch: function (formId, tableId, url) {
+        var queryStr = $('#' + formId).serialize();
+        if(url.indexOf('?') > 0) {
+            url = url + '&' + queryStr;
+        } else {
+            url = url + '?' + queryStr;
+        }
         $('#' + tableId).bootstrapTable('refresh', {
-            url: url + "?" + $('#' + formId).serialize(),
+            url: url,
             method: 'post'
         });
     },

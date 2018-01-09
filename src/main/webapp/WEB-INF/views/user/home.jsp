@@ -132,7 +132,7 @@
                     <ul class="nav nav-second-level">
                         <li>
                             <a class="J_menuItem" href="<%=path%>/recommend/invite_friends">好友推荐</a>
-                            <%--<a class="J_menuItem" href="<%=path%>/recommend/invite_friends">推荐列表</a>--%>
+                            <a class="J_menuItem" href="<%=path%>/recommend/list_invite_friends">推荐列表</a>
                         </li>
                     </ul>
                 </li>
