@@ -39,7 +39,7 @@ var swtAlert = {
     removeRows: function (rows, url, tableId) {
         swal({
             title: dataDict.manage.removeConfirm,
-            text: dataDict.manage.removeMsg,
+            text: dataDict.manage.noCancelMsg,
             type: 'warning',
             showCancelButton: true
         }).then(function (isConfirm) {

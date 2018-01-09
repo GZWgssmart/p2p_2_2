@@ -4,6 +4,7 @@ import com.we.bean.Tzb;
 import com.we.common.Pager;
 import com.we.dto.TzbDTO;
 import com.we.enums.RequestResultEnum;
+import com.we.exception.InvestException;
 import com.we.service.TzbService;
 import com.we.vo.RequestResultVO;
 import org.slf4j.Logger;
@@ -34,9 +35,13 @@ public class TzbController {
         try{
             tzbService.save(tzb);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
-        } catch (RuntimeException e) {
-            e.printStackTrace();
+        } catch (InvestException e){
             logger.error(e.getMessage());
+            e.printStackTrace();
+            vo = new RequestResultVO(e.getCode(), "fail", e.getMessage());
+        } catch (RuntimeException e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
             vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
         return vo;

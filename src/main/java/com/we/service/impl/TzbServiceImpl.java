@@ -6,6 +6,7 @@ import com.we.common.loan.*;
 import com.we.dao.*;
 import com.we.dto.TzbDTO;
 import com.we.enums.RequestResultEnum;
+import com.we.exception.InvestException;
 import com.we.service.AbstractBaseService;
 import com.we.service.TzbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,13 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     private ShborrowDAO shborrowDAO;
 
     @Override
-    public Integer save(TzbDTO tzbDTO) {
+    public Integer save(TzbDTO tzbDTO) throws InvestException {
         Integer uid = tzbDTO.getUid();
         Integer result = 0;
         Ticket ticket = null;
+        if (tzbDTO.getUid().equals(tzbDTO.getJuid())) {
+            throw new InvestException(RequestResultEnum.SAME_TZ_JK);
+        }
         if (tzbDTO.getTid() != null) {
             ticket = (Ticket) ticketDAO.getById(tzbDTO.getTid());
         }
@@ -40,7 +44,12 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         BigDecimal kymoney = usermoney.getKymoney();
         BigDecimal money = tzbDTO.getMoney();
         if (kymoney != null && ticket != null) {
-            kymoney = kymoney.add(ticket.getTkmoney());
+            if (ticket.getTktime().getTime() < Calendar.getInstance().getTime().getTime()) {
+                throw new InvestException(RequestResultEnum.TICKET_TIME);
+            } else {
+                kymoney = kymoney.add(ticket.getTkmoney());
+                //TODO 未把券更新为已使用状态，需增加借款状态：还款成功
+            }
         }
         Borrowapply borrowapply = (Borrowapply) borrowapplyDAO.getById(tzbDTO.getBaid());
         BigDecimal symoney = borrowapply.getSymoney();
@@ -63,9 +72,8 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 Tzb tzb = new Tzb(tzbDTO);
                 //添加投资用户的投标记录
                 result += tzbDAO.saveSelective(tzb);
-                borrowapply.setSymoney(borrowapply.getSymoney().subtract(money));
                 //更新当前借款的剩余可投金额
-                result += borrowapplyDAO.updateSelective(borrowapply);
+                borrowapply.setSymoney(borrowapply.getSymoney().subtract(money));
                 MoneyLog moneyLog = new MoneyLog(tzbDTO.getUid(),
                         OurConstants.MONEY_LOG_TZ, money, Calendar.getInstance().getTime());
                 // 增加投资用户的资金流向记录
@@ -80,11 +88,17 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                     BigDecimal borrowTotalMoney = borrowapply.getMoney();
                     //满标后，将该标的冻结金额转为可用余额
                     borrowUserMoney.setKymoney(borrowUserMoney.getKymoney().add(borrowTotalMoney));
-                    borrowUserMoney.setZymoney(borrowUserMoney.getZymoney().add(borrowTotalMoney));
                     borrowUserMoney.setDjmoney(borrowUserMoney.getDjmoney().subtract(borrowTotalMoney));
+                    borrowUserMoney.setZymoney(borrowUserMoney.getZymoney().add(borrowTotalMoney));
+                    borrowapply.setState(OurConstants.BORROW_SUCCESS);
                 }
+                result += borrowapplyDAO.updateSelective(borrowapply);
                 result += usermoneyDAO.updateSelective(borrowUserMoney);
+            } else {
+                throw new InvestException(RequestResultEnum.USERMONEY_KYMONEY_NOT_ENOUGH);
             }
+        } else {
+            throw new InvestException(RequestResultEnum.BORROW_SYMONEY_NOT_ENOUGH);
         }
         return result;
     }
