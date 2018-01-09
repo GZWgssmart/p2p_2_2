@@ -29,7 +29,6 @@
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <%--<th data-field="lid">ids</th>--%>
         <th data-field="title" data-formatter="pagerUserLetter.formatTitle">标题</th>
         <th data-field="content">内容</th>
     </tr>

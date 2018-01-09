@@ -30,10 +30,60 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button id="btn" type="button" class="btn btn-primary" onclick="save();">添加</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="btn" type="button" class="btn btn-primary" onclick="save();">确定</button>
             </div>
         </div>
     </div>
 </div>
+
+<script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
+<script src="<%=path %>/static/ueditor/ueditor.all.js"></script>
+<script>
+    function showForm () {
+        return $('#addForm').validate({
+            onfocusout: function(element){
+                $(element).valid();
+            },
+            debug:false,
+            onkeyup:false,
+            rules:{
+                'title':{
+                    required: true
+                }
+            },
+            messages:{
+                'title': {
+
+                }
+            }
+        });
+    }
+
+    var ue = UE.getEditor('content');
+
+    function getContent() {
+        alert(ue.getContent());
+    }
+
+    var ue = UE.getEditor('content');
+
+    function getContent() {
+        alert(ue.getContent());
+    }
+
+    function save() {
+        var $addForm = $('#addForm');
+        if ($addForm.valid() === false) {
+            swtAlert.warn_info(dataDict.form.validForm);
+        } else {
+            var picName = $('#imgpath').val();
+            picName = picName.substr(picName.lastIndexOf('\\') + 1);
+            $('#realImg').val(picName);
+            submitForm.ajaxSave('/friend/save','addForm','friend-list','saveFriendModal');
+        }
+    }
+
+</script>
+
 
