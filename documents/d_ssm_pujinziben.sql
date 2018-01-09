@@ -154,7 +154,8 @@ CREATE TABLE huser(
   huname VARCHAR(50) COMMENT '用户名',
   oid INT COMMENT '所属组id',
   oname VARCHAR(200) COMMENT '所属组名',
-  email VARCHAR(100) COMMENT '邮箱'
+  email VARCHAR(100) COMMENT '邮箱',
+  password VARCHAR(100) COMMENT '登录密码'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '后台用户表';
 
 DROP TABLE IF EXISTS bz;
