@@ -18,14 +18,14 @@
                     <div class="form-group" style="margin-top: 20px;">
                         <label for="imgpath" class="col-sm-1 control-label">图片路径</label>
                         <div class="col-sm-10">
-                            <input id="imgpath" name="imgpath" class="file" type="file">
+                            <input id="imgpath" name="file" class="file" type="file">
                             <input type="hidden" name="imgpath" id="realImg1">
                         </div>
                     </div>
                     <div class="form-group" >
                         <label for="imgalert" class="col-sm-1 control-label">图片描述</label>
                         <div class="col-sm-10">
-                            <script id="imgalert" name="imgalert" type="text/plain" ></script>
+                            <input id="imgalert" name="imgalert" type="text" class="form-control" />
                         </div>
                     </div>
                 </form>
