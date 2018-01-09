@@ -12,8 +12,6 @@
     <title>版权页面</title>
 </head>
 <body>
-
-
 <div class="index-concat">
     <div class="wrap cl">
         <div class="index-concat-left">
@@ -54,7 +52,6 @@
         </div>
     </div>
 </div>
-</div>
 <div class="footer">
     <div class="wrap">
         <p class="text">
@@ -91,7 +88,6 @@
 
 <script type="text/javascript" src="<%=path %>/static/js/index/jquery.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
-<script type="text/javascript">
-
+<script type="text/javascript"></script>
 </body>
 </html>
