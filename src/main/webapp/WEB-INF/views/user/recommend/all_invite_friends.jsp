@@ -11,7 +11,7 @@
 %>
 <html>
 <head>
-    <title>推荐管理</title>
+    <title>推荐列表</title>
     <%@include file="../../common/css/css_bootstrap.jsp" %>
     <%@include file="../../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../../common/css/css_sweetalert.jsp" %>
@@ -21,30 +21,28 @@
 <body>
 
 <div class="tool-bar" id="tool-bar">
-    <form class="form-horizontal" role="form" id="checkForm" enctype="multipart/form-data">
+    <form class="form-horizontal" role="form" id="friendsForm" enctype="multipart/form-data">
         <div class="form-group" style="width: auto">
             <label style="margin-left: 30px;">
-                <input type="date" id="startTime" name="startTime" class="form-control">
+                <input type="date" id="startTime1" name="startTime" class="form-control">
             </label>
             <label>至</label>
             <label>
-                <input type="date" id="endTime" name="endTime" class="form-control">
+                <input type="date" id="endTime1" name="endTime" class="form-control">
             </label>
             <label>
-                <button type="button" class="btn btn-primary" onclick="search();">搜索</button>
+                <button type="button" class="btn btn-primary" onclick="searchFriends(${sessionScope.user.uid});">搜索</button>
             </label>
         </div>
     </form>
 </div>
-<table id="recommend-list" class="table table-hover"
-       data-url="<%=path%>/recommend/pager_criteria">
+<table id="friends-list" class="table table-hover"
+       data-url="<%=path%>/recommend/pager_friends?uid=${sessionScope.user.uid}">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="tid">推荐人id</th>
-        <th data-field="tname">推荐人姓名</th>
-        <th data-field="uid">被推荐人id</th>
-        <th data-field="rname">被推荐人姓名</th>
+        <th data-field="uid">推荐好友的id</th>
+        <th data-field="rname">推荐好友的名字</th>
         <th data-field="date" data-formatter="setTable.formatDate">推荐时间</th>
     </tr>
     </thead>
@@ -62,7 +60,7 @@
 <script src="<%=path%>/static/js/our/huser/lqf/pager_huser_recommend.js"></script>
 <script>
     $(function () {
-        setTable.setBootstrapTable('recommend-list');
+        setTable.setBootstrapTable('friends-list');
     });
 </script>
 </body>

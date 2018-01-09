@@ -113,14 +113,14 @@
         AND bz.state = 1
         AND j.state = 1
         AND s.baid = b.baid
-        AND b.state != 3
+        AND b.state in (0, 2)
         AND (s.huid is null or s.huid=#{query.huid})
     </sql>
 
     <select id="listCriteria" resultType="com.we.vo.ShborrowVO">
         SELECT
         b.rname,b.money, b.state, b.deadline, b.term, b.time AS 'applyTime',
-        s.date AS 'checkTime', s.excuse, bz.bzname, j.lxname, s.shid, s.baid, h.rname AS 'huname'
+        s.date AS 'checkTime', s.excuse, bz.bzname, j.lxname, s.shid, s.baid
         <include refid="queryCriteria"/>
         ORDER BY b.state DESC, b.time DESC
         LIMIT #{pager.offset}, #{pager.limit}

@@ -42,7 +42,7 @@
                             <a class="J_menuItem" onclick="checkVip();" data-index="0">所有借款</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">所有借款（无需VIP）</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">未发布借款</a>
                         </li>
 
                     </ul>
@@ -85,6 +85,9 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">账户充值</a>
+                        </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">我的银行卡</a>
                         </li>
@@ -132,7 +135,7 @@
                     <ul class="nav nav-second-level">
                         <li>
                             <a class="J_menuItem" href="<%=path%>/recommend/invite_friends">好友推荐</a>
-                            <%--<a class="J_menuItem" href="<%=path%>/recommend/invite_friends">推荐列表</a>--%>
+                            <a class="J_menuItem" href="<%=path%>/recommend/list_invite_friends">推荐列表</a>
                         </li>
                     </ul>
                 </li>

@@ -27,7 +27,7 @@ var allShborrow = {
         }
     },
     okCheck: function () {
-        var row = setTable.isSingleSelected(allShborrow.id.tableId);
+        var row = setTable.isSelected(allShborrow.id.tableId);
         if (row) {
             $.post('/shborrow/updateStatus',
                 {

@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.common.Pager;
 import com.we.dao.RecommendDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.RecommendService;
@@ -19,4 +20,13 @@ public class RecommendServiceImpl extends AbstractBaseService implements Recomme
         super.setBaseDAO(recommendDAO);
         this.recommendDAO = recommendDAO;
     }
+
+    @Override
+    public Pager listUserFriends(Long offset, Long limit, Object object) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(recommendDAO.listUserFriends(pager, object));
+        pager.setTotal(recommendDAO.countUserFriends(object));
+        return pager;
+    }
+
 }

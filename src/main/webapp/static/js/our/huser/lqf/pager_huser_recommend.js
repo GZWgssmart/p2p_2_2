@@ -10,6 +10,18 @@ function search() {
     }
 }
 
+function searchFriends(uid) {
+    var startTime = $('#startTime1').val();
+    var endTime = $('#endTime1').val();
+    var myDate = new Date();
+    var myTime = myDate.toLocaleDateString();     //获取当前时间
+    if (CompareDate(startTime,endTime) || CompareDate(endTime,myTime) || CompareDate(startTime,myTime)) {
+        swtAlert.warn_info(dataDict.form.time);
+    } else {
+        setTable.doSearch('friendsForm', 'friends-list', '/recommend/pager_friends?uid=' + uid);
+    }
+}
+
 
 function CompareDate(d1,d2)
 {
