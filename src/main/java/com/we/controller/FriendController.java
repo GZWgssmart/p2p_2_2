@@ -1,24 +1,46 @@
 package com.we.controller;
 
 import com.we.bean.Friend;
+import com.we.common.OurConstants;
 import com.we.common.Pager;
+import com.we.common.PathUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.service.FriendService;
 import com.we.vo.RequestResultVO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/friend")
 public class FriendController {
 
     private FriendService friendService;
+
+    @PostMapping("save")
+    @ResponseBody
+    public RequestResultVO save(Friend friend, MultipartFile file) {
+        RequestResultVO vo = null;
+        try{
+            String imgPath = PathUtils.mkUploadImgs();
+            file.transferTo(new File(imgPath, file.getOriginalFilename()));
+            friend.setImgpath(OurConstants.PERFIX_IMG_PATH + friend.getImgpath());
+            friendService.save(friend);
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        }catch (IOException e) {
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }catch (RuntimeException e) {
+            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }
+        return vo;
+    }
 
     @RequestMapping("update_pager")
     @ResponseBody
@@ -46,19 +68,6 @@ public class FriendController {
             }
         }catch (RuntimeException e) {
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-        }
-        return vo;
-    }
-
-    @PostMapping("save")
-    @ResponseBody
-    public RequestResultVO save(Friend friend) {
-        RequestResultVO vo = null;
-        try{
-            friendService.save(friend);
-            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
-        }catch (RuntimeException e) {
-            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
         return vo;
     }

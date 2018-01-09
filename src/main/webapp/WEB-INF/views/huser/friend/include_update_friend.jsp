@@ -10,22 +10,22 @@
                 <form class="form-horizontal" role="form" id="updateForm" enctype="multipart/form-data">
                     <input type="hidden" id="fid" name="fid">
                     <div class="form-group">
-                        <label for="imghref" class="col-sm-1 control-label">链接</label>
+                        <label for="update-imghref" class="col-sm-1 control-label">链接</label>
                         <div class="col-sm-10">
-                            <input id="imghref" type="text" class="form-control" name="imghref">
+                            <input id="update-imghref" type="text" class="form-control" name="imghref">
                         </div>
                     </div>
                     <div class="form-group" style="margin-top: 20px;">
-                        <label for="imgpath" class="col-sm-1 control-label">图片路径</label>
+                        <label for="update-imgpath" class="col-sm-1 control-label">图片路径</label>
                         <div class="col-sm-10">
-                            <input id="imgpath" name="file" class="file" type="file">
+                            <input id="update-imgpath" name="file" class="file" type="file">
                             <input type="hidden" name="imgpath" id="realImg1">
                         </div>
                     </div>
                     <div class="form-group" >
-                        <label for="imgalert" class="col-sm-1 control-label">图片描述</label>
+                        <label for="update-imgalert" class="col-sm-1 control-label">图片描述</label>
                         <div class="col-sm-10">
-                            <input id="imgalert" name="imgalert" type="text" class="form-control" />
+                            <input id="update-imgalert" name="imgalert" type="text" class="form-control" />
                         </div>
                     </div>
                 </form>
