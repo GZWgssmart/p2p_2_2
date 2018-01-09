@@ -18,7 +18,7 @@ public class TzbServiceImplTest extends BaseTest {
         tzbDTO.setCpname("DJB1514874513719");
         tzbDTO.setJuid(100000);
         tzbDTO.setUid(100004);
-        tzbDTO.setMoney(new BigDecimal(400000));
+        tzbDTO.setMoney(new BigDecimal(200000));
         tzbDTO.setNprofit(new BigDecimal(9));
         tzbService.save(tzbDTO);
     }

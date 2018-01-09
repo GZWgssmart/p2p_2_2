@@ -43,7 +43,7 @@
         <th data-field="bzname">标种类型</th>
         <th data-field="lxname">借款类型</th>
         <th data-field="term">期限（月）</th>
-        <th data-field="state" data-formatter="pagerBorrow.formatState">审核状态</th>
+        <th data-field="state" data-formatter="pagerBorrow.formatState">状态</th>
         <th data-field="excuse">审核理由</th>
         <th data-field="checkTime" data-formatter="setTable.formatDate">审核时间</th>
         <th data-field="applyTime" data-formatter="setTable.formatDate">申请时间</th>

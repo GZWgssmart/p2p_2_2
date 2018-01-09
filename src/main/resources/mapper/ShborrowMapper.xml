@@ -105,7 +105,7 @@
     </update>
 
     <sql id="queryCriteria">
-        FROM borrowapply b, bz, jklx j, user u, shborrow s, huser h
+        FROM borrowapply b, bz, jklx j, user u, shborrow s
         WHERE
         b.uid = u.uid
         AND b.bzid = bz.bzid
