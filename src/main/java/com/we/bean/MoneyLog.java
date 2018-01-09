@@ -16,6 +16,10 @@ public class MoneyLog {
 
     private Date date;
 
+    public MoneyLog(){
+
+    }
+
     public MoneyLog(Integer uid, Integer type, BigDecimal outMoney, Date date) {
         this.uid = uid;
         this.type = type;

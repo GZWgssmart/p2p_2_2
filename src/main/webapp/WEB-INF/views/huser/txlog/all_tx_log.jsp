@@ -24,6 +24,7 @@
         <tr>
             <th data-checkbox="true" n></th>
             <th data-field="tid" data-visible="false"></th>
+            <th data-field="uid" data-visible="false"></th>
             <th data-field="money">提现金额（元）</th>
             <th data-field="bankcard">提现卡号</th>
             <th data-field="banktype">所属银行</th>
@@ -110,6 +111,8 @@
     function txCheckSuccess() {
         var rows = setTable.isSingleSelected('txLog-list');
         var tid = rows.tid;
+        var uid = rows.uid;
+        var money = rows.money;
         if(rows.state == 2){
             if (rows) {
                 swal({
@@ -121,7 +124,7 @@
                     if (isConfirm.value) {
                         $.post("<%=path%>/txCheck/TxCheckSuccess",
                             {
-                                tid:tid
+                                tid:tid,uid:uid,money:money
                             },
                             function (data) {
                                 if(data.result === "success"){

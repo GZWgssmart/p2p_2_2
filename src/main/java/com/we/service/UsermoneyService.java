@@ -11,4 +11,5 @@ public interface UsermoneyService extends BaseService {
 
     void updateByUid(Object obj);
 
+    void updateByTx(Object obj);
 }

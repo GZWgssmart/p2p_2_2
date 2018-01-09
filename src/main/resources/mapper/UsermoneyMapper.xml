@@ -174,4 +174,9 @@
       jlmoney = #{jlmoney,jdbcType=DECIMAL}
     where umid = #{umid,jdbcType=INTEGER}
   </update>
+
+  <update id="updateByTx" parameterType="com.we.bean.Usermoney">
+     update usermoney set kymoney = #{kymoney,jdbcType=DECIMAL}
+     where uid = #{uid,jdbcType=INTEGER}
+  </update>
 </mapper>
