@@ -33,11 +33,11 @@
                 <li><div class="hr"></div></li>
                 <li class="gdbj"><a href="javaScript:void(0);" class="icon-about about-gudong" onclick="gdbj();">股东背景</a></li>
                 <li class="gsjj"><a href="javaScript:void(0);" class="icon-about about-jianjie" onclick="gsjj();">公司简介</a></li>
-                <li class="ptzz"><a href="javaScript:void(0);" class="icon-about about-zizhi">平台资质</a></li>
-                <li class="gwtd"><a href="javaScript:void(0);" class="icon-about about-guwen">顾问团队</a></li>
+                <li class="ptzz"><a href="javaScript:void(0);" class="icon-about about-zizhi" onclick="ptzz();">平台资质</a></li>
+                <li class="tdgw"><a href="javaScript:void(0);" class="icon-about about-guwen" onclick="tdgw();">顾问团队</a></li>
                 <li class="gsdt"><a href="javaScript:void(0);" class="icon-about about-dongtai">公司动态</a></li>
                 <li class="ptgg"><a href="javaScript:void(0);" class="icon-about about-gonggao">平台公告</a></li>
-                <li class="zxns"><a href="javaScript:void(0);" class="icon-about about-zhaopin">招贤纳士</a></li>
+                <li class="zxns"><a href="javaScript:void(0);" class="icon-about about-zhaopin"  onclick="zxns();">招贤纳士</a></li>
                 <li class="lswm"><a href="javaScript:void(0);" class="icon-about about-lianxi">联系我们</a></li>
             </ul>
         </div>
@@ -46,11 +46,15 @@
     <div class="about-right">
 
     </div>
+
+   <%-- <div class="gdbj">
+
+    </div>--%>
     <!-- end -->
 </div>
 <div id="ajaxFooter"></div>
-<script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script><%--
-<script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>--%>
+<script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
+<%--<script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>--%>
 
 <script>
 
@@ -61,7 +65,31 @@
 
     function gdbj() {
         //股东背景
-        $(".gdbj).load("/index/gdbj");
+        $(".about-right").load("/index/gdbj");
+    }
+
+    function gsjj() {
+        $(".about-right").load("/index/gsjj");
+    }
+
+    function ptzz() {
+        $(".about-right").load("/index/ptzz");
+    }
+
+    function tdgw() {
+        $(".about-right").load("/index/tdgw");
+    }
+
+    function zxns() {
+        $(".about-right").load("/index/zxns");
+    }
+
+    function csjgxx() {
+        $(".about-right").load("/index/csjgxx");
+    }
+
+    function jkxmxx() {
+        $(".about-right").load("/index/jkxmxx");
     }
 
     var isClick = false;
@@ -72,9 +100,9 @@
             $("#animateUl").empty();
             $("#animateUl").html(
                 '<li class="xxpl"><a href="javaScript:void(0);" onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>'
-                +'<li class="cyjg"><a href="#cyjg" class="icon-about about-cyjg">从业机构信息</a></li>'
+                +'<li class="csjgxx"><a href="#cyjg" class="icon-about about-cyjg" onclick="csjgxx();">从业机构信息</a></li>'
                 +'<li class="ptyy"><a href="javaScript:void(0)" onclick="ptyy();" class="icon-about about-ptyy">平台运营信息</a></li>'
-                +'<li class="jkxm"><a href="#jkxm" class="icon-about about-jkxm">借款项目信息</a></li>');
+                +'<li class="jkxmxx"><a href="#jkxm" class="icon-about about-jkxm" onclick="jkxmxx();">借款项目信息</a></li>');
             $('.cyjg').show();
             $('.ptyy').show();
             $('.jkxm').show();

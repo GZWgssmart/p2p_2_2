@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-- begin -->
-<div class="about-right">
+<%--<div class="about-right">--%>
     <div class="about-right-nav">
         <div class="sub-a-nav">
             <a href="javascript:void(0);" class="active">公司简介</a>
@@ -28,5 +28,5 @@
             <img src="<%=path %>/static/images/xdp/pj_02.png" class="img">
         </div>
     </div>
-</div>
+<%--</div>--%>
 <!-- end -->

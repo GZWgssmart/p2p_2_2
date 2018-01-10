@@ -12,6 +12,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
+    //从事机构信息
+    @RequestMapping("csjgxx")
+    public String allCsjgxx() {
+        return "index/info/staticpage/csjgxx";
+    }
+
+    //从业机构信息
+    @RequestMapping("jkxmxx")
+    public String allInfo() {
+        return "index/info/staticpage/jkxmxx";
+    }
+
+    //招贤纳士
+    @RequestMapping("zxns")
+    public String allZxns() {
+        return "index/info/staticpage/zxns";
+    }
+
+    //团队顾问
+    @RequestMapping("tdgw")
+    public String allTdgw() {
+        return "index/info/staticpage/tdgw";
+    }
+
+    //平台资质
+    @RequestMapping("ptzz")
+    public String allPtzz() {
+        return "index/info/staticpage/ptzz";
+    }
+
     //公司简介
     @RequestMapping("gsjj")
     public String allGsjj() {
