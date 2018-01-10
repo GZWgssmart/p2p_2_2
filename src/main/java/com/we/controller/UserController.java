@@ -332,6 +332,10 @@ public class UserController {
         return "user/about";
     }
 
+    @RequestMapping("ydate")
+    public String ydate(){
+        return "user/ydate";
+    }
     @Resource
     public void setUserService(UserService userService) {
         this.userService = userService;

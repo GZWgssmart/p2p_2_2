@@ -53,6 +53,11 @@
 <script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>--%>
 
 <script>
+
+    function ptyy() {
+        $(".about-right").load("/user/ydate");
+    }
+
     var isClick = false;
     function animate1() {
         isClick = !isClick;
@@ -62,7 +67,7 @@
             $("#animateUl").html(
                 '<li class="xxpl"><a href="javaScript:void(0);" onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>'
                 +'<li class="cyjg"><a href="#cyjg" class="icon-about about-cyjg">从业机构信息</a></li>'
-                +'<li class="ptyy"><a href="#ptyy" class="icon-about about-ptyy">平台运营信息</a></li>'
+                +'<li class="ptyy"><a href="javaScript:void(0)" onclick="ptyy();" class="icon-about about-ptyy">平台运营信息</a></li>'
                 +'<li class="jkxm"><a href="#jkxm" class="icon-about about-jkxm">借款项目信息</a></li>');
             $('.cyjg').show();
             $('.ptyy').show();
@@ -78,6 +83,8 @@
             location.hash='gdbj';
         }
     }
+
+
 </script>
 </body>
 </html>
