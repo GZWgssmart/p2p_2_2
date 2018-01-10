@@ -29,7 +29,7 @@
             <div class="form-inline clearfix" style="margin-top:30px;margin-left:26px;">
                 <div class="form-group col-md-6">
                     <strong class="col-sm-5 control-label">功能权限</strong>
-                    <div class="col-sm-10 col-lg-offset-3">
+                    <div class="col-sm-10" style="margin-left: 120px;">
                         <ul id="jurTree" class="ztree"></ul>
                     </div>
                 </div>

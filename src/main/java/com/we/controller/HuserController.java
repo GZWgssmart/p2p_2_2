@@ -1,11 +1,17 @@
 package com.we.controller;
 
 import com.we.bean.Huser;
+import com.we.common.EncryptUtils;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.HuserService;
 import com.we.service.RoleuserService;
 import com.we.vo.RequestResultVO;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -127,6 +133,7 @@ public class HuserController {
     @ResponseBody
     public RequestResultVO add(Huser huser, String roleIds) {
         huser.setCreateTime(Calendar.getInstance().getTime());
+        huser.setPassword(EncryptUtils.md5("123456"));
         huserService.save(huser);
         if(roleIds != null && roleIds != ""){
             roleuserService.saveRoleuser(huser.getHuid(),roleIds);
@@ -138,8 +145,10 @@ public class HuserController {
     @ResponseBody
     public RequestResultVO update(Huser huser, String roleIds) {
         huserService.update(huser);
-        roleuserService.deletes(String.valueOf(huser.getHuid()));
-        roleuserService.saveRoleuser(huser.getHuid(),roleIds);
+        if(roleIds != null && roleIds != ""){
+            roleuserService.deletes(String.valueOf(huser.getHuid()));
+            roleuserService.saveRoleuser(huser.getHuid(),roleIds);
+        }
         return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
     }
 
@@ -151,6 +160,52 @@ public class HuserController {
         return RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
     }
 
+    @RequestMapping("login")
+    @ResponseBody
+    public RequestResultVO login(Huser huser){
+        Subject subject= SecurityUtils.getSubject();
+        UsernamePasswordToken token = null;
+        if(huser.getEmail() != null && huser.getEmail() != ""){
+            token = new UsernamePasswordToken(huser.getEmail(), EncryptUtils.md5(huser.getPassword()));
+        }else if(huser.getPhone() != null && huser.getPhone() != ""){
+            token = new UsernamePasswordToken(huser.getPhone(), EncryptUtils.md5(huser.getPassword()));
+        }
+        try{
+            subject.login(token);
+            return RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
+        }catch(Exception e){
+            e.printStackTrace();
+            return RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
+        }
+    }
 
+    @RequestMapping("login_page")
+    public String loginPage(){
+        return "huser/login";
+    }
 
+    @RequestMapping("get_by_id")
+    @ResponseBody
+    public Object getById(String huserId){
+        return huserService.getById(Integer.valueOf(huserId));
+    }
+
+    @RequestMapping("change_password")
+    @ResponseBody
+    public RequestResultVO changePassword(Huser huser,String newPassword,String conPassword){
+        if(newPassword.equals(conPassword)){
+            Huser huser1 = (Huser)huserService.getById(huser.getHuid());
+            if (huser1.getPassword().equals(EncryptUtils.md5(huser.getPassword()))){
+                huser1.setPassword(EncryptUtils.md5(newPassword));
+                huserService.update(huser1);
+                return RequestResultVO.status(RequestResultEnum.UPDATE_UPWD_SUCCESS);
+            }else {
+                return RequestResultVO.status(RequestResultEnum.OLD_PWD_FAIL);
+            }
+        }else{
+            return RequestResultVO.status(RequestResultEnum.NEW_PWDS_IS_DIFFERENT);
+        }
+
+    }
 }
+

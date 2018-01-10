@@ -20,4 +20,5 @@ public class UserLetterServiceImplTest extends BaseTest {
     public void setUserLetterService(UserLetterService userLetterService) {
         this.userLetterService = userLetterService;
     }
+
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+
+    <bean id="myRealm" class="com.we.realm.MyRealm"></bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 我们自定义的realm -->
+        <property name="realms">
+            <set>
+                <ref bean="myRealm" />
+            </set>
+        </property>
+        <!-- 缓存管理器 -->
+        <property name="cacheManager" ref="cacheManager"/>
+
+    </bean>
+
+
+    <!-- shiro过滤器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- 权限管理器 -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 登录地址 -->
+        <property name="loginUrl" value="/"/>
+        <!-- 错误页面 -->
+        <property name="unauthorizedUrl" value="/"/>
+
+        <property name="filters">
+            <map>
+                <entry key="role">
+                    <bean class="com.we.filter.HuserRolesAuthorizationFilter" />
+                </entry>
+            </map>
+        </property>
+
+        <!-- 权限配置 -->
+        <property name="filterChainDefinitions">
+            <value>
+                /login = anon
+                /css/**=anon
+                /images/**=anon
+                /js/**=anon
+                /huser/login = anon
+                /huser/login_page = anon
+                /huser/home_page = role["spueradmin,admin"]
+                /huser/** = role["spueradmin,admin"]
+                /role/** = role["spueradmin,admin"]
+                /jur/** = role["spueradmin,admin"]
+            </value>
+        </property>
+    </bean>
+
+
+
+
+</beans>

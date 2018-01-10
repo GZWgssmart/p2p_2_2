@@ -13,7 +13,7 @@
 <body>
 
     <div>
-        <h4>所有角色</h4>
+        <h4 >所有用户</h4>
         <div id="toolbar">
             <a class="btn btn-primary" style="text-decoration:none" href="<%=path%>/huser/add_huser_page">添加</a>
             <button id="seeButton" class="btn btn-primary" onclick="seeDetail()">查看详情</button>
@@ -100,7 +100,7 @@
                             </div>
                             <div class="form-inline clearfix" style="margin-top:30px;margin-left:26px;">
                                 <div class="form-group col-md-6">
-                                    <strong class="col-sm-5 control-label">功能权限</strong>
+                                    <strong class="col-sm-5 control-label">拥有角色</strong>
                                     <div class="col-sm-10 col-lg-offset-3">
                                         <ul id="roleTree" class="ztree"></ul>
                                     </div>
@@ -224,8 +224,7 @@
             onkeyup: false,
             rules: {
                 'huname': {
-                    required: true,
-                    isName: true
+                    required: true
                 },
                 'email': {
                     required: true,

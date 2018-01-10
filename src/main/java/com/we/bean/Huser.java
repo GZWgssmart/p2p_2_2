@@ -17,10 +17,6 @@ public class Huser {
 
     private Date createTime;
 
-    private Integer oid;
-
-    private String oname;
-
     private String password;
 
     public Integer getHuid() {
@@ -79,27 +75,11 @@ public class Huser {
         this.createTime = createTime;
     }
 
-    public Integer getOid() {
-        return oid;
-    }
-
-    public void setOid(Integer oid) {
-        this.oid = oid;
-    }
-
-    public String getOname() {
-        return oname;
-    }
-
-    public void setOname(String oname) {
-        this.oname = oname == null ? null : oname.trim();
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 }
