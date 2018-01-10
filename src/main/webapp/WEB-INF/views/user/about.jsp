@@ -19,33 +19,7 @@
 <div class="top" id="top">
 </div>
 <!-- nav -->
-<div class="nav">
-    <div class="wrap cl">
-        <div class="logo"><a href="https://www.pujinziben.com/"><img src="picture/logo.png" alt="普金资本"></a></div>
-        <div class="nav-bar">
-            <ul>
-                <li class="icon icon-acc"><a href="account.html">我的账户</a></li>
-                <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
-                <li><a href="about.html">信息披露</a></li>
-                <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
-                <li><a href="safety.html">安全保障</a></li>
-                <li>
-                    <a href="investlist.html">投资理财</a>
-                    <div class="sub-nav">
-                        <a href="investlist.html#006">恒金保</a>
-                        <a href="investlist.html#004">普金保</a>
-                        <a href="investlist.html#003">多金宝</a>
-                        <a href="investlist.html#005">新手标</a>
-                        <a href="creditorlist.html">债权转让</a>
-                        <p class="left"></p>
-                        <p class="right"></p>
-                    </div>
-                </li>
-                <li><a href="https://www.pujinziben.com/">首页</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<%@include file="../user/head.jsp"%>
 <div class="about cl">
     <div class="about-left">
         <div class="about-left-nav">
@@ -75,8 +49,35 @@
     <!-- end -->
 </div>
 <div id="ajaxFooter"></div>
-<%--<script type="text/javascript" src="<%=path%>/static/js/index/jquery.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script><%--
 <script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>--%>
 
+<script>
+    var isClick = false;
+    function animate1() {
+        isClick = !isClick;
+        if (isClick) {
+            $("#animateDiv").animate({height:"175px"},500);
+            $("#animateUl").empty();
+            $("#animateUl").html(
+                '<li class="xxpl"><a href="javaScript:void(0);" onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>'
+                +'<li class="cyjg"><a href="#cyjg" class="icon-about about-cyjg">从业机构信息</a></li>'
+                +'<li class="ptyy"><a href="#ptyy" class="icon-about about-ptyy">平台运营信息</a></li>'
+                +'<li class="jkxm"><a href="#jkxm" class="icon-about about-jkxm">借款项目信息</a></li>');
+            $('.cyjg').show();
+            $('.ptyy').show();
+            $('.jkxm').show();
+        }
+        else {
+            $("#animateDiv").animate({height:"45px"},500);
+            setTimeout(function() {
+                $('.cyjg').hide();
+                $('.ptyy').hide();
+                $('.jkxm').hide();
+            },500)
+            location.hash='gdbj';
+        }
+    }
+</script>
 </body>
 </html>
