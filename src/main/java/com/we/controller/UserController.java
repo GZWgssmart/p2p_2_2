@@ -57,7 +57,7 @@ public class UserController {
 
     @RequestMapping("all_borrow_money_page")
     public String allBorrowMoneyPage() {
-        return "user/borrow/all_borrow_money";
+        return "user/borrow/check/all_borrow_money";
     }
 
     /**

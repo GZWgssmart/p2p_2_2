@@ -33,6 +33,11 @@ public class OurConstants {
      */
     public static final Integer BORROW_FAIL = 5;
 
+    /**
+     * 申请借款的状态：还款成功
+     */
+    public static final Integer BORROW_REPAY_OK = 6;
+
 
     /**
      * 资金流向记录的类型：充值

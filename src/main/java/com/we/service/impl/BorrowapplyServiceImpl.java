@@ -5,6 +5,7 @@ import com.we.bean.Hkb;
 import com.we.bean.Shborrow;
 import com.we.bean.Usermoney;
 import com.we.common.DateUtil;
+import com.we.common.Pager;
 import com.we.dao.*;
 import com.we.service.AbstractBaseService;
 import com.we.service.BorrowapplyService;
@@ -118,6 +119,14 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
             }
             hkbDAO.updateSelective(hkbUpdate);
         }
+    }
+
+    @Override
+    public Pager listCheckOkBorrow(Long offset, Long limit, Object query) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(borrowapplyDAO.listCheckOkBorrow(pager, query));
+        pager.setTotal(borrowapplyDAO.countCheckOkBorrow(query));
+        return pager;
     }
 
     @Autowired

@@ -15,7 +15,7 @@
     <%@include file="../../common/css/css_bootstrap.jsp" %>
     <%@include file="../../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../../common/css/css_sweetalert.jsp" %>
-    <%@include file="../../common/css/css_sileinput.jsp" %>
+    <%@include file="../../common/css/css_fileinput.jsp" %>
     <link href="<%=path %>/static/css/our/huser/lqf/recommend.css" rel="stylesheet">
 </head>
 <body>

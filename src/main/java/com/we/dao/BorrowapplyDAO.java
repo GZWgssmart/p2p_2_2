@@ -1,6 +1,8 @@
 package com.we.dao;
 
 import com.we.bean.Borrowapply;
+import com.we.common.Pager;
+import com.we.vo.BorrowCheckOkVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -44,4 +46,19 @@ public interface BorrowapplyDAO extends BaseDAO {
      * @param baids
      */
     void updateStateByBaid(List<Integer> baids);
+
+    /**
+     * 前台用户查询自己已发布的借款
+     * @param pager
+     * @param query
+     * @return
+     */
+    List<Object> listCheckOkBorrow(@Param("pager") Pager pager, @Param("query") Object query);
+
+    /**
+     * 计数：前台用户发布的借款
+     * @param query
+     * @return
+     */
+    Long countCheckOkBorrow(@Param("query") Object query);
 }

@@ -42,6 +42,10 @@ public class Pager {
         this.limit = limit;
     }
 
+    public Long getPages() {
+        return null;
+    }
+
     public Long getOffset() {
         return offset;
     }

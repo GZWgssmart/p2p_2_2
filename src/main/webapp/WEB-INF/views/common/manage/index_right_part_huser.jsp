@@ -45,6 +45,6 @@
                 frameborder="0" data-id="index_v1.html" seamless></iframe>
     </div>
     <div class="footer">
-        <div class="pull-right">Copyright&copy;mh7649</div>
+        <div class="pull-right">Copyright&copy;pujinziben</div>
     </div>
 </div>
