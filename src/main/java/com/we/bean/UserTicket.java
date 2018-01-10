@@ -11,6 +11,8 @@ public class UserTicket {
 
     private Date tktime;
 
+    private Integer state;
+
     public Integer getRwid() {
         return rwid;
     }
@@ -41,5 +43,13 @@ public class UserTicket {
 
     public void setTktime(Date tktime) {
         this.tktime = tktime;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

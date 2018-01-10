@@ -10,21 +10,21 @@
                 <form class="form-horizontal" role="form" id="updateForm">
                     <input type="hidden" id="rwid" name="rwid">
                     <div class="form-group">
-                        <label for="minmoney" class="col-sm-1 control-label">最小金额</label>
+                        <label for="update-minmoney" class="col-sm-1 control-label">最小金额</label>
                         <div class="col-sm-10">
-                            <input id="minmoney" type="text" class="form-control" name="minmoney"  placeholder="请输入最小金额">
+                            <input id="update-minmoney" type="text" class="form-control" name="minmoney"  placeholder="请输入最小金额">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="maxmoney" class="col-sm-1 control-label">最大金额</label>
+                        <label for="update-maxmoney" class="col-sm-1 control-label">最大金额</label>
                         <div class="col-sm-10">
-                            <input id="maxmoney" type="text" class="form-control" name="maxmoney"  placeholder="请输入最大金额">
+                            <input id="update-maxmoney" type="text" class="form-control" name="maxmoney"  placeholder="请输入最大金额">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="percent" class="col-sm-1 control-label">百分比</label>
+                        <label for="update-percent" class="col-sm-1 control-label">百分比</label>
                         <div class="col-sm-10">
-                            <input id="percent" type="text" class="form-control" name="percent"  placeholder="请输入百分比">
+                            <input id="update-percent" type="text" class="form-control" name="percent"  placeholder="请输入百分比">
                         </div>
                     </div>
                 </form>

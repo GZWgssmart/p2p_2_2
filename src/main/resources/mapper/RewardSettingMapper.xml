@@ -87,7 +87,7 @@
     SELECT
     *
     FROM reward_setting rs
-     ORDER BY rs.percent DESC
+     ORDER BY rs.rwid DESC
     LIMIT #{pager.offset},#{pager.limit}
   </select>
 

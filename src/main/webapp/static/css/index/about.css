@@ -40,11 +40,11 @@
 	text-indent:48px;
 }
 .icon-about{
-	background-image: url(../images/about/icon-about-gray.png);
+	background-image: url(../../images/about/icon-about-gray.png);
     background-repeat: no-repeat;
 }
 .active .icon-about,.about-left-nav .sub-nav>li a:hover.icon-about{
-	background-image: url(../images/about/icon-about-white.png);
+	background-image: url(../../images/about/icon-about-white.png);
 	background-color:#eb2a2b;
 	color:#fff;
 }
@@ -232,6 +232,9 @@
 .credit-pic{
 	position:relative;
 	cursor:pointer;
+	margin-right: 30px;
+	margin-bottom: 30px;
+	float: left;
 }
 .credit-pic span{
 	position:absolute;
@@ -239,33 +242,23 @@
 	top:0;
 	text-align:center;
 }
-.credit-left .credit-pic span{
-	width:259px;
-	height:400px;
-	text-align:center;
-	line-height:400px;
-	background-color:rgba(0,0,0,0.5);
-	color:#fff;
-}
+
 .credit-right .credit-pic span{
-	width:299px;
-	height:190px;
+	width:260px;
+	height:330px;
 	text-align:center;
-	line-height:190px;
+	line-height:300px;
 	background-color:rgba(0,0,0,0.5);
 	color:#fff;
 }
-.text-banner-two .credit-pic{
-	float:left;
-	margin:0 30px 30px 0;
-}
-.text-banner-two .credit-pic span{
-	width:279px;
-	height:182px;
+
+.credit-right .credit-pic span{
+	width:260px;
+	height:330px;
+	text-align:center;
+	line-height:300px;
 	background-color:rgba(0,0,0,0.5);
 	color:#fff;
-	text-align:center;
-	line-height:182px;
 }
 /*gltd*/
 .text-pic-photo-man{float:left;margin:0!important}
@@ -822,7 +815,7 @@
 }
 .yybgImg {
 	wdith: 260px;
-	height: 340px;
+	height: 330px;
 	margin-right: 38px;
 	margin-bottom: 30px;
 }
@@ -902,7 +895,7 @@
 	height:44px;
 	width:44px;
 	margin:0 auto;
-	background: url(../images/about/item-icon.png) no-repeat;
+	background: url(../../images/about/item-icon.png) no-repeat;
 	margin-bottom:14px;
 }
 .sjList .item .icon-dealNumber{
@@ -955,7 +948,7 @@
 	width:57px;
 	height:57px;
 	float:left;
-	background: url(../images/about/item-icon.png) no-repeat;
+	background: url(../../images/about/item-icon.png) no-repeat;
 }
 .about-content .sjList-2 .item-yh .icon-userTotal{
 	background-position: 0 -103px;

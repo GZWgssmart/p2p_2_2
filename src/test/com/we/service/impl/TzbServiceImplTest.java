@@ -14,13 +14,21 @@ public class TzbServiceImplTest extends BaseTest {
     @Test
     public void save() throws Exception {
         TzbDTO tzbDTO = new TzbDTO();
-        tzbDTO.setBaid(11);
-        tzbDTO.setCpname("DJB1514874513719");
-        tzbDTO.setJuid(100000);
-        tzbDTO.setUid(100004);
-        tzbDTO.setMoney(new BigDecimal(200000));
-        tzbDTO.setNprofit(new BigDecimal(9));
+        tzbDTO.setBaid(18);
+        tzbDTO.setCpname("PJB1515457882799");
+        tzbDTO.setJuid(100001);
+        tzbDTO.setUid(100000);
+        tzbDTO.setMoney(new BigDecimal(480000));
+        tzbDTO.setNprofit(new BigDecimal(8));
         tzbService.save(tzbDTO);
+    }
+
+    @Test
+    public void testInteger() {
+        Integer a = new Integer(10000);
+        Integer b = new Integer(10000);
+        System.out.println(a == b);
+        System.out.println(b.equals(a));
     }
 
     @Resource

@@ -117,7 +117,7 @@
             if (rows) {
                 swal({
                     title: '你确定提现审核通过？',
-                    text: dataDict.manage.removeMsg,
+                    text: dataDict.manage.noCancelMsg,
                     type: 'warning',
                     showCancelButton: true
                 }).then(function (isConfirm) {

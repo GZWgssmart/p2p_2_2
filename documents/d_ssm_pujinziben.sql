@@ -397,7 +397,8 @@ CREATE TABLE user_ticket (
   rwid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   uid INT COMMENT '用户id',
   kid INT COMMENT '优惠券id',
-  tktime DATETIME COMMENT '领券时间'
+  tktime DATETIME COMMENT '领券时间',
+  state INT COMMENT '状态：0已使用，1已过期，2可用'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '领券表';
 
 DROP TABLE IF EXISTS rzvip_check;

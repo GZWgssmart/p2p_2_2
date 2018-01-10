@@ -27,17 +27,27 @@ var allShborrow = {
         }
     },
     okCheck: function () {
-        var row = setTable.isSelected(allShborrow.id.tableId);
+        var row = setTable.isSingleSelected(allShborrow.id.tableId);
         if (row) {
-            $.post('/shborrow/updateStatus',
-                {
-                    'baid': row.baid,
-                    'isok': 1,
-                    'shid': row.shid,
-                    'excuse': ''
-                }, function (data) {
-                    setTable.requestCall(data, allShborrow.id.tableId);
-                }, 'json');
+            swal({
+                title: dataDict.manage.checkConfirm,
+                text: dataDict.manage.noCancelMsg,
+                type: 'warning',
+                showCancelButton: true
+            }).then(function (isConfirm) {
+                if (isConfirm.value) {
+                    $.post('/shborrow/updateStatus',
+                        {
+                            'baid': row.baid,
+                            'isok': 1,
+                            'shid': row.shid,
+                            'excuse': ''
+                        }, function (data) {
+                            setTable.requestCall(data, allShborrow.id.tableId);
+                        }, 'json');
+                }
+            });
+
         }
     },
     showCheckForm: function () {

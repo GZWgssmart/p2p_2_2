@@ -18,7 +18,7 @@ public enum RequestResultEnum {
     Code_SUCCESS(306,"fail","验证码已发送，请注意查收"),
     HAVE_PERMISSION(401, "success", "通过认证"),
     NO_PERMISSION(402, "fail", "无权限操作"),
-    NO_PERMISSION_BORROW_MONEY(403, "fail", "成为VIP（充值10000元，投标1000元）后才能开启借款功能"),
+    NO_PERMISSION_BORROW_MONEY(403, "fail", "（充值10000元，投标1000元可申请）成为VIP才能开启借款功能"),
     VERIFY_SUCCESS(307,"success","验证成功"),
     VERIFY_FAIL(308,"fail","验证码错误"),
     UPDATE_UPWD_SUCCESS(309,"success","修改密码成功"),
@@ -26,7 +26,11 @@ public enum RequestResultEnum {
     UPDATE_PHONE_SUCCESS(311,"success","修改成功"),
     UPDSTE_TXCHECK_SUCCESS(313,"success","审核通过"),
     UPDSTE_TXCHECK_NO_SUCCESS(314,"success","提交审核理由成功"),
-    OLD_PWD_FAIL(312,"fail","原始密码错误");
+    OLD_PWD_FAIL(312,"fail","原始密码错误"),
+    SAME_TZ_JK(601, "fail", "不能投自身发布的标"),
+    BORROW_SYMONEY_NOT_ENOUGH(603, "fail", "剩余可投金额不足"),
+    USERMONEY_KYMONEY_NOT_ENOUGH(604, "fail", "可用余额不足"),
+    TICKET_TIME(605, "fail", "优惠券已过期");
 
     private Integer code;
     private String result;
