@@ -381,6 +381,8 @@
     function openChangePassword() {
         $(":password").val("");
         $('#myPasswordModal').modal();
+        $('.error-msg').text("");
+        $('.error-msg').hide();
         return $('#myPassword').validate({
             onfocusout: function (element) {
                 $(element).valid();

@@ -99,16 +99,6 @@
         </set>
         where huid = #{huid,jdbcType=INTEGER}
     </update>
-    <!--<update id="update" parameterType="com.we.bean.Huser">-->
-    <!--update huser-->
-    <!--set rname = #{rname,jdbcType=VARCHAR},-->
-      <!--sex = #{sex,jdbcType=VARCHAR},-->
-      <!--phone = #{phone,jdbcType=CHAR},-->
-      <!--huname = #{huname,jdbcType=VARCHAR},-->
-      <!--email = #{email,jdbcType=VARCHAR},-->
-      <!--password = #{password}-->
-    <!--where huid = #{huid,jdbcType=INTEGER}-->
-  <!--</update>-->
 
     <select id="listCriteria" resultType="com.we.bean.Huser">
         select * from huser order by create_time desc
