@@ -22,4 +22,10 @@ public interface HkbDAO extends BaseDAO {
      * @return 影响行数
      */
     Integer saveList(@Param("hkbList") List<Hkb> hkbList);
+
+    /**
+     * 查询所有还款逾期
+     * @return
+     */
+    List<Hkb> getAllOverdue(String nowTime);
 }

@@ -134,4 +134,20 @@
     ]]>
   </select>
 
+
+  <select id="getAllUidByBaid" resultType="integer">
+    select distinct uid from tzb where
+    <foreach collection="list" item="item" separator="or">
+      baid = #{item}
+    </foreach>
+
+  </select>
+
+  <select id="getAllMoneyByuid" resultType="double">
+    select sum(money) from tzb where
+    <foreach collection="baid" item="item" separator="or" open="(" close=")">
+      baid = #{item}
+    </foreach>
+    and uid = #{uid}
+  </select>
 </mapper>

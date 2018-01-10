@@ -327,6 +327,10 @@ public class UserController {
         statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
         return statusVO;
     }
+    @RequestMapping("about")
+    public String about(){
+        return "user/about";
+    }
 
     @Resource
     public void setUserService(UserService userService) {

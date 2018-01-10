@@ -313,4 +313,11 @@
       </foreach>
 
   </insert>
+
+  <select id="getAllOverdue" resultType="com.we.bean.Hkb">
+    <![CDATA[
+      select h.* from borrowapply b, hkb h where b.baid = h.baid and b.state = 1
+            and h.yustartime < #{nowTime} and h.state = 0
+    ]]>
+  </select>
 </mapper>

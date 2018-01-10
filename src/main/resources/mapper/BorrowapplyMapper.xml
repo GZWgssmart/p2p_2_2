@@ -208,6 +208,19 @@
       select count(baid) from borrowapply where state = 1 and time > #{beginTime} and time < #{endTime};
     ]]>
   </select>
+
+  <select id="getAllBorrowapplyByStateAndDeadline" resultMap="BaseResultMap">
+    <![CDATA[
+      select * from borrowapply where state = 1 and deadline < #{nowTime};
+    ]]>
+  </select>
+
+  <update id="updateStateByBaid">
+    update borrowapply set state = 4 where baid in
+    <foreach collection="list" open="(" close=")" separator="," item="item">
+      #{item}
+    </foreach>
+  </update>
 </mapper>
 
 

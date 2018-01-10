@@ -2,6 +2,7 @@ package com.we.common;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -19,4 +20,20 @@ public class DateUtil {
         return null;
     }
 
+    public static String DateToString(Date time){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(time);
+    }
+
+    public static String getNowTime(){
+        Calendar c = Calendar.getInstance();
+        int month = c.get(Calendar.MONTH) + 1;
+        String nowTime = "";
+        if(month < 10){
+            nowTime = String.valueOf(c.get(Calendar.YEAR)) +"-0"+ month +"-"+String.valueOf(c.get(Calendar.DATE));
+        }else{
+            nowTime = String.valueOf(c.get(Calendar.YEAR)) +"-"+ month +"-"+String.valueOf(c.get(Calendar.DATE));
+        }
+        return nowTime;
+    }
 }

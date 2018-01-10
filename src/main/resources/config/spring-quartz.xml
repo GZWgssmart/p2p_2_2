@@ -37,17 +37,34 @@
         <property name="cronExpression" value="00 00 00 1 * ? *" />
     </bean>
 
+    <bean id="borrowapplyJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="name" value="borrowapplyJobDetail" />
+        <property name="group" value="group" />
+        <property name="jobClass" value="com.we.controller.quertz.borrowapply" />
+        <property name="durability" value="true" />
+    </bean>
+
+    <bean id="borrowapplyJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="borrowapplyJobDetail" />
+        <property name="group" value="group" />
+        <property name="jobDetail" ref="ydateJobDetail" />
+        <property name="cronExpression" value="00 00 00 * * ? *" />
+    </bean>
+
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
             <list>
                 <ref bean="cronJobDetail" />
                 <ref bean="ydateJobDetail" />
+                <ref bean="borrowapplyJobDetail" />
+
             </list>
         </property>
         <property name="triggers">
             <list>
                 <ref bean="cronJobTrigger" />
                 <ref bean="ydateJobTrigger" />
+                <ref bean="borrowapplyJobTrigger" />
             </list>
         </property>
     </bean>
