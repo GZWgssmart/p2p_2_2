@@ -12,10 +12,9 @@
 <html>
 <head>
     <title>Title</title>
-    <%@include file="../../common/css/css_bootstrap.jsp" %>
-    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
-    <%@include file="../../common/css/css_sweetalert.jsp" %>
-    <%@include file="../../common/css/css_sileinput.jsp" %>
+    <%@include file="../../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../../common/css/css_sweetalert.jsp" %>
 </head>
 <body>
 
@@ -33,7 +32,7 @@
             class="btn btn-success">修改详情
     </button>
 </div>
-<table id="borrowapply-list" class="table table-hover"
+<table id="borrow-checkok-list" class="table table-hover"
        data-single-select="true"
        data-url="<%=path%>/borrowapply/pager_criteria?uid=${sessionScope.user.uid}">
     <thead>
@@ -53,30 +52,17 @@
     </thead>
 </table>
 
-<%@include file="include_save_borrowapply.jsp" %>
-<%@include file="include_update_borrowapply.jsp" %>
-<%@include file="include_save_borrowapply_detail.jsp" %>
-<%@include file="include_update_borrowapply_detail.jsp" %>
 
-<%@include file="../../common/js/js_jquery.jsp" %>
-<%@include file="../../common/js/js_boostrap.jsp" %>
-<%@include file="../../common/js/js_boostrap_table.jsp" %>
-<%@include file="../../common/js/js_select2.jsp" %>
-<%@include file="../../common/js/js_sweetalert.jsp" %>
-<%@include file="../../common/js/js_form.jsp" %>
-<%@include file="../../common/js/js_data_dict.jsp" %>
-<%@include file="../../common/js/js_fileinput.jsp" %>
+<%@include file="../../../common/js/js_jquery.jsp" %>
+<%@include file="../../../common/js/js_boostrap.jsp" %>
+<%@include file="../../../common/js/js_boostrap_table.jsp" %>
+<%@include file="../../../common/js/js_sweetalert.jsp" %>
+<%@include file="../../../common/js/js_form.jsp" %>
+<%@include file="../../../common/js/js_data_dict.jsp" %>
 
-<script src="<%=path%>/static/js/our/user/lmh/pager_borrowapply.js"></script>
 <script>
     $(function () {
-        setTable.setBootstrapTable('borrowapply-list');
-        pagerBorrow.select2.loadBzType();//加载 标种下拉框的数据
-        pagerBorrow.select2.loadJkType(); //加载 借款类型下拉框的数据
-    });
-    $('.file-preview').fileinput({
-        'allowedFileExtensions': ['jpg', 'png', 'gif'],
-        showUpload: false//是否显示上传按钮
+        setTable.setBootstrapTable('borrow-checkok-list');
     });
 </script>
 

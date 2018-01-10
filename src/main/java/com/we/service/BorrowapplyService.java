@@ -1,6 +1,10 @@
 package com.we.service;
 
+import com.we.common.Pager;
+import com.we.vo.BorrowCheckOkVO;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * Created by hasee on 2017/12/22.
@@ -40,4 +44,13 @@ public interface BorrowapplyService extends BaseService {
      * 借款成功状态 的借款是否逾期（根据借款id查询还款表数据，若逾期时间小于当前系统时间则逾期）
      */
     void overdue();
+
+    /**
+     * 前台用户查询自己已发布的借款
+     * @param offset
+     * @param limit
+     * @param query
+     * @return
+     */
+    Pager listCheckOkBorrow(Long offset, Long limit, Object query);
 }

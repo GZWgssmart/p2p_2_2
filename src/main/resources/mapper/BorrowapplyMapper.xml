@@ -199,7 +199,7 @@
         select count(distinct uid) from borrowapply where state = 1 and time > #{beginTime} and time < #{endTime};
       ]]>
     </select>
-  
+
   <select id="countAllBorrow" resultType="long">
     select count(baid) from borrowapply where state = 1;
   </select>
