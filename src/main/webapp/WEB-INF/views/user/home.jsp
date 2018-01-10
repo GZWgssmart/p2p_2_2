@@ -89,7 +89,7 @@
                             <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">账户充值</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">我的银行卡</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_bankcard">我的银行卡</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/safety">安全设置</a>

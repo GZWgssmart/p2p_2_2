@@ -16,40 +16,11 @@ import javax.annotation.Resource;
 public class BankcardServiceImpl extends AbstractBaseService implements BankcardService {
 
 
-    public BankcardDAO bankcardDAO;
-
-    @Override
-    public Integer removeById(Integer id) {
-        return bankcardDAO.removeById(id);
-    }
-
-    @Override
-    public Integer save(Object obj) {
-        return bankcardDAO.save(obj);
-    }
-
-    @Override
-    public Integer saveSelective(Object obj) {
-        return bankcardDAO.saveSelective(obj);
-    }
-
-    @Override
-    public Object getById(Integer id) {
-        return bankcardDAO.getById(id);
-    }
-
-    @Override
-    public Integer updateSelective(Object obj) {
-        return bankcardDAO.updateSelective(obj);
-    }
-
-    @Override
-    public Integer update(Object obj) {
-        return bankcardDAO.update(obj);
-    }
+    private BankcardDAO bankcardDAO;
 
     @Resource
     public void setBankcardDAO(BankcardDAO bankcardDAO) {
         this.bankcardDAO = bankcardDAO;
+        super.setBaseDAO(bankcardDAO);
     }
 }

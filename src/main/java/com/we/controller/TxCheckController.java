@@ -38,7 +38,6 @@ public class TxCheckController {
         txLog.setTid(tid);
         txLog.setState(1);
         txLogService.update(txLog);
-        System.out.println(uid+"*********"+money);
         Usermoney usermoney = usermoneyService.getByUid(uid);
         BigDecimal kyMoney = usermoney.getKymoney();
         usermoney.setKymoney(kyMoney.subtract(money));
@@ -70,6 +69,7 @@ public class TxCheckController {
         resultVO = RequestResultVO.status(RequestResultEnum.UPDSTE_TXCHECK_NO_SUCCESS);
         return resultVO;
     }
+
 
     @Resource
     public void setUsermoneyService(UsermoneyService usermoneyService) {

@@ -332,6 +332,11 @@ public class UserController {
         return "user/about";
     }
 
+    @RequestMapping("all_bankcard")
+    public String allBankcard(){
+        return "user/bankcard/all_bankcard";
+    }
+
     @RequestMapping("ydate")
     public String ydate(){
         return "user/ydate";

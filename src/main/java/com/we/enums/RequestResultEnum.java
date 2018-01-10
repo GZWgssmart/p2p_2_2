@@ -27,6 +27,8 @@ public enum RequestResultEnum {
     UPDSTE_TXCHECK_SUCCESS(313,"success","审核通过"),
     UPDSTE_TXCHECK_NO_SUCCESS(314,"success","提交审核理由成功"),
     OLD_PWD_FAIL(312,"fail","原始密码错误"),
+    BINDING_BANKCARD_SUCCESS(315,"success","绑定银行卡成功"),
+    OLD_PWD_FAIL(312,"fail","原始密码错误"),
     SAME_TZ_JK(601, "fail", "不能投自身发布的标"),
     BORROW_SYMONEY_NOT_ENOUGH(603, "fail", "剩余可投金额不足"),
     USERMONEY_KYMONEY_NOT_ENOUGH(604, "fail", "可用余额不足"),

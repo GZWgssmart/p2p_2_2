@@ -18,12 +18,12 @@ public class UsermoneyServiceImpl extends AbstractBaseService implements Usermon
 
     @Override
     public Usermoney getByUid(Integer uid) {
-        return usermoneyDAO.getByUid(uid);
+        return null;
     }
 
     @Override
     public void updateByUid(Object obj) {
-        usermoneyDAO.updateByUid(obj);
+
     }
 
     @Override

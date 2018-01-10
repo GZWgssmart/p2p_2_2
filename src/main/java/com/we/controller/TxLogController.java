@@ -21,7 +21,7 @@ public class TxLogController {
     @RequestMapping("pager_criteria")
     @ResponseBody
     public Pager pagerCriteria(Long offset, Long limit, TxLog txLog){
-        return  txLogService.listCriteria(offset, limit, txLog);
+        return txLogService.listCriteria(offset, limit, txLog);
     }
     @Resource
     public void setTxLogService(TxLogService txLogService) {
