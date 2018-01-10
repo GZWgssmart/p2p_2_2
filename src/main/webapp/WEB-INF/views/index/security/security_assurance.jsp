@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="<%=path %>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/index.css">
 </head>
-<%--<link rel="icon" href="resources/front/v01/src/images/logo_title.jpg" type="image/x-icon" />--%>
 <script type="text/javascript">
     function IsPC() {
         var userAgentInfo = navigator.userAgent;

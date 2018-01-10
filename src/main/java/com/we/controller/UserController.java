@@ -329,7 +329,7 @@ public class UserController {
     }
     @RequestMapping("about")
     public String about(){
-        return "user/about";
+        return "index/info/about";
     }
 
     @RequestMapping("all_bankcard")
