@@ -1,7 +1,7 @@
 package com.we.service;
 
 import com.we.bean.Ydate;
-import com.we.vo.YdataVo;
+import com.we.vo.YdataVO;
 
 import java.util.List;
 
@@ -20,6 +20,6 @@ public interface YdateService extends BaseService {
     /**
      * 查询最近十二个月的运营数据
      */
-    List<YdataVo> getYearYdate();
+    List<YdataVO> getYearYdate();
 
 }

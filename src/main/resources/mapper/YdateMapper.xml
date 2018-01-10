@@ -178,7 +178,7 @@
     select * from ydate where date = #{time}
   </select>
 
-  <select id="getYearYdate" resultType="com.we.vo.YdataVo">
+  <select id="getYearYdate" resultType="com.we.vo.YdataVO">
     select yid,date from ydate order by date desc limit 0 , 12
   </select>
 </mapper>

@@ -69,11 +69,6 @@
             <div class="itemSJ" id="compensatoryMoney">0.00</div>
         </div>
         <div class="item">
-            <div class="item-icon icon-compensatoryNumber"></div>
-            <div class="itemText">累计代偿笔数（笔）</div>
-            <div class="itemSJ" id="compensatoryNumber">0</div>
-        </div>
-        <div class="item">
             <div class="item-icon icon-overdueMoney"></div>
             <div class="itemText">逾期金额（元）</div>
             <div class="itemSJ" id="overdueMoney">12.26</div>
@@ -83,86 +78,94 @@
             <div class="itemText">逾期笔数（笔）</div>
             <div class="itemSJ" id="overdueNumber">3</div>
         </div>
-        <div class="item">
-            <div class="item-icon icon-overtimeNumber"></div>
-            <div class="itemText">逾期90天以上笔数（笔）</div>
-            <div class="itemSJ" id="overtimeNumber">0</div>
-        </div>
-        <div class="item">
-            <div class="item-icon icon-overtimeMoney"></div>
-            <div class="itemText">逾期90天以上金额（元）</div>
-            <div class="itemSJ" id="overtimeMoney">0.00</div>
-        </div>
     </div>
     <div class="btnDiv btnDiv-P">平台用户数据</div>
-    <div class="sjList sjList-2">
-        <div class="item-yh">
-            <i class="icon-userTotal"></i>
-            <div class="itemText">注册用户数（人）</div>
-            <div class="itemSJ color-b" id="userTotal">11,225</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-investorCount"></i>
-            <div class="itemText">累计出借人数量（人）</div>
-            <div class="itemSJ color-g" id="investorCount">439</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-borrowerCount"></i>
-            <div class="itemText">累计借款人数量（人）</div>
-            <div class="itemSJ color-y" id="borrowerCount">35</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-avgUserInvest"></i>
-            <div class="itemText">人均累计投资金额（元）</div>
-            <div class="itemSJ color-b" id="avgUserInvest">78,218.47</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-avgInvest"></i>
-            <div class="itemText">笔均投资额（元）</div>
-            <div class="itemSJ color-g" id="avgInvest">17,537.24</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-investorNew"></i>
-            <div class="itemText">当期出借人数量（人）</div>
-            <div class="itemSJ color-y" id="investorNew">140</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-borrowerNew"></i>
-            <div class="itemText">当期借款人数量（人）</div>
-            <div class="itemSJ color-b" id="borrowerNew">20</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-AssociationNumber"></i>
-            <div class="itemText">关联关系借款笔数（笔）</div>
-            <div class="itemSJ color-g" id="AssociationNumber">0</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-AssociationSum"></i>
-            <div class="itemText">关联关系借款余额（元）</div>
-            <div class="itemSJ color-y" id="AssociationSum">0.00</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-borrowerPer"></i>
-            <div class="itemText">前十大借款代还金额占比（%）</div>
-            <div class="itemSJ color-b" id="borrowerPer">41.96</div>
-        </div>
-        <div class="item-yh">
-            <i class="icon-bigBorrowerPer"></i>
-            <div class="itemText">最大借款代还金额占比（%）</div>
-            <div class="itemSJ color-g" id="bigBorrowerPer">7.00</div>
-        </div>
+
+</div>
+
+<div class="about-content" id="monthDiv" style="display: none;">
+    <div class="btnDiv" id="month">
+
     </div>
+    <div class="moneyDiv">
+        <div class="item_Div" id="money7">0</div>
+        <div class="marginLeft"></div>
+        <div class="item_Div" id="money6">0</div>
+        <div class="marginLeft">,</div>
+        <div class="item_Div" id="money5">0</div>
+        <div class="marginLeft"></div>
+        <div class="item_Div" id="money4">0</div>
+        <div class="marginLeft"></div>
+        <div class="item_Div" id="money3">0</div>
+        <div class="marginLeft">,</div>
+        <div class="item_Div" id="money2">0</div>
+        <div class="marginLeft"></div>
+        <div class="item_Div" id="money1">0</div>
+        <div class="marginLeft"></div>
+        <div class="item_Div" id="money0">0</div>
+        <div class="marginLeft">.</div>
+        <div class="item_Div" id="money-1">0</div>
+        <div class="marginLeft"></div>
+        <div class="item_Div" id="money-2">0</div>
+        <div class="marginLeft"></div>
+    </div>
+
+    <div class="btnDiv">当月数据总览</div>
+    <div class="sjList sjList-1">
+        <div class="item">
+            <div class="item-icon icon-dealNumber"></div>
+            <div class="itemText">月交易总额（元）</div>
+            <div class="itemSJ" id="mmoney">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-repayAmount"></div>
+            <div class="itemText">总注册数（人）</div>
+            <div class="itemSJ" id="tuser">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-unRepayAmount"></div>
+            <div class="itemText">当月注册数（人）</div>
+            <div class="itemSJ" id="muser">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-unRepayNumber"></div>
+            <div class="itemText">总投资人数（人）</div>
+            <div class="itemSJ" id="ttzno">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-hasInteres"></div>
+            <div class="itemText">月投资人数（人）</div>
+            <div class="itemSJ" id="mtzno">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-compensatoryMoney"></div>
+            <div class="itemText">总贷款人数（人）</div>
+            <div class="itemSJ" id="tdkno">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-compensatoryNumber"></div>
+            <div class="itemText">月贷款人数（人）</div>
+            <div class="itemSJ" id="mdkno">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-overdueMoney"></div>
+            <div class="itemText">总贷款笔数（笔）</div>
+            <div class="itemSJ" id="tdkbno">0</div>
+        </div>
+        <div class="item">
+            <div class="item-icon icon-overdueNumber"></div>
+            <div class="itemText">月贷款笔数（笔）</div>
+            <div class="itemSJ" id="mdkbno">0</div>
+        </div>
+
+    </div>
+    <div class="btnDiv btnDiv-P" onclick="back()" style="margin-top:-160px;line-height: 42px;background-color: #1815f5;">返回</div>
 </div>
 
 <div class="about-content" id="yybgDiv" style="display: none;">
     <div class="tableDiv">
         <div class="credit-right" id="right" style="margin-left:20px;">
-                <div class="credit-pic" onclick="alert('1231231');">
-                    <img src="resources/front/v01/src/images/about/ptzz_06_big.jpg" width="260" height="330">
-                    <span style="width: 260px; height: 330px; display: none;">
-                        <span>开户许可证</span>
-                    </span>
-                </div>
+
             </div>
         </div>
     </div>
@@ -173,21 +176,77 @@
         $(".em-line").css("left", "0px");
         $("#sssjDiv").show();
         $("#yybgDiv").hide();
+        $("#monthDiv").hide();
     });
 
     $("#yybg").click(function () {
         $(this).attr("class", "active");
         $(".em-line").css("left", "120px");
-        $("#sssjDiv").hide();
         $("#yybgDiv").show();
+        $("#sssjDiv").hide();
+        $("#monthDiv").hide();
     });
 
-    $(function () {
+    function monthYdate(id,time) {
+        $("#yybgDiv").hide();
+        $("#monthDiv").show();
+        $("#month").append(time+"交易总额");
+        $.post("/ydate/month/"+id,
+            function (data) {
+                var stu = (data.tmoney+"").split(".");
+                var j = 0;
+                //初始化
+                for(var i = 0; i < 8;i++){
+                    $("#money"+i).html("").html(0);
+                }
+                $("#money-1").html("").append(0);
+                $("#money-2").html("").append(0);
+                $("#mmoney").html("").append(0);
+                $("#tuser").html("").append(0);
+                $("#muser").html("").append(0);
+                $("#ttzno").html("").append(0);
+                $("#mtzno").html("").append(0);
+                $("#tdkno").html("").append(0);
+                $("#mdkno").html("").append(0);
+                $("#tdkbno").html("").append(0);
+                $("#mdkbno").html("").append(0);
+
+                //赋值
+                for(var i = stu[0].length - 1, len = 0;i >= len; i--){
+                    $("#money"+j).html("").append(stu[0][i]);
+                    j++;
+                }
+                if(stu[1] != null){
+                    //小数部分
+                    $("#money-1").html("").append(stu[1][0]);
+                    $("#money-2").html("").append(stu[1][1]);
+                }
+
+                $("#mmoney").html("").append(data.mmoney);
+                $("#tuser").html("").append(data.tuser);
+                $("#muser").html("").append(data.muser);
+                $("#ttzno").html("").append(data.ttzno);
+                $("#mtzno").html("").append(data.mtzno);
+                $("#tdkno").html("").append(data.tdkno);
+                $("#mdkno").html("").append(data.mdkno);
+                $("#tdkbno").html("").append(data.tdkbno);
+                $("#mdkbno").html("").append(data.mdkbno);
+
+            },'json'
+        );
+    }
+
+    function back() {
+        $("#yybgDiv").show();
+        $("#monthDiv").hide();
+    }
+
+ $(function () {
         $.post("/ydate/year",
             function (data) {
-                //$("#right").html("");
+                $("#right").html("");
                 for(var i = 0,len = data.length;i < len;i++){
-                    $("#right").append("<div class='credit-pic' onclick=''>"+
+                    $("#right").append("<div class='credit-pic' onclick='monthYdate(\""+data[i].yid+"\",\""+data[i].stringDate+"\")'>"+
                         "<img src='/static/images/about/20180103141607653.jpg' width='260' height='330'/>"+
                         "<span style='width: 260px; height: 330px; display: none;'>"+
                         "<span>"+data[i].stringDate+"</span>"+
