@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.Hkb;
 import com.we.bean.User;
 import com.we.bean.Ydate;
 import com.we.common.DateUtil;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by 123456 on 2018/1/5.
@@ -101,5 +103,4 @@ public class HkbserviceImpl extends AbstractBaseService implements HkbService{
         ydate.setMdkbno(borrowapplyService.countMonthBorrow(lastTime, lastTimeEnd).intValue());
         ydateDAO.save(ydate);
     }
-
 }

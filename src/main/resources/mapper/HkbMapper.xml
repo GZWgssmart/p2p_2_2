@@ -320,4 +320,23 @@
             and h.yustartime < #{nowTime} and h.state = 0
     ]]>
   </select>
+
+    <sql id="criteriaQuery">
+        from d_ssm_pujinziben.hkb
+        WHERE
+        <if test="query != null">
+            baid=#{query.baid}
+        </if>
+    </sql>
+
+  <select id="listCriteria" resultType="hkb">
+      SELECT *
+      <include refid="criteriaQuery"/>
+      LIMIT #{pager.offset}, #{pager.limit}
+  </select>
+
+    <select id="countCriteria" resultType="java.lang.Long">
+        SELECT count(skid)
+        <include refid="criteriaQuery"/>
+    </select>
 </mapper>

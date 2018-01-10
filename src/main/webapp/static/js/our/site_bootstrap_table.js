@@ -57,6 +57,12 @@ var setTable = {
     hideModal: function (modalId) {
         $('#' + modalId).modal('hide');
     },
+    getRefresh: function (tableId) {
+        $('#' + tableId).bootstrapTable('refresh');
+    },
+    postRefresh: function (tableId) {
+        $('#' + tableId).bootstrapTable('refresh', {method: 'post'});
+    },
     requestCall: function (data, tableId, modalId) {
         if (data.result === 'success') {
             swtAlert.request_success(data.message);

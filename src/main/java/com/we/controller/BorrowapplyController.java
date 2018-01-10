@@ -3,6 +3,8 @@ package com.we.controller;
 import com.we.bean.Borrowapply;
 import com.we.bean.Borrowapply;
 import com.we.bean.Letter;
+import com.we.bean.User;
+import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BorrowapplyService;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Calendar;
 
@@ -22,6 +25,21 @@ import java.util.Calendar;
 public class BorrowapplyController {
 
     private BorrowapplyService borrowapplyService;
+
+    /**
+     * 前台用户查看已发布的借款
+     * @param offset
+     * @param limit
+     * @param borrowapply
+     * @return
+     */
+    @RequestMapping("list_checkok")
+    @ResponseBody
+    public Pager listCheckOk(Long offset, Long limit, Borrowapply borrowapply, HttpSession session) {
+        User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
+        borrowapply.setUid(user.getUid());
+        return borrowapplyService.listCheckOkBorrow(offset, limit, borrowapply);
+    }
 
     @PostMapping("save")
     @ResponseBody

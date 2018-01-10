@@ -44,7 +44,9 @@
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">未发布借款</a>
                         </li>
-
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/user/all_borrow_checkok_page">已发布借款</a>
+                        </li>
                     </ul>
 
                 </li>

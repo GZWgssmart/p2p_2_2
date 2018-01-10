@@ -17,6 +17,8 @@ public class BorrowCheckOkVO {
 
     private BigDecimal money;
 
+    private BigDecimal symoney;
+
     private Integer state;
 
     private Integer term;
@@ -47,6 +49,14 @@ public class BorrowCheckOkVO {
 
     public void setMoney(BigDecimal money) {
         this.money = money;
+    }
+
+    public BigDecimal getSymoney() {
+        return symoney;
+    }
+
+    public void setSymoney(BigDecimal symoney) {
+        this.symoney = symoney;
     }
 
     public Date getApplyTime() {

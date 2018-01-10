@@ -222,6 +222,39 @@
       #{item}
     </foreach>
   </update>
+
+    <sql id="listCheckOkQuery">
+        FROM borrowapply b, bz, jklx j, user u
+        WHERE
+        b.uid = u.uid
+        AND b.bzid = bz.bzid
+        AND b.type = j.lxid
+        AND bz.state = 1
+        AND j.state = 1
+        <if test="query != null">
+            AND b.uid = #{query.uid}
+            <choose>
+                <when test="query.state != null">
+                    AND b.state = #{query.state}
+                </when>
+                <otherwise>
+                    AND b.state not in (0, 2, 3)
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+
+    <select id="listCheckOkBorrow" resultType="com.we.vo.BorrowCheckOkVO">
+        SELECT b.baid,b.rname,b.money, b.state, b.deadline, b.term, b.time AS 'applyTime',
+             b.symoney, bz.bzname, j.lxname
+        <include refid="listCheckOkQuery"/>
+        LIMIT #{pager.offset}, #{pager.limit}
+    </select>
+
+    <select id="countCheckOkBorrow" resultType="java.lang.Long">
+        SELECT count(b.baid)
+        <include refid="listCheckOkQuery"/>
+    </select>
 </mapper>
 
 

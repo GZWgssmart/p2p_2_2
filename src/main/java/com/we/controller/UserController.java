@@ -35,6 +35,12 @@ public class UserController {
     @Autowired
     private RecommendService recommendService;
 
+    @RequestMapping("all_borrow_checkok_page")
+    public String allBorrowChcekokPage() {
+        return "user/borrow/checkok/all_borrow_checkok";
+    }
+
+
     @RequestMapping("welcome_page")
     public String welcomePage() {
         return "user/welcome_user";
