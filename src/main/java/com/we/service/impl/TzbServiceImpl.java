@@ -28,6 +28,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     private BorrowdetailDAO borrowdetailDAO;
     private HkbDAO hkbDAO;
     private ShborrowDAO shborrowDAO;
+    private UserTicketDAO userTicketDAO;
 
     @Override
     public Integer save(TzbDTO tzbDTO) throws InvestException {
@@ -45,10 +46,17 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         BigDecimal money = tzbDTO.getMoney();
         if (kymoney != null && ticket != null) {
             if (ticket.getTktime().getTime() < Calendar.getInstance().getTime().getTime()) {
-                throw new InvestException(RequestResultEnum.TICKET_TIME);
+                throw new InvestException(RequestResultEnum.TICKET_DISABLED);
             } else {
-                kymoney = kymoney.add(ticket.getTkmoney());
-                //TODO 未把券更新为已使用状态，需增加借款状态：还款成功
+                UserTicket userTicket = userTicketDAO.getByUidKid(uid, ticket.getUmid());
+                if (OurConstants.TICKET_OK.equals(userTicket.getState())) {
+                    kymoney = kymoney.add(ticket.getTkmoney());
+                    userTicket.setState(OurConstants.TICKET_USE);
+                    //将优惠券更新为已使用状态
+                    result += userTicketDAO.updateSelective(userTicket);
+                } else {
+                    throw new InvestException(RequestResultEnum.TICKET_DISABLED);
+                }
             }
         }
         Borrowapply borrowapply = (Borrowapply) borrowapplyDAO.getById(tzbDTO.getBaid());
@@ -231,5 +239,10 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     @Autowired
     public void setShborrowDAO(ShborrowDAO shborrowDAO) {
         this.shborrowDAO = shborrowDAO;
+    }
+
+    @Autowired
+    public void setUserTicketDAO(UserTicketDAO userTicketDAO) {
+        this.userTicketDAO = userTicketDAO;
     }
 }

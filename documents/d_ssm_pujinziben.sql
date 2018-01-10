@@ -46,7 +46,7 @@ CREATE TABLE borrowapply(
   uid INT COMMENT '借款人id',
   bzid INT COMMENT '标种，先息后本，等额本金，等额本息',
   time DATETIME COMMENT '申请时间',
-  state INT COMMENT '审核状态，0不通过，1通过，2审核中，3未填写借款详情, 4，融资完成， 5，融资失败（流标）' DEFAULT 3,
+  state INT COMMENT '审核状态，0不通过，1通过，2审核中，3未填写借款详情, 4融资完成， 5融资失败（流标），6还款成功' DEFAULT 3,
   type INT COMMENT '借款类型，多金宝。。。',
   term INT COMMENT '借款期限',
   deadline DATETIME COMMENT '截止时间',
@@ -245,7 +245,7 @@ CREATE TABLE reward (
 DROP TABLE IF EXISTS ticket;
 CREATE TABLE ticket (
   umid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
-  type INT COMMENT '类型',
+  type INT COMMENT '类型 1邀请好友、2平台发布',
   tkmoney DECIMAL(10, 2) COMMENT '价值',
   tktime DATETIME COMMENT '有效时间'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '优惠券表';

@@ -91,4 +91,9 @@
     where rwid = #{rwid,jdbcType=INTEGER}
   </update>
 
+  <select id="getByUidKid" resultType="userTicket">
+      SELECT * FROM d_ssm_pujinziben.user_ticket
+      WHERE uid=#{uid} AND kid=#{kid} AND state=2
+  </select>
+
 </mapper>

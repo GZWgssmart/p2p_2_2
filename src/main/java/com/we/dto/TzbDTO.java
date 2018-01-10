@@ -13,7 +13,6 @@ public class TzbDTO {
     @NotNull
     private Integer juid;
 
-    @NotNull
     private Integer tid;
 
     @NotNull

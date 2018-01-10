@@ -85,4 +85,28 @@ public class OurConstants {
      */
     public static final Integer TZB_YH = 1;
 
+    /**
+     * 用户优惠券关联：已使用
+     */
+    public static final Integer TICKET_USE = 0;
+
+    /**
+     * 用户优惠券关联：已过期
+     */
+    public static final Integer TICKET_TIME = 1;
+
+    /**
+     * 用户优惠券关联：可用
+     */
+    public static final Integer TICKET_OK = 2;
+
+    /**
+     * 优惠券类型：邀请好友
+     */
+    public static final Integer  TICKET_INVITE = 1;
+
+    /**
+     * 优惠券类型：平台发布
+     */
+    public static final Integer  TICKET_RELEASE = 2;
 }

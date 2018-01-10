@@ -31,7 +31,7 @@ public enum RequestResultEnum {
     SAME_TZ_JK(601, "fail", "不能投自身发布的标"),
     BORROW_SYMONEY_NOT_ENOUGH(603, "fail", "剩余可投金额不足"),
     USERMONEY_KYMONEY_NOT_ENOUGH(604, "fail", "可用余额不足"),
-    TICKET_TIME(605, "fail", "优惠券已过期"),
+    TICKET_DISABLED(605, "fail", "此优惠券已失效"),
     NEW_PWDS_IS_DIFFERENT(606, "fail", "两次输入的新密码不一致");
 
     private Integer code;
