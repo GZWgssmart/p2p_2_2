@@ -154,7 +154,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
             hkb.setYfx(zero);
             hkb.setRfx(zero);
             hkb.setYucount(intZero);
-            hkb.setState(OurConstants.TZB_WH);
+            hkb.setState(OurConstants.HKB_WH);
             hkb.setBaid(baid);
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             hkb.setYustartime(calendar.getTime());

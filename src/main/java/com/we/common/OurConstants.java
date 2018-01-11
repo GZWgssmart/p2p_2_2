@@ -81,14 +81,19 @@ public class OurConstants {
 
 
     /**
-     * 投资表：未还状态
+     * 还款表：未还状态
      */
-    public static final Integer TZB_WH = 0;
+    public static final Integer HKB_WH = 0;
 
     /**
-     * 投资表：已还状态
+     * 还款表：逾期状态
      */
-    public static final Integer TZB_YH = 1;
+    public static final Integer HKB_YQ = 1;
+
+    /**
+     * 还款表：已还状态
+     */
+    public static final Integer HKB_YH = 2;
 
     /**
      * 用户优惠券关联：已使用

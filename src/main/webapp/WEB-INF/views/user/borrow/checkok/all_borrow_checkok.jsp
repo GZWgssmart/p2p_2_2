@@ -54,7 +54,6 @@
 <%@include file="../../../common/js/js_boostrap.jsp" %>
 <%@include file="../../../common/js/js_boostrap_table.jsp" %>
 <%@include file="../../../common/js/js_sweetalert.jsp" %>
-<%@include file="../../../common/js/js_form.jsp" %>
 <%@include file="../../../common/js/js_data_dict.jsp" %>
 
 <script src="<%=path%>/static/js/our/user/lmh/all_borrow_checkok.js"></script>

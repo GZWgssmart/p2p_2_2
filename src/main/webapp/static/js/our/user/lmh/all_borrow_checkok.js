@@ -16,6 +16,15 @@ var allCheckok = {
             } else if (value === 6) {
                 return '还款成功';
             }
+        },
+        formatHkState: function (value) {
+            if (value === 0) {
+                return '未还';
+            } else if (value === 1) {
+                return '<strong style="color:red">逾期</strong>';
+            } else if (value === 2) {
+                return '<label style="color:green;">已还</label>';
+            }
         }
     },
     submitForm: {
@@ -43,11 +52,25 @@ var allCheckok = {
                     locale: 'zh-CN',//中文支持
                     pagination: true,//是否开启分页（*）
                     sidePagination: 'server', //分页方式：client客户端分页，server服务端分页（*）
-                    showRefresh: true,//刷新按钮
+                    showRefresh: true,//刷新按钮,
+                    toolbar: '#hk-list-tollbar',
                     height: $(window).height()//table的高度
                 });
                 setTable.showModal(allCheckok.id.hkbModalId);
             }
+        }
+    },
+    hk: function () {
+        var row = setTable.isSingleSelected(allCheckok.id.hkbListId);
+        if (row && row.state !== 2) {
+            $.post(contextPath + '/user/checkZpwd/' + $('#deal-password').val(),
+                function (data) {
+                    if (data) {
+                        alert('static/js/our/user/lmh/all_borrow_checkok.js:69');
+                    } else {
+                        swtAlert.warn_info('密码错误，请重新输入');
+                    }
+                },'json');
         }
     }
 };
