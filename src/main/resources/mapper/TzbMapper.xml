@@ -126,7 +126,7 @@
     where sid = #{sid,jdbcType=INTEGER}
   </update>
   <select id="countAllMoney" resultType="long">
-    select sum(money) from tzb;
+    select IFNULL(sum(money),0) from tzb;
   </select>
   <select id="countUid" resultType="long">
     <![CDATA[
@@ -149,5 +149,9 @@
       baid = #{item}
     </foreach>
     and uid = #{uid}
+  </select>
+  
+  <select id="countDealNumber" resultType="integer">
+    select count(sid) from tzb
   </select>
 </mapper>

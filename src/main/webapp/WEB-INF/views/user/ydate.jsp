@@ -15,25 +15,25 @@
         撮合交易总额（元）
     </div>
     <div class="moneyDiv">
-        <div class="item_Div">3</div>
+        <div class="item_Div" id="allmoney7">0</div>
         <div class="marginLeft"></div>
-        <div class="item_Div">4</div>
+        <div class="item_Div" id="allmoney6">0</div>
         <div class="marginLeft">,</div>
-        <div class="item_Div">3</div>
+        <div class="item_Div" id="allmoney5">0</div>
         <div class="marginLeft"></div>
-        <div class="item_Div">3</div>
+        <div class="item_Div" id="allmoney4">0</div>
         <div class="marginLeft"></div>
-        <div class="item_Div">7</div>
+        <div class="item_Div" id="allmoney3">0</div>
         <div class="marginLeft">,</div>
-        <div class="item_Div">9</div>
+        <div class="item_Div" id="allmoney2">0</div>
         <div class="marginLeft"></div>
-        <div class="item_Div">0</div>
+        <div class="item_Div" id="allmoney1">0</div>
         <div class="marginLeft"></div>
-        <div class="item_Div">7</div>
+        <div class="item_Div" id="allmoney0">0</div>
         <div class="marginLeft">.</div>
-        <div class="item_Div">0</div>
+        <div class="item_Div" id="allmoney-1">0</div>
         <div class="marginLeft"></div>
-        <div class="item_Div">0</div>
+        <div class="item_Div" id="allmoney-2">0</div>
         <div class="marginLeft"></div>
     </div>
     <div class="btnDiv">平台数据总览</div>
@@ -41,45 +41,39 @@
         <div class="item">
             <div class="item-icon icon-dealNumber"></div>
             <div class="itemText">交易笔数（笔）</div>
-            <div class="itemSJ" id="dealNumber">1,958</div>
+            <div class="itemSJ" id="dealNumber">0</div>
         </div>
         <div class="item">
             <div class="item-icon icon-repayAmount"></div>
             <div class="itemText">已还本金（元）</div>
-            <div class="itemSJ" id="repayAmount">22,401,677.26</div>
+            <div class="itemSJ" id="repayAmount">0</div>
         </div>
         <div class="item">
             <div class="item-icon icon-unRepayAmount"></div>
             <div class="itemText">待还本金（元）</div>
-            <div class="itemSJ" id="unRepayAmount">11,370,632.00</div>
+            <div class="itemSJ" id="unRepayAmount">0</div>
         </div>
         <div class="item">
             <div class="item-icon icon-unRepayNumber"></div>
             <div class="itemText">待还笔数（笔）</div>
-            <div class="itemSJ" id="unRepayNumber">27</div>
+            <div class="itemSJ" id="unRepayNumber">0</div>
         </div>
         <div class="item">
             <div class="item-icon icon-hasInteres"></div>
             <div class="itemText">为用户创造的收益（元）</div>
-            <div class="itemSJ" id="hasInterest">621,769.00</div>
-        </div>
-        <div class="item">
-            <div class="item-icon icon-compensatoryMoney"></div>
-            <div class="itemText">累计代偿金额（元）</div>
-            <div class="itemSJ" id="compensatoryMoney">0.00</div>
+            <div class="itemSJ" id="hasInterest">0</div>
         </div>
         <div class="item">
             <div class="item-icon icon-overdueMoney"></div>
             <div class="itemText">逾期金额（元）</div>
-            <div class="itemSJ" id="overdueMoney">12.26</div>
+            <div class="itemSJ" id="overdueMoney">0</div>
         </div>
         <div class="item">
             <div class="item-icon icon-overdueNumber"></div>
             <div class="itemText">逾期笔数（笔）</div>
-            <div class="itemSJ" id="overdueNumber">3</div>
+            <div class="itemSJ" id="overdueNumber">0</div>
         </div>
     </div>
-    <div class="btnDiv btnDiv-P">平台用户数据</div>
 
 </div>
 
@@ -243,25 +237,55 @@
     }
 
  $(function () {
-        $.post("/ydate/year",
-            function (data) {
-                $("#right").html("");
-                for(var i = 0,len = data.length;i < len;i++){
-                    $("#right").append("<div class='credit-pic' onclick='monthYdate(\""+data[i].yid+"\",\""+data[i].stringDate+"\")'>"+
-                        "<img src='/static/images/about/20180103141607653.jpg' width='260' height='330'/>"+
-                        "<span style='width: 260px; height: 330px; display: none;'>"+
-                        "<span>"+data[i].stringDate+"</span>"+
-                        "</span>"+
-                        "</div>");
-                }
+     $.post("/ydate/now_date",
+        function (data) {
+            //初始化
+            for(var i = 0; i < 8;i++){
+                $("#allmoney"+i).html("").html(0);
+            }
+            $("#dealNumber").html("").html(0);
+            $("#repayAmount").html("").html(0);
+            $("#unRepayAmount").html("").html(0);
+            $("#unRepayNumber").html("").html(0);
+            $("#hasInterest").html("").html(0);
+            $("#overdueMoney").html("").html(0);
+            $("#overdueNumber").html("").html(0);
+            var allMoney = data.allMoney + "";
+            //赋值
+            var j = 0;
+            for(var i = allMoney.length - 1, len = 0;i >= len; i--){
+                $("#allmoney"+j).html("").append(allMoney.charAt(i));
+                j++;
+            }
+            $("#dealNumber").html("").html(data.dealNumber);
+            $("#repayAmount").html("").html(data.repayAmount);
+            $("#unRepayAmount").html("").html(data.unRepayAmount);
+            $("#unRepayNumber").html("").html(data.unRepayNumber);
+            $("#hasInterest").html("").html(data.hasInterest);
+            $("#overdueMoney").html("").html(data.overdueMoney);
+            $("#overdueNumber").html("").html(data.overdueNumber);
+        },"json"
+     );
 
-                $('.credit-pic').hover(function () {
-                    $(this).children('span').hide().fadeIn(500);
-                }, function () {
-                    $(this).children('span').hide().fadeOut(500);
-                });
-            },
-            "json");
+    $.post("/ydate/year",
+        function (data) {
+            $("#right").html("");
+            for(var i = 0,len = data.length;i < len;i++){
+                $("#right").append("<div class='credit-pic' onclick='monthYdate(\""+data[i].yid+"\",\""+data[i].stringDate+"\")'>"+
+                    "<img src='/static/images/about/20180103141607653.jpg' width='260' height='330'/>"+
+                    "<span style='width: 260px; height: 330px; display: none;'>"+
+                    "<span>"+data[i].stringDate+"</span>"+
+                    "</span>"+
+                    "</div>");
+            }
+
+            $('.credit-pic').hover(function () {
+                $(this).children('span').hide().fadeIn(500);
+            }, function () {
+                $(this).children('span').hide().fadeOut(500);
+            });
+        },
+        "json");
 
     });
 

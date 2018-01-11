@@ -339,4 +339,20 @@
         SELECT count(skid)
         <include refid="criteriaQuery"/>
     </select>
+
+  <select id="sumRepayAmount" resultType="integer">
+    select sum(rbj) from hkb where state = 1;
+  </select>
+
+  <select id="countunRepayNumber" resultType="integer">
+    select count(skid) from hkb where state = 0;
+  </select>
+
+  <select id="sumOverdueMoney" resultType="double">
+    select IFNULL(sum(yfx),0) from hkb where state = 0
+  </select>
+
+  <select id="countOverdueNumber" resultType="integer">
+    select count(distinct baid) from hkb where state = 0
+  </select>
 </mapper>

@@ -35,4 +35,9 @@ public interface TzbDAO extends BaseDAO {
      * @return
      */
     Double getAllMoneyByuid(@Param("baid") List<Integer> baid, @Param("uid") Integer uid);
+
+    /**
+     * 查询总交易笔数
+     */
+    Integer countDealNumber();
 }

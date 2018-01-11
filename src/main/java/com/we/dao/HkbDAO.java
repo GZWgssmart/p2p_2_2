@@ -1,6 +1,7 @@
 package com.we.dao;
 
 import com.we.bean.Hkb;
+import com.we.vo.NowDateVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -28,4 +29,27 @@ public interface HkbDAO extends BaseDAO {
      * @return
      */
     List<Hkb> getAllOverdue(String nowTime);
+
+    /**
+     * 以还本金 待还笔数
+     * @return
+     */
+    Integer sumRepayAmount();
+
+    /**
+     * 待还笔数
+     * @return
+     */
+    Integer countunRepayNumber();
+
+    /**
+     * 逾期金额
+     * @return
+     */
+    Double sumOverdueMoney();
+
+    /**
+     * 逾期笔数
+     */
+    Integer countOverdueNumber();
 }

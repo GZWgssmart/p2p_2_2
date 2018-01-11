@@ -139,7 +139,7 @@ CREATE TABLE hkb(
   yfx DECIMAL(10, 2) COMMENT '应还罚息',
   rfx DECIMAL(10, 2) COMMENT '已还罚息',
   yucount INT COMMENT '逾期次数',
-  state INT COMMENT '还款状态',
+  state INT COMMENT '还款状态 1已还 0未还',
   baid INT COMMENT '借款id',
   yustartime DATETIME COMMENT '逾期执行时间',
   huid INT COMMENT '贷后负责人id'

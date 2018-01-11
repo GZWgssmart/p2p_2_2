@@ -21,4 +21,9 @@ public interface TzbService extends BaseService {
      * 月投资人数
      */
     Long countUid(@Param("beginTime") String beginTime, @Param("endTime") String endTime);
+
+    /**
+     * 查询总交易笔数
+     */
+    Integer countDealNumber();
 }

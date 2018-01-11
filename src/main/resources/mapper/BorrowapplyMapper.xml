@@ -217,7 +217,7 @@
   </select>
 
   <update id="updateStateByBaid">
-    update borrowapply set state = 4 where baid in
+    update borrowapply set state = 5 where baid in
     <foreach collection="list" open="(" close=")" separator="," item="item">
       #{item}
     </foreach>

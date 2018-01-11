@@ -1,6 +1,7 @@
 package com.we.service;
 
 import com.we.bean.Hkb;
+import com.we.vo.NowDateVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,4 +15,27 @@ public interface HkbService extends BaseService {
      * @return
      */
     void AllMoney();
+
+    /**
+     * 以还本金
+     * @return
+     */
+    Integer sumRepayAmount();
+
+    /**
+     * 待还笔数
+     * @return
+     */
+    Integer countunRepayNumber();
+
+    /**
+     * 逾期金额
+     * @return
+     */
+    Double sumOverdueMoney();
+
+    /**
+     * 逾期笔数
+     */
+    Integer countOverdueNumber();
 }

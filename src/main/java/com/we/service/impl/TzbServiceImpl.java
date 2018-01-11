@@ -200,6 +200,11 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         return tzbDAO.countUid(beginTime, endTime);
     }
 
+    @Override
+    public Integer countDealNumber() {
+        return tzbDAO.countDealNumber();
+    }
+
     @Autowired
     public void setTzbDAO(TzbDAO tzbDAO) {
         super.setBaseDAO(tzbDAO);

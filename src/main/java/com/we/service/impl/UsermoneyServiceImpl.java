@@ -31,6 +31,11 @@ public class UsermoneyServiceImpl extends AbstractBaseService implements Usermon
 
     }
 
+    @Override
+    public Integer sunSymoney() {
+        return usermoneyDAO.sunSymoney();
+    }
+
     @Resource
     public void setUsermoneyDAO(UsermoneyDAO usermoneyDAO) {
         this.usermoneyDAO = usermoneyDAO;

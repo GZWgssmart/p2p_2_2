@@ -11,6 +11,7 @@ import com.we.dao.YdateDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.BorrowapplyService;
 import com.we.service.HkbService;
+import com.we.vo.NowDateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -103,4 +104,25 @@ public class HkbserviceImpl extends AbstractBaseService implements HkbService{
         ydate.setMdkbno(borrowapplyService.countMonthBorrow(lastTime, lastTimeEnd).intValue());
         ydateDAO.save(ydate);
     }
+
+    @Override
+    public Integer sumRepayAmount() {
+        return hkbDAO.sumRepayAmount();
+    }
+
+    @Override
+    public Integer countunRepayNumber() {
+        return hkbDAO.countunRepayNumber();
+    }
+
+    @Override
+    public Double sumOverdueMoney() {
+        return hkbDAO.sumOverdueMoney();
+    }
+
+    @Override
+    public Integer countOverdueNumber() {
+        return hkbDAO.countunRepayNumber();
+    }
+
 }

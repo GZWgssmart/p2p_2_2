@@ -179,4 +179,8 @@
      update usermoney set kymoney = #{kymoney,jdbcType=DECIMAL}
      where uid = #{uid,jdbcType=INTEGER}
   </update>
+
+  <select id="sunSymoney" resultType="integer">
+    select IFNULL(sum(symoney),0) from usermoney
+  </select>
 </mapper>

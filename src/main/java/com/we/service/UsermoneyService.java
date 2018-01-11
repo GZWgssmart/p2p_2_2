@@ -12,4 +12,9 @@ public interface UsermoneyService extends BaseService {
     void updateByUid(Object obj);
 
     void updateByTx(Object obj);
+    /**
+     * 用户收益总额
+     * @return
+     */
+    Integer sunSymoney();
 }
