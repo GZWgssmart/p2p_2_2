@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%String path = request.getContextPath();%>
 <div class="nav">
     <div class="wrap cl">
         <div class="logo"><img src="<%=path %>/static/picture/logo.png" alt="普金资本"></div>
         <div class="nav-bar">
             <ul>
                 <li><a href="javaScript:void(0);" id="myHome">我的账户</a></li>
-                <li><a href="<%=path %>/index/info/about">信息披露 </a></li>
+                <li><a href="<%=path %>/index/about">信息披露 </a></li>
                 <li><a href="<%=path %>/index/security">安全保障</a></li>
                 <li>
                     <a href="investlist.html">投资理财</a>

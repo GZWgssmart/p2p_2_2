@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
-    @RequestMapping("about")
-    public String about(){
-        return "index/info/about";
-    }
-
     //公司动态
     @RequestMapping("gsdt")
     public String allGs() {
@@ -82,6 +77,12 @@ public class IndexController {
     @RequestMapping("security")
     public String allSecurity() {
         return "index/security/security_assurance";
+    }
+
+    //信息披露
+    @RequestMapping("about")
+    public String about(){
+        return "index/info/about";
     }
 
     @RequestMapping("")
