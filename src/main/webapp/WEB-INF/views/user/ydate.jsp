@@ -190,6 +190,7 @@
     function monthYdate(id,time) {
         $("#yybgDiv").hide();
         $("#monthDiv").show();
+        $("#month").html("");
         $("#month").append(time+"交易总额");
         $.post("/ydate/month/"+id,
             function (data) {

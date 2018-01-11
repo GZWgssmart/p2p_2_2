@@ -32,7 +32,7 @@
             <ul class="sub-nav">
                 <li><div class="hr"></div></li>
                 <li class="gdbj"><a href="javaScript:void(0);" class="icon-about about-gudong" onclick="gdbj();">股东背景</a></li>
-                <li class="gsjj"><a href="javaScript:void(0);" class="icon-about about-jianjie">公司简介</a></li>
+                <li class="gsjj"><a href="javaScript:void(0);" class="icon-about about-jianjie" onclick="gsjj();">公司简介</a></li>
                 <li class="ptzz"><a href="javaScript:void(0);" class="icon-about about-zizhi">平台资质</a></li>
                 <li class="gwtd"><a href="javaScript:void(0);" class="icon-about about-guwen">顾问团队</a></li>
                 <li class="gsdt"><a href="javaScript:void(0);" class="icon-about about-dongtai">公司动态</a></li>
@@ -54,15 +54,14 @@
 
 <script>
 
-   /* function ptyy() {
+    function ptyy() {
         //平台运营
         $(".about-right").load("/user/ydate");
-    }*/
-
+    }
 
     function gdbj() {
         //股东背景
-        $(".about-right").load("/index/gdbj");
+        $(".gdbj).load("/index/gdbj");
     }
 
     var isClick = false;
