@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%String path = request.getContextPath();%>
 <div class="nav">
     <div class="wrap cl">
         <div class="logo"><img src="<%=path %>/static/picture/logo.png" alt="普金资本"></div>

@@ -50,7 +50,7 @@
 </div>
 
 <!-- nav -->
-<%@include file="common/index/head_page.jsp"%>
+<%@include file="user/head.jsp"%>
 <!-- banner -->
 
 <%--<div class="container">--%>
