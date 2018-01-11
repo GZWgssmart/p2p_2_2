@@ -12,6 +12,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
+    //公司动态
+    @RequestMapping("gsdt")
+    public String allGs() {
+        return "index/info/staticpage/gsdt";
+    }
+
+
+    //平台公告
+    @RequestMapping("ptgg")
+    public String allPt() {
+        return "index/info/staticpage/ptgg";
+    }
+
+    //联系我们
+    @RequestMapping("lxwm")
+    public String allLxwm() {
+        return "index/info/staticpage/lxwm";
+    }
+
     //从事机构信息
     @RequestMapping("csjgxx")
     public String allCsjgxx() {

@@ -35,10 +35,10 @@
                 <li class="gsjj"><a href="javaScript:void(0);" class="icon-about about-jianjie" onclick="gsjj();">公司简介</a></li>
                 <li class="ptzz"><a href="javaScript:void(0);" class="icon-about about-zizhi" onclick="ptzz();">平台资质</a></li>
                 <li class="tdgw"><a href="javaScript:void(0);" class="icon-about about-guwen" onclick="tdgw();">顾问团队</a></li>
-                <li class="gsdt"><a href="javaScript:void(0);" class="icon-about about-dongtai">公司动态</a></li>
-                <li class="ptgg"><a href="javaScript:void(0);" class="icon-about about-gonggao">平台公告</a></li>
+                <li class="gsdt"><a href="javaScript:void(0);" class="icon-about about-dongtai" onclick="gsdt();">公司动态</a></li>
+                <li class="ptgg"><a href="javaScript:void(0);" class="icon-about about-gonggao" onclick="ptgg();">平台公告</a></li>
                 <li class="zxns"><a href="javaScript:void(0);" class="icon-about about-zhaopin"  onclick="zxns();">招贤纳士</a></li>
-                <li class="lswm"><a href="javaScript:void(0);" class="icon-about about-lianxi">联系我们</a></li>
+                <li class="lxwm"><a href="javaScript:void(0);" class="icon-about about-lianxi" onclick="lxwm();">联系我们</a></li>
             </ul>
         </div>
     </div>
@@ -47,16 +47,20 @@
 
     </div>
 
-   <%-- <div class="gdbj">
-
-    </div>--%>
-    <!-- end -->
 </div>
 <div id="ajaxFooter"></div>
 <script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
-<%--<script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>--%>
+<script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>
 
 <script>
+
+    function gsdt() {
+        $(".about-right").load("/index/gsdt");
+    }
+
+    function  ptgg() {
+        $(".about-right").load("/index/ptgg");
+    }
 
     function ptyy() {
         //平台运营
@@ -90,6 +94,10 @@
 
     function jkxmxx() {
         $(".about-right").load("/index/jkxmxx");
+    }
+
+    function lxwm() {
+        $(".about-right").load("/index/lxwm");
     }
 
     var isClick = false;
