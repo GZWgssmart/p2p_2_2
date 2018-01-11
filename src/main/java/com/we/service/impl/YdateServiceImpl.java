@@ -1,11 +1,10 @@
 package com.we.service.impl;
 
 import com.we.bean.Ydate;
-import com.we.dao.UserDAO;
 import com.we.dao.YdateDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.YdateService;
-import com.we.vo.YdataVo;
+import com.we.vo.YdataVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class YdateServiceImpl extends AbstractBaseService implements YdateServic
     }
 
     @Override
-    public List<YdataVo> getYearYdate() {
+    public List<YdataVO> getYearYdate() {
         return ydateDAO.getYearYdate();
     }
 }

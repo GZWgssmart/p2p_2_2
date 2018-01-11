@@ -1,7 +1,7 @@
 package com.we.dao;
 
 import com.we.bean.Ydate;
-import com.we.vo.YdataVo;
+import com.we.vo.YdataVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,6 +20,6 @@ public interface YdateDAO extends BaseDAO {
     /**
      * 查询最近十二个月的运营数据
      */
-    List<YdataVo> getYearYdate();
+    List<YdataVO> getYearYdate();
 
 }
