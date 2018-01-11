@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="<%=path %>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/index.css">
 </head>
-<%--<link rel="icon" href="resources/front/v01/src/images/logo_title.jpg" type="image/x-icon" />--%>
 <script type="text/javascript">
     function IsPC() {
         var userAgentInfo = navigator.userAgent;
@@ -36,21 +35,22 @@
         return flag;
     }
 
-    if(IsPC()!=true){
-        window.location.href="front/indexInit.do";
+    if (IsPC() != true) {
+        window.location.href = "front/indexInit.do";
     }
 </script>
 <script src="<%=path%>/static/js/angular/angular.min.js"></script>
 <body ng-app="myApp" ng-controller="myCtrl">
 <!-- top -->
 <!--[if lt IE 8]>
-<div class="show-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
+<div class="show-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.
+</div>
 <![endif]-->
-    <div class="top" id="top">
+<div class="top" id="top">
 </div>
 
 <!-- nav -->
-<%@include file="user/head.jsp"%>
+<%@include file="user/head.jsp" %>
 <!-- banner -->
 
 <%--<div class="container">--%>
@@ -261,9 +261,10 @@
                             </div>
                             <p class="icon icon-doll">项目金额：27.40万元</p>
                             <p class="icon icon-time">投资期限：6个月</p>
-                        </div><div class="submit">
-                        <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
-                    </div>
+                        </div>
+                        <div class="submit">
+                            <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -357,9 +358,10 @@
                             </div>
                             <p class="icon icon-doll">项目金额：27.40万元</p>
                             <p class="icon icon-time">投资期限：6个月</p>
-                        </div><div class="submit">
-                        <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
-                    </div>
+                        </div>
+                        <div class="submit">
+                            <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -452,34 +454,15 @@
                             </div>
                             <p class="icon icon-doll">项目金额：27.40万元</p>
                             <p class="icon icon-time">投资期限：6个月</p>
-                        </div><div class="submit">
-                        <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
-                    </div>
+                        </div>
+                        <div class="submit">
+                            <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
+                        </div>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
-    <!--债权转让 -->
-    <%--<div class="product-debt clearfix" id="pj_debt">--%>
-        <%--<div class="d-titlt">--%>
-            <%--<div class="dName fl">债权转让</div>--%>
-            <%--<div class="dBtn fr"><a id="debtBtn"href="javascript:;">我要转让</a></div>--%>
-        <%--</div>--%>
-        <%--<div class="debt-content clearfix">--%>
-            <%--<div class="debt-type fl">--%>
-                <%--<p>名称</p>--%>
-                <%--<p>预期年化收益率</p>--%>
-                <%--<p>剩余还款期数</p>--%>
-                <%--<p>债权总价值</p>--%>
-                <%--<p>转让价格</p>--%>
-                <%--<p><a href="creditorlist.html">查看更多</a></p>--%>
-            <%--</div>--%>
-            <%--<ul class="debt-ul fl clearfix" id="product-debt">--%>
-
-            <%--</ul>--%>
-        <%--</div>--%>
-    <%--</div>--%>
 </div>
 <!-- news -->
 <div class="news-main wrap">
@@ -491,33 +474,32 @@
         </div>
         <div class="news-main-content" id="dynamic">
             <ul class="news-main-list">
-                <li><a href="news.html?id=106" target="_blank" class="news-main-content-left"><img src="upload/mediareport/2017/11/20171121164504311.jpg" alt="年底投资有风险 选择普金资本安全可靠！" width="210" height="140"></a><a href="news.html?id=106" target="_blank" class="list-title">年底投资有风险 选择普金资本安全可靠！</a><a href="news.html?id=106" target="_blank" class="list-main">
-                    随着近年来中国经济的快速发展，社会财富不断增长，个人金融资产也不断增加，理财的必要性也逐渐体现出来了。同时，年关将至，...</a></li><li><a href="news.html?id=105" target="_blank" class="news-main-content-left"><img src="upload/mediareport/2017/11/20171118092607167.jpg" alt="这个双十一，你准备好了没有？" width="210" height="140"></a><a href="news.html?id=105" target="_blank" class="list-title">这个双十一，你准备好了没有？</a><a href="news.html?id=105" target="_blank" class="list-main">
-
-
-
-                随着双十一的临近，国内的金融投资市场也呈现出一派繁荣景象。不过，时值年底，对于普通的投资者来说，如果没有选择...</a></li><li><a href="news.html?id=102" target="_blank" class="news-main-content-left"><img src="upload/mediareport/2017/10/20171017161015190.jpg" alt="【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！" width="210" height="140"></a><a href="news.html?id=102" target="_blank" class="list-title">【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！</a><a href="news.html?id=102" target="_blank" class="list-main">
-                2017年10月13日，江西省互联网金融协会第二届第一次会员代表大会在南昌前湖迎宾馆隆重召开。本次会议，通过了第一届理...</a></li></ul>
-        </div>
-    </div>
-
-    <%--<div class="news-main-left">
-        <div class="news-main-top">
-            <h3>媒体报道</h3>
-            <p class="more icon icon-more"><a href="about.html#gsdt?type=1">更多</a></p>
-        </div>
-        <div class="news-main-content" id="dynamic">
-            <ul class="news-main-list">
+                <li><a href="news.html?id=106" target="_blank" class="news-main-content-left"><img
+                        src="upload/mediareport/2017/11/20171121164504311.jpg" alt="年底投资有风险 选择普金资本安全可靠！" width="210"
+                        height="140"></a><a href="news.html?id=106" target="_blank" class="list-title">年底投资有风险
+                    选择普金资本安全可靠！</a><a href="news.html?id=106" target="_blank" class="list-main">
+                    随着近年来中国经济的快速发展，社会财富不断增长，个人金融资产也不断增加，理财的必要性也逐渐体现出来了。同时，年关将至，...</a></li>
+                <li><a href="news.html?id=105" target="_blank" class="news-main-content-left"><img
+                        src="upload/mediareport/2017/11/20171118092607167.jpg" alt="这个双十一，你准备好了没有？" width="210"
+                        height="140"></a><a href="news.html?id=105" target="_blank"
+                                            class="list-title">这个双十一，你准备好了没有？</a><a href="news.html?id=105"
+                                                                                    target="_blank" class="list-main">
+                    随着双十一的临近，国内的金融投资市场也呈现出一派繁荣景象。不过，时值年底，对于普通的投资者来说，如果没有选择...</a></li>
+                <li><a href="news.html?id=102" target="_blank" class="news-main-content-left"><img
+                        src="upload/mediareport/2017/10/20171017161015190.jpg" alt="【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！"
+                        width="210" height="140"></a><a href="news.html?id=102" target="_blank" class="list-title">【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！</a><a
+                        href="news.html?id=102" target="_blank" class="list-main">
+                    2017年10月13日，江西省互联网金融协会第二届第一次会员代表大会在南昌前湖迎宾馆隆重召开。本次会议，通过了第一届理...</a></li>
             </ul>
         </div>
-    </div>--%>
+    </div>
     <div class="news-main-right">
         <div class="news-main-top">
             <h3>最新公告</h3>
             <p class="more icon icon-more"><a href="about.html#ptgg">更多</a></p>
         </div>
         <div class="news-main-content">
-            <ul class="news-main-list"  id="newsContent">
+            <ul class="news-main-list" id="newsContent">
             </ul>
         </div>
         <div class="news-main-top ptop">
@@ -525,7 +507,7 @@
             <p class="more icon icon-more"><a href="about.html#gsdt">更多</a></p>
         </div>
         <div class="news-main-content">
-            <ul class="news-main-list"  id="news-part">
+            <ul class="news-main-list" id="news-part">
             </ul>
         </div>
     </div>
@@ -538,16 +520,18 @@
             合作伙伴
         </div>
         <div class="link-list">
-            <marquee direction="left" behavior="alternate" loop="-1" height="80" scrollamount="5" hspace="10"  vspace="10" onMouseOut="this.start()" onMouseOver="this.stop()">
-            <div class="link-list-box" style="width: 1800px;">
-                <ul class="cl" id="linkList">
-                    <li ng-repeat="friend in friends">
-                        <a target="view_frame" href="{{friend.imghref}}" title="{{friend.imgalert}}">
-                            <img src="{{friend.imgpath}}" alt="{{friend.imgalert}}" style="width: 260px;height: 58px;">
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <marquee direction="left" behavior="alternate" loop="-1" height="80" scrollamount="5" hspace="10"
+                     vspace="10" onMouseOut="this.start()" onMouseOver="this.stop()">
+                <div class="link-list-box" style="width: 1800px;">
+                    <ul class="cl" id="linkList">
+                        <li ng-repeat="friend in friends">
+                            <a target="view_frame" href="{{friend.imghref}}" title="{{friend.imgalert}}">
+                                <img src="{{friend.imgpath}}" alt="{{friend.imgalert}}"
+                                     style="width: 260px;height: 58px;">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </marquee>
         </div>
     </div>
@@ -557,7 +541,8 @@
 
 <div class="mod-sidebar">
     <ul>
-        <li><a target="_blank" href="tencent://message/?uin=1332666988&amp;Site=&amp;Menu=yes" class="sidebar-qq"></a></li>
+        <li><a target="_blank" href="tencent://message/?uin=1332666988&amp;Site=&amp;Menu=yes" class="sidebar-qq"></a>
+        </li>
         <li><a href="javascript:;" class="sidebar-wx"></a></li>
         <li><a href="http://pujinziben.com/calculator.html" class="sidebar-cl"></a></li>
         <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券"></a></li>
@@ -572,14 +557,13 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
 <!-- 客服QQ -->
-<%--<script charset="utf-8" type="text/javascript" src="<%=path %>/static/js/index/wpa.js"></script>--%>
 <script type="text/javascript" src="<%=path %>/static/js/index/countup.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/index.js"></script>
 <script>
     $("#myHome").click(function () {
-        if(${sessionScope.user.uid == null}){
+        if (${sessionScope.user.uid == null}) {
             window.location.href = "/user/login_page";
-        }else{
+        } else {
             window.location.href = "/user/home_page";
         }
     });

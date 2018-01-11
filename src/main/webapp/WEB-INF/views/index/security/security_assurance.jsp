@@ -45,7 +45,7 @@
 <div class="top" id="top">
 </div>
 <!-- nav -->
-<%@include file="../../common/index/head_page.jsp"%>
+<%@include file="../../user/head.jsp"%>
 <!-- banner -->
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
