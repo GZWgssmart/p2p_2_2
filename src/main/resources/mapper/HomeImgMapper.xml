@@ -82,4 +82,10 @@
     ]]>
   </select>
 
+  <select id="listHomeImg" resultType="com.we.bean.HomeImg">
+    <![CDATA[
+	  SELECT * FROM home_img LIMIT 0,4
+    ]]>
+  </select>
+
 </mapper>

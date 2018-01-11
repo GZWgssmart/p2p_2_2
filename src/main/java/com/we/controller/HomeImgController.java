@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by ID.LQF on 2018/1/2.
@@ -77,6 +80,17 @@ public class HomeImgController {
             resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return resultVO;
+    }
+
+    /**
+     * 查询前5个首页图片的数据
+     * @return
+     */
+    @RequestMapping("list_homeimg")
+    @ResponseBody
+    public List<HomeImg> listHomeImg() {
+        List<HomeImg> homeImgs = homeImgService.listHomeImg();
+        return homeImgs;
     }
 
 }

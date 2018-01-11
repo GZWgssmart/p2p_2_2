@@ -78,6 +78,13 @@ public class FriendController {
         return friendService.listAllLetter(offset,limit,friend);
     }
 
+    @RequestMapping("list_friend")
+    @ResponseBody
+    public List<Friend> listFriend() {
+        List<Friend> friends = friendService.listFriend();
+        return friends;
+    }
+
     @Resource
     public void setFriendService(FriendService friendService) {
         this.friendService = friendService;

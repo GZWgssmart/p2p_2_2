@@ -65,4 +65,9 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("foot")
+    public String foot() {
+        return "common/index/foot";
+    }
+
 }

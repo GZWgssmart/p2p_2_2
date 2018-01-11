@@ -100,4 +100,10 @@
     ]]>
     </select>
 
+  <select id="listFriend" resultType="com.we.bean.Friend">
+    <![CDATA[
+      select * from friend
+    ]]>
+  </select>
+
 </mapper>

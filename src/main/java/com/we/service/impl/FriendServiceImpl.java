@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.Friend;
 import com.we.common.Pager;
 import com.we.dao.FriendDAO;
 import com.we.service.AbstractBaseService;
@@ -34,4 +35,10 @@ public class FriendServiceImpl extends AbstractBaseService implements FriendServ
     public Long countAllLetter(Object obj) {
         return friendDAO.countAllLetter(obj);
     }
+
+    @Override
+    public List<Friend> listFriend() {
+        return friendDAO.listFriend();
+    }
+
 }

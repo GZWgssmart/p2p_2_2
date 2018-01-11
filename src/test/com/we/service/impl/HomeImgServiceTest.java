@@ -5,6 +5,8 @@ import com.we.service.HomeImgService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * Created by ID.LQF on 2017/12/22.
  */
@@ -31,8 +33,10 @@ public class HomeImgServiceTest extends BaseTest {
     }
 
     @Test
-    public void testRemoveById() {
-        homeImgService.removeById(1);
+    public void testHomeImg() {
+        List<HomeImg> homeImgs = homeImgService.listHomeImg();
+        System.out.println(homeImgs);
     }
+
 
 }

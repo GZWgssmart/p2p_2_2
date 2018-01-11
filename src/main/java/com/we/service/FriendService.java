@@ -1,7 +1,7 @@
 package com.we.service;
 
+import com.we.bean.Friend;
 import com.we.common.Pager;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +15,11 @@ public interface FriendService extends BaseService {
      * @return
      */
     Long countAllLetter(Object obj);
+
+    /**
+     * 查询所有的合作伙伴
+     * @return
+     */
+    List<Friend> listFriend();
+
 }
