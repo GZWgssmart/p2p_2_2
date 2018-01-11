@@ -14,12 +14,13 @@
     <title>关于我们-普金资本-为用户提供详尽安全可靠的投资理财信息，网络贷款、融资服务</title>
     <link rel="stylesheet" href="<%=path%>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path%>/static/css/index/about.css">
+    <link rel="icon" href="<%=path%>/static/images/logo_title.jpg">
 </head>
 <body>
 <div class="top" id="top">
 </div>
 <!-- nav -->
-<%@include file="../user/head.jsp"%>
+<%@include file="../../user/head.jsp"%>
 <div class="about cl">
     <div class="about-left">
         <div class="about-left-nav">
@@ -30,15 +31,14 @@
             </div>
             <ul class="sub-nav">
                 <li><div class="hr"></div></li>
-                <li id="gd"><a href="#gdbj" class="icon-about about-gudong">股东背景</a></li>
-                <li><a href="#gsjj" class="icon-about about-jianjie">公司简介</a></li>
-                <li><a href="#ptzz" class="icon-about about-zizhi">平台资质</a></li>
-                <!-- <li><a href="#gltd" class="icon-about about-guanli">管理团队</a></li> -->
-                <li><a href="#gwtd" class="icon-about about-guwen">顾问团队</a></li>
-                <li><a href="#gsdt" class="icon-about about-dongtai">公司动态</a></li>
-                <li><a href="#ptgg" class="icon-about about-gonggao">平台公告</a></li>
-                <li><a href="#zxns" class="icon-about about-zhaopin">招贤纳士</a></li>
-                <li><a href="#lxwm" class="icon-about about-lianxi">联系我们</a></li>
+                <li class="gdbj"><a href="javaScript:void(0);" class="icon-about about-gudong" onclick="gdbj();">股东背景</a></li>
+                <li class="gsjj"><a href="javaScript:void(0);" class="icon-about about-jianjie">公司简介</a></li>
+                <li class="ptzz"><a href="javaScript:void(0);" class="icon-about about-zizhi">平台资质</a></li>
+                <li class="gwtd"><a href="javaScript:void(0);" class="icon-about about-guwen">顾问团队</a></li>
+                <li class="gsdt"><a href="javaScript:void(0);" class="icon-about about-dongtai">公司动态</a></li>
+                <li class="ptgg"><a href="javaScript:void(0);" class="icon-about about-gonggao">平台公告</a></li>
+                <li class="zxns"><a href="javaScript:void(0);" class="icon-about about-zhaopin">招贤纳士</a></li>
+                <li class="lswm"><a href="javaScript:void(0);" class="icon-about about-lianxi">联系我们</a></li>
             </ul>
         </div>
     </div>
@@ -54,8 +54,15 @@
 
 <script>
 
-    function ptyy() {
+   /* function ptyy() {
+        //平台运营
         $(".about-right").load("/user/ydate");
+    }*/
+
+
+    function gdbj() {
+        //股东背景
+        $(".about-right").load("/index/gdbj");
     }
 
     var isClick = false;

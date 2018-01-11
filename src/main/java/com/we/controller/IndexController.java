@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
+    @RequestMapping("gdbj")
+    public String allGd() {
+        return "index/info/staticpage/gdbj";
+    }
+
     @RequestMapping("security")
     public String allSecurity() {
         return "index/security/security_assurance";
