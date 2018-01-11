@@ -34,13 +34,4 @@ public class YdataVO {
     public void setStringDate(String stringDate) {
         this.stringDate = stringDate;
     }
-
-    @Override
-    public String toString() {
-        return "YdataVO{" +
-                "yid=" + yid +
-                ", date=" + date +
-                '}';
-    }
-
 }
