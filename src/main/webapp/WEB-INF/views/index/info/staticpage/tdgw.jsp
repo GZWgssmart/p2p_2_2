@@ -15,8 +15,8 @@
 </div>
 <div class="about-content">
     <div class="title-link">
-        <a href="javascript:;" class="left active">法律顾问</a>
-        <a href="javascript:;" class="right">律师事务所</a>
+        <a href="javascript:;" class="left active" id="left">法律顾问</a>
+        <a href="javascript:;" class="right" id="right">律师事务所</a>
     </div>
     <div id="falv" class="content">
         <div class="content-photo">
@@ -53,3 +53,19 @@
         <img class="img" src="./顾问团队_files/shiwu_03.png">
     </div>
 </div>
+
+<script>
+    $("#left").click(function () {
+        $(this).addClass("active");
+        $("#right").removeClass("active");
+        $("#falv").show();
+        $("#shiwu").hide();
+    });
+
+    $("#right").click(function () {
+        $(this).addClass("active");
+        $("#left").removeClass("active");
+        $("#shiwu").show();
+        $("#falv").hide();
+    });
+</script>
