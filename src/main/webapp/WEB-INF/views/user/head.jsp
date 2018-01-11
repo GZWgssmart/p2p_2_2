@@ -5,7 +5,7 @@
         <div class="nav-bar">
             <ul>
                 <li><a href="javaScript:void(0);" id="myHome">我的账户</a></li>
-                <li><a href="<%=path %>/user/about">信息披露 </a></li>
+                <li><a href="<%=path %>/index/info/about">信息披露 </a></li>
                 <li><a href="<%=path %>/index/security">安全保障</a></li>
                 <li>
                     <a href="investlist.html">投资理财</a>
@@ -19,7 +19,7 @@
                         <p class="right"></p>
                     </div>
                 </li>
-                <li><a href="https://www.pujinziben.com/">首页</a></li>
+                <li><a href="javaScript:void(0);">首页</a></li>
             </ul>
         </div>
     </div>

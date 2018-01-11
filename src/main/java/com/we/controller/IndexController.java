@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
+    @RequestMapping("about")
+    public String about(){
+        return "index/info/about";
+    }
+
     //公司动态
     @RequestMapping("gsdt")
     public String allGs() {

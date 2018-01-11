@@ -333,10 +333,6 @@ public class UserController {
         statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
         return statusVO;
     }
-    @RequestMapping("about")
-    public String about(){
-        return "index/info/about";
-    }
 
     @RequestMapping("all_bankcard")
     public String allBankcard(){
