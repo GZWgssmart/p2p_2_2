@@ -60,6 +60,11 @@ public class OurConstants {
     public static final Integer MONEY_LOG_HK = 3;
 
     /**
+     * 资金流向记录的类型：还款
+     */
+    public static final Integer MONEY_LOG_REPAY = 4;
+
+    /**
      * 标种id：先息后本
      */
     public static final Integer BZ_XXHB = 1;

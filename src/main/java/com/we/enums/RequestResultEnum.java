@@ -32,7 +32,10 @@ public enum RequestResultEnum {
     BORROW_SYMONEY_NOT_ENOUGH(603, "fail", "剩余可投金额不足"),
     USERMONEY_KYMONEY_NOT_ENOUGH(604, "fail", "可用余额不足"),
     TICKET_DISABLED(605, "fail", "此优惠券已失效"),
-    NEW_PWDS_IS_DIFFERENT(606, "fail", "两次输入的新密码不一致");
+    NEW_PWDS_IS_DIFFERENT(606, "fail", "两次输入的新密码不一致"),
+    HK_SUCCESS(205, "success", "还款成功！"),
+    HK_FAIL(505, "fail", "还款失败，请稍后再试！"),
+    HK_FAIL_ZPWD(506, "fail", "还款失败，支付密码错误");
 
     private Integer code;
     private String result;

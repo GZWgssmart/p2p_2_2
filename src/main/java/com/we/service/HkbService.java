@@ -2,6 +2,7 @@ package com.we.service;
 
 import com.we.bean.Hkb;
 import com.we.vo.NowDateVO;
+import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,4 +39,13 @@ public interface HkbService extends BaseService {
      * 逾期笔数
      */
     Integer countOverdueNumber();
+
+    /**
+     *
+     * 执行还款
+     * @param uid 前台用户id
+     * @param hkid 还款id
+     * @return 请求结果
+     */
+    RequestResultVO repayment(Integer uid, Integer hkid) throws RuntimeException;
 }

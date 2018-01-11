@@ -55,6 +55,7 @@
 <%@include file="../../../common/js/js_boostrap_table.jsp" %>
 <%@include file="../../../common/js/js_sweetalert.jsp" %>
 <%@include file="../../../common/js/js_data_dict.jsp" %>
+<%@include file="../../../common/js/js_encrypt_md5.jsp" %>
 
 <script src="<%=path%>/static/js/our/user/lmh/all_borrow_checkok.js"></script>
 

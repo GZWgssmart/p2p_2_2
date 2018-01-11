@@ -6,16 +6,15 @@ import com.we.common.EncryptUtils;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
+import com.we.service.HkbService;
 import com.we.service.RecommendService;
 import com.we.service.UserService;
 import com.we.vo.RequestResultVO;
-import org.json.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
@@ -35,13 +34,6 @@ public class UserController {
 
     @Autowired
     private RecommendService recommendService;
-
-    @PostMapping("checkZpwd/{pwd}")
-    @ResponseBody
-    public boolean checkZpwd(@PathVariable String pwd, HttpSession session) {
-        User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
-        return EncryptUtils.md5(pwd).equals(user.getZpwd());
-    }
 
     @RequestMapping("all_borrow_checkok_page")
     public String allBorrowChcekokPage() {
@@ -349,9 +341,5 @@ public class UserController {
     @RequestMapping("ydate")
     public String ydate(){
         return "user/ydate";
-    }
-    @Resource
-    public void setUserService(UserService userService) {
-        this.userService = userService;
     }
 }

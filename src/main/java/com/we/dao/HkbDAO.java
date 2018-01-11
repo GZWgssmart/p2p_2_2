@@ -52,4 +52,11 @@ public interface HkbDAO extends BaseDAO {
      * 逾期笔数
      */
     Integer countOverdueNumber();
+
+    /**
+     * 还款时调用，判断此次还款后是否已还完借款
+     * @param baid 借款id
+     * @return 若集合大小等于0，说明已还完
+     */
+    List<Hkb> listRepayOk(Integer baid);
 }

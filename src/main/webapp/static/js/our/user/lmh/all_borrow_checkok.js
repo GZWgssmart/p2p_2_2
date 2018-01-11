@@ -63,14 +63,21 @@ var allCheckok = {
     hk: function () {
         var row = setTable.isSingleSelected(allCheckok.id.hkbListId);
         if (row && row.state !== 2) {
-            $.post(contextPath + '/user/checkZpwd/' + $('#deal-password').val(),
+            var passwordTag = $('#deal-password');
+            $.post(contextPath + '/hkb/repayment',
+                {
+                    pwd: passwordTag.val(),
+                    skid: row.skid
+                },
                 function (data) {
-                    if (data) {
-                        alert('static/js/our/user/lmh/all_borrow_checkok.js:69');
+                    if (data.result === 'success') {
+                        swtAlert.request_success(data.message);
+                        setTable.postRefresh(allCheckok.id.hkbListId);
+                        passwordTag.val('');
                     } else {
-                        swtAlert.warn_info('密码错误，请重新输入');
+                        swtAlert.request_fail(data.message);
                     }
-                },'json');
+                }, 'json');
         }
     }
 };
