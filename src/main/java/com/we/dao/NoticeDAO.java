@@ -1,5 +1,6 @@
 package com.we.dao;
 
+import com.we.bean.Notice;
 import com.we.common.Pager;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,7 @@ public interface NoticeDAO extends BaseDAO {
     List<Object> listAllPageNotice(@Param("pager") Pager pager,@Param("query") Object object);
 
     Long countAllPagerNotice(@Param("query") Object object);
+
+    List<Notice> listQueryAllNotice();
+
 }

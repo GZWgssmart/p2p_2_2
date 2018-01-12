@@ -150,4 +150,12 @@
     ]]>
   </select>
 
+  <select id="listQueryAllNotice" resultType="com.we.bean.Notice">
+    <![CDATA[
+        SELECT
+        * FROM notice n
+         ORDER BY n.nid
+    ]]>
+  </select>
+
 </mapper>

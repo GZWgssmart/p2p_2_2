@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Calendar;
+import java.util.List;
 
 @Controller
 @RequestMapping("/notice")
@@ -110,6 +111,14 @@ public class NoticeController {
     @ResponseBody
     public Pager pagerAllCriteria(Long offset, Long limit, UserLetter userLetter) {
         return noticeService.listAllPagerNotice(offset,limit, userLetter);
+    }
+
+    @RequestMapping("pager_query_criteria")
+    @ResponseBody
+    public List<Notice> pagerQueryAllCriteria() {
+        List<Notice> notices = noticeService.listQueryAllNotice();
+        System.out.println("1234567");
+        return notices;
     }
 
     @Resource

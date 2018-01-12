@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<%=path%>/static/css/index/about.css">
     <link rel="icon" href="<%=path%>/static/images/logo_title.jpg">
 </head>
-<body  ng-app="myApp" ng-controller="myCtrl">
+<body>
 <div class="top" id="top">
 </div>
 <!-- nav -->
@@ -49,7 +49,7 @@
 
 </div>
 <div id="ajaxFooter"></div>
-<script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
+<%@include file="../../common/js/js_jquery.jsp" %>
 <script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>
 
 <script>
@@ -127,8 +127,5 @@
     }
 
 </script>
-
-<%--<script src="<%=path%>/static/js/angular/angular.min.js"></script>--%>
-
 </body>
 </html>

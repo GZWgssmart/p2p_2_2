@@ -1,5 +1,6 @@
 package com.we.service;
 
+import com.we.bean.Notice;
 import com.we.common.Pager;
 import org.apache.ibatis.annotations.Param;
 
@@ -34,9 +35,17 @@ public interface NoticeService extends BaseService {
 
 
     /***
-     * 页面显示平台公告数据
+     * 页面显示平台公告数据(分页)
      * @param obj
      * @return
      */
     Long countAllPagerNotice(Object obj);
+
+    /**
+     * 页面显示平台公告数据(不分页)
+     * @param
+     * @return
+     */
+    List<Notice> listQueryAllNotice();
+
 }

@@ -135,13 +135,13 @@
                     </div>
                 </div>
                 <div class="center-data">
-                    <p><i class="color color1"></i>投资总额：<span id="investSum">0.00</span></p>
+                    <p><i class="color color1"></i>投资总额：<span id="investSum">80000.00</span></p>
 
-                    <p><i class="color color2"></i>冻结金额：<span id="freezeAmount">0.00</span></p>
+                    <p><i class="color color2"></i>冻结金额：<span id="freezeAmount">90000.00</span></p>
 
-                    <p><i class="color color3"></i>待收总额：<span id="forPaySum">0.00</span></p>
+                    <p><i class="color color3"></i>待收总额：<span id="forPaySum">880000.00</span></p>
 
-                    <p><i class="color color4"></i>奖励金额：<span id="otherEarnAmount">0.00</span></p>
+                    <p><i class="color color4"></i>奖励金额：<span id="otherEarnAmount">60000.00</span></p>
                 </div>
             </div>
         </div>
@@ -150,21 +150,21 @@
         <div class="slb-view" style="display: none;">
             <div class="slb-all">
                 <div class="slb-left">
-                    <p><span id="slbSum">0.00</span>元</p>
+                    <p><span id="slbSum">89890000.00</span>元</p>
                     <h1>总金额</h1>
                     <a href="javascript:slbaoTrading();">转入/转出</a>
                 </div>
                 <ul class="slb-right">
                     <li>
-                        <h2><span id="annuRate">0.000</span>%</h2>
+                        <h2><span id="annuRate">89890000.000</span>%</h2>
                         <p>最近7日年化收益率</p>
                     </li>
                     <li>
-                        <h2><span id="prdRate">0.000</span>%</h2>
+                        <h2><span id="prdRate">89890000.000</span>%</h2>
                         <p>最新收益率</p>
                     </li>
                     <li>
-                        <h2><span id="totalProfit">0.00</span>元</h2>
+                        <h2><span id="totalProfit">89890000.00</span>元</h2>
                         <p>生利宝历史累计收益</p>
                     </li>
 

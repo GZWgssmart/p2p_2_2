@@ -48,5 +48,10 @@ public class NoticeServiceImpl extends AbstractBaseService implements NoticeServ
         return noticeDAO.countAllPagerNotice(obj);
     }
 
+    @Override
+    public List<Notice> listQueryAllNotice() {
+        return noticeDAO.listQueryAllNotice();
+    }
+
 
 }

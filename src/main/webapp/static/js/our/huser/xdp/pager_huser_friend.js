@@ -2,19 +2,8 @@ var pagerHuserFriend = {
     updateFriend: function () {
         var row = setTable.isSingleSelected('friend-list');
         if (row) {
-           /* $('#update-friend-modal').modal('show');
-            $('#fid').val(row.fid);
-            if (row.imghref != null ){
-                $('#update-imghref').val(row.imghref);
-            }
-            if(row.imgpath != null) {
-                $('#update-imgpath').val(row.imgpath);
-            }
-            if(row.imgalert != null) {
-                $('#update-imgalert').val(row.imgalert);
-            }*/
            setTable.openUpdateModal("friend-list","updateForm","update-friend-modal");
-            // return showForm1();
+            return showForm1();
         }
     }
 };
