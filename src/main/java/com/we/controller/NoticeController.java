@@ -99,6 +99,19 @@ public class NoticeController {
         return noticeService.listCriteria(offset,limit, userLetter);
     }
 
+    /**
+     * 页面显示平台公告数据
+     * @param offset
+     * @param limit
+     * @param userLetter
+     * @return
+     */
+    @RequestMapping("pager_all_criteria")
+    @ResponseBody
+    public Pager pagerAllCriteria(Long offset, Long limit, UserLetter userLetter) {
+        return noticeService.listAllPagerNotice(offset,limit, userLetter);
+    }
+
     @Resource
     public void setNoticeService(NoticeService noticeService) {
         this.noticeService = noticeService;

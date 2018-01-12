@@ -6,6 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+%>
+<html>
+<head>
+    <title>关于我们-普金资本-为用户提供详尽安全可靠的投资理财信息，网络贷款、融资服务</title>
+    <link rel="stylesheet" href="<%=path%>/static/css/index/public.css">
+    <link rel="stylesheet" href="<%=path%>/static/css/index/about.css">
+    <link rel="icon" href="<%=path%>/static/images/logo_title.jpg">
+</head>
+<script src="<%=path%>/static/js/angular/angular.min.js"></script>
+<body  ng-app="myApp" ng-controller="myCtrl">
 <div class="about-right-nav">
     <div class="sub-a-nav">
         <a href="javascript:void(0);" class="active" id="">平台公告</a>
@@ -17,50 +29,62 @@
         <ul class="notice-list listData">
             <li class="interval">
                 <div class="children0">
-                    <a href="http://pujinziben.com/news.html?id=201&amp;flag=1" target="_blank" class="title">
-                        2018年1月9日新标预告</a><span class="time">2018-01-09</span></div>
+                    <a href="<%=path %>/index/notice_info/{{notice[0].nid}}" target="_blank" class="title">
+                        {{notice[0].content}}</a><span class="time">{{notice[0].date}}</span></div>
             </li>
             <li>
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=200&amp;flag=1"
-                                          target="_blank" class="title">2018年01月08日新标预告</a><span
-                        class="time">2018-01-08</span>
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[1].nid}}" target="_blank" class="title">
+                        {{notice[1].content}}</a><span class="time">{{notice[1].date}}</span>
                 </div>
             </li>
             <li class="interval">
                 <div class="children0">
-                    <a href="http://pujinziben.com/news.html?id=199&amp;flag=1" target="_blank" class="title">
-                        关于新手标项目正常还款的公告</a><span class="time">2018-01-05</span></div>
-            </li>
-            <li>
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=197&amp;flag=1" target="_blank"
-                                          class="title">2017年12月29日新标预告</a><span class="time">2017-12-29</span></div>
-            </li>
-            <li class="interval">
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=196&amp;
-            flag=1" target="_blank" class="title">关于元旦假期工作安排公告</a><span class="time">2017-12-28</span>
+                    <a href="<%=path %>/index/notice_info/{{notice[2].nid}}" target="_blank" class="title">
+                        {{notice[2].content}}</a><span class="time">{{notice[2].date}}</span>
                 </div>
             </li>
             <li>
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=195&amp;flag=1"
-                                          target="_blank" class="title">关于多金宝项目正常还款的公告</a><span
-                        class="time">2017-12-26</span>
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[3].nid}}" target="_blank" class="title">
+                        {{notice[3].content}}</a><span class="time">{{notice[3].date}}</span>
                 </div>
             </li>
             <li class="interval">
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=194&amp;flag=1" target="_blank"
-                                          class="title">2017年12月24日新标预告</a><span class="time">2017-12-23</span></div>
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[4].nid}}" target="_blank" class="title">
+                         {{notice[4].content}}</a><span class="time">{{notice[4].date}}</span>
+                </div>
             </li>
             <li>
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=193&amp;flag=1" target="_blank"
-                                          class="title">2017年12月24日新标预告</a><span class="time">2017-12-23</span></div>
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[5].nid}}" target="_blank" class="title">
+                        {{notice[5].content}}</a><span class="time">{{notice[5].date}}</span>
+                </div>
             </li>
             <li class="interval">
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=192&amp;flag=1" target="_blank"
-                                          class="title">关于多金宝项目正常还款的公告</a><span class="time">2017-12-23</span></div>
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[6].nid}}" target="_blank" class="title">
+                        {{notice[6].content}}</a><span class="time">{{notice[6].date}}</span>
+                </div>
             </li>
             <li>
-                <div class="children0"><a href="http://pujinziben.com/news.html?id=191&amp;flag=1" target="_blank"
-                                          class="title">关于新手标项目正常还款的公告</a><span class="time">2017-12-23</span></div>
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[7].nid}}" target="_blank" class="title">
+                        {{notice[7].content}}</a><span class="time">{{notice[7].date}}</span>
+                </div>
+            </li>
+            <li class="interval">
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[8].nid}}" target="_blank" class="title">
+                        {{notice[8].content}}</a><span class="time">{{notice[8].date}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="children0">
+                    <a href="<%=path %>/index/notice_info/{{notice[9].nid}}" target="_blank" class="title">
+                        {{notice[9].content}}</a><span class="time">{{notice[9].date}}</span>
+                </div>
             </li>
         </ul>
         <ul class="paging" style="width: 500px; margin: 30px auto 0px;">
@@ -95,3 +119,38 @@
         </ul>
     </div>
 </div>
+
+<script type="text/javascript">
+    (function ($) {
+        var app = angular.module('myApp', []);
+        app.config(function ($httpProvider) {
+
+            $httpProvider.defaults.transformRequest = function (obj) {
+                var str = [];
+                for (var p in obj) {
+                    str.push(encodeURIComponent(p) + "=" +  encodeURIComponent(obj[p]));
+                }
+                return str.join("&");
+            };
+
+            $httpProvider.defaults.headers.post = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+
+        });
+        app.controller('myCtrl', function ($scope, $http) {
+            //
+            $http({
+                method: 'POST',
+                url: "/notice/pager_all_criteria"
+            }).then(function successCallback(response) {
+                $scope.notice = response.data;
+                alert("1221");
+            }, function errorCallback(response) {
+            });
+        });
+    }(jQuery));
+</script>
+
+</body>
+</html>

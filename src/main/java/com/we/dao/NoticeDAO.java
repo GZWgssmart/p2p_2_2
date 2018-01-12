@@ -13,4 +13,8 @@ public interface NoticeDAO extends BaseDAO {
                                @Param("query") Object object);
 
     Long countAllNotice(@Param("query")Object obj);
+
+    List<Object> listAllPageNotice(@Param("pager") Pager pager,@Param("query") Object object);
+
+    Long countAllPagerNotice(@Param("query") Object object);
 }

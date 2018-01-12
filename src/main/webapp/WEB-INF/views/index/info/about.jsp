@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<%=path%>/static/css/index/about.css">
     <link rel="icon" href="<%=path%>/static/images/logo_title.jpg">
 </head>
-<body>
+<body  ng-app="myApp" ng-controller="myCtrl">
 <div class="top" id="top">
 </div>
 <!-- nav -->
@@ -127,5 +127,8 @@
     }
 
 </script>
+
+<%--<script src="<%=path%>/static/js/angular/angular.min.js"></script>--%>
+
 </body>
 </html>

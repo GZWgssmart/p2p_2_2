@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
+    //页面显示平台公告数据
+    @RequestMapping("notice_info")
+    public String allNotice_info() {
+        return "index/info/staticpage/ptgg";
+    }
+
     //公司动态
     @RequestMapping("gsdt")
     public String allGs() {

@@ -22,4 +22,21 @@ public interface NoticeService extends BaseService {
      * @return
      */
     Long countAllNotice(Object obj);
+
+    /**
+     * 页面显示平台公告数据
+     * @param offset
+     * @param limit
+     * @param query
+     * @return
+     */
+    Pager listAllPagerNotice(Long offset, Long limit, Object query);
+
+
+    /***
+     * 页面显示平台公告数据
+     * @param obj
+     * @return
+     */
+    Long countAllPagerNotice(Object obj);
 }

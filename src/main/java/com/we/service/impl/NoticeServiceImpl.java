@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.Notice;
 import com.we.common.Pager;
 import com.we.dao.NoticeDAO;
 import com.we.service.AbstractBaseService;
@@ -33,4 +34,19 @@ public class NoticeServiceImpl extends AbstractBaseService implements NoticeServ
     public Long countAllNotice(Object obj) {
         return noticeDAO.countAllNotice(obj);
     }
+
+    @Override
+    public Pager listAllPagerNotice(Long offset, Long limit, Object query) {
+        Pager pager = new Pager(offset,limit);
+        pager.setRows(noticeDAO.listAllPageNotice(pager, query));
+        pager.setTotal(noticeDAO.countAllNotice(query));
+        return pager;
+    }
+
+    @Override
+    public Long countAllPagerNotice(Object obj) {
+        return noticeDAO.countAllPagerNotice(obj);
+    }
+
+
 }

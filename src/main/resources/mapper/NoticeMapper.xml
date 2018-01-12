@@ -135,4 +135,19 @@
     </if>
   </select>
 
+  <select id="listAllPageNotice" resultType="com.we.bean.Notice">
+    <![CDATA[
+    SELECT
+    * FROM notice n
+    ORDER BY n.nid
+    limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="countAllPagerNotice" resultType="java.lang.Long">
+      <![CDATA[
+	  select count(nid) from notice
+    ]]>
+  </select>
+
 </mapper>
