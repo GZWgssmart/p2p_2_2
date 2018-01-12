@@ -8,6 +8,7 @@ import com.we.common.PathUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BorrowapplyService;
 import com.we.service.BorrowdetailService;
+import com.we.vo.BorrowdetailAndWapplyVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 @Controller
 @RequestMapping("/borrowdetail")
@@ -74,6 +76,8 @@ public class BorrowdetailController {
         }
         return resultVO;
     }
+
+
     
     @Resource
     public void setBorrowdetailService(BorrowdetailService borrowdetailService) {
@@ -84,4 +88,5 @@ public class BorrowdetailController {
     public void setBorrowapplyService(BorrowapplyService borrowapplyService) {
         this.borrowapplyService = borrowapplyService;
     }
+
 }

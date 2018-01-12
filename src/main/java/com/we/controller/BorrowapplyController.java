@@ -8,17 +8,17 @@ import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BorrowapplyService;
+import com.we.vo.BorrowdetailAndWapplyVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Calendar;
+import java.util.List;
 
 @Controller
 @RequestMapping("/borrowapply")
@@ -87,8 +87,21 @@ public class BorrowapplyController {
         return borrowapplyService.listCriteria(offset, limit, borrowapply);
     }
 
+    /**
+     * 页面多金宝、普金宝、恒金宝的查询
+     * @param type
+     * @return
+     */
+    @RequestMapping("list_borrow")
+    @ResponseBody
+    public List<BorrowdetailAndWapplyVO> listBorrow(Integer type) {
+        List<BorrowdetailAndWapplyVO> borrowes = borrowapplyService.listBorrow(type);
+        return borrowes;
+    }
+
     @Resource
     public void setBorrowapplyService(BorrowapplyService borrowapplyService) {
         this.borrowapplyService = borrowapplyService;
     }
+
 }

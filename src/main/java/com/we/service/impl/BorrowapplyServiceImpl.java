@@ -11,6 +11,7 @@ import com.we.service.AbstractBaseService;
 import com.we.service.BorrowapplyService;
 import com.we.service.HkbService;
 import com.we.service.UsermoneyService;
+import com.we.vo.BorrowdetailAndWapplyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -127,6 +128,11 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
         pager.setRows(borrowapplyDAO.listCheckOkBorrow(pager, query));
         pager.setTotal(borrowapplyDAO.countCheckOkBorrow(query));
         return pager;
+    }
+
+    @Override
+    public List<BorrowdetailAndWapplyVO> listBorrow(Integer type) {
+        return borrowapplyDAO.listBorrow(type);
     }
 
     @Autowired

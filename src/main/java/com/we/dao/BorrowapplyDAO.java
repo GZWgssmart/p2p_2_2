@@ -3,6 +3,7 @@ package com.we.dao;
 import com.we.bean.Borrowapply;
 import com.we.common.Pager;
 import com.we.vo.BorrowCheckOkVO;
+import com.we.vo.BorrowdetailAndWapplyVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -61,4 +62,11 @@ public interface BorrowapplyDAO extends BaseDAO {
      * @return
      */
     Long countCheckOkBorrow(@Param("query") Object query);
+
+    /**
+     * 页面多金宝、普金宝、恒金宝的查询
+     * @return
+     */
+    List<BorrowdetailAndWapplyVO> listBorrow(@Param("query") Integer type);
+
 }

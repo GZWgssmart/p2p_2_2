@@ -2,6 +2,7 @@ package com.we.service;
 
 import com.we.common.Pager;
 import com.we.vo.BorrowCheckOkVO;
+import com.we.vo.BorrowdetailAndWapplyVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -53,4 +54,11 @@ public interface BorrowapplyService extends BaseService {
      * @return
      */
     Pager listCheckOkBorrow(Long offset, Long limit, Object query);
+
+    /**
+     * 页面多金宝、普金宝、恒金宝的查询
+     * @return
+     */
+    List<BorrowdetailAndWapplyVO> listBorrow(Integer type);
+
 }

@@ -255,6 +255,14 @@
         SELECT count(b.baid)
         <include refid="listCheckOkQuery"/>
     </select>
+
+  <select id="listBorrow" resultType="com.we.vo.BorrowdetailAndWapplyVO">
+    SELECT bd.bdid,ba.baid,ba.money,ba.symoney,bd.cpname,bd.nprofit,ba.type,ba.term,ba.state
+    from borrowapply ba, borrowdetail bd
+    where bd.baid = ba.baid and ba.type = #{query}
+    limit 0,3
+  </select>
+
 </mapper>
 
 

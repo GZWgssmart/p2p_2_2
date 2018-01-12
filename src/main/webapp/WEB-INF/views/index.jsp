@@ -39,7 +39,6 @@
         window.location.href = "front/indexInit.do";
     }
 </script>
-<script src="<%=path%>/static/js/angular/angular.min.js"></script>
 <body ng-app="myApp" ng-controller="myCtrl">
 <!-- top -->
 <!--[if lt IE 8]>
@@ -143,7 +142,7 @@
         </div>
     </div>
 </div>
-<!-- product -->
+<!-- 新手指标 -->
 <div class="product wrap">
     <div class="product-n" id="newUser" style="height: 210px;">
 
@@ -151,7 +150,7 @@
             <div class="title cl"><img alt="" src="<%=path %>/static/picture/product-new-icon2.png"></div>
             <ul class="product-new-main cl">
                 <li class="rate cl">
-                    <p><span id="ty-rate"></span>%</p>
+                    <p><span id="ty-rate">{{newpeople[0].nprofit}}</span>%</p>
                     <span>预期年化收益率</span>
                 </li>
                 <li class="date">
@@ -159,10 +158,12 @@
                         <div class="line icon icon-progress">
                             <p>募集进度：</p>
                             <p class="progress"><em></em></p>
-                            <p class="progress-text"><span id="xs-schedules"></span>%</p>
+                            <p class="progress-text"><span id="xs-schedules"></span>{{newpeople[0].jdmoney}}</p>
                         </div>
-                        <p class="icon icon-doll">项目金额：<span id="xs-doll"></span></p>
-                        <p class="icon icon-time">投资期限：<span id="ty-date"></span></p>
+                        <p class="icon" style="background: none; margin-top: -22px;"></p>
+                        <p class="icon icon-doll">项目金额：<span id="xs-doll"></span>{{newpeople[0].money}}万元</p>
+                        <p class="icon" style="background: none; margin-top: -22px;"></p>
+                        <p class="icon icon-time">投资期限：<span id="ty-date"></span>{{newpeople[0].term}}个月</p>
                     </div>
                 </li>
                 <li>
@@ -187,10 +188,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=414">YC2017TD00012</a>
+                                <a href="invest.html?id=414">{{hengjinbao[0].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9+1</span>
+                                <span>{{hengjinbao[0].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -199,12 +200,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:4.38%"></em>
+                                    <em style="width:{{hengjinbao[0].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">4.38%</p>
+                                <p class="progress-text">{{hengjinbao[0].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：13.23万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{hengjinbao[0].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{hengjinbao[0].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
@@ -215,10 +218,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=391">YC2017TD0009</a>
+                                <a href="invest.html?id=391">{{hengjinbao[1].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9+1</span>
+                                <span>{{hengjinbao[1].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -227,12 +230,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:100.00%"></em>
+                                    <em style="width:{{hengjinbao[1].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">100.00%</p>
+                                <p class="progress-text">{{hengjinbao[1].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：20.87万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{hengjinbao[1].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{hengjinbao[1].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
@@ -243,10 +248,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=386">YC2017TD0008</a>
+                                <a href="invest.html?id=386">{{hengjinbao[2].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9</span>
+                                <span>{{hengjinbao[2].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -255,12 +260,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:100.00%"></em>
+                                    <em style="width:{{hengjinbao[2].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">100.00%</p>
+                                <p class="progress-text">{{hengjinbao[2].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：27.40万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{hengjinbao[2].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{hengjinbao[2].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
@@ -284,10 +291,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=414">YC2017TD00012</a>
+                                <a href="invest.html?id=414">{{pujinbao[0].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9+1</span>
+                                <span>{{pujinbao[0].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -296,12 +303,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:4.38%"></em>
+                                    <em style="width:{{pujinbao[0].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">4.38%</p>
+                                <p class="progress-text">{{pujinbao[0].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：13.23万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{pujinbao[0].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{pujinbao[0].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
@@ -312,10 +321,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=391">YC2017TD0009</a>
+                                <a href="invest.html?id=391">{{pujinbao[1].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9+1</span>
+                                <span>{{pujinbao[1].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -324,12 +333,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:100.00%"></em>
+                                    <em style="width:{{pujinbao[1].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">100.00%</p>
+                                <p class="progress-text">{{pujinbao[1].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：20.87万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{pujinbao[1].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{pujinbao[1].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
@@ -340,10 +351,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=386">YC2017TD0008</a>
+                                <a href="invest.html?id=386">{{pujinbao[2].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9</span>
+                                <span>{{pujinbao[2].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -352,12 +363,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:100.00%"></em>
+                                    <em style="width:{{pujinbao[2].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">100.00%</p>
+                                <p class="progress-text">{{pujinbao[2].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：27.40万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{pujinbao[2].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{pujinbao[2].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
@@ -380,10 +393,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=414">YC2017TD00012</a>
+                                <a href="invest.html?id=414">{{duojinbao[0].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9+1</span>
+                                <span>{{duojinbao[0].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -392,12 +405,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:4.38%"></em>
+                                    <em style="width:{{duojinbao[0].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">4.38%</p>
+                                <p class="progress-text">{{duojinbao[0].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：13.23万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                                <p class="icon" style="background: none; margin-top: -22px;"></p>
+                                <p class="icon icon-doll">项目金额：{{duojinbao[0].money}}万元</p>
+                                <p class="icon" style="background: none; margin-top: -22px;"></p>
+                                <p class="icon icon-time">投资期限：{{duojinbao[0].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
@@ -408,10 +423,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=391">YC2017TD0009</a>
+                                <a href="invest.html?id=391">{{duojinbao[1].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9+1</span>
+                                <span>{{duojinbao[1].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -420,12 +435,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:100.00%"></em>
+                                    <em style="width:{{duojinbao[1].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">100.00%</p>
+                                <p class="progress-text">{{duojinbao[1].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：20.87万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{duojinbao[1].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{duojinbao[1].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
@@ -436,10 +453,10 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=386">YC2017TD0008</a>
+                                <a href="invest.html?id=386">{{duojinbao[2].cpname}}</a>
                             </p>
                             <p class="p-rate">
-                                <span>9</span>
+                                <span>{{duojinbao[2].nprofit}}</span>
                                 <span class="small">%</span>
                             </p>
                             <span class="p-rate-text">预期年化收益率</span>
@@ -448,12 +465,14 @@
                             <div class="line icon icon-progress">
                                 <p>募集进度：</p>
                                 <p class="progress">
-                                    <em style="width:100.00%"></em>
+                                    <em style="width:{{duojinbao[2].jdmoney}}"></em>
                                 </p>
-                                <p class="progress-text">100.00%</p>
+                                <p class="progress-text">{{duojinbao[2].jdmoney}}</p>
                             </div>
-                            <p class="icon icon-doll">项目金额：27.40万元</p>
-                            <p class="icon icon-time">投资期限：6个月</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-doll">项目金额：{{duojinbao[2].money}}万元</p>
+                            <p class="icon" style="background: none; margin-top: -22px;"></p>
+                            <p class="icon icon-time">投资期限：{{duojinbao[2].term}}个月</p>
                         </div>
                         <div class="submit">
                             <button type="button" class="submit disabled" onclick="toInvest(386,4)">还款中</button>
@@ -520,18 +539,16 @@
             合作伙伴
         </div>
         <div class="link-list">
-            <marquee direction="left" behavior="alternate" loop="-1" height="80" scrollamount="5" hspace="10"
-                     vspace="10" onMouseOut="this.start()" onMouseOver="this.stop()">
-                <div class="link-list-box" style="width: 1800px;">
-                    <ul class="cl" id="linkList">
-                        <li ng-repeat="friend in friends">
-                            <a target="view_frame" href="{{friend.imghref}}" title="{{friend.imgalert}}">
-                                <img src="{{friend.imgpath}}" alt="{{friend.imgalert}}"
-                                     style="width: 260px;height: 58px;">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <marquee direction="left" behavior="alternate" loop="-1" height="80" scrollamount="5" hspace="10"  vspace="10" onMouseOut="this.start()" onMouseOver="this.stop()">
+            <div class="link-list-box" style="width: 1800px;">
+                <ul class="cl">
+                    <li ng-repeat="friend in friends">
+                        <a target="_blank" href="{{friend.imghref}}" title="{{friend.imgalert}}">
+                            <img src="{{friend.imgpath}}" alt="{{friend.imgalert}}" style="width: 260px;height: 58px;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
             </marquee>
         </div>
     </div>
@@ -553,6 +570,7 @@
 
 <jsp:include page="common/index/foot.jsp"></jsp:include>
 
+<script src="<%=path%>/static/js/angular/angular.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
@@ -593,6 +611,46 @@
                 url: "/homeImg/list_homeimg"
             }).then(function successCallback(response) {
                 $scope.homeImgs = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //新手专享
+            $http({
+                method: 'get',
+                params:{type:4},
+                url: "/borrowapply/list_borrow"
+            }).then(function successCallback(response) {
+                $scope.newpeople = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //恒金宝
+            $http({
+                method: 'get',
+                params:{type:3},
+                url: "/borrowapply/list_borrow"
+            }).then(function successCallback(response) {
+                $scope.hengjinbao = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //普金宝
+            $http({
+                method: 'get',
+                params:{type:2},
+                url: "/borrowapply/list_borrow"
+            }).then(function successCallback(response) {
+                $scope.pujinbao = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //多金宝
+            $http({
+                method: 'get',
+                params:{type:1},
+                url: "/borrowapply/list_borrow"
+            }).then(function successCallback(response) {
+                $scope.duojinbao = response.data;
             }, function errorCallback(response) {
             });
 
