@@ -40,7 +40,6 @@ public class BankcardController {
     @RequestMapping("allBankcard")
     @ResponseBody
     public Pager allBankcard(Long offset, Long limit, Bankcard bankcard){
-        System.out.println("Dddddd");
         return bankcardService.listCriteria(offset, limit, bankcard);
     }
 

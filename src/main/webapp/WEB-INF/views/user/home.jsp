@@ -88,7 +88,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">账户充值</a>
+                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage"       >账户充值</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_bankcard">我的银行卡</a>
