@@ -1,6 +1,7 @@
 package com.we.service.impl;
 
 import com.we.bean.Recommend;
+import com.we.common.Pager;
 import com.we.service.RecommendService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,12 @@ public class RecommendServiceTest extends BaseTest {
         recommendService.save(recommend);
     }
 
+    @Test
+    public void testListCriteria() {
+        Recommend recommend = new Recommend();
+        Pager pager = recommendService.listCriteria(0l,4l,null);
+        System.out.println(pager);
+    }
 
 
 }

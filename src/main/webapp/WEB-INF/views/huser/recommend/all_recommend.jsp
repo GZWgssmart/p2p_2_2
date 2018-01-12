@@ -42,9 +42,9 @@
     <tr>
         <th data-checkbox="true"></th>
         <th data-field="tid">推荐人id</th>
-        <th data-field="tname">推荐人姓名</th>
+        <th data-field="tname" data-formatter="checkName.formatName">推荐人姓名</th>
         <th data-field="uid">被推荐人id</th>
-        <th data-field="rname">被推荐人姓名</th>
+        <th data-field="rname" data-formatter="checkName.formatName">被推荐人姓名</th>
         <th data-field="date" data-formatter="setTable.formatDate">推荐时间</th>
     </tr>
     </thead>

@@ -28,3 +28,13 @@ function CompareDate(d1,d2)
     return ((new Date(d1.replace(/-/g,"\/"))) > (new Date(d2.replace(/-/g,"\/"))));
 }
 
+var checkName = {
+    formatName: function (value) {
+        if (value === null || value === '') {
+            return '<span style="color: #788C9B">此人未核实真实姓名</span>';
+        } else {
+            return value;
+        }
+    }
+}
+

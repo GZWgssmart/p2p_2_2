@@ -42,7 +42,7 @@
     <tr>
         <th data-checkbox="true"></th>
         <th data-field="uid">推荐好友的id</th>
-        <th data-field="rname">推荐好友的名字</th>
+        <th data-field="rname" data-formatter="checkName.formatName">推荐好友的名字</th>
         <th data-field="date" data-formatter="setTable.formatDate">推荐时间</th>
     </tr>
     </thead>

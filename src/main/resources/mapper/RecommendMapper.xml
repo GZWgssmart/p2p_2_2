@@ -112,8 +112,8 @@
   </sql>
 
   <select id="listCriteria" resultType="com.we.bean.Recommend">
-      select * from recommend
-      WHERE 1=1
+      select r.rid ,r.tid,r.uid,r.date as `date`,u.rname as tname,us.rname as rname from recommend r, `user` u ,`user` us
+      WHERE 1=1 and r.tid = u.uid and r.uid = us.uid
       <include refid="queryDate"/>
       order by `date` desc limit #{pager.offset} ,#{pager.limit}
   </select>
@@ -134,8 +134,8 @@
   </sql>
 
   <select id="listUserFriends" resultType="com.we.bean.Recommend">
-    select r.* ,u.uid,u.tid from recommend r, `user` u
-    WHERE r.tid = u.uid and #{query.uid } = u.uid
+    select r.rid ,r.tid,r.uid,r.date,u.uid,us.rname as rname,u.tid from recommend r, `user` u ,`user` us
+    WHERE r.tid = u.uid and r.uid = us.uid and #{query.uid } = u.uid
     <include refid="queryFriends"/>
     order by r.date desc limit #{pager.offset} ,#{pager.limit}
   </select>
