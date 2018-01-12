@@ -53,6 +53,19 @@
 
                 <li>
                     <a href="#">
+                        <i class="fa fa fa-bar-chart-o"></i>
+                        <span class="nav-label">投资管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/user/all_invest_borrow_page">已投借款</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
                         <i class="fa fa-table"></i>
                         <span class="nav-label">信息管理</span>
                         <span class="fa arrow"></span>
@@ -63,19 +76,6 @@
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_notice_page">最新公告</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa fa-bar-chart-o"></i>
-                        <span class="nav-label">流水管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/cash/all_cash_page">所有流水</a>
                         </li>
                     </ul>
                 </li>

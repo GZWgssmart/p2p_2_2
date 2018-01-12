@@ -6,6 +6,7 @@ import com.we.vo.BorrowCheckOkVO;
 import com.we.vo.BorrowdetailAndWapplyVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -62,6 +63,20 @@ public interface BorrowapplyDAO extends BaseDAO {
      * @return
      */
     Long countCheckOkBorrow(@Param("query") Object query);
+
+    /**
+     * 查询前台用户投过多少个标（借款）
+     * @param query 查询条件
+     * @return 借款列表
+     */
+    List<Object> listUserInvest(@Param("pager") Pager pager, @Param("query") Object query);
+
+    /**
+     * 计数用户投过多少标
+     * @param query
+     * @return
+     */
+    Long countUserInvest(@Param("query") Object query);
 
     /**
      * 页面多金宝、普金宝、恒金宝的查询

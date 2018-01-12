@@ -4,6 +4,7 @@ package com.we.controller;
 import com.we.bean.Borrowapply;
 import com.we.bean.Huser;
 import com.we.bean.Shborrow;
+import com.we.bean.User;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
@@ -66,9 +67,18 @@ public class ShborrowController {
         return vo;
     }
 
+    /**
+     * 后台用户审核借款
+     * @param offset
+     * @param limit
+     * @param shborrow
+     * @return
+     */
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pagerCriteria(Long offset, Long limit, Shborrow shborrow) {
+    public Pager pagerCriteria(Long offset, Long limit, Shborrow shborrow, HttpSession session) {
+        Huser huser = (Huser) session.getAttribute(OurConstants.SESSION_IN_USER);
+        shborrow.setHuid(huser.getHuid());
         return shborrowService.listCriteria(offset, limit, shborrow);
     }
 

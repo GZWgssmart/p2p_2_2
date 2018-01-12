@@ -1,5 +1,6 @@
 package com.we.service;
 
+import com.we.bean.Borrowapply;
 import com.we.common.Pager;
 import com.we.vo.BorrowCheckOkVO;
 import com.we.vo.BorrowdetailAndWapplyVO;
@@ -14,24 +15,28 @@ public interface BorrowapplyService extends BaseService {
 
     /**
      * 总贷款人数
+     *
      * @return
      */
     Long countAllBorrowUse();
 
     /**
      * 总贷款人数
+     *
      * @return
      */
     Long countMonthBorrowUse(@Param("beginTime") String beginTime, @Param("endTime") String endTime);
 
     /**
      * 总贷款笔数
+     *
      * @return
      */
     Long countAllBorrow();
 
     /**
      * 月贷款笔数
+     *
      * @return
      */
     Long countMonthBorrow(@Param("beginTime") String beginTime, @Param("endTime") String endTime);
@@ -48,12 +53,23 @@ public interface BorrowapplyService extends BaseService {
 
     /**
      * 前台用户查询自己已发布的借款
+     *
      * @param offset
      * @param limit
      * @param query
      * @return
      */
     Pager listCheckOkBorrow(Long offset, Long limit, Object query);
+
+    /**
+     * 查询前台用户投过多少个标（借款）
+     *
+     * @param offset
+     * @param limit
+     * @param query
+     * @return 借款列表
+     */
+    Pager listUserInvest(Long offset, Long limit, Object query);
 
     /**
      * 页面多金宝、普金宝、恒金宝的查询

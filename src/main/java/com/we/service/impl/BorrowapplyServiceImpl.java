@@ -131,6 +131,14 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
     }
 
     @Override
+    public Pager listUserInvest(Long offset, Long limit, Object query) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(borrowapplyDAO.listUserInvest(pager, query));
+        pager.setTotal(borrowapplyDAO.countUserInvest(query));
+        return pager;
+    }
+
+    @Override
     public List<BorrowdetailAndWapplyVO> listBorrow(Integer type) {
         return borrowapplyDAO.listBorrow(type);
     }

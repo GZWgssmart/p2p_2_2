@@ -29,7 +29,7 @@
     <button class="btn btn-success" onclick="allShborrow.lookDetail();">查看详情</button>
 </div>
 <table id="shborrow-list" class="table table-hover"
-       data-url="<%=path%>/shborrow/pager_criteria?huid=${sessionScope.user.huid}">
+       data-url="<%=path%>/shborrow/pager_criteria">
     <thead>
     <tr>
         <th data-checkbox="true"></th>

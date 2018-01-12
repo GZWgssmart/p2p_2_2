@@ -1,12 +1,11 @@
 package com.we.controller;
 
+import com.we.bean.*;
 import com.we.bean.Borrowapply;
-import com.we.bean.Borrowapply;
-import com.we.bean.Letter;
-import com.we.bean.User;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
+import com.we.query.InvestBorrowQuery;
 import com.we.service.BorrowapplyService;
 import com.we.vo.BorrowdetailAndWapplyVO;
 import com.we.vo.RequestResultVO;
@@ -25,6 +24,21 @@ import java.util.List;
 public class BorrowapplyController {
 
     private BorrowapplyService borrowapplyService;
+
+    /**
+     * 前台用户查看已投资的借款
+     * @param offset
+     * @param limit
+     * @param query
+     * @return
+     */
+    @RequestMapping("list_user_invest")
+    @ResponseBody
+    public Pager listCheckOk(Long offset, Long limit, InvestBorrowQuery query, HttpSession session) {
+        User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
+        query.setUid(user.getUid());
+        return borrowapplyService.listUserInvest(offset, limit, query);
+    }
 
     /**
      * 前台用户查看已发布的借款

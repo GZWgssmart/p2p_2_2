@@ -1,165 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.we.dao.BorrowapplyDAO">
-  <resultMap id="BaseResultMap" type="com.we.bean.Borrowapply">
-    <id column="baid" jdbcType="INTEGER" property="baid" />
-    <result column="rname" jdbcType="VARCHAR" property="rname" />
-    <result column="money" jdbcType="DECIMAL" property="money" />
-    <result column="uid" jdbcType="INTEGER" property="uid" />
-    <result column="bzid" jdbcType="INTEGER" property="bzid" />
-    <result column="time" jdbcType="TIMESTAMP" property="time" />
-    <result column="state" jdbcType="INTEGER" property="state" />
-    <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="term" jdbcType="INTEGER" property="term" />
-    <result column="deadline" jdbcType="TIMESTAMP" property="deadline" />
-    <result column="symoney" jdbcType="DECIMAL" property="symoney" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    baid, rname, money, uid, bzid, time, state, type, term, deadline, symoney
-  </sql>
-  <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from borrowapply
-    where baid = #{baid,jdbcType=INTEGER}
-  </select>
-  <delete id="removeById" parameterType="java.lang.Integer">
-    delete from borrowapply
-    where baid = #{baid,jdbcType=INTEGER}
-  </delete>
-  <insert id="save" parameterType="com.we.bean.Borrowapply">
-    insert into borrowapply (baid, rname, money,
-      uid, bzid, time,
-      state, type, term,
-      deadline, symoney)
-    values (#{baid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL},
-      #{uid,jdbcType=INTEGER}, #{bzid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP},
-      #{state,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{term,jdbcType=INTEGER},
-      #{deadline,jdbcType=TIMESTAMP}, #{symoney,jdbcType=DECIMAL})
-  </insert>
-  <insert id="saveSelective" parameterType="com.we.bean.Borrowapply">
-    insert into borrowapply
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="baid != null">
-        baid,
-      </if>
-      <if test="rname != null">
-        rname,
-      </if>
-      <if test="money != null">
-        money,
-      </if>
-      <if test="uid != null">
-        uid,
-      </if>
-      <if test="bzid != null">
-        bzid,
-      </if>
-      <if test="time != null">
-        time,
-      </if>
-      <if test="state != null">
-        state,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="term != null">
-        term,
-      </if>
-      <if test="deadline != null">
-        deadline,
-      </if>
-      <if test="symoney != null">
-        symoney,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="baid != null">
-        #{baid,jdbcType=INTEGER},
-      </if>
-      <if test="rname != null">
-        #{rname,jdbcType=VARCHAR},
-      </if>
-      <if test="money != null">
-        #{money,jdbcType=DECIMAL},
-      </if>
-      <if test="uid != null">
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="bzid != null">
-        #{bzid,jdbcType=INTEGER},
-      </if>
-      <if test="time != null">
-        #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="state != null">
-        #{state,jdbcType=INTEGER},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="term != null">
-        #{term,jdbcType=INTEGER},
-      </if>
-      <if test="deadline != null">
-        #{deadline,jdbcType=TIMESTAMP},
-      </if>
-      <if test="symoney != null">
-        #{symoney,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateSelective" parameterType="com.we.bean.Borrowapply">
-    update borrowapply
-    <set>
-      <if test="rname != null">
-        rname = #{rname,jdbcType=VARCHAR},
-      </if>
-      <if test="money != null">
-        money = #{money,jdbcType=DECIMAL},
-      </if>
-      <if test="uid != null">
-        uid = #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="bzid != null">
-        bzid = #{bzid,jdbcType=INTEGER},
-      </if>
-      <if test="time != null">
-        time = #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="term != null">
-        term = #{term,jdbcType=INTEGER},
-      </if>
-      <if test="deadline != null">
-        deadline = #{deadline,jdbcType=TIMESTAMP},
-      </if>
-      <if test="symoney != null">
-        symoney = #{symoney,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where baid = #{baid,jdbcType=INTEGER}
-  </update>
-  <update id="update" parameterType="com.we.bean.Borrowapply">
-    update borrowapply
-    set rname = #{rname,jdbcType=VARCHAR},
-      money = #{money,jdbcType=DECIMAL},
-      uid = #{uid,jdbcType=INTEGER},
-      bzid = #{bzid,jdbcType=INTEGER},
-      time = #{time,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER},
-      type = #{type,jdbcType=INTEGER},
-      term = #{term,jdbcType=INTEGER},
-      deadline = #{deadline,jdbcType=TIMESTAMP},
-      symoney = #{symoney,jdbcType=DECIMAL}
-    where baid = #{baid,jdbcType=INTEGER}
-  </update>
+    <resultMap id="BaseResultMap" type="com.we.bean.Borrowapply">
+        <id column="baid" jdbcType="INTEGER" property="baid"/>
+        <result column="rname" jdbcType="VARCHAR" property="rname"/>
+        <result column="money" jdbcType="DECIMAL" property="money"/>
+        <result column="uid" jdbcType="INTEGER" property="uid"/>
+        <result column="bzid" jdbcType="INTEGER" property="bzid"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="term" jdbcType="INTEGER" property="term"/>
+        <result column="deadline" jdbcType="TIMESTAMP" property="deadline"/>
+        <result column="symoney" jdbcType="DECIMAL" property="symoney"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        baid, rname, money, uid, bzid, time, state, type, term, deadline, symoney
+    </sql>
+    <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from borrowapply
+        where baid = #{baid,jdbcType=INTEGER}
+    </select>
+    <delete id="removeById" parameterType="java.lang.Integer">
+        DELETE FROM borrowapply
+        WHERE baid = #{baid,jdbcType=INTEGER}
+    </delete>
+    <insert id="save" parameterType="com.we.bean.Borrowapply">
+        INSERT INTO borrowapply (baid, rname, money,
+                                 uid, bzid, time,
+                                 state, type, term,
+                                 deadline, symoney)
+        VALUES (#{baid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL},
+                                          #{uid,jdbcType=INTEGER}, #{bzid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP},
+                                          #{state,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{term,jdbcType=INTEGER},
+                                          #{deadline,jdbcType=TIMESTAMP}, #{symoney,jdbcType=DECIMAL})
+    </insert>
+    <insert id="saveSelective" parameterType="com.we.bean.Borrowapply">
+        insert into borrowapply
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="baid != null">
+                baid,
+            </if>
+            <if test="rname != null">
+                rname,
+            </if>
+            <if test="money != null">
+                money,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="bzid != null">
+                bzid,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="term != null">
+                term,
+            </if>
+            <if test="deadline != null">
+                deadline,
+            </if>
+            <if test="symoney != null">
+                symoney,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="baid != null">
+                #{baid,jdbcType=INTEGER},
+            </if>
+            <if test="rname != null">
+                #{rname,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                #{money,jdbcType=DECIMAL},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="bzid != null">
+                #{bzid,jdbcType=INTEGER},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="term != null">
+                #{term,jdbcType=INTEGER},
+            </if>
+            <if test="deadline != null">
+                #{deadline,jdbcType=TIMESTAMP},
+            </if>
+            <if test="symoney != null">
+                #{symoney,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSelective" parameterType="com.we.bean.Borrowapply">
+        update borrowapply
+        <set>
+            <if test="rname != null">
+                rname = #{rname,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                money = #{money,jdbcType=DECIMAL},
+            </if>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="bzid != null">
+                bzid = #{bzid,jdbcType=INTEGER},
+            </if>
+            <if test="time != null">
+                time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="term != null">
+                term = #{term,jdbcType=INTEGER},
+            </if>
+            <if test="deadline != null">
+                deadline = #{deadline,jdbcType=TIMESTAMP},
+            </if>
+            <if test="symoney != null">
+                symoney = #{symoney,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where baid = #{baid,jdbcType=INTEGER}
+    </update>
+    <update id="update" parameterType="com.we.bean.Borrowapply">
+        UPDATE borrowapply
+        SET rname    = #{rname,jdbcType=VARCHAR},
+            money    = #{money,jdbcType=DECIMAL},
+            uid      = #{uid,jdbcType=INTEGER},
+            bzid     = #{bzid,jdbcType=INTEGER},
+            time     = #{time,jdbcType=TIMESTAMP},
+            state    = #{state,jdbcType=INTEGER},
+            type     = #{type,jdbcType=INTEGER},
+            term     = #{term,jdbcType=INTEGER},
+            deadline = #{deadline,jdbcType=TIMESTAMP},
+            symoney  = #{symoney,jdbcType=DECIMAL}
+        WHERE baid = #{baid,jdbcType=INTEGER}
+    </update>
 
     <sql id="queryCriteria">
         FROM borrowapply b, bz, jklx j, user u, shborrow s
@@ -180,48 +180,58 @@
         SELECT
         b.baid,b.rname,b.money, b.state, b.deadline, b.term, b.time AS 'applyTime',
         s.date AS 'checkTime', s.excuse, bz.bzname, j.lxname
-        <include refid="queryCriteria" />
+        <include refid="queryCriteria"/>
         ORDER BY b.state DESC, b.time DESC
         LIMIT #{pager.offset}, #{pager.limit}
     </select>
 
     <select id="countCriteria" resultType="java.lang.Long">
         SELECT count(b.baid)
-        <include refid="queryCriteria" />
+        <include refid="queryCriteria"/>
     </select>
 
     <select id="countAllBorrowUse" resultType="long">
-      select count(distinct uid) from borrowapply where state = 1;
+        SELECT count(DISTINCT uid)
+        FROM borrowapply
+        WHERE state = 1;
     </select>
 
     <select id="countMonthBorrowUse" resultType="long">
       <![CDATA[
-        select count(distinct uid) from borrowapply where state = 1 and time > #{beginTime} and time < #{endTime};
-      ]]>
+        SELECT count(DISTINCT uid)
+        FROM borrowapply
+        WHERE state = 1 AND time > #{beginTime} AND time < #{endTime};
+        ]]>
     </select>
 
-  <select id="countAllBorrow" resultType="long">
-    select count(baid) from borrowapply where state = 1;
-  </select>
+    <select id="countAllBorrow" resultType="long">
+        SELECT count(baid)
+        FROM borrowapply
+        WHERE state = 1;
+    </select>
 
-  <select id="countMonthBorrow" resultType="long">
+    <select id="countMonthBorrow" resultType="long">
     <![CDATA[
-      select count(baid) from borrowapply where state = 1 and time > #{beginTime} and time < #{endTime};
-    ]]>
+        SELECT count(baid)
+        FROM borrowapply
+        WHERE state = 1 AND time > #{beginTime} AND time < #{endTime};
+        ]]>
   </select>
 
-  <select id="getAllBorrowapplyByStateAndDeadline" resultMap="BaseResultMap">
+    <select id="getAllBorrowapplyByStateAndDeadline" resultMap="BaseResultMap">
     <![CDATA[
-      select * from borrowapply where state = 1 and deadline < #{nowTime};
-    ]]>
+        SELECT *
+        FROM borrowapply
+        WHERE state = 1 AND deadline < #{nowTime};
+        ]]>
   </select>
 
-  <update id="updateStateByBaid">
-    update borrowapply set state = 5 where baid in
-    <foreach collection="list" open="(" close=")" separator="," item="item">
-      #{item}
-    </foreach>
-  </update>
+    <update id="updateStateByBaid">
+        update borrowapply set state = 5 where baid in
+        <foreach collection="list" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </update>
 
     <sql id="listCheckOkQuery">
         FROM borrowapply b, bz, jklx j, user u
@@ -246,7 +256,7 @@
 
     <select id="listCheckOkBorrow" resultType="com.we.vo.BorrowCheckOkVO">
         SELECT b.baid,b.rname,b.money, b.state, b.deadline, b.term, b.time AS 'applyTime',
-             b.symoney, bz.bzname, j.lxname
+        b.symoney, bz.bzname, j.lxname
         <include refid="listCheckOkQuery"/>
         LIMIT #{pager.offset}, #{pager.limit}
     </select>
@@ -254,6 +264,30 @@
     <select id="countCheckOkBorrow" resultType="java.lang.Long">
         SELECT count(b.baid)
         <include refid="listCheckOkQuery"/>
+    </select>
+
+    <sql id="userInvestCriteria">
+        from borrowapply b, borrowdetail bd, bz, jklx j
+        where b.baid IN (SELECT baid FROM tzb WHERE tzb.uid=#{query.uid})
+        AND b.bzid = bz.bzid
+        AND b.baid = bd.baid
+        AND b.type = j.lxid
+        <if test="query != null">
+            <if test="query.state != null">
+                AND b.state = #{query.state}
+            </if>
+        </if>
+    </sql>
+
+    <select id="listUserInvest" resultType="com.we.vo.InvestBorrowVO">
+        select b.baid, bd.cpname, j.lxname, bd.nprofit, b.term, bz.bzname, b.money, b.state
+        <include refid="userInvestCriteria"/>
+        LIMIT #{pager.offset}, #{pager.limit}
+    </select>
+
+    <select id="countUserInvest" resultType="java.lang.Long">
+        SELECT count(b.baid)
+        <include refid="userInvestCriteria"/>
     </select>
 
   <select id="listBorrow" resultType="com.we.vo.BorrowdetailAndWapplyVO">

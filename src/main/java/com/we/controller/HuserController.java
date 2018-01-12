@@ -2,6 +2,7 @@ package com.we.controller;
 
 import com.we.bean.Huser;
 import com.we.common.EncryptUtils;
+import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.HuserService;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 
 /**
@@ -176,7 +178,7 @@ public class HuserController {
 
     @RequestMapping("login")
     @ResponseBody
-    public RequestResultVO login(Huser huser){
+    public RequestResultVO login(Huser huser, HttpSession session){
         Subject subject= SecurityUtils.getSubject();
         UsernamePasswordToken token = null;
         if(huser.getEmail() != null && huser.getEmail() != ""){
@@ -186,6 +188,7 @@ public class HuserController {
         }
         try{
             subject.login(token);
+            session.setAttribute(OurConstants.SESSION_IN_USER, huser);
             return RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
         }catch(Exception e){
             e.printStackTrace();

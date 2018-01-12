@@ -29,6 +29,13 @@ var swtAlert = {
             timer: 1500
         });
     },
+    success_not_timer: function (message) {
+        swal({
+            title: '成功！',
+            text: message,
+            type: 'success'
+        });
+    },
     request_fail_no_timer: function (message) {
         swal({
             title: '失败！',
