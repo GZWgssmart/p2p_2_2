@@ -26,7 +26,7 @@ public class SwayController {
     private SwayService swayService;
 
     @RequestMapping("all_sway_page")
-    public String AllSwayPage(){
+    public String AllSwayPage() {
         return "sway/allSway";
     }
 
@@ -35,11 +35,11 @@ public class SwayController {
     @ResponseBody
     public RequestResultVO save(Sway sway) {
         RequestResultVO vo = null;
-        sway.setState(0);
-        try{
+        try {
             swayService.saveSelective(sway);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
-        }catch (RuntimeException e) {
+        } catch (RuntimeException e) {
+            e.printStackTrace();
             vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
         return vo;
@@ -49,10 +49,10 @@ public class SwayController {
     @ResponseBody
     public RequestResultVO update(Sway sway) {
         RequestResultVO vo = null;
-        try{
+        try {
             swayService.updateSelective(sway);
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
-        }catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return vo;
@@ -60,11 +60,11 @@ public class SwayController {
 
     @RequestMapping("remove")
     @ResponseBody
-    public String remove(ListIntegerVO listIntegerVO){
+    public RequestResultVO remove(ListIntegerVO listIntegerVO) {
         RequestResultVO vo = null;
         swayService.removeByIds(listIntegerVO.getIds());
         vo = RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
-        return "remove";
+        return vo;
     }
 
     @RequestMapping("all_sway")
@@ -79,14 +79,20 @@ public class SwayController {
         RequestResultVO vo = null;
         Sway sway = new Sway();
         sway.setSid(sid);
-        if("激活".equals(state)){
+        if ("激活".equals(state)) {
             sway.setState(1);
-        }else if("冻结".equals(state)){
+        } else if ("冻结".equals(state)) {
             sway.setState(0);
         }
         swayService.updateSelective(sway);
         vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
         return vo;
+    }
+
+    @RequestMapping("pager_criteria")
+    @ResponseBody
+    public Pager pagerCriteria(Long offset, Long limit, Sway sway) {
+        return swayService.listCriteria(offset, limit, sway);
     }
 
     @Resource

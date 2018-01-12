@@ -52,16 +52,28 @@
                 <li>
                     <a href="#">
                         <i class="fa fa fa-bar-chart-o"></i>
-                        <span class="nav-label">投资奖励设置</span>
+                        <span class="nav-label">平台设置</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a class="J_menuItem" href="<%=path%>/huser/all_reward_setting_page" data-index="0">奖励设置</a>
                         </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_sway_page">还款方式</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_bz_page">标种</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_bz_page">短信模版</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_jklx_page">借款类型</a>
+                        </li>
+
                     </ul>
                 </li>
-
 
 
                 <li>

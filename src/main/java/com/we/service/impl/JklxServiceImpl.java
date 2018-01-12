@@ -21,6 +21,10 @@ public class JklxServiceImpl extends AbstractBaseService implements JklxService 
         super.setBaseDAO(jklxDAO);
         this.jklxDAO =jklxDAO;
     }
+    @Override
+    public void removeByIds(List<Integer> ids) {
+        jklxDAO.removeByIds(ids);
+    }
 
     @Override
     public List<ComboboxVO> listCombobox() {

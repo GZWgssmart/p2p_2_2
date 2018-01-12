@@ -21,6 +21,10 @@ public class BzServiceImpl extends AbstractBaseService implements BzService {
     }
 
     @Override
+    public void removeByIds(List<Integer> ids) {
+        bzDAO.removeByIds(ids);
+    }
+    @Override
     public List<ComboboxVO> listCombobox() {
         return bzDAO.listCombobox();
     }

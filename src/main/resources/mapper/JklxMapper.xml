@@ -19,6 +19,14 @@
     delete from jklx
     where lxid = #{lxid,jdbcType=INTEGER}
   </delete>
+  <delete id="removeByIds">
+    delete from jklx
+    where lxid in
+    <foreach item="item" index="index" collection="list" open="("
+             separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
   <insert id="save" parameterType="com.we.bean.Jklx" >
     insert into jklx (lxid, lxname, state
       )

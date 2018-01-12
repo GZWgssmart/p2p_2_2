@@ -12,5 +12,6 @@ public interface JklxDAO extends BaseDAO {
      * 将查询出的借款类型 放到 下拉框中
      * @return 借款类型的列表（包含id，name）
      */
+    void removeByIds(List<Integer> ids);
     List<ComboboxVO> listCombobox();
 }

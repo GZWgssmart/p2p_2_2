@@ -5,8 +5,9 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="<%=path%>/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<%=path%>/static/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <%@include file="../../common/css/css_bootstrap.jsp" %>
+    <%@include file="../../common/css/css_bootstrap-table.jsp" %>
+    <%@include file="../../common/css/css_sweetalert.jsp" %>
 </head>
 <body class="gray-bg">
 <div class="tool-bar" id="tool-bar">
@@ -28,7 +29,7 @@
         </tr>
     </thead>
 </table>
-<%@include file="../sway/SwayModel.jsp" %>
+<%@include file="SwayModel.jsp" %>
 </body>
 <!-- 全局js -->
 <script src="<%=path%>/static/js/jquery.min.js"></script>
@@ -37,9 +38,9 @@
 <script src="<%=path%>/static/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
 <script src="<%=path%>/static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 <script src="<%=path%>/static/js/our/site_bootstrap_table.js"></script>
-<%@include file="../common/js/js_form.jsp" %>
-<%@include file="../common/js/js_data_dict.jsp" %>
-<%@include file="../common/js/js_sweetalert.jsp" %>
+<%@include file="../../common/js/js_form.jsp" %>
+<%@include file="../../common/js/js_data_dict.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
 <script>
     $(function () {
         setTable.setBootstrapTable('allSway');
@@ -157,8 +158,8 @@
                     "ids":ids.join()
                 },
                 success:  function (data){
-                    swtAlert.success(data.message);
-                    var row = $("#allSway").bootstrapTable('getSelections');
+                    swtAlert.request_success(data.message);
+                    $("#allSway").bootstrapTable('refresh');
                 },
                 error:function () {
                     swtAlert.request_fail("删除失败")

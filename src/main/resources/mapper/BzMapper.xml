@@ -19,11 +19,19 @@
     delete from bz
     where bzid = #{bzid,jdbcType=INTEGER}
   </delete>
+
+  <delete id="removeByIds">
+    delete from bz
+    where bzid in
+    <foreach item="item" index="index" collection="list" open="("
+             separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
   <insert id="save" parameterType="com.we.bean.Bz" >
-    insert into bz (bzid, bzname, state
-      )
-    values (#{bzid,jdbcType=INTEGER}, #{bzname,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}
-      )
+    insert into bz (bzid, bzname, state)
+    values (#{bzid,jdbcType=INTEGER}, #{bzname,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
   </insert>
   <insert id="saveSelective" parameterType="com.we.bean.Bz" >
     insert into bz
@@ -71,5 +79,14 @@
 
   <select id="listCombobox" resultType="com.we.vo.ComboboxVO">
     SELECT bz.bzid AS 'id', bz.bzname AS 'text' FROM bz WHERE state = 1;
+  </select>
+
+  <select id="listCriteria" resultType="bz">
+    SELECT * FROM bz
+    LIMIT #{pager.offset}, #{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT count(bzid) FROM bz
   </select>
 </mapper>

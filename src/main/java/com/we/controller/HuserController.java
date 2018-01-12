@@ -101,6 +101,19 @@ public class HuserController {
         return "huser/all_huser_page";
     }
 
+    @RequestMapping("all_sway_page")
+    public String allSwayPage() {
+        return "huser/sway/all_sway";
+    }
+    @RequestMapping("all_bz_page")
+    public String allBzPage() {
+        return "huser/bz/all_bz";
+    }
+ @RequestMapping("all_jklx_page")
+    public String allJklxPage() {
+        return "huser/jklx/all_jklx";
+    }
+
 
     @ResponseBody
     @RequestMapping("list_pager")
@@ -111,9 +124,10 @@ public class HuserController {
 
     //后台管理员跳转到提现审核页面
     @RequestMapping("all_tx_log_page")
-    public String toUserTxCheck(){
+    public String toUserTxCheck() {
         return "huser/txlog/all_tx_log";
     }
+
     /***
      * 条件分页查询用户 站内信
      * @param offset 开始索引
@@ -125,8 +139,8 @@ public class HuserController {
 
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pagerCriteria(Long offset,Long limit,Huser huser) {
-        return huserService.listCriteria(offset,limit,huser);
+    public Pager pagerCriteria(Long offset, Long limit, Huser huser) {
+        return huserService.listCriteria(offset, limit, huser);
     }
 
     @RequestMapping("add")
@@ -135,8 +149,8 @@ public class HuserController {
         huser.setCreateTime(Calendar.getInstance().getTime());
         huser.setPassword(EncryptUtils.md5("123456"));
         huserService.save(huser);
-        if(roleIds != null && roleIds != ""){
-            roleuserService.saveRoleuser(huser.getHuid(),roleIds);
+        if (roleIds != null && roleIds != "") {
+            roleuserService.saveRoleuser(huser.getHuid(), roleIds);
         }
         return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
     }
