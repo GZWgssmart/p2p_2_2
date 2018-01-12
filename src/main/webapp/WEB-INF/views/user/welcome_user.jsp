@@ -39,7 +39,7 @@
                     <p id="reset"></p>
                 </div>
                 <div class="center-user">
-                    <p class="amt color"><span id="usableSum">0.00</span>元</p>
+                    <p class="amt color"><span id="usableSum">10000.00</span>元</p>
                     <p class="text"><i></i>可用余额</p>
                     <p class="link">
                         <a href="https://www.pujinziben.com/account.html#ipay" class="active">充值</a>
@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 <div class="center-profit">
-                    <p class="amt"><span id="earnSum">0.00</span>元</p>
+                    <p class="amt"><span id="earnSum">100000.00</span>元</p>
                     <p class="text">收益总额</p>
                     <p class="luckynum"><i id="DetailsIcon"></i><a class="luckyLink"
                                                                    href="https://www.pujinziben.com/activity/lucky.html"
