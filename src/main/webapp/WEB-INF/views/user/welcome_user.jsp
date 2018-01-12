@@ -22,13 +22,6 @@
 </head>
 <body>
 <div class="account-right">
-    <%--<div class="account-right-nav">
-        <div class="sub-a-nav">
-            <a href="javascript:void(0);" class="all-a active">账户总览</a>
-            <a href="javascript:void(0);" class="slb-a">生利宝</a>
-        </div>
-        <em class="em-line"></em>
-    </div>--%>
     <div class="account-content" style="display: block;">
         <div class="all-view">
             <div class="center-view">
@@ -36,7 +29,7 @@
                     <img src="<%=path %>/static/css/our/huser/xdp/header.png" width="120" height="120">
                 </div>
                 <div class="center-self">
-                    <p class="name">18870798915</p>
+                    <p class="name">hahah</p>
                     <p class="safety">安全等级： <span id="safeLevel">中</span></p>
                     <p class="center-icon">
                         <a href="https://www.pujinziben.com/account.html#safe" class="icon icon-c-phone"></a>
