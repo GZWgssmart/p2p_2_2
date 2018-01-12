@@ -22,9 +22,9 @@
   </delete>
   <insert id="save" parameterType="com.we.bean.Ticket" >
     insert into ticket (umid, type, tkmoney, 
-      tktime)
+      tktime,create_time)
     values (#{umid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{tkmoney,jdbcType=DECIMAL}, 
-      #{tktime,jdbcType=TIMESTAMP})
+      #{tktime,jdbcType=TIMESTAMP},#{createTime})
   </insert>
   <insert id="saveSelective" parameterType="com.we.bean.Ticket" >
     insert into ticket
@@ -79,4 +79,45 @@
       tktime = #{tktime,jdbcType=TIMESTAMP}
     where umid = #{umid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="ticket">
+    select * from ticket
+    <include refid="criteriaParam"></include>
+    order by create_time desc limit #{pager.offset},#{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    select count(umid) from ticket
+    <include refid="criteriaParam"></include>
+  </select>
+
+  <delete id="deletes" >
+    delete from ticket WHERE umid  IN
+    <foreach collection="ticketIds" item="ticketId" separator="," open="(" close=")">
+      #{ticketId}
+    </foreach>
+  </delete>
+
+  <sql id="criteriaParam">
+    <where>
+      <if test="query!= null and query.type != null">
+        type = #{query.type}
+      </if>
+      <if test="query!= null and query.tkmoney != null">
+        <![CDATA[
+           and tkmoney <= #{query.tkmoney}
+        ]]>
+      </if>
+      <if test="query!= null and query.tktime != null">
+        <![CDATA[
+          and  tktime <= #{query.tktime}
+        ]]>
+      </if>
+      <if test="query!= null and query.createTime != null">
+        <![CDATA[
+           and create_time <= #{query.createTime}
+        ]]>
+      </if>
+    </where>
+  </sql>
 </mapper>

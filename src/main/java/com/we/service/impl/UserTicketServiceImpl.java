@@ -7,6 +7,8 @@ import com.we.service.UserTicketService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/1/2.
@@ -25,5 +27,15 @@ public class UserTicketServiceImpl extends AbstractBaseService implements UserTi
     @Override
     public UserTicket getByUidKid(Integer uid, Integer kid) {
         return userTicketDAO.getByUidKid(uid, kid);
+    }
+
+    @Override
+    public void deletesByTicketId(String ticketIds) {
+        String [] ticketIdsArray = ticketIds.split(",");
+        List<Integer> ticketIdsList = new ArrayList<>();
+        for (String classId:ticketIdsArray){
+            ticketIdsList.add(Integer.valueOf(classId));
+        }
+        userTicketDAO.deletesByTicketId(ticketIdsList);
     }
 }

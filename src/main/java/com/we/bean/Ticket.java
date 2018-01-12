@@ -12,6 +12,8 @@ public class Ticket {
 
     private Date tktime;
 
+    private Date createTime;
+
     public Integer getUmid() {
         return umid;
     }
@@ -42,5 +44,13 @@ public class Ticket {
 
     public void setTktime(Date tktime) {
         this.tktime = tktime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

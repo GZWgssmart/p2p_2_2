@@ -96,4 +96,10 @@
       WHERE uid=#{uid} AND kid=#{kid}
   </select>
 
+  <delete id="deletesByTicketId" >
+    delete from user_ticket WHERE kid  IN
+    <foreach collection="ticketIds" item="ticketId" separator="," open="(" close=")">
+      #{ticketId}
+    </foreach>
+  </delete>
 </mapper>

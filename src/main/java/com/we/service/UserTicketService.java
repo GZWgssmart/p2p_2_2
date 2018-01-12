@@ -14,4 +14,10 @@ public interface UserTicketService extends BaseService {
      * @return 用户与券的关联对象
      */
     UserTicket getByUidKid(Integer uid, Integer kid);
+
+    /**
+     * 根据ticketIds 批量删除
+     * @param ticketIds
+     */
+    void deletesByTicketId(String ticketIds);
 }
