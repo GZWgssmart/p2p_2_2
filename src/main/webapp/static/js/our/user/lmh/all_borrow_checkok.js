@@ -64,20 +64,26 @@ var allCheckok = {
         var row = setTable.isSingleSelected(allCheckok.id.hkbListId);
         if (row && row.state !== 2) {
             var passwordTag = $('#deal-password');
-            $.post(contextPath + '/hkb/repayment',
-                {
-                    pwd: passwordTag.val(),
-                    skid: row.skid
-                },
-                function (data) {
-                    if (data.result === 'success') {
-                        swtAlert.request_success(data.message);
-                        setTable.postRefresh(allCheckok.id.hkbListId);
-                        passwordTag.val('');
-                    } else {
-                        swtAlert.request_fail(data.message);
-                    }
-                }, 'json');
+            if (passwordTag.val === '') {
+                swtAlert.warn_info('请输入密码后还款');
+            } else {
+                $.post(contextPath + '/hkb/repayment',
+                    {
+                        pwd: passwordTag.val(),
+                        skid: row.skid
+                    },
+                    function (data) {
+                        if (data.result === 'success') {
+                            swtAlert.success_not_timer(data.message);
+                            setTable.postRefresh(allCheckok.id.hkbListId);
+                            passwordTag.val('');
+                        } else {
+                            swtAlert.request_fail(data.message);
+                        }
+                    }, 'json');
+            }
+        } else {
+            swtAlert.warn_info('请选择未还款的数据进行还款');
         }
     }
 };

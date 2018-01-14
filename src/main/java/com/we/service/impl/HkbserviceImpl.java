@@ -154,7 +154,6 @@ public class HkbserviceImpl extends AbstractBaseService implements HkbService {
             hkb.setState(OurConstants.HKB_YH);
             hkbDAO.update(hkb);
             Integer baid = hkb.getBaid();
-            //TODO 查询可能有问题：不知更新是否会影响数据
             List<Hkb> hkbList = hkbDAO.listRepayOk(baid);
             if (hkbList.size() == 0) {
                 //此次还款后已还清借款

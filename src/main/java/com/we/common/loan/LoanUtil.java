@@ -1,5 +1,7 @@
 package com.we.common.loan;
 
+import com.we.common.OurConstants;
+
 import java.math.BigDecimal;
 
 /**
@@ -31,6 +33,19 @@ public class LoanUtil {
 
     public static int totalMonth(int year) {
         return 12 * year;
+    }
+
+    public static LoanCalculatorAdapter getCalculator(Integer bz) {
+        if (OurConstants.BZ_XXHB.equals(bz)) {
+            return  new XXHBLoanCalculator();
+        } else if (OurConstants.BZ_ACM.equals(bz)) {
+            return  new ACMLoanCalculator();
+        } else if (OurConstants.BZ_ACPIM.equals(bz)) {
+            return  new ACPIMLoanCalculator();
+        } else if (OurConstants.BZ_YCHQ.equals(bz)) {
+            return  new YCHQLoanCalculator();
+        }
+        return null;
     }
 
 }

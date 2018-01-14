@@ -4,6 +4,7 @@ import com.we.bean.Tzb;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -40,4 +41,12 @@ public interface TzbDAO extends BaseDAO {
      * 查询总交易笔数
      */
     Integer countDealNumber();
+
+    /**
+     * 查询用户对一个标投了的投资总额
+     * @param uid 前台用户id
+     * @param baid 借款id
+     * @return 投资总额
+     */
+    BigDecimal countUserTzTotal(@Param("uid") Integer uid, @Param("baid") Integer baid);
 }

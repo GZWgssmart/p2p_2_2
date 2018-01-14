@@ -68,7 +68,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
                 Borrowdetail borrowdetail = borrowdetailDAO.getByApplyId(borrowapply.getBaid());
                 usermoney.setKymoney(kymoney.subtract(money));
                 usermoney.setTzmoney(usermoney.getTzmoney().add(money));
-                LoanCalculatorAdapter calculator = gainCalculator(borrowapply.getBzid());
+                LoanCalculatorAdapter calculator = LoanUtil.getCalculator(borrowapply.getBzid());
                 Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, LoanUtil.PERCENT),
                         borrowapply.getTerm(),
                         LoanUtil.rate(borrowdetail.getNprofit().doubleValue(), LoanUtil.RATEDISCOUNT),
@@ -124,7 +124,7 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         String cpname = borrowdetail.getCpname();
         BigDecimal nprofit = borrowdetail.getNprofit();
         String bzname = gainBzname(bz);
-        LoanCalculatorAdapter calculator = gainCalculator(bz);
+        LoanCalculatorAdapter calculator = LoanUtil.getCalculator(bz);
         Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(money, LoanUtil.PERCENT),
                 term,
                 LoanUtil.rate(nprofit.doubleValue(), LoanUtil.RATEDISCOUNT),
@@ -173,19 +173,6 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
             return "等额本息";
         } else if (OurConstants.BZ_YCHQ.equals(bz)) {
             return "一次还清";
-        }
-        return null;
-    }
-
-    private LoanCalculatorAdapter gainCalculator(Integer bz) {
-        if (OurConstants.BZ_XXHB.equals(bz)) {
-            return  new XXHBLoanCalculator();
-        } else if (OurConstants.BZ_ACM.equals(bz)) {
-            return  new ACMLoanCalculator();
-        } else if (OurConstants.BZ_ACPIM.equals(bz)) {
-            return  new ACPIMLoanCalculator();
-        } else if (OurConstants.BZ_YCHQ.equals(bz)) {
-            return  new YCHQLoanCalculator();
         }
         return null;
     }
