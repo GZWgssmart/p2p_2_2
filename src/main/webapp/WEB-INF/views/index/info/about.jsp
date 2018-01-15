@@ -17,9 +17,9 @@
     <link rel="icon" href="<%=path%>/static/images/logo_title.jpg">
 </head>
 <body>
-<div class="top" id="top">
-</div>
+
 <!-- nav -->
+<%@include file="../../user/top.jsp" %>
 <%@include file="../../user/head.jsp"%>
 
 <div class="about cl">

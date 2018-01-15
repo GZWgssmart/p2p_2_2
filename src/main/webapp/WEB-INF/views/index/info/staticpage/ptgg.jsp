@@ -17,13 +17,15 @@
 <!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
 
+<%@include file="../../../user/top.jsp" %>
 <%@include file="../../../user/head.jsp"%>
 <div class="about cl">
     <div class="about-left">
         <div class="about-left-nav">
             <div id="animateDiv" class="animateDiv">
                 <ul id="animateUl" class="sub-nav">
-                    <li class="xxpl" class="active"><a href="javaScript:void(0);" onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>
+                    <li class="xxpl" class="active"><a href="javaScript:void(0);"
+                     onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>
                 </ul>
             </div>
             <ul class="sub-nav">
@@ -44,8 +46,10 @@
                 <ul class="notice-list listData">
                     <li class="interval" ng-repeat="notice in notice">
                         <div class="children0">
-                            <a href="<%=ptggPath %>/index/notice_info/{{notice.nid}}" target="_blank" class="title">
-                                {{notice.content}}</a><span class="time">{{notice.date | date:'yyyy-MM-dd HH:mm:ss'}}</span></div>
+                            <a href="<%=ptggPath %>/index/notice_info/{{notice.nid}}" target="_blank"
+                               class="title">
+                                {{notice.content}}</a><span class="time">
+                            {{notice.date | date:'yyyy-MM-dd HH:mm:ss'}}</span></div>
                     </li>
                 </ul>
                 <%-- <ul class="paging" style="width: 500px; margin: 30px auto 0px;">
