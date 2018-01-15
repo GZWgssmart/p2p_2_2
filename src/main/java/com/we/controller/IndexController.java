@@ -15,7 +15,7 @@ public class IndexController {
     //页面显示平台公告数据
     @RequestMapping("notice_info")
     public String allNotice_info() {
-        return "index/info/staticpage/ptgg";
+        return "index/info/staticpage/content";
     }
 
     //公司动态
@@ -38,9 +38,9 @@ public class IndexController {
     }
 
     //从事机构信息
-    @RequestMapping("csjgxx")
+    @RequestMapping("cyjgxx")
     public String allCsjgxx() {
-        return "index/info/staticpage/csjgxx";
+        return "index/info/staticpage/cyjgxx";
     }
 
     //从业机构信息
