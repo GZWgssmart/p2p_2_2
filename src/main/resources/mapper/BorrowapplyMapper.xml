@@ -305,19 +305,22 @@
         from borrowapply ba, borrowdetail bd, bz bz, jklx jklx
         where ba.baid = bd.baid and ba.bzid = bz.bzid and ba.type = jklx.lxid and (ba.state = 1 or ba.state = 4)
         <if test="xmqx1 != null and xmqx1 != ''">
-          and #{xmqx1} <![CDATA[<]]> ba.term
+          and #{xmqx1} <![CDATA[<=]]> ba.term
         </if>
         <if test="xmqx2 != null and xmqx2 != ''">
-          and ba.term <![CDATA[<]]> #{xmqx2}
+          and ba.term <![CDATA[<=]]> #{xmqx2}
         </if>
         <if test="nysy1 != null and nysy1 != ''">
-          and #{nysy1} <![CDATA[<]]> bd.nprofit
+          and #{nysy1} <![CDATA[<=]]> bd.nprofit
         </if>
         <if test="nysy2 != null and nysy2 != ''">
-          and bd.nprofit <![CDATA[<]]> #{nysy2}
+          and bd.nprofit <![CDATA[<=]]> #{nysy2}
         </if>
         <if test="xmlx1 != null and xmlx1 != ''">
           and bz.bzname <![CDATA[=]]> #{xmlx1}
+        </if>
+        <if test="search != null and search != ''">
+            and bd.cpname like concat('%',#{search},'%')
         </if>
     </select></mapper>
 

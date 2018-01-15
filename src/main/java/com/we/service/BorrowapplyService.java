@@ -79,4 +79,5 @@ public interface BorrowapplyService extends BaseService {
     List<BorrowdetailAndWapplyVO> listBorrow(Integer type);
 
 
-    List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2,String nysy1, String nysy2,String xmlx1);}
+    List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2,String nysy1, String nysy2,String xmlx1, String search);
+}

@@ -9,14 +9,7 @@
                 <li><a href="<%=path %>/index/security">安全保障</a></li>
                 <li>
                     <a href="/index/invest">投资理财</a>
-                    <div class="sub-nav">
-                        <a href="investlist.html#006">恒金保</a>
-                        <a href="investlist.html#004">普金保</a>
-                        <a href="investlist.html#003">多金宝</a>
-                        <a href="investlist.html#005">新手标</a>
-                        <a href="creditorlist.html">债权转让</a>
-                        <p class="left"></p>
-                        <p class="right"></p>
+                    <div class="sub-nav" id="bztop">
                     </div>
                 </li>
                 <li><a href="<%=path %>/index">首页</a></li>
@@ -24,4 +17,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $.post("/bz/all_bz",
+            function (data) {
+                $("#bztop").html("");
+                if(data.length != 0){
+                    for(var i = 0, len = data.length;i < len;i++){
+                        $("#bztop").append("<a href='<%=path%>/index/invest?bz=\""+data[i]+"\"'>"+data[i]+"</a>");
+                        $("#bztop").append("<p class='left'></p><p class='right'></p>");
+                    }
+                }
+            },"json"
+        );
+    });
+</script>
 

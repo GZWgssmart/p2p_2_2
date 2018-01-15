@@ -144,8 +144,8 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
         return borrowapplyDAO.listBorrow(type);
     }
     @Override
-    public List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2, String nysy1, String nysy2, String xmlx1) {
-        return borrowapplyDAO.listByInvest(xmqx1,xmqx2,nysy1,nysy2,xmlx1);
+    public List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2, String nysy1, String nysy2, String xmlx1, String search) {
+        return borrowapplyDAO.listByInvest(xmqx1,xmqx2,nysy1,nysy2,xmlx1,search);
     }
     @Autowired
     public void setBorrowapplyDAO(BorrowapplyDAO borrowapplyDAO) {

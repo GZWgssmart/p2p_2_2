@@ -1,7 +1,11 @@
 package com.we.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created on 2017/12/8 19:07
@@ -108,10 +112,12 @@ public class IndexController {
     }
 
     @RequestMapping("invest")
-    public String invest() {
-        return "index/info/investlist";
+    public ModelAndView invest(String bz) {
+        ModelAndView mav = new ModelAndView("index/info/investlist");
+        if(bz != null || !"".equals(bz)){
+            mav.addObject("bz",bz);
+        }
+        return mav;
     }
-
-
 
 }
