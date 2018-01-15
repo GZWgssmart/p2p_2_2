@@ -56,4 +56,9 @@ public interface TzbDAO extends BaseDAO {
      */
     BigDecimal countUserTzTotal(@Param("uid") Integer uid, @Param("baid") Integer baid);
 
-}
+    /**
+     * 查询某借款已筹款金额
+     * @param baid
+     * @return
+     */
+    Double sunMoneyByBaid(Integer baid);}

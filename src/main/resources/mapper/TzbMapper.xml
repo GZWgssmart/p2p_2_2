@@ -164,4 +164,6 @@
       WHERE uid = #{uid} AND baid = #{baid}
   </select>
 
-</mapper>
+  <select id="sunMoneyByBaid" resultType="double">
+    select IFNULL(sum(money),0) from tzb where baid = #{baid}
+  </select></mapper>

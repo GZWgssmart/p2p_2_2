@@ -198,6 +198,11 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         return tzbDAO.getAllMoney();
     }
 
+    @Override
+    public Double sunMoneyByBaid(Integer baid) {
+        return tzbDAO.sunMoneyByBaid(baid);
+    }
+
     @Autowired
     public void setTzbDAO(TzbDAO tzbDAO) {
         super.setBaseDAO(tzbDAO);

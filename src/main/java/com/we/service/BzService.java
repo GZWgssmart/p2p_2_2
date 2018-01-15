@@ -16,4 +16,9 @@ public interface BzService extends BaseService {
     void removeByIds(List<Integer> ids);
     List<ComboboxVO> listCombobox();
 
+    /**
+     * 查询出所有不重复标种
+     * @return
+     */
+    List<String> listByBzmame();
 }

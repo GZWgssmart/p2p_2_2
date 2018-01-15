@@ -4,6 +4,7 @@ import com.we.bean.Borrowapply;
 import com.we.common.Pager;
 import com.we.vo.BorrowCheckOkVO;
 import com.we.vo.BorrowdetailAndWapplyVO;
+import com.we.vo.BorrowapplyInvestVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,4 +85,7 @@ public interface BorrowapplyDAO extends BaseDAO {
      */
     List<BorrowdetailAndWapplyVO> listBorrow(@Param("query") Integer type);
 
-}
+
+    List<BorrowapplyInvestVO> listByInvest(@Param("xmqx1")String xmqx1, @Param("xmqx2")String xmqx2,
+                                           @Param("nysy1")String nysy1, @Param("nysy2")String nysy2,
+                                           @Param("xmlx1")String xmlx1);}

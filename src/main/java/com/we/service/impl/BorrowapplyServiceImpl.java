@@ -12,6 +12,7 @@ import com.we.service.BorrowapplyService;
 import com.we.service.HkbService;
 import com.we.service.UsermoneyService;
 import com.we.vo.BorrowdetailAndWapplyVO;
+import com.we.vo.BorrowapplyInvestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -142,7 +143,10 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
     public List<BorrowdetailAndWapplyVO> listBorrow(Integer type) {
         return borrowapplyDAO.listBorrow(type);
     }
-
+    @Override
+    public List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2, String nysy1, String nysy2, String xmlx1) {
+        return borrowapplyDAO.listByInvest(xmqx1,xmqx2,nysy1,nysy2,xmlx1);
+    }
     @Autowired
     public void setBorrowapplyDAO(BorrowapplyDAO borrowapplyDAO) {
         super.setBaseDAO(borrowapplyDAO);

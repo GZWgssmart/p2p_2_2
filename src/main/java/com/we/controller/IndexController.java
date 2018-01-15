@@ -107,4 +107,11 @@ public class IndexController {
         return "common/index/foot";
     }
 
+    @RequestMapping("invest")
+    public String invest() {
+        return "index/info/investlist";
+    }
+
+
+
 }

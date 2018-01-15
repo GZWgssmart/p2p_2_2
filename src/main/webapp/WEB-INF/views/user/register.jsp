@@ -111,6 +111,7 @@
                         $('.error-msg').removeClass('show');
                         $('.ok-msg').text(data.message).show();
                         window.location.href = "/user/login_page";
+
                     }else{
                         $('.ok-msg').hide();
                         $('.error-msg').text(data.message).addClass('show');

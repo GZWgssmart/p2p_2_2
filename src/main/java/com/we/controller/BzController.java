@@ -88,6 +88,12 @@ public class BzController {
         return bzService.listCriteria(offset, limit, bz);
     }
 
+    @RequestMapping("all_bz")
+    @ResponseBody
+    public List<String> listAllBz(){
+        return bzService.listByBzmame();
+    }
+
     @Resource
     public void setBzService(BzService bzService) {
         this.bzService = bzService;

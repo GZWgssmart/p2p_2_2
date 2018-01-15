@@ -35,4 +35,11 @@ public interface TzbService extends BaseService {
      */
     List<TzbVO> getAllMoney();
 
+
+    /**
+     * 查询某借款已筹款金额
+     * @param baid
+     * @return
+     */
+    Double sunMoneyByBaid(Integer baid);
 }

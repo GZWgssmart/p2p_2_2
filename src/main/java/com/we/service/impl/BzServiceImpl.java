@@ -28,4 +28,9 @@ public class BzServiceImpl extends AbstractBaseService implements BzService {
     public List<ComboboxVO> listCombobox() {
         return bzDAO.listCombobox();
     }
+
+    @Override
+    public List<String> listByBzmame() {
+        return bzDAO.listByBzmame();
+    }
 }

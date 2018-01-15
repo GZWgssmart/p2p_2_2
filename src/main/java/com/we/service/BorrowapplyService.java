@@ -4,6 +4,7 @@ import com.we.bean.Borrowapply;
 import com.we.common.Pager;
 import com.we.vo.BorrowCheckOkVO;
 import com.we.vo.BorrowdetailAndWapplyVO;
+import com.we.vo.BorrowapplyInvestVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -77,4 +78,5 @@ public interface BorrowapplyService extends BaseService {
      */
     List<BorrowdetailAndWapplyVO> listBorrow(Integer type);
 
-}
+
+    List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2,String nysy1, String nysy2,String xmlx1);}

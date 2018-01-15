@@ -80,7 +80,9 @@
   <select id="listCombobox" resultType="com.we.vo.ComboboxVO">
     SELECT bz.bzid AS 'id', bz.bzname AS 'text' FROM bz WHERE state = 1;
   </select>
-
+  <select id="listByBzmame" resultType="string">
+    select distinct bzname from bz;
+  </select>
   <select id="listCriteria" resultType="bz">
     SELECT * FROM bz
     LIMIT #{pager.offset}, #{pager.limit}
