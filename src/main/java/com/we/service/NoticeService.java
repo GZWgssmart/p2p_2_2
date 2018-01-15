@@ -2,6 +2,7 @@ package com.we.service;
 
 import com.we.bean.Notice;
 import com.we.common.Pager;
+import com.we.vo.NoticeVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -47,5 +48,11 @@ public interface NoticeService extends BaseService {
      * @return
      */
     List<Notice> listQueryAllNotice();
+
+    /**
+     * 查询前4个最新公告
+     * @return
+     */
+    List<NoticeVO> listNotice();
 
 }

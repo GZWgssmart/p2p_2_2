@@ -132,4 +132,11 @@
     ]]>
   </select>
 
+  <select id="listMedia" resultType="com.we.vo.MediaVO">
+    <![CDATA[
+      select m.mid,m.title,m.pic from media m
+      limit 0,3
+    ]]>
+  </select>
+
 </mapper>

@@ -2,11 +2,13 @@ package com.we.service.impl;
 
 import com.we.bean.Notice;
 import com.we.service.NoticeService;
+import com.we.vo.NoticeVO;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 public class NoticeServiceTest extends BaseTest {
 
@@ -22,7 +24,11 @@ public class NoticeServiceTest extends BaseTest {
         noticeService.save(notice);
     }
 
-
+    @Test
+    public void testListNotice() {
+        List<NoticeVO> noticeVOS = noticeService.listNotice();
+        System.out.println(noticeVOS);
+    }
 
    /* @Test
     public void testListPagerCriteria() {

@@ -118,4 +118,11 @@
     ]]>
   </select>
 
+  <select id="listDynamic" resultType="com.we.vo.DynamicVO">
+    <![CDATA[
+      select d.dyid,d.title,d.date from dynamic d
+      limit 0,4
+    ]]>
+  </select>
+
 </mapper>

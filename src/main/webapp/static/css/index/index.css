@@ -706,7 +706,7 @@
 	width:1200px;
     height: 430px;
     margin-top: 30px;
-    background: url(/static/images/index/product-loading.gif) no-repeat center center;
+    /*background: url(/static/images/index/product-loading.gif) no-repeat center center;*/
      background-color: #fff;
 }
 
@@ -758,7 +758,7 @@
 
 .news-main .news-main-content-left {
     width: 208px;
-    height: 138px;
+    height: 228px;
     border:1px solid #d0d0d0;
     overflow:hidden;
 }

@@ -4,7 +4,7 @@ $(function(){
 	
 	var bannerSize = $('.banner-box a').size();
 	$('.nivo-controlNav').css('margin-left',-bannerSize*28/2+'px');
-	$('.news-main>div').hide();
+
 	utils.ajax({
         url:'front/index.do',
         data:{"info":"{'type':'1'}"},
@@ -221,7 +221,7 @@ $(function(){
         			var partLi = $('<li><a href="news.html?id='+industryNews[i].id+'" target="_blank">'+industryNews[i].title+'</a><span>'+industryNews[i].publishTime.substring(0,10)+'</span></li>');
         			partLi.appendTo($('#news-part'));
         		}
-        		$('.news-main>div').show();
+
         		//友情链接
         		var linkList = data.linksList;
         		var linkListContent = $('#linkList');

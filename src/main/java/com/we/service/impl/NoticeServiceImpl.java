@@ -5,6 +5,7 @@ import com.we.common.Pager;
 import com.we.dao.NoticeDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.NoticeService;
+import com.we.vo.NoticeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,11 @@ public class NoticeServiceImpl extends AbstractBaseService implements NoticeServ
     @Override
     public List<Notice> listQueryAllNotice() {
         return noticeDAO.listQueryAllNotice();
+    }
+
+    @Override
+    public List<NoticeVO> listNotice() {
+        return noticeDAO.listNotice();
     }
 
 

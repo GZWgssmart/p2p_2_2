@@ -6,6 +6,7 @@ import com.we.common.Pager;
 import com.we.common.PathUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.service.MediaService;
+import com.we.vo.MediaVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by ID.LQF on 2018/1/2.
@@ -77,6 +79,17 @@ public class MediaController {
             resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return resultVO;
+    }
+
+    /**
+     * 查前3个媒体报道
+     * @return
+     */
+    @RequestMapping("list_media")
+    @ResponseBody
+    public List<MediaVO> listMoney() {
+        List<MediaVO> mediaVOS = mediaService.listMedia();
+        return mediaVOS;
     }
 
 }

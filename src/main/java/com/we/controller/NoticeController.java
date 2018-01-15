@@ -1,12 +1,12 @@
 package com.we.controller;
 
 
-import com.we.bean.Letter;
 import com.we.bean.Notice;
 import com.we.bean.UserLetter;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.NoticeService;
+import com.we.vo.NoticeVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -118,6 +118,17 @@ public class NoticeController {
     public List<Notice> pagerQueryAllCriteria() {
         List<Notice> notices = noticeService.listQueryAllNotice();
         System.out.println("1234567");
+        return notices;
+    }
+
+    /**
+     * 查询前4个最新公告
+     * @return
+     */
+    @RequestMapping("list_notice")
+    @ResponseBody
+    public List<NoticeVO> listNotice() {
+        List<NoticeVO> notices = noticeService.listNotice();
         return notices;
     }
 

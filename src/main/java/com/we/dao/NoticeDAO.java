@@ -2,6 +2,7 @@ package com.we.dao;
 
 import com.we.bean.Notice;
 import com.we.common.Pager;
+import com.we.vo.NoticeVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -20,5 +21,11 @@ public interface NoticeDAO extends BaseDAO {
     Long countAllPagerNotice(@Param("query") Object object);
 
     List<Notice> listQueryAllNotice();
+
+    /**
+     * 查询前4个最新公告
+     * @return
+     */
+    List<NoticeVO> listNotice();
 
 }

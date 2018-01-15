@@ -2,10 +2,12 @@ package com.we.service.impl;
 
 import com.we.bean.Media;
 import com.we.service.MediaService;
+import com.we.vo.MediaVO;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by ID.LQF on 2017/12/24.
@@ -36,6 +38,12 @@ public class MediaServiceTest extends BaseTest {
         media.setTitle("222222");
         media.setUrl("222222");
         mediaService.update(media);
+    }
+
+    @Test
+    public void testListMedia() {
+        List<MediaVO> mediaVOS = mediaService.listMedia();
+        System.out.println(mediaVOS);
     }
 
 }

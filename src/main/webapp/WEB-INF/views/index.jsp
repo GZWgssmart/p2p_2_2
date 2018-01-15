@@ -138,10 +138,10 @@
         </div>
     </div>
 </div>
-<!-- 新手指标 -->
+<!-- product -->
 <div class="product wrap">
+    <!-- 新手指标 -->
     <div class="product-n" id="newUser" style="height: 210px;">
-
         <div class="product-new">
             <div class="title cl"><img alt="" src="<%=path %>/static/picture/product-new-icon2.png"></div>
             <ul class="product-new-main cl">
@@ -482,47 +482,47 @@
 <!-- news -->
 <div class="news-main wrap">
 
-    <div class="news-main-left" style="display: block;">
+    <div class="news-main-left" style="display: block;width: 760px;">
         <div class="news-main-top">
-            <h3>媒体报道</h3>
+            <h3 style="height: 52px;padding-top: 13px;">媒体报道</h3>
             <p class="more icon icon-more"><a href="about.html#gsdt?type=1">更多</a></p>
         </div>
         <div class="news-main-content" id="dynamic">
             <ul class="news-main-list">
-                <li><a href="news.html?id=106" target="_blank" class="news-main-content-left"><img
-                        src="upload/mediareport/2017/11/20171121164504311.jpg" alt="年底投资有风险 选择普金资本安全可靠！" width="210"
-                        height="140"></a><a href="news.html?id=106" target="_blank" class="list-title">年底投资有风险
-                    选择普金资本安全可靠！</a><a href="news.html?id=106" target="_blank" class="list-main">
-                    随着近年来中国经济的快速发展，社会财富不断增长，个人金融资产也不断增加，理财的必要性也逐渐体现出来了。同时，年关将至，...</a></li>
-                <li><a href="news.html?id=105" target="_blank" class="news-main-content-left"><img
-                        src="upload/mediareport/2017/11/20171118092607167.jpg" alt="这个双十一，你准备好了没有？" width="210"
-                        height="140"></a><a href="news.html?id=105" target="_blank"
-                                            class="list-title">这个双十一，你准备好了没有？</a><a href="news.html?id=105"
-                                                                                    target="_blank" class="list-main">
-                    随着双十一的临近，国内的金融投资市场也呈现出一派繁荣景象。不过，时值年底，对于普通的投资者来说，如果没有选择...</a></li>
-                <li><a href="news.html?id=102" target="_blank" class="news-main-content-left"><img
-                        src="upload/mediareport/2017/10/20171017161015190.jpg" alt="【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！"
-                        width="210" height="140"></a><a href="news.html?id=102" target="_blank" class="list-title">【喜报】庆贺普金资本成功当选江西省第二届互联网金融协会副会长单位！</a><a
-                        href="news.html?id=102" target="_blank" class="list-main">
-                    2017年10月13日，江西省互联网金融协会第二届第一次会员代表大会在南昌前湖迎宾馆隆重召开。本次会议，通过了第一届理...</a></li>
+                <li ng-repeat="media in medias">
+                    <a href="news.html?mid={{media.mid}}" target="_blank" class="news-main-content-left">
+                        <img src="{{media.pic}}" alt="{{media.title}}" style="width:210px;height:180px;">
+                    </a>
+                    <a href="news.html?mid={{media.mid}}" target="_blank" class="list-title">{{media.title}}</a>
+                    <a href="news.html?mid={{media.mid}}" target="_blank" class="list-main">
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
-    <div class="news-main-right">
+    <div class="news-main-right" style="display: block;width: 430px;">
         <div class="news-main-top">
-            <h3>最新公告</h3>
+            <h3 style="height: 52px;padding-top: 13px;">最新公告</h3>
             <p class="more icon icon-more"><a href="about.html#ptgg">更多</a></p>
         </div>
         <div class="news-main-content">
             <ul class="news-main-list" id="newsContent">
+                <li ng-repeat="notice in notices">
+                    <a href="news.html?nid={{notice.nid}}&amp;flag=1" target="_blank">{{notice.title}}</a>
+                    <span>{{notice.date | date:'yyyy-MM-dd'}}</span>
+                </li>
             </ul>
         </div>
-        <div class="news-main-top ptop">
-            <h3>公司动态</h3>
+        <div class="news-main-top ptop" style="height: 71px;">
+            <h3 style="height: 52px;padding-top: 13px;">公司动态</h3>
             <p class="more icon icon-more"><a href="about.html#gsdt">更多</a></p>
         </div>
         <div class="news-main-content">
             <ul class="news-main-list" id="news-part">
+                <li ng-repeat="dynamic in dynamics">
+                    <a href="news.html?dyid={{dynamic.dyid}}" target="_blank">{{dynamic.title}}</a>
+                    <span>{{dynamic.date | date:'yyyy-MM-dd'}}</span>
+                </li>
             </ul>
         </div>
     </div>
@@ -530,7 +530,7 @@
 
 <!-- 合作伙伴 -->
 <div class="index-link">
-    <div class="wrap">
+    <div class="wrap" style="height: 160px;">
         <div class="link-title">
             合作伙伴
         </div>
@@ -567,6 +567,7 @@
 <jsp:include page="common/index/foot.jsp"></jsp:include>
 
 <script src="<%=path%>/static/js/angular/angular.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
@@ -584,6 +585,22 @@
 </script>
 <script type="text/javascript">
     (function ($) {
+        var app = angular.module("myApp", ['ngSanitize']);
+        app.config(function ($httpProvider) {
+
+            $httpProvider.defaults.transformRequest = function (obj) {
+                var str = [];
+                for (var p in obj) {
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                }
+                return str.join("&");
+            };
+
+            $httpProvider.defaults.headers.post = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+
+        });
         app.controller('myCtrl', function ($scope, $http) {
             //轮播图
             $http({
@@ -649,6 +666,33 @@
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.duojinbao = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //媒体报道
+            $http({
+                method: 'POST',
+                url: "/media/list_media"
+            }).then(function successCallback(response) {
+                $scope.medias = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //最新公告
+            $http({
+                method: 'POST',
+                url: "/notice/list_notice"
+            }).then(function successCallback(response) {
+                $scope.notices = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //公司动态
+            $http({
+                method: 'POST',
+                url: "/dynamic/list_dynamic"
+            }).then(function successCallback(response) {
+                $scope.dynamics = response.data;
             }, function errorCallback(response) {
             });
 

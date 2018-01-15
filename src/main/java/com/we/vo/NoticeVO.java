@@ -5,9 +5,7 @@ import java.util.Date;
 public class NoticeVO {
 
     private Integer nid;
-
     private String title;
-
     private Date date;
 
     public Integer getNid() {

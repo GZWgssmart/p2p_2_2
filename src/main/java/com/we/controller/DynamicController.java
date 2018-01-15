@@ -6,6 +6,7 @@ import com.we.common.Pager;
 import com.we.common.PathUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.service.DynamicService;
+import com.we.vo.DynamicVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by ID.LQF on 2017/12/25.
@@ -76,6 +78,17 @@ public class DynamicController {
             resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return resultVO;
+    }
+
+    /**
+     * 查询前4个公司动态
+     * @return
+     */
+    @RequestMapping("list_dynamic")
+    @ResponseBody
+    public List<DynamicVO> listDynamic() {
+        List<DynamicVO> dynamicVOS = dynamicService.listDynamic();
+        return dynamicVOS;
     }
 
     @RequestMapping("ueditor")

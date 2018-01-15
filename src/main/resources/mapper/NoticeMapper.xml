@@ -158,4 +158,11 @@
     ]]>
   </select>
 
+  <select id="listNotice" resultType="com.we.vo.NoticeVO">
+    <![CDATA[
+        SELECT n.date,n.nid,n.title FROM notice n
+        limit 0,4
+    ]]>
+  </select>
+
 </mapper>
