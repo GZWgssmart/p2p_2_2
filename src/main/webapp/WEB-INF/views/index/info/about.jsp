@@ -27,7 +27,10 @@
         <div class="about-left-nav">
             <div id="animateDiv" class="animateDiv">
                 <ul id="animateUl" class="sub-nav">
-                    <li class="xxpl" class="active"><a href="javaScript:void(0);" onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>
+                    <li class="xxpl" class="active">
+                        <a href="javaScript:void(0);" onClick="animate1()"
+                           class="icon-about about-xxpl">信息披露</a>
+                    </li>
                 </ul>
             </div>
             <ul class="sub-nav">

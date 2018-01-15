@@ -17,7 +17,6 @@
 <!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
 
-<%@include file="../../../user/top.jsp" %>
 <%@include file="../../../user/head.jsp"%>
 <div class="about cl">
     <div class="about-left">
@@ -49,7 +48,8 @@
                             <a href="<%=ptggPath %>/index/notice_info/{{notice.nid}}" target="_blank"
                                class="title">
                                 {{notice.content}}</a><span class="time">
-                            {{notice.date | date:'yyyy-MM-dd HH:mm:ss'}}</span></div>
+                            {{notice.date | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                        </div>
                     </li>
                 </ul>
                 <%-- <ul class="paging" style="width: 500px; margin: 30px auto 0px;">
