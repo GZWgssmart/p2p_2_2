@@ -19,7 +19,7 @@ public class UserDAOTest extends BaseTest {
     public void testSave() {
         User user = new User();
         user.setEmail("email");
-        user.setPhone("1887970007");
+        user.setPhone("18879711117");
         user.setUpwd("123321");
         userDAO.saveSelective(user);
     }

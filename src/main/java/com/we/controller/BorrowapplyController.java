@@ -9,6 +9,7 @@ import com.we.query.InvestBorrowQuery;
 import com.we.service.BorrowapplyService;
 import com.we.service.TzbService;
 import com.we.vo.BorrowapplyInvestVO;
+import com.we.vo.BorrowdetailAndWapplyVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
