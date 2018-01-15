@@ -14,16 +14,6 @@
   <sql id="Base_Column_List" >
     bcid, uid, cardno, rname, idno, type, state, date
   </sql>
-
-  <select id="countCriteria" resultType="Long">
-    SELECT count(1) FROM bankcard;
-  </select>
-
-  <select id="listCriteria" resultType="com.we.bean.Bankcard">
-    SELECT * FROM bankcard
-    LIMIT #{pager.offset}, #{pager.limit}
-  </select>
-
   <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

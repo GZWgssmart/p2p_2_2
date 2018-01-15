@@ -27,7 +27,7 @@
             <option value="4">还款中</option>
             <option value="6">已还完</option>
         </select>
-        <a href="javascript:void(0);" class="btn btn-primary" onclick="allCheckok.look.hkbList();">还款列表</a>
+        <a href="javascript:void(0);" class="btn btn-primary" onclick="tzBorrow.look.skbList();">还款列表</a>
     </form>
 </div>
 <table id="invest-borrow-list" class="table table-hover"
@@ -46,6 +46,8 @@
     </tr>
     </thead>
 </table>
+
+<%@include file="include_sk_list.jsp"%>
 
 <%@include file="../../../common/js/js_jquery.jsp" %>
 <%@include file="../../../common/js/js_boostrap.jsp" %>

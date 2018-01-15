@@ -1,189 +1,200 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.we.dao.SkbDAO">
-    <resultMap id="BaseResultMap" type="com.we.bean.Skb">
-        <id column="skid" property="skid" jdbcType="INTEGER"/>
-        <result column="uid" property="uid" jdbcType="INTEGER"/>
-        <result column="juid" property="juid" jdbcType="INTEGER"/>
-        <result column="ybx" property="ybx" jdbcType="DECIMAL"/>
-        <result column="rbx" property="rbx" jdbcType="DECIMAL"/>
-        <result column="ylx" property="ylx" jdbcType="DECIMAL"/>
-        <result column="rlx" property="rlx" jdbcType="DECIMAL"/>
-        <result column="ybj" property="ybj" jdbcType="DECIMAL"/>
-        <result column="rbj" property="rbj" jdbcType="DECIMAL"/>
-        <result column="rnum" property="rnum" jdbcType="INTEGER"/>
-        <result column="tnum" property="tnum" jdbcType="INTEGER"/>
-        <result column="date" property="date" jdbcType="TIMESTAMP"/>
-        <result column="baid" property="baid" jdbcType="INTEGER"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        skid, uid, juid, ybx, rbx, ylx, rlx, ybj, rbj, rnum, tnum, date, baid
-    </sql>
-    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from skb
-        where skid = #{skid,jdbcType=INTEGER}
-    </select>
-    <delete id="removeById" parameterType="java.lang.Integer">
-        DELETE FROM skb
-        WHERE skid = #{skid,jdbcType=INTEGER}
-    </delete>
-    <insert id="save" parameterType="com.we.bean.Skb">
-        INSERT INTO skb (skid, uid, juid,
-                         ybx, rbx, ylx, rlx,
-                         ybj, rbj, rnum, tnum,
-                         date, baid)
-        VALUES (#{skid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{juid,jdbcType=INTEGER},
-                                          #{ybx,jdbcType=DECIMAL}, #{rbx,jdbcType=DECIMAL}, #{ylx,jdbcType=DECIMAL},
-                                          #{rlx,jdbcType=DECIMAL},
-                                          #{ybj,jdbcType=DECIMAL}, #{rbj,jdbcType=DECIMAL}, #{rnum,jdbcType=INTEGER},
-                                          #{tnum,jdbcType=INTEGER},
-                #{date,jdbcType=TIMESTAMP}, #{baid,jdbcType=INTEGER})
-    </insert>
-    <insert id="saveSelective" parameterType="com.we.bean.Skb">
-        insert into skb
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="skid != null">
-                skid,
-            </if>
-            <if test="uid != null">
-                uid,
-            </if>
-            <if test="juid != null">
-                juid,
-            </if>
-            <if test="ybx != null">
-                ybx,
-            </if>
-            <if test="rbx != null">
-                rbx,
-            </if>
-            <if test="ylx != null">
-                ylx,
-            </if>
-            <if test="rlx != null">
-                rlx,
-            </if>
-            <if test="ybj != null">
-                ybj,
-            </if>
-            <if test="rbj != null">
-                rbj,
-            </if>
-            <if test="rnum != null">
-                rnum,
-            </if>
-            <if test="tnum != null">
-                tnum,
-            </if>
-            <if test="date != null">
-                date,
-            </if>
-            <if test="baid != null">
-                baid,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="skid != null">
-                #{skid,jdbcType=INTEGER},
-            </if>
-            <if test="uid != null">
-                #{uid,jdbcType=INTEGER},
-            </if>
-            <if test="juid != null">
-                #{juid,jdbcType=INTEGER},
-            </if>
-            <if test="ybx != null">
-                #{ybx,jdbcType=DECIMAL},
-            </if>
-            <if test="rbx != null">
-                #{rbx,jdbcType=DECIMAL},
-            </if>
-            <if test="ylx != null">
-                #{ylx,jdbcType=DECIMAL},
-            </if>
-            <if test="rlx != null">
-                #{rlx,jdbcType=DECIMAL},
-            </if>
-            <if test="ybj != null">
-                #{ybj,jdbcType=DECIMAL},
-            </if>
-            <if test="rbj != null">
-                #{rbj,jdbcType=DECIMAL},
-            </if>
-            <if test="rnum != null">
-                #{rnum,jdbcType=INTEGER},
-            </if>
-            <if test="tnum != null">
-                #{tnum,jdbcType=INTEGER},
-            </if>
-            <if test="date != null">
-                #{date,jdbcType=TIMESTAMP},
-            </if>
-            <if test="baid != null">
-                #{baid,jdbcType=INTEGER},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateSelective" parameterType="com.we.bean.Skb">
-        update skb
-        <set>
-            <if test="uid != null">
-                uid = #{uid,jdbcType=INTEGER},
-            </if>
-            <if test="juid != null">
-                juid = #{juid,jdbcType=INTEGER},
-            </if>
-            <if test="ybx != null">
-                ybx = #{ybx,jdbcType=DECIMAL},
-            </if>
-            <if test="rbx != null">
-                rbx = #{rbx,jdbcType=DECIMAL},
-            </if>
-            <if test="ylx != null">
-                ylx = #{ylx,jdbcType=DECIMAL},
-            </if>
-            <if test="rlx != null">
-                rlx = #{rlx,jdbcType=DECIMAL},
-            </if>
-            <if test="ybj != null">
-                ybj = #{ybj,jdbcType=DECIMAL},
-            </if>
-            <if test="rbj != null">
-                rbj = #{rbj,jdbcType=DECIMAL},
-            </if>
-            <if test="rnum != null">
-                rnum = #{rnum,jdbcType=INTEGER},
-            </if>
-            <if test="tnum != null">
-                tnum = #{tnum,jdbcType=INTEGER},
-            </if>
-            <if test="date != null">
-                date = #{date,jdbcType=TIMESTAMP},
-            </if>
-            <if test="baid != null">
-                baid = #{baid,jdbcType=INTEGER},
-            </if>
-        </set>
-        where skid = #{skid,jdbcType=INTEGER}
-    </update>
-    <update id="update" parameterType="com.we.bean.Skb">
-        UPDATE skb
-        SET uid  = #{uid,jdbcType=INTEGER},
-            juid = #{juid,jdbcType=INTEGER},
-            ybx  = #{ybx,jdbcType=DECIMAL},
-            rbx  = #{rbx,jdbcType=DECIMAL},
-            ylx  = #{ylx,jdbcType=DECIMAL},
-            rlx  = #{rlx,jdbcType=DECIMAL},
-            ybj  = #{ybj,jdbcType=DECIMAL},
-            rbj  = #{rbj,jdbcType=DECIMAL},
-            rnum = #{rnum,jdbcType=INTEGER},
-            tnum = #{tnum,jdbcType=INTEGER},
-            date = #{date,jdbcType=TIMESTAMP},
-            baid = #{baid,jdbcType=INTEGER}
-        WHERE skid = #{skid,jdbcType=INTEGER}
-    </update>
+  <resultMap id="BaseResultMap" type="com.we.bean.Skb">
+    <id column="skid" jdbcType="INTEGER" property="skid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="juid" jdbcType="INTEGER" property="juid" />
+    <result column="ybx" jdbcType="DECIMAL" property="ybx" />
+    <result column="rbx" jdbcType="DECIMAL" property="rbx" />
+    <result column="ylx" jdbcType="DECIMAL" property="ylx" />
+    <result column="rlx" jdbcType="DECIMAL" property="rlx" />
+    <result column="ybj" jdbcType="DECIMAL" property="ybj" />
+    <result column="rbj" jdbcType="DECIMAL" property="rbj" />
+    <result column="rnum" jdbcType="INTEGER" property="rnum" />
+    <result column="tnum" jdbcType="INTEGER" property="tnum" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="baid" jdbcType="INTEGER" property="baid" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    skid, uid, juid, ybx, rbx, ylx, rlx, ybj, rbj, rnum, tnum, date, baid, state
+  </sql>
+  <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from skb
+    where skid = #{skid,jdbcType=INTEGER}
+  </select>
+  <delete id="removeById" parameterType="java.lang.Integer">
+    delete from skb
+    where skid = #{skid,jdbcType=INTEGER}
+  </delete>
+  <insert id="save" parameterType="com.we.bean.Skb">
+    insert into skb (skid, uid, juid, 
+      ybx, rbx, ylx, rlx, 
+      ybj, rbj, rnum, tnum, 
+      date, baid, state
+      )
+    values (#{skid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{juid,jdbcType=INTEGER}, 
+      #{ybx,jdbcType=DECIMAL}, #{rbx,jdbcType=DECIMAL}, #{ylx,jdbcType=DECIMAL}, #{rlx,jdbcType=DECIMAL}, 
+      #{ybj,jdbcType=DECIMAL}, #{rbj,jdbcType=DECIMAL}, #{rnum,jdbcType=INTEGER}, #{tnum,jdbcType=INTEGER}, 
+      #{date,jdbcType=TIMESTAMP}, #{baid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="saveSelective" parameterType="com.we.bean.Skb">
+    insert into skb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="skid != null">
+        skid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="juid != null">
+        juid,
+      </if>
+      <if test="ybx != null">
+        ybx,
+      </if>
+      <if test="rbx != null">
+        rbx,
+      </if>
+      <if test="ylx != null">
+        ylx,
+      </if>
+      <if test="rlx != null">
+        rlx,
+      </if>
+      <if test="ybj != null">
+        ybj,
+      </if>
+      <if test="rbj != null">
+        rbj,
+      </if>
+      <if test="rnum != null">
+        rnum,
+      </if>
+      <if test="tnum != null">
+        tnum,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="baid != null">
+        baid,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="skid != null">
+        #{skid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="juid != null">
+        #{juid,jdbcType=INTEGER},
+      </if>
+      <if test="ybx != null">
+        #{ybx,jdbcType=DECIMAL},
+      </if>
+      <if test="rbx != null">
+        #{rbx,jdbcType=DECIMAL},
+      </if>
+      <if test="ylx != null">
+        #{ylx,jdbcType=DECIMAL},
+      </if>
+      <if test="rlx != null">
+        #{rlx,jdbcType=DECIMAL},
+      </if>
+      <if test="ybj != null">
+        #{ybj,jdbcType=DECIMAL},
+      </if>
+      <if test="rbj != null">
+        #{rbj,jdbcType=DECIMAL},
+      </if>
+      <if test="rnum != null">
+        #{rnum,jdbcType=INTEGER},
+      </if>
+      <if test="tnum != null">
+        #{tnum,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="baid != null">
+        #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateSelective" parameterType="com.we.bean.Skb">
+    update skb
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="juid != null">
+        juid = #{juid,jdbcType=INTEGER},
+      </if>
+      <if test="ybx != null">
+        ybx = #{ybx,jdbcType=DECIMAL},
+      </if>
+      <if test="rbx != null">
+        rbx = #{rbx,jdbcType=DECIMAL},
+      </if>
+      <if test="ylx != null">
+        ylx = #{ylx,jdbcType=DECIMAL},
+      </if>
+      <if test="rlx != null">
+        rlx = #{rlx,jdbcType=DECIMAL},
+      </if>
+      <if test="ybj != null">
+        ybj = #{ybj,jdbcType=DECIMAL},
+      </if>
+      <if test="rbj != null">
+        rbj = #{rbj,jdbcType=DECIMAL},
+      </if>
+      <if test="rnum != null">
+        rnum = #{rnum,jdbcType=INTEGER},
+      </if>
+      <if test="tnum != null">
+        tnum = #{tnum,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="baid != null">
+        baid = #{baid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where skid = #{skid,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.we.bean.Skb">
+    update skb
+    set uid = #{uid,jdbcType=INTEGER},
+      juid = #{juid,jdbcType=INTEGER},
+      ybx = #{ybx,jdbcType=DECIMAL},
+      rbx = #{rbx,jdbcType=DECIMAL},
+      ylx = #{ylx,jdbcType=DECIMAL},
+      rlx = #{rlx,jdbcType=DECIMAL},
+      ybj = #{ybj,jdbcType=DECIMAL},
+      rbj = #{rbj,jdbcType=DECIMAL},
+      rnum = #{rnum,jdbcType=INTEGER},
+      tnum = #{tnum,jdbcType=INTEGER},
+      date = #{date,jdbcType=TIMESTAMP},
+      baid = #{baid,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where skid = #{skid,jdbcType=INTEGER}
+  </update>
 
     <sql id="criteriaQuery">
         FROM d_ssm_pujinziben.skb
@@ -193,13 +204,13 @@
 
     <select id="listCriteria" resultType="skb">
         SELECT *
-        <include refid="criteriaQuery"/>
+        <include refid="criteriaQuery" />
         LIMIT #{pager.offset}, #{pager.limit}
     </select>
 
     <select id="countCriteria" resultType="java.lang.Long">
         SELECT count(skid)
-        <include refid="criteriaQuery"/>
+        <include refid="criteriaQuery" />
     </select>
 
     <select id="countUserBorrow" resultType="java.lang.Long">

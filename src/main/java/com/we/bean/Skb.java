@@ -30,6 +30,8 @@ public class Skb {
 
     private Integer baid;
 
+    private Integer state;
+
     public Integer getSkid() {
         return skid;
     }
@@ -132,5 +134,13 @@ public class Skb {
 
     public void setBaid(Integer baid) {
         this.baid = baid;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

@@ -12,10 +12,10 @@ var tzBorrow = {
         skbList: function () {
             var row = setTable.isSingleSelected(tzBorrow.id.priList);
             if (row) {
-                var skbTable = $('#' + allCheckok.id.hkbListId);
+                var skbTable = $('#' + tzBorrow.id.skbList);
                 var url = skbTable.attr('data-url');
                 skbTable.attr('data-url', url + '?baid=' + row.baid);
-                $('#' + allCheckok.id.hkbListId).bootstrapTable({
+                skbTable.bootstrapTable({
                     method: 'get',
                     contentType: 'application/x-www-form-urlencoded',
                     //【其它设置】

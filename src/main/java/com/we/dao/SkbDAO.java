@@ -1,5 +1,6 @@
 package com.we.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -11,5 +12,5 @@ public interface SkbDAO extends BaseDAO {
      * @param baid 借款id
      * @return 大于0为已生成，0为未生成
      */
-    Long countUserBorrow(Integer uid, Integer baid);
+    Long countUserBorrow(@Param("uid")Integer uid, @Param("baid") Integer baid);
 }

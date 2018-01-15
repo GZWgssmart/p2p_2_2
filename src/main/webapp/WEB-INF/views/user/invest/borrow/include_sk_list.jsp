@@ -18,14 +18,16 @@
                 </div>
                 <table id="skb-list" class="table table-hover"
                        data-single-select="true"
-                       data-url="<%=path%>/hkb/pager_criteria">
+                       data-url="<%=path%>/skb/pager_criteria">
                     <thead>
                     <tr>
                         <th data-checkbox="true"></th>
-                        <th data-field="ybx">本息</th>
-                        <th data-field="ylx">利息</th>
-                        <th data-field="ybj">本金</th>
-                        <th data-field="state" data-formatter="allCheckok.formatter.formatHkState">状态</th>
+                        <th data-field="ybx">应收本息</th>
+                        <th data-field="rbx">已收本息</th>
+                        <th data-field="ylx">应收利息</th>
+                        <th data-field="rlx">已收利息</th>
+                        <th data-field="ybj">应收本金</th>
+                        <th data-field="rbj">已收本金</th>
                         <th data-field="date" data-formatter="setTable.formatDate">收款时间</th>
                     </tr>
                     </thead>

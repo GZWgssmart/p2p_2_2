@@ -116,7 +116,8 @@ CREATE TABLE skb(
   rnum INT COMMENT '已还期数',
   tnum INT COMMENT '总期数',
   `date` DATETIME COMMENT '日期',
-  baid INT COMMENT '借款id'
+  baid INT COMMENT '借款id',
+  state INT COMMENT '收款状态，0未还款，1已还款，2已收款'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '收款表';
 
 DROP TABLE IF EXISTS hkb;
