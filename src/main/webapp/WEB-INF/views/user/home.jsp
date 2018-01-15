@@ -24,13 +24,36 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                <span class="block m-t-xs"><strong class="font-bold">昵称</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">${sessionScope.user.rname}<b class="caret"></b></span>
                                 </span>
                         </a>
                     </div>
                     <div class="logo-element">XXX信息管理
                     </div>
                 </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-desktop"></i>
+                        <span class="nav-label">我的账户</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">基本信息</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">账户充值</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/user/all_bankcard">银行卡</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/user/safety">安全设置</a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="#">
                         <i class="fa fa-home"></i>
@@ -68,7 +91,7 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-table"></i>
-                        <span class="nav-label">信息管理</span>
+                        <span class="nav-label">平台信息</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
@@ -77,54 +100,6 @@
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_notice_page">最新公告</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-desktop"></i>
-                        <span class="nav-label">账户设置</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage"       >账户充值</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/user/all_bankcard">我的银行卡</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/user/safety">安全设置</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">所有设计师</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-flask"></i>
-                        <span class="nav-label">建材商管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="graph_echarts.html">所有建材商</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-picture-o"></i>
-                        <span class="nav-label">业主管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="graph_echarts.html">所有业主</a>
                         </li>
                     </ul>
                 </li>

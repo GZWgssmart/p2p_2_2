@@ -38,19 +38,6 @@
 
                 <li>
                     <a href="#">
-                        <i class="fa fa-home"></i>
-                        <span class="nav-label">首页信息</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_homeimg_page">所有信息</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
                         <i class="fa fa fa-bar-chart-o"></i>
                         <span class="nav-label">平台设置</span>
                         <span class="fa arrow"></span>
@@ -75,38 +62,10 @@
                     </ul>
                 </li>
 
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-line-chart"></i>
-                        <span class="nav-label">公司动态</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_dynamic_page" data-index="0">所有动态</a>
-                        </li>
-                    </ul>
-
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-video-camera"></i>
-                        <span class="nav-label">媒体报道</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_media_page">所有报道</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li>
                     <a href="#">
                         <i class="fa fa-table"></i>
-                        <span class="nav-label">平台通知</span>
+                        <span class="nav-label">平台信息</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
@@ -114,10 +73,19 @@
                             <a class="J_menuItem" href="<%=path %>/huser/all_letter_page">站内信</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path %>/huser/notice_pager/">最新公告</a>
+                            <a class="J_menuItem" href="<%=path %>/huser/notice_pager">公告</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path %>/huser/friend_pager/">合作伙伴</a>
+                            <a class="J_menuItem" href="<%=path %>/huser/friend_pager">合作伙伴</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_dynamic_page">公司动态</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_media_page">媒体报道</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_homeimg_page">首页图片</a>
                         </li>
                     </ul>
                 </li>
@@ -133,7 +101,7 @@
                             <a class="J_menuItem" href="<%=path%>/huser/all_tx_log_page">提现审核</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">借款申请</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">借款审核</a>
                         </li>
                     </ul>
                 </li>
@@ -141,25 +109,12 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop"></i>
-                        <span class="nav-label">后台用户管理</span>
+                        <span class="nav-label">员工管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_huser_page">所有后台用户</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-flask"></i>
-                        <span class="nav-label">角色管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/role/all_role_page">所有角色</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_huser_page">所有员工</a>
                         </li>
                     </ul>
                 </li>
@@ -167,10 +122,13 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-picture-o"></i>
-                        <span class="nav-label">权限管理</span>
+                        <span class="nav-label">角色权限</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/role/all_role_page">所有角色</a>
+                        </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/jur/all_jur_page">所有权限</a>
                         </li>
