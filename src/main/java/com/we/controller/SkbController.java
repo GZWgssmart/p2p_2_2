@@ -27,24 +27,19 @@ public class SkbController {
 
     private SkbService skbService;
 
-    @PostMapping("update")
+    /**
+     * 前台用户 选中已还款的数据进行收款
+     * @param skid
+     * @param session
+     * @return
+     */
+    @RequestMapping("save_gathering")
     @ResponseBody
-    public RequestResultVO update(@Valid Skb skb, BindingResult bindingResult) {
-        RequestResultVO vo = null;
-        try {
-            if (bindingResult.hasErrors()) {
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-            } else {
-                skbService.updateSelective(skb);
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
-            }
-        }catch (RuntimeException e) {
-            e.printStackTrace();
-            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-        }
-        return vo;
+    public RequestResultVO saveGathering(Integer skid, HttpSession session) {
+        User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
+        return skbService.saveGathering(user.getUid(), skid);
     }
-    
+
     /**
      * 前台用户查看收款列表
      * @param offset 开始索引
@@ -57,7 +52,7 @@ public class SkbController {
     public Pager pagerCriteria(Long offset, Long limit, Skb skb, HttpSession session) {
         User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
         skb.setUid(user.getUid());
-        return skbService.listCriteria(offset, limit, skb);
+        return skbService.saveListCriteria(offset, limit, skb);
     }
 
 

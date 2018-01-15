@@ -219,4 +219,16 @@
         WHERE uid = #{uid}
         AND baid = #{baid}
     </select>
+
+    <insert id="saveList">
+        INSERT INTO d_ssm_pujinziben.skb
+        (uid, juid, ybx, rbx, ylx, rlx, ybj, rbj,
+        rnum, tnum, baid, state)
+        VALUES
+            <foreach collection="skbList" item="skb" separator=",">
+                (#{skb.uid}, #{skb.juid}, #{skb.ybx}, #{skb.rbx}, #{skb.ylx}, #{skb.rlx}, #{skb.ybj}, #{skb.rbj},
+                #{skb.rnum}, #{skb.tnum}, #{skb.baid}, #{skb.state})
+            </foreach>
+    </insert>
+
 </mapper>

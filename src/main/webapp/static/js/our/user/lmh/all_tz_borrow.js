@@ -32,19 +32,19 @@ var tzBorrow = {
     },
     sk: function () {
         var row = setTable.isSingleSelected(tzBorrow.id.skbList);
-        if (row && (row.state === 2 || row.state === 6)) {
-            $.post(contextPath + '/skb/pager_criteria',
+        if (row && row.state === 1) {
+            $.post(contextPath + '/skb/save_gathering',
                 {skid: row.skid},
                 function (data) {
                     if (data.result === 'success') {
                         swtAlert.success_not_timer(data.message);
-                        setTable.postRefresh(allCheckok.id.hkbListId);
+                        setTable.postRefresh(tzBorrow.id.skbList);
                     } else {
                         swtAlert.request_fail(data.message);
                     }
                 }, 'json');
         } else {
-            swtAlert.warn_info('请选择 已还款 的数据进行收款款');
+            swtAlert.warn_info('请选择 已还款 的一行进行收款');
         }
     },
     fmt: {
@@ -57,6 +57,15 @@ var tzBorrow = {
                 return '融资失败';
             } else if (value === 6) {
                 return '已还完';
+            }
+        },
+        fmtSkState: function (value) {
+            if (value === 0) {
+                return '未还款';
+            } else if (value === 1) {
+                return '<label style="color: green">已还款</label>';
+            } else {
+                return '已收款';
             }
         }
     },

@@ -35,7 +35,8 @@ public enum RequestResultEnum {
     NEW_PWDS_IS_DIFFERENT(606, "fail", "两次输入的新密码不一致"),
     HK_SUCCESS(205, "success", "还款成功！"),
     HK_FAIL(505, "fail", "还款失败，请稍后再试！"),
-    HK_FAIL_ZPWD(506, "fail", "还款失败，支付密码错误");
+    HK_FAIL_ZPWD(506, "fail", "还款失败，支付密码错误"),
+    SK_SUCCESS(206, "success", "收款成功！");
 
     private Integer code;
     private String result;

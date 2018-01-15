@@ -377,9 +377,16 @@
     </select>
 
     <select id="listRepayOk" resultType="hkb">
-        SELECT skid FROM d_ssm_pujinziben.hkb
+        SELECT skid
+        FROM d_ssm_pujinziben.hkb
         WHERE state IN (0, 1)
-        AND baid=#{baid}
+              AND baid = #{baid}
+    </select>
+
+    <select id="listHkState" resultType="java.lang.Integer">
+        SELECT state FROM d_ssm_pujinziben.hkb
+        WHERE baid=#{baid}
+        ORDER BY ytime ASC;
     </select>
 
 </mapper>

@@ -59,4 +59,11 @@ public interface HkbDAO extends BaseDAO {
      * @return 若集合大小等于0，说明已还完
      */
     List<Hkb> listRepayOk(Integer baid);
+
+    /**
+     * 查出还款状态
+     * @param baid  借款id
+     * @return stateList
+     */
+    List<Integer> listHkState(Integer baid);
 }

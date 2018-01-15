@@ -55,7 +55,7 @@ public class OurConstants {
     public static final Integer MONEY_LOG_TZ = 2;
 
     /**
-     * 资金流向记录的类型：回款
+     * 资金流向记录的类型：收款（回款）
      */
     public static final Integer MONEY_LOG_HK = 3;
 
@@ -124,4 +124,20 @@ public class OurConstants {
      * 优惠券类型：平台发布
      */
     public static final Integer  TICKET_RELEASE = 2;
+
+    /**
+     * 收款表状态：未还款
+     */
+    public static final Integer SKB_WH = 0;
+
+    /**
+     * 收款表状态：已还款
+     */
+    public static final Integer SKB_YH = 1;
+
+    /**
+     * 收款表状态：已收款
+     */
+    public static final Integer SKB_YS = 2;
+
 }
