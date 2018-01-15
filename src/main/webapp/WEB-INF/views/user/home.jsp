@@ -60,6 +60,7 @@
                     <ul class="nav nav-second-level">
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_invest_borrow_page">已投借款</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_invest_log_page">投资记录</a>
                         </li>
                     </ul>
                 </li>

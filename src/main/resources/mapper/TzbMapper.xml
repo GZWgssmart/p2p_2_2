@@ -1,169 +1,195 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.dao.TzbDAO" >
-  <resultMap id="BaseResultMap" type="com.we.bean.Tzb" >
-    <id column="sid" property="sid" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="juid" property="juid" jdbcType="INTEGER" />
-    <result column="money" property="money" jdbcType="DECIMAL" />
-    <result column="time" property="time" jdbcType="TIMESTAMP" />
-    <result column="nprofit" property="nprofit" jdbcType="DECIMAL" />
-    <result column="cpname" property="cpname" jdbcType="VARCHAR" />
-    <result column="baid" property="baid" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    sid, uid, juid, money, time, nprofit, cpname, baid
-  </sql>
-  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from tzb
-    where sid = #{sid,jdbcType=INTEGER}
-  </select>
-  <delete id="removeById" parameterType="java.lang.Integer" >
-    delete from tzb
-    where sid = #{sid,jdbcType=INTEGER}
-  </delete>
-  <insert id="save" parameterType="com.we.bean.Tzb" >
-    insert into tzb (sid, uid, juid, 
-      money, time, nprofit, 
-      cpname, baid)
-    values (#{sid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{juid,jdbcType=INTEGER}, 
-      #{money,jdbcType=DECIMAL}, #{time,jdbcType=TIMESTAMP}, #{nprofit,jdbcType=DECIMAL}, 
-      #{cpname,jdbcType=VARCHAR}, #{baid,jdbcType=INTEGER})
-  </insert>
-  <insert id="saveSelective" parameterType="com.we.bean.Tzb" >
-    insert into tzb
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="sid != null" >
-        sid,
-      </if>
-      <if test="uid != null" >
-        uid,
-      </if>
-      <if test="juid != null" >
-        juid,
-      </if>
-      <if test="money != null" >
-        money,
-      </if>
-      <if test="time != null" >
-        time,
-      </if>
-      <if test="nprofit != null" >
-        nprofit,
-      </if>
-      <if test="cpname != null" >
-        cpname,
-      </if>
-      <if test="baid != null" >
-        baid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="sid != null" >
-        #{sid,jdbcType=INTEGER},
-      </if>
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="juid != null" >
-        #{juid,jdbcType=INTEGER},
-      </if>
-      <if test="money != null" >
-        #{money,jdbcType=DECIMAL},
-      </if>
-      <if test="time != null" >
-        #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nprofit != null" >
-        #{nprofit,jdbcType=DECIMAL},
-      </if>
-      <if test="cpname != null" >
-        #{cpname,jdbcType=VARCHAR},
-      </if>
-      <if test="baid != null" >
-        #{baid,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateSelective" parameterType="com.we.bean.Tzb" >
-    update tzb
-    <set >
-      <if test="uid != null" >
-        uid = #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="juid != null" >
-        juid = #{juid,jdbcType=INTEGER},
-      </if>
-      <if test="money != null" >
-        money = #{money,jdbcType=DECIMAL},
-      </if>
-      <if test="time != null" >
-        time = #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nprofit != null" >
-        nprofit = #{nprofit,jdbcType=DECIMAL},
-      </if>
-      <if test="cpname != null" >
-        cpname = #{cpname,jdbcType=VARCHAR},
-      </if>
-      <if test="baid != null" >
-        baid = #{baid,jdbcType=INTEGER},
-      </if>
-    </set>
-    where sid = #{sid,jdbcType=INTEGER}
-  </update>
-  <update id="update" parameterType="com.we.bean.Tzb" >
-    update tzb
-    set uid = #{uid,jdbcType=INTEGER},
-      juid = #{juid,jdbcType=INTEGER},
-      money = #{money,jdbcType=DECIMAL},
-      time = #{time,jdbcType=TIMESTAMP},
-      nprofit = #{nprofit,jdbcType=DECIMAL},
-      cpname = #{cpname,jdbcType=VARCHAR},
-      baid = #{baid,jdbcType=INTEGER}
-    where sid = #{sid,jdbcType=INTEGER}
-  </update>
-  <select id="countAllMoney" resultType="long">
-    select IFNULL(sum(money),0) from tzb;
-  </select>
-  <select id="countUid" resultType="long">
+<mapper namespace="com.we.dao.TzbDAO">
+    <resultMap id="BaseResultMap" type="com.we.bean.Tzb">
+        <id column="sid" property="sid" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="juid" property="juid" jdbcType="INTEGER"/>
+        <result column="money" property="money" jdbcType="DECIMAL"/>
+        <result column="time" property="time" jdbcType="TIMESTAMP"/>
+        <result column="nprofit" property="nprofit" jdbcType="DECIMAL"/>
+        <result column="cpname" property="cpname" jdbcType="VARCHAR"/>
+        <result column="baid" property="baid" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        sid, uid, juid, money, time, nprofit, cpname, baid
+    </sql>
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from tzb
+        where sid = #{sid,jdbcType=INTEGER}
+    </select>
+    <delete id="removeById" parameterType="java.lang.Integer">
+        DELETE FROM tzb
+        WHERE sid = #{sid,jdbcType=INTEGER}
+    </delete>
+    <insert id="save" parameterType="com.we.bean.Tzb">
+        INSERT INTO tzb (sid, uid, juid,
+                         money, time, nprofit,
+                         cpname, baid)
+        VALUES (#{sid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{juid,jdbcType=INTEGER},
+                #{money,jdbcType=DECIMAL}, #{time,jdbcType=TIMESTAMP}, #{nprofit,jdbcType=DECIMAL},
+                #{cpname,jdbcType=VARCHAR}, #{baid,jdbcType=INTEGER})
+    </insert>
+    <insert id="saveSelective" parameterType="com.we.bean.Tzb">
+        insert into tzb
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                sid,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="juid != null">
+                juid,
+            </if>
+            <if test="money != null">
+                money,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+            <if test="nprofit != null">
+                nprofit,
+            </if>
+            <if test="cpname != null">
+                cpname,
+            </if>
+            <if test="baid != null">
+                baid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="juid != null">
+                #{juid,jdbcType=INTEGER},
+            </if>
+            <if test="money != null">
+                #{money,jdbcType=DECIMAL},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nprofit != null">
+                #{nprofit,jdbcType=DECIMAL},
+            </if>
+            <if test="cpname != null">
+                #{cpname,jdbcType=VARCHAR},
+            </if>
+            <if test="baid != null">
+                #{baid,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSelective" parameterType="com.we.bean.Tzb">
+        update tzb
+        <set>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="juid != null">
+                juid = #{juid,jdbcType=INTEGER},
+            </if>
+            <if test="money != null">
+                money = #{money,jdbcType=DECIMAL},
+            </if>
+            <if test="time != null">
+                time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nprofit != null">
+                nprofit = #{nprofit,jdbcType=DECIMAL},
+            </if>
+            <if test="cpname != null">
+                cpname = #{cpname,jdbcType=VARCHAR},
+            </if>
+            <if test="baid != null">
+                baid = #{baid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where sid = #{sid,jdbcType=INTEGER}
+    </update>
+    <update id="update" parameterType="com.we.bean.Tzb">
+        UPDATE tzb
+        SET uid     = #{uid,jdbcType=INTEGER},
+            juid    = #{juid,jdbcType=INTEGER},
+            money   = #{money,jdbcType=DECIMAL},
+            time    = #{time,jdbcType=TIMESTAMP},
+            nprofit = #{nprofit,jdbcType=DECIMAL},
+            cpname  = #{cpname,jdbcType=VARCHAR},
+            baid    = #{baid,jdbcType=INTEGER}
+        WHERE sid = #{sid,jdbcType=INTEGER}
+    </update>
+    <select id="countAllMoney" resultType="long">
+        SELECT IFNULL(sum(money), 0)
+        FROM tzb;
+    </select>
+    <select id="countUid" resultType="long">
     <![CDATA[
-      select COUNT(DISTINCT uid) from tzb where time > #{beginTime} and time < #{endTime};
-    ]]>
+        SELECT COUNT(DISTINCT uid)
+        FROM tzb
+        WHERE time > #{beginTime} AND time < #{endTime};
+        ]]>
   </select>
 
 
-  <select id="getAllUidByBaid" resultType="integer">
-    select distinct uid from tzb where
-    <foreach collection="list" item="item" separator="or">
-      baid = #{item}
-    </foreach>
+    <select id="getAllUidByBaid" resultType="integer">
+        select distinct uid from tzb where
+        <foreach collection="list" item="item" separator="or">
+            baid = #{item}
+        </foreach>
 
-  </select>
+    </select>
 
-  <select id="getAllMoneyByuid" resultType="double">
-    select sum(money) from tzb where
-    <foreach collection="baid" item="item" separator="or" open="(" close=")">
-      baid = #{item}
-    </foreach>
-    and uid = #{uid}
-  </select>
-  
-  <select id="countDealNumber" resultType="integer">
-    select count(sid) from tzb
-  </select>
+    <select id="getAllMoneyByuid" resultType="double">
+        select sum(money) from tzb where
+        <foreach collection="baid" item="item" separator="or" open="(" close=")">
+            baid = #{item}
+        </foreach>
+        and uid = #{uid}
+    </select>
 
-  <select id="getAllMoney" resultType="com.we.vo.TzbVO">
-    select money from tzb
-  </select>
+    <select id="countDealNumber" resultType="integer">
+        SELECT count(sid)
+        FROM tzb
+    </select>
 
-	<select id="countUserTzTotal" resultType="java.math.BigDecimal">
-      SELECT sum(money) FROM d_ssm_pujinziben.tzb
-      WHERE uid = #{uid} AND baid = #{baid}
-  </select>
+    <select id="getAllMoney" resultType="com.we.vo.TzbVO">
+        SELECT money
+        FROM tzb
+    </select>
 
-  <select id="sunMoneyByBaid" resultType="double">
-    select IFNULL(sum(money),0) from tzb where baid = #{baid}
-  </select></mapper>
+    <select id="countUserTzTotal" resultType="java.math.BigDecimal">
+        SELECT sum(money)
+        FROM d_ssm_pujinziben.tzb
+        WHERE uid = #{uid} AND baid = #{baid}
+    </select>
+
+    <select id="sunMoneyByBaid" resultType="double">
+        SELECT IFNULL(sum(money), 0)
+        FROM tzb
+        WHERE baid = #{baid}
+    </select>
+
+    <sql id="criteriaQuery">
+        FROM d_ssm_pujinziben.tzb
+        WHERE uid=#{query.uid}
+    </sql>
+
+    <select id="listCriteria" resultType="tzb">
+        SELECT *
+        <include refid="criteriaQuery"/>
+        ORDER BY time DESC
+        LIMIT #{pager.offset}, #{pager.limit}
+    </select>
+
+    <select id="countCriteria" resultType="java.lang.Long">
+        SELECT count(sid)
+        <include refid="criteriaQuery"/>
+    </select>
+</mapper>

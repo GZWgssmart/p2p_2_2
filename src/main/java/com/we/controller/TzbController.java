@@ -1,6 +1,8 @@
 package com.we.controller;
 
 import com.we.bean.Tzb;
+import com.we.bean.User;
+import com.we.common.OurConstants;
 import com.we.common.Pager;
 import com.we.dto.TzbDTO;
 import com.we.enums.RequestResultEnum;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
@@ -50,27 +53,11 @@ public class TzbController {
         return vo;
     }
 
-    @PostMapping("update")
-    @ResponseBody
-    public RequestResultVO update(Tzb tzb, BindingResult bindingResult) {
-        RequestResultVO vo = null;
-        try{
-            if(bindingResult.hasErrors()) {
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-            }else{
-                tzbService.updateSelective(tzb);
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
-            }
-        }catch (RuntimeException e) {
-            e.printStackTrace();
-            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-        }
-        return vo;
-    }
-
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pagerCriteria(Long offset, Long limit, Tzb tzb) {
+    public Pager pagerCriteria(Long offset, Long limit, Tzb tzb, HttpSession session) {
+        User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
+        tzb.setUid(user.getUid());
         return tzbService.listCriteria(offset, limit, tzb);
     }
 

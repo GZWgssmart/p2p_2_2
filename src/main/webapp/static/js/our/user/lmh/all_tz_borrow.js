@@ -67,6 +67,9 @@ var tzBorrow = {
             } else {
                 return '已收款';
             }
+        },
+        fmtCpname: function (value, row, index) {
+            return '<a target="_blank" href="/borrowdetail/detail_page/' + row.baid + '">' + value + '</a>';
         }
     },
     search: {
