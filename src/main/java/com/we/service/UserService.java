@@ -1,6 +1,7 @@
 package com.we.service;
 
 import com.we.bean.User;
+import com.we.vo.UserVO;
 
 import java.util.List;
 
@@ -47,6 +48,10 @@ public interface UserService extends BaseService {
      */
     Long countMonthById(String beginTime, String endTime);
 
-
+    /**
+     * 查询数据库有多少用户
+     * @return
+     */
+    Long countUser();
 
 }

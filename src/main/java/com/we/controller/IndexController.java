@@ -91,6 +91,12 @@ public class IndexController {
         return "index/info/about";
     }
 
+    //首页的普金宝、多金宝、恒金宝的介绍
+    @RequestMapping("product")
+    public String product(){
+        return "index/index/product";
+    }
+
     @RequestMapping("")
     public String index() {
         return "index";

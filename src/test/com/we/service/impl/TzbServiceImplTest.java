@@ -2,10 +2,12 @@ package com.we.service.impl;
 
 import com.we.dto.TzbDTO;
 import com.we.service.TzbService;
+import com.we.vo.TzbVO;
 import org.junit.Test;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class TzbServiceImplTest extends BaseTest {
 
@@ -30,6 +32,21 @@ public class TzbServiceImplTest extends BaseTest {
         Integer b = new Integer(10000);
         System.out.println(a == b);
         System.out.println(b.equals(a));
+    }
+
+    @Test
+    public void testGetMoney() {
+        List<TzbVO> tzbVOList = tzbService.getAllMoney();
+        BigDecimal allMoney = null;
+        for (TzbVO tzbVO : tzbVOList) {
+            BigDecimal money = tzbVO.getMoney();
+            if (allMoney !=null ) {
+                allMoney = money.add(allMoney);
+            } else {
+                allMoney = money;
+            }
+        }
+        System.out.println(allMoney);
     }
 
     @Resource

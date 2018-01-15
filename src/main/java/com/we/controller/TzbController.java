@@ -7,6 +7,7 @@ import com.we.enums.RequestResultEnum;
 import com.we.exception.InvestException;
 import com.we.service.TzbService;
 import com.we.vo.RequestResultVO;
+import com.we.vo.TzbVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by hasee on 2017/12/25.
@@ -69,6 +72,24 @@ public class TzbController {
     @ResponseBody
     public Pager pagerCriteria(Long offset, Long limit, Tzb tzb) {
         return tzbService.listCriteria(offset, limit, tzb);
+    }
+
+    @RequestMapping("get_money")
+    @ResponseBody
+    public TzbVO getMoney() {
+        List<TzbVO> tzbVOList = tzbService.getAllMoney();
+        BigDecimal allMoney = null;
+        for (TzbVO tzbVO : tzbVOList) {
+            BigDecimal money = tzbVO.getMoney();
+            if (allMoney !=null ) {
+                allMoney = money.add(allMoney);
+            } else {
+                allMoney = money;
+            }
+        }
+        TzbVO tzbVO = new TzbVO();
+        tzbVO.setAllMoney(allMoney);
+        return tzbVO;
     }
 
     @Resource

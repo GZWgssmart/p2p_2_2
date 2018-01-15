@@ -9,6 +9,7 @@ import com.we.enums.RequestResultEnum;
 import com.we.exception.InvestException;
 import com.we.service.AbstractBaseService;
 import com.we.service.TzbService;
+import com.we.vo.TzbVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -190,6 +191,11 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     @Override
     public Integer countDealNumber() {
         return tzbDAO.countDealNumber();
+    }
+
+    @Override
+    public List<TzbVO> getAllMoney() {
+        return tzbDAO.getAllMoney();
     }
 
     @Autowired

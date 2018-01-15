@@ -1,6 +1,7 @@
 package com.we.dao;
 
 import com.we.bean.User;
+import com.we.vo.UserVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -49,5 +50,11 @@ public interface UserDAO extends BaseDAO {
      * @return
      */
     Long countMonthById(@Param("beginTime") String beginTime, @Param("endTime") String endTime);
+
+    /**
+     * 查询数据库有多少用户
+     * @return
+     */
+    Long countUser();
 
 }

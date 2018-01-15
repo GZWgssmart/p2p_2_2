@@ -1,6 +1,6 @@
 package com.we.dao;
 
-import com.we.bean.Tzb;
+import com.we.vo.TzbVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -43,10 +43,17 @@ public interface TzbDAO extends BaseDAO {
     Integer countDealNumber();
 
     /**
+     * 查询出总投资数
+     * @return
+     */
+    List<TzbVO> getAllMoney();
+
+    /**
      * 查询用户对一个标投了的投资总额
      * @param uid 前台用户id
      * @param baid 借款id
      * @return 投资总额
      */
     BigDecimal countUserTzTotal(@Param("uid") Integer uid, @Param("baid") Integer baid);
+
 }

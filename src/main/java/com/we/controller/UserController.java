@@ -10,6 +10,7 @@ import com.we.service.HkbService;
 import com.we.service.RecommendService;
 import com.we.service.UserService;
 import com.we.vo.RequestResultVO;
+import com.we.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -336,6 +337,14 @@ public class UserController {
         phoneCode = "123456";//IndustrySMS.execute(phone);
         statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
         return statusVO;
+    }
+
+    @ResponseBody
+    @RequestMapping("count")
+    public UserVO getCount(){
+        UserVO userVO = new UserVO();
+        userVO.setCount(userService.countUser());
+        return userVO;
     }
 
     @RequestMapping("all_bankcard")

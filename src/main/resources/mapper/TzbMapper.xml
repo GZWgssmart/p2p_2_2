@@ -155,8 +155,13 @@
     select count(sid) from tzb
   </select>
 
-  <select id="countUserTzTotal" resultType="java.math.BigDecimal">
+  <select id="getAllMoney" resultType="com.we.vo.TzbVO">
+    select money from tzb
+  </select>
+
+	<select id="countUserTzTotal" resultType="java.math.BigDecimal">
       SELECT count(money) FROM d_ssm_pujinziben.tzb
       WHERE uid = #{uid} AND baid = #{baid}
   </select>
+
 </mapper>

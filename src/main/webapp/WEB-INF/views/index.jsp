@@ -110,8 +110,8 @@
         <div class="statis-main" style="width: 1200px;">
             <ul class="statis-top cl">
                 <li class="first"><p>普金资本高收益网络借贷信息中介平台</p></li>
-                <li class="center"><p>累计投资金额：<span id="investAmount"></span><span class="small">元</span></p></li>
-                <li class="last"><p>累计注册投资人：<span id="userTotal"></span><span class="small">人</span></p></li>
+                <li class="center"><p>累计投资金额：<span id="investAmount">{{money.allMoney | number:2 }}</span><span class="small">元</span></p></li>
+                <li class="last"><p>累计注册投资人：<span id="userTotal">{{user.count}}</span><span class="small">人</span></p></li>
             </ul>
             <div class="explian cl">
                 <a href="#" class="first">
@@ -161,7 +161,7 @@
                             <p class="progress-text"><span id="xs-schedules"></span>{{newpeople[0].jdmoney}}</p>
                         </div>
                         <p class="icon" style="background: none; margin-top: -22px;"></p>
-                        <p class="icon icon-doll">项目金额：<span id="xs-doll"></span>{{newpeople[0].money}}万元</p>
+                        <p class="icon icon-doll">项目金额：<span id="xs-doll"></span>{{newpeople[0].money | number:2 }}万元</p>
                         <p class="icon" style="background: none; margin-top: -22px;"></p>
                         <p class="icon icon-time">投资期限：<span id="ty-date"></span>{{newpeople[0].term}}个月</p>
                     </div>
@@ -178,7 +178,7 @@
     <div class="product-h" id="pj_hengjin">
         <div class="product-h-l">
             <img src="<%=path %>/static/picture/product_01.png" alt="恒金保">
-            <a href="product.html#hengjinb" class="top"></a>
+            <a href="<%=path %>/index/product" class="top"></a>
             <a href="investlist.html#006" class="bottom"></a>
         </div>
 
@@ -205,7 +205,7 @@
                                 <p class="progress-text">{{hengjinbao[0].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{hengjinbao[0].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{hengjinbao[0].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{hengjinbao[0].term}}个月</p>
                         </div>
@@ -235,7 +235,7 @@
                                 <p class="progress-text">{{hengjinbao[1].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{hengjinbao[1].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{hengjinbao[1].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{hengjinbao[1].term}}个月</p>
                         </div>
@@ -265,7 +265,7 @@
                                 <p class="progress-text">{{hengjinbao[2].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{hengjinbao[2].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{hengjinbao[2].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{hengjinbao[2].term}}个月</p>
                         </div>
@@ -282,7 +282,7 @@
     <div class="product-h" id="pj_pujin">
         <div class="product-h-l">
             <img src="<%=path %>/static/picture/product_02.png" alt="多金保">
-            <a href="product.html#pujinb" class="top"></a>
+            <a href="<%=path %>/index/product" class="top"></a>
             <a href="investlist.html#004" class="bottom"></a>
         </div>
         <div class="product-h-m">
@@ -308,7 +308,7 @@
                                 <p class="progress-text">{{pujinbao[0].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{pujinbao[0].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{pujinbao[0].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{pujinbao[0].term}}个月</p>
                         </div>
@@ -338,7 +338,7 @@
                                 <p class="progress-text">{{pujinbao[1].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{pujinbao[1].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{pujinbao[1].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{pujinbao[1].term}}个月</p>
                         </div>
@@ -368,7 +368,7 @@
                                 <p class="progress-text">{{pujinbao[2].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{pujinbao[2].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{pujinbao[2].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{pujinbao[2].term}}个月</p>
                         </div>
@@ -384,7 +384,7 @@
     <div class="product-h" id="pj_duojin">
         <div class="product-h-l">
             <img src="<%=path %>/static/picture/product_03.png" alt="多金宝">
-            <a href="product.html#duojinb" class="top"></a>
+            <a href="<%=path %>/index/product" class="top"></a>
             <a href="investlist.html#003" class="bottom"></a>
         </div>
         <div class="product-h-m">
@@ -410,7 +410,7 @@
                                 <p class="progress-text">{{duojinbao[0].jdmoney}}</p>
                             </div>
                                 <p class="icon" style="background: none; margin-top: -22px;"></p>
-                                <p class="icon icon-doll">项目金额：{{duojinbao[0].money}}万元</p>
+                                <p class="icon icon-doll">项目金额：{{duojinbao[0].money | number:2 }}万元</p>
                                 <p class="icon" style="background: none; margin-top: -22px;"></p>
                                 <p class="icon icon-time">投资期限：{{duojinbao[0].term}}个月</p>
                         </div>
@@ -440,7 +440,7 @@
                                 <p class="progress-text">{{duojinbao[1].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{duojinbao[1].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{duojinbao[1].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{duojinbao[1].term}}个月</p>
                         </div>
@@ -470,7 +470,7 @@
                                 <p class="progress-text">{{duojinbao[2].jdmoney}}</p>
                             </div>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
-                            <p class="icon icon-doll">项目金额：{{duojinbao[2].money}}万元</p>
+                            <p class="icon icon-doll">项目金额：{{duojinbao[2].money | number:2 }}万元</p>
                             <p class="icon" style="background: none; margin-top: -22px;"></p>
                             <p class="icon icon-time">投资期限：{{duojinbao[2].term}}个月</p>
                         </div>
@@ -595,6 +595,24 @@
                 url: "/homeImg/list_homeimg"
             }).then(function successCallback(response) {
                 $scope.homeImgs = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //查询出注册总人数
+            $http({
+                method: 'POST',
+                url: "/tzb/get_money"
+            }).then(function successCallback(response) {
+                $scope.money = response.data;
+            }, function errorCallback(response) {
+            });
+
+            //查询出注册总人数
+            $http({
+                method: 'POST',
+                url: "/user/count"
+            }).then(function successCallback(response) {
+                $scope.user = response.data;
             }, function errorCallback(response) {
             });
 

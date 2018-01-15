@@ -270,4 +270,11 @@
       select count(uid) from user where register_time > #{beginTime} and register_time < #{endTime};
     ]]>
   </select>
+
+  <select id="countUser" resultType="long">
+    <![CDATA[
+      select count(uid) from user
+    ]]>
+  </select>
+
 </mapper>
