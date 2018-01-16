@@ -93,7 +93,23 @@
                 <li>
                     <a href="#">
                         <i class="fa fa fa-bar-chart-o"></i>
-                        <span class="nav-label">审核管理</span>
+                        <span class="nav-label">借款管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">未审核</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_shok_page">已审核</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">现金流水</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
@@ -101,7 +117,10 @@
                             <a class="J_menuItem" href="<%=path%>/huser/all_tx_log_page">提现审核</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">借款审核</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_invest_page">投资记录</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_moneylog_page">资金流向</a>
                         </li>
                     </ul>
                 </li>
@@ -109,12 +128,15 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-desktop"></i>
-                        <span class="nav-label">员工管理</span>
+                        <span class="nav-label">用户管理</span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a class="J_menuItem" href="<%=path%>/huser/all_huser_page">所有员工</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_user_page">普通用户</a>
                         </li>
                     </ul>
                 </li>
