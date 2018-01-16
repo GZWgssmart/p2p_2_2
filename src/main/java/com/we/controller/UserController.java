@@ -102,8 +102,12 @@ public class UserController {
     }
 
     @RequestMapping("register_page")
-    public String registerPage() {
-        return "user/register";
+    public ModelAndView registerPage(String uid) {
+        ModelAndView mav = new ModelAndView("user/register");
+        if(uid != null || uid != ""){
+            mav.addObject("uid",uid);
+        }
+        return mav;
     }
 
     @PostMapping("register")

@@ -87,7 +87,7 @@
     }
 
     function csjgxx() {
-        $(".about-right").load("/index/csjgxx");
+        $(".about-right").load("/index/cyjgxx");
     }
 
     function jkxmxx() {

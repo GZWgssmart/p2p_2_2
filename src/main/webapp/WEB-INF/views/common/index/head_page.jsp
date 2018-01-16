@@ -5,7 +5,7 @@
         <div class="nav-bar">
             <ul>
                 <li><a href="javaScript:void(0);" id="myHome">我的账户</a></li>
-                <li><a href="<%=path %>/user/about">信息披露 </a></li>
+                <li><a href="<%=path %>/index/about">信息披露 </a></li>
                 <li><a href="<%=path %>/index/security">安全保障</a></li>
                 <li>
                     <a href="/index/invest">投资理财</a>

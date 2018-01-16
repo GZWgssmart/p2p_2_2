@@ -82,6 +82,15 @@
 <%@include file="../common/js/js_boostrap.jsp" %>
 <%@include file="../common/js/js_sweetalert.jsp" %>
 <script>
+
+    $(function () {
+        alert(!(${requestScope.uid == null || requestScope.uid == ""}));
+        if(!(${requestScope.uid == null || requestScope.uid == ""})){
+            var tuid = ${requestScope.uid}+"";
+            $("#useCode").val(tuid);
+        }
+
+    });
     $("#btn").click(function () {
         $('.ok-msg').hide();
         //手机号码
