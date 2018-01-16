@@ -2,6 +2,7 @@ package com.we.service.impl;
 
 import com.we.bean.*;
 import com.we.common.OurConstants;
+import com.we.common.Pager;
 import com.we.common.loan.*;
 import com.we.dao.*;
 import com.we.dto.TzbDTO;
@@ -9,6 +10,7 @@ import com.we.enums.RequestResultEnum;
 import com.we.exception.InvestException;
 import com.we.service.AbstractBaseService;
 import com.we.service.TzbService;
+import com.we.vo.InvestHistoryVO;
 import com.we.vo.TzbVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -201,6 +203,20 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
     @Override
     public Double sunMoneyByBaid(Integer baid) {
         return tzbDAO.sunMoneyByBaid(baid);
+    }
+
+    @Override
+    public Pager pagerInvestHistoryByBorrowId(Long offset, Long limit, Integer borrowId) {
+        if(offset == null){
+            offset = 0L;
+        }
+        if(limit == null){
+            limit = 0L;
+        }
+        Pager pager = new Pager(offset,limit);
+        pager.setRows(tzbDAO.pagerInvestHistoryByBorrowId(pager,borrowId));
+        pager.setTotal(tzbDAO.countInvestHistoryByBorrowId(borrowId));
+        return pager;
     }
 
     @Autowired

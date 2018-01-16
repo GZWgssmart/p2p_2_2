@@ -80,10 +80,10 @@ public class TzbController {
         return tzbVO;
     }
 
-    @RequestMapping("pager_invest_history_by_borrowId/{borrowId}")
+    @RequestMapping("pager_invest_history_by_borrowId")
     @ResponseBody
-    public Pager pagerInvestHistory(@PathVariable Integer borrowId){
-        return tzbService.listCriteria(null,null,null);
+    public Pager pagerInvestHistory(Long offset,Long limit,Integer borrowId){
+        return tzbService.pagerInvestHistoryByBorrowId(offset,limit,borrowId);
     }
 
     @Resource

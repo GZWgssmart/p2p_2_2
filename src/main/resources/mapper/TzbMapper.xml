@@ -192,4 +192,13 @@
         SELECT count(sid)
         <include refid="criteriaQuery"/>
     </select>
+
+    <select id="pagerInvestHistoryByBorrowId"  resultType="com.we.vo.InvestHistoryVO">
+        select u.phone,t.time,t.money from tzb t,user u
+where t.uid = u.uid and  baid = #{borrowId} ORDER BY time DESC LIMIT #{query.offset},#{query.limit}
+    </select>
+
+    <select id="countInvestHistoryByBorrowId" resultType="java.lang.Long">
+        select count(sid) from tzb where tzb.baid = #{borrowId};
+    </select>
 </mapper>

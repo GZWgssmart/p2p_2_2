@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="<%=path%>/static/css/index/qrl/public.css">
     <link rel="stylesheet" href="<%=path%>/static/css/index/qrl/index.css">
     <link rel="icon" href="https://www.pujinziben.com/resources/front/v01/src/images/logo_title.jpg" type="image/x-icon">
+    <%@include file="../../common/css/css_bootstrap-table.jsp"%>
+    <%--<%@include file="../../common/css/css_bootstrap.jsp"%>--%>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -235,27 +237,22 @@
                    data-toggle="table"
                    data-show-columns="false"
                    data-height="460"
-                   data-toolbar="#toolbar"
-                   data-click-to-select="true"
-                   data-show-refresh="true"
                    data-cookie="true"
                    data-cookie-id-table="saveId"
                    data-pagination="true"
+                   data-classes="table table-no-bordered"
                    data-search="false"
-                   data-url="<%=path%>/tzb/pager_criteria"
+                   data-url="<%=path%>/tzb/pager_invest_history_by_borrowId/?borrowId=${requestScope.borrow.baid}"
                    data-side-pagination="server">
                 <thead>
                 <tr>
-                    <th data-checkbox="true"></th>
-                    <th data-field="phone">投资人</th>
-                    <th data-field="money">投资金额</th>
-                    <th data-field="time">投资时间</th>
+                    <th data-field="phone" data-formatter=formatPhone >投资人</th>
+                    <th data-field="money" data-formatter=formatMoney>投资金额</th>
+                    <th data-field="time" data-formatter=formatDate>投资时间</th>
                 </tr>
                 </thead>
 
             </table>
-
-
         </div>
     </div>
     <div class="sub-a-box dangger" id="tips">
@@ -285,7 +282,6 @@
     <p class="title">其他资料</p>
     <a href="javascript:void(0);" class="close icon icon-close"></a>
     <ul class="files-more-list">
-
     </ul>
 </div>
 <div class="popup hasPWD">
@@ -365,10 +361,56 @@
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/jquery.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/public.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/invest.js"></script>
+<%@include file="../../common/js/js_boostrap_table.jsp"%>
+<%--<%@include file="../../common/js/js_boostrap.jsp"%>--%>
 <script>
-    $(function () {
-        $('#amount').val("");
-    })
+
+    function formatPhone(value) {
+        var phone = "";
+        for(i = 0; i < value.length;i++){
+            if(i >= 3 && i< 7 ){
+                phone = phone + "*";
+            }else{
+                phone = phone + value[i];
+            }
+        }
+
+        return phone;
+    }
+
+    function formatMoney(value) {
+        return value+".00";
+    }
+
+    function formatDate(value) {
+        if (value == undefined || value == null || value == '') {
+            return "";
+        } else {
+            var date = new Date(value);
+            var year = date.getFullYear().toString();
+            var month = (date.getMonth() + 1);
+            var day = date.getDate().toString();
+            var hour = date.getHours().toString();
+            var minutes = date.getMinutes().toString();
+            var seconds = date.getSeconds().toString();
+            if (month < 10) {
+                month = "0" + month;
+            }
+            if (day < 10) {
+                day = "0" + day;
+            }
+            if (hour < 10) {
+                hour = "0" + hour;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            return year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
+        }
+    }
 </script>
 </body>
 </html>

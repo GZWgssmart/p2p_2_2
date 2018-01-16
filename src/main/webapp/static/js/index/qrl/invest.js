@@ -872,66 +872,29 @@ function getPlan(obj){
 
 //投资记录
 function getInvest(obj){
-	if($(obj).hasClass('active')){
-		return;
-	};
-	if(!productDetail.userMap){
-		utils.alert('您还未登录，请先登录！',function(){
-			window.location.href=utils.getBasePath()+'login.html?href=invest&ev=getInvest&id='+proTypeId;
-		});
-		return;
-	};
-	if($('.plan').is(':visible')){
-		$('.em-line').animate({'left':'400px'},500);
-	}else{
-		$('.em-line').animate({'left':'280px'},500);
-	}
-	$('.sub-a-box').hide();
-	$(obj).addClass('active').siblings().removeClass('active');
-	//var param={"auth":"{uid:'"+utils.Storage.getItem('uid')+"'}","info":"{borrowId:'"+proTypeId+"'}"};
-	var param={
-				borrowId:proTypeId
-	};
-	var listData = [
-	     {
-	    	 key:'username',resolve:function(val){
-	    		 return val;
-	    	 }
-	     },
-	     {
-	    	 key:'investAmount',resolve:function(val){
-	    		 return val;
-	    	 }
-	     },
-	     {
-	    	 key:'investTime',resolve:function(val){
-	    		 return val;
-	    	 }
-	     },
-	     {
-	    	 key:'pageType',resolve:function(val){
-	    		 if(val=='PC'){
-	    			 return '<p class="icon icon-pc">PC端</p>';
-	    		 }else if(val=='phonepage'){
-	    			 return '<p class="icon icon-move">移动端</p>';
-	    		 }else{
-	    			 return '<p class="icon icon-move">APP</p>';
-	    		 }
-	    	 }
-	     }
-	];
-	new Page('front/findInvestmentRecordByBorrowId.do',param,$('#invest .listData'),$('#invest .paging'),listData,function(){
-		$('#invest').show();
-	})
+    if($(obj).hasClass('active')){
+        return;
+    };
+    if($('.plan').is(':visible')){
+        $('.em-line').animate({'left':'520px'},500);
+    }else{
+        $('.em-line').animate({'left':'280px'},500);
+    }
+
+    $('.sub-a-box').hide();
+    $(obj).addClass('active').siblings().removeClass('active');
+    $('#invest').show();
+
 };
 function dangger(obj){
+
 	if($(obj).hasClass('active')){
 		return;
 	};
 	if($('.plan').is(':visible')){
 		$('.em-line').animate({'left':'520px'},500);
 	}else{
-		$('.em-line').animate({'left':'400px'},500);
+		$('.em-line').animate({'left':'280px'},500);
 	}
 
 	$('.sub-a-box').hide();

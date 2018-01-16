@@ -1,6 +1,8 @@
 package com.we.service;
 
+import com.we.common.Pager;
 import com.we.dto.TzbDTO;
+import com.we.vo.InvestHistoryVO;
 import com.we.vo.TzbVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -42,4 +44,13 @@ public interface TzbService extends BaseService {
      * @return
      */
     Double sunMoneyByBaid(Integer baid);
+
+    /**
+     * 分页查询借款的投资记录
+     * @param offset
+     * @param limit
+     * @param borrowId
+     * @return
+     */
+    Pager pagerInvestHistoryByBorrowId(Long offset, Long limit, Integer borrowId);
 }
