@@ -159,6 +159,10 @@ CREATE TABLE huser(
   password VARCHAR(100) COMMENT '登录密码'
 )ENGINE = InnoDB DEFAULT  CHARSET = utf8 COMMENT '后台用户表';
 
+INSERT INTO `huser` VALUES ('15', 'our', '女', '18888888888', 'name', 'admin@email.com', '2018-01-09 11:11:23', 'Qpf0SxOVUjUkWySXOZ16kw==');
+INSERT INTO `huser` VALUES ('46', '李四', '男', '15087654321', 'superamdin', 'admin@gmail.com', '2018-01-09 08:56:30', 'Qpf0SxOVUjUkWySXOZ16kw==');
+INSERT INTO `huser` VALUES ('47', '张三', '男', '13012345678', 'admin', 'admin@163.com', '2018-01-09 10:37:32', 'Qpf0SxOVUjUkWySXOZ16kw==');
+
 DROP TABLE IF EXISTS bz;
 CREATE TABLE bz(
   bzid INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',

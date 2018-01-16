@@ -4,6 +4,7 @@ import com.we.bean.Bz;
 import com.we.common.Pager;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BzService;
+import com.we.vo.ComboboxVO;
 import com.we.vo.ListIntegerVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,12 @@ import java.util.List;
 public class BzController {
 
     private BzService bzService;
+
+	@RequestMapping("list_combobox")
+	@ResponseBody
+    public List<ComboboxVO> listCombobox() {
+        return bzService.listCombobox();
+	}
 
     @RequestMapping("all_bz_page")
     public String AllBzPage() {

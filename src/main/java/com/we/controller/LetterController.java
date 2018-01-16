@@ -2,14 +2,18 @@ package com.we.controller;
 
 import com.we.bean.Letter;
 import com.we.bean.UserLetter;
+import com.we.bean.UserTicket;
 import com.we.common.Pager;
+import com.we.common.UserUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.service.LetterService;
 import com.we.vo.RequestResultVO;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -22,11 +26,6 @@ public class LetterController {
 
     private LetterService letterService;
 
-    @RequestMapping("all_letter_page")
-    public String allDynamicPage() {
-        return "huser/letter/all_letter";
-    }
-
     /***
      * 更新站内信
      * @param letter
@@ -36,12 +35,16 @@ public class LetterController {
     @ResponseBody
     public RequestResultVO update(Letter letter) {
         RequestResultVO resultVO = null;
-        try {
-            letterService.updateSelective(letter);
-            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        if (UserUtils.isAdmin()) {
+            try {
+                letterService.updateSelective(letter);
+                resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+                resultVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+            }
+        } else {
+            resultVO = RequestResultVO.status(RequestResultEnum.NO_PERMISSION);
         }
         return resultVO;
     }
@@ -50,16 +53,20 @@ public class LetterController {
     @ResponseBody
     public RequestResultVO update(@Valid Letter letter, BindingResult bindingResult) {
         RequestResultVO vo = null;
-        try {
-            //判断此letter对象是否不符合Letter类中的注解
-            if (bindingResult.hasErrors()) {
+        if (UserUtils.isLogin()) {
+            try {
+                //判断此letter对象是否不符合Letter类中的注解
+                if (bindingResult.hasErrors()) {
+                    vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+                } else {
+                    letterService.updateSelective(letter);
+                    vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+                }
+            } catch (RuntimeException e) {
                 vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-            } else {
-                letterService.updateSelective(letter);
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
             }
-        }catch (RuntimeException e) {
-            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        } else {
+            vo = RequestResultVO.status(RequestResultEnum.NO_PERMISSION);
         }
         return vo;
     }
@@ -68,12 +75,16 @@ public class LetterController {
     @ResponseBody
     public RequestResultVO save(Letter letter) {
         RequestResultVO vo = null;
-        try{
-            letter.setDate(Calendar.getInstance().getTime());
-            letterService.saveSelective(letter);
-            vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
-        }catch (RuntimeException e) {
-            vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        if (UserUtils.isAdmin()) {
+            try {
+                letter.setDate(Calendar.getInstance().getTime());
+                letterService.saveSelective(letter);
+                vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+            } catch (RuntimeException e) {
+                vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+            }
+        } else {
+            vo = RequestResultVO.status(RequestResultEnum.NO_PERMISSION);
         }
         return vo;
     }
@@ -88,7 +99,10 @@ public class LetterController {
     @RequestMapping("pager_criteria")
     @ResponseBody
     public Pager pagerCriteria(Long offset, Long limit, UserLetter userLetter) {
-        return letterService.listCriteria(offset,limit, userLetter);
+        if (UserUtils.isLogin()) {
+            return letterService.listCriteria(offset, limit, userLetter);
+        }
+        return null;
     }
 
     /**
@@ -101,7 +115,10 @@ public class LetterController {
     @RequestMapping("all_pager_criteria")
     @ResponseBody
     public Pager listAllCriteria(Long offset, Long limit, Letter letter) {
-        return letterService.listAllLetter(offset,limit, letter);
+        if (UserUtils.isAdmin()) {
+             return letterService.listAllLetter(offset, limit, letter);
+        }
+        return null;
     }
 
     @Resource
