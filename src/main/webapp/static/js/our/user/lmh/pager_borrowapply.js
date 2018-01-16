@@ -136,11 +136,11 @@ var pagerBorrow = {
     select2: {
         //加载 标种下拉框 的数据
         loadBzType: function () {
-            ourSelect2.classLoadNoSearch('/bz/list_combobox', '请选择标种', 'bz-select2');
+            ourSelect2.classLoadNoSearch('/bz/list_combobox', '请选择借款类型', 'bz-select2');
         },
         //加载 借款类型下拉框 的数据
         loadJkType: function () {
-            ourSelect2.classLoadNoSearch('/jklx/list_combobox', '请选择借款类型', 'jkxl-select2');
+            ourSelect2.classLoadNoSearch('/jklx/list_combobox', '请选择标种', 'jkxl-select2');
         }
     },
     submitForm: {

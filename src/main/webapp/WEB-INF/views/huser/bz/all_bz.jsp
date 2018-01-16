@@ -31,7 +31,7 @@
     <tr>
         <th data-checkbox="true"></th>
         <th data-field="bzid" data-visible="false">id</th>
-        <th data-field="bzname">标种名称</th>
+        <th data-field="bzname">方式名称</th>
         <th data-field="state" data-formatter="stateFormatter">状态</th>
     </tr>
     </thead>

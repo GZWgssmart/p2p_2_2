@@ -4,6 +4,7 @@ import com.we.bean.*;
 import com.we.bean.Borrowapply;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
+import com.we.common.UserUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.query.InvestBorrowQuery;
 import com.we.service.BorrowapplyService;
@@ -74,6 +75,7 @@ public class BorrowapplyController {
             borrowapplyService.saveSelective(borrowapply);
             vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e) {
+            e.printStackTrace();
             vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
         }
         return vo;
@@ -106,7 +108,9 @@ public class BorrowapplyController {
      */
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager pagerCriteria(Long offset, Long limit, Borrowapply borrowapply) {
+    public Pager pagerCriteria(Long offset, Long limit, Borrowapply borrowapply, HttpSession session) {
+        User user = UserUtils.getUser(session);
+        borrowapply.setUid(user.getUid());
         return borrowapplyService.listCriteria(offset, limit, borrowapply);
     }
 

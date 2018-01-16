@@ -35,14 +35,14 @@
 </div>
 <table id="borrowapply-list" class="table table-hover"
        data-single-select="true"
-       data-url="<%=path%>/borrowapply/pager_criteria?uid=${sessionScope.user.uid}">
+       data-url="<%=path%>/borrowapply/pager_criteria">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
         <th data-field="rname">申请人</th>
         <th data-field="money">金额（元）</th>
-        <th data-field="bzname">标种类型</th>
-        <th data-field="lxname">借款类型</th>
+        <th data-field="bzname">借款类型</th>
+        <th data-field="lxname">标种类型</th>
         <th data-field="term">期限（月）</th>
         <th data-field="applyTime" data-formatter="setTable.formatDate">申请时间</th>
         <th data-field="deadline" data-formatter="setTable.formatDate">投标截止时间</th>

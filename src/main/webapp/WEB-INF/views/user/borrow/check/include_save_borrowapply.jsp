@@ -36,13 +36,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="input-bzname" class="col-sm-2 control-label">标种类型</label>
+                        <label for="input-bzname" class="col-sm-2 control-label">借款类型</label>
                         <div class="col-sm-10">
                             <select style="width: 100%" name="bzid" id="input-bzname" class="form-control bz-select2"></select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="input-lxname" class="col-sm-2 control-label">借款类型</label>
+                        <label for="input-lxname" class="col-sm-2 control-label">标种类型</label>
                         <div class="col-sm-10">
                             <select style="width: 100%" name="type" id="input-lxname" class="form-control jkxl-select2"></select>
                         </div>

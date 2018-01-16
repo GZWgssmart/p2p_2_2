@@ -7,14 +7,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">添加借款类型</h4>
+                <h4 class="modal-title" id="myModalLabel">添加标种</h4>
             </div>
             <div class="modal-body">
                 <form id="addJklxForm" class="form-horizontal">
                     <div class="form-group">
-                        <label for="save-jklx" class="col-sm-2 control-label">借款类型</label>
+                        <label for="save-jklx" class="col-sm-2 control-label">标种</label>
                         <div class="col-sm-10">
-                            <input name="lxname" class="form-control" id="save-jklx" required="required" placeholder="输入借款类型">
+                            <input name="lxname" class="form-control" id="save-jklx" required="required" placeholder="输入标种">
                         </div>
                     </div>
 
@@ -36,15 +36,15 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="ModalLabel">修改借款类型</h4>
+                <h4 class="modal-title" id="ModalLabel">修改标种</h4>
             </div>
             <div class="modal-body">
                 <form id="updateJklxForm" class="form-horizontal">
                     <input type="hidden" name="lxid" id="lxid"/>
                     <div class="form-group">
-                        <label for="lxname" class="col-sm-2 control-label">借款类型</label>
+                        <label for="lxname" class="col-sm-2 control-label">标种</label>
                         <div class="col-sm-10">
-                            <input name="lxname" class="form-control" id="lxname" required="required" placeholder="输入借款类型">
+                            <input name="lxname" class="form-control" id="lxname" required="required" placeholder="输入标种">
                         </div>
                     </div>
 
