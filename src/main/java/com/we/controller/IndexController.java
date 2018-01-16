@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created on 2017/12/8 19:07
@@ -16,10 +16,11 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/index")
 public class IndexController {
 
-    //投资理财
-    @RequestMapping("tzlc")
-    public String allTz() {
-     return "index/info/staticpage/tzlc";
+    //最新公告详情页
+    @RequestMapping("notice_info/{nid}")
+    public String noticeInfo(@PathVariable("nid") Integer nid, HttpServletRequest request) {
+        request.setAttribute("nid", nid);
+        return "index/info/staticpage/notice_content";
     }
 
     //公司动态

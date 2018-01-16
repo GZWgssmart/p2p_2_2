@@ -16,7 +16,8 @@
 </head>
 <!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
-
+<%@include file="../../../index/info/staticpage/topPage.jsp" %>
+<%@include file="../../../user/head.jsp"%>
 <div class="about cl">
     <div class="about-left">
         <div class="about-left-nav">
@@ -45,8 +46,7 @@
                     <li class="interval" ng-repeat="notice in notice">
                         <div class="children0">
                             <a href="<%=ptggPath %>/index/notice_info/{{notice.nid}}" target="_blank"
-                               class="title">
-                                {{notice.content}}</a><span class="time">
+                               class="title">{{notice.title}}</a><span class="time">
                             {{notice.date | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                         </div>
                     </li>

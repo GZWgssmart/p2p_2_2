@@ -24,6 +24,12 @@ public class NoticeController {
 
     private NoticeService noticeService;
 
+    @RequestMapping("detail")
+    @ResponseBody
+    public Notice getNoticeDetail(Integer nid) {
+        return (Notice) noticeService.getById(nid);
+    }
+
     /***
      * 更新最新公告
      * @param notice
