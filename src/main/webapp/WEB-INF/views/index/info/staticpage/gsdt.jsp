@@ -17,7 +17,7 @@
 <!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
 
-<%@include file="../../../common/index/head_page.jsp"%>
+
 <div class="about cl">
     <div class="about-left">
         <div class="about-left-nav">

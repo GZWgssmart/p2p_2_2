@@ -19,7 +19,7 @@
     <em class="em-line"></em>
 </div>
 <div class="about-content" id="jbxxDiv">
-    <div id="chengtou" class="content">
+    <div id="chengtou1" class="content">
         <p class="text">全称及简称：<span class="textRight">普金资本运营（赣州）有限公司</span></p>
         <p class="text">注册资本：<span class="textRight">3000万元</span></p>
         <p class="text">注册地址：<span class="textRight">江西省赣州市章贡区章江新区赣州中航城10B-18</span></p>
@@ -47,7 +47,7 @@
     </div>
 </div>
 <div class="about-content" id="zlxxDiv" style="display: none;">
-    <div id="chengtou1" class="content">
+    <div id="chengtou2" class="content">
         <div class="zzjgDiv"></div><p class="zzjgText"><b>组织机构情况</b></p>
         <img class="zzjgImg" alt="组织机构情况" src="./从业机构_files/zzjg.png" width="853" height="369">
         <div class="textDiv">实际控制人与持股 5% 以上的股东的名称</div>
@@ -183,7 +183,7 @@
 </div>
 
 <div class="about-content" id="wzptDiv" style="display: none;">
-    <div id="chengtou" class="content">
+    <div id="chengtou3" class="content">
         <div class="tableDiv">
             <table class="table1">
                 <tbody><tr>
@@ -208,7 +208,7 @@
 </div>
 
 <div class="about-content" id="hzhbDiv" style="display: none;">
-    <div id="chengtou" class="content">
+    <div id="chengtou4" class="content">
         <div class="logoDiv">
             <a href="https://www.fadada.com/">
                 <img alt="logo" src="./从业机构_files/fadadaLogo.png">
@@ -263,7 +263,7 @@
 </div>
 
 <div class="about-content" id="zdsxDiv" style="display: none;">
-    <div id="chengtou" class="content">
+    <div id="chengtou5" class="content">
         <div class="tableDiv">
             <table class="zdssTable" style="width:900px;height:265px">
                 <tbody><tr>
