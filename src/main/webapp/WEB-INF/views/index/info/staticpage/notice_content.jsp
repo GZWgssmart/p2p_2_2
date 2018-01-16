@@ -33,16 +33,24 @@
         <p class="news-time fr" id="notice_time">{{notice.date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
     </div>
     <div class="news-contents-bottom" id="content">
-        <p class="MsoNormal" align="left" style="color:#333333;">{{notice.content}}</p>
+        <p class="MsoNormal" align="left" style="color:#333333;">
+            <p ng-bind-html="myText">
+
+            </p>
+        </p>
+
         <p class="MsoNormal" align="right" style="color:#333333;text-align:right;">普金资本运营（赣州）有限公司</p>
     </div>
 </div>
+
+
 <script src="<%=path%>/static/js/angular/angular.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 <script src="<%=path%>/static/js/jquery.min.js"></script>
 <script type="text/javascript">
     var noticeId = ${requestScope.nid};
     (function ($) {
-        var app = angular.module('myApp', []);
+        var app = angular.module('myApp', ['ngSanitize']);
         app.config(function ($httpProvider) {
 
             $httpProvider.defaults.transformRequest = function (obj) {
@@ -65,13 +73,13 @@
                 data:{nid:noticeId}
             }).then(function successCallback(response) {
                 $scope.notice = response.data;// 数据
+                $scope.myText = $scope.notice.content;
             }, function errorCallback(response) {
+
             });
         });
     }(jQuery));
 </script>
-
-
 <jsp:include page="../../../common/index/foot.jsp"></jsp:include>
 </body>
 </html>

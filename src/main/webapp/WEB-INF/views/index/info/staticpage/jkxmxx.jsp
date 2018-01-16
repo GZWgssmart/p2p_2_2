@@ -11,9 +11,9 @@
 
 <div class="about-right-nav">
     <div class="sub-a-nav">
-        <a href="javascript:void(0);" class="active" id="xmxx">项目信息</a>
-        <a href="javascript:void(0);" id="xmjs">项目介绍</a>
-        <a href="javascript:void(0);" id="jkrxx" class="jkrxx">借款人/机构信息</a>
+        <a href="javascript:void(0);" class="active" id="xmxx" onclick="show('xmxxDiv');">项目信息</a>
+        <a href="javascript:void(0);" id="xmjs" onclick="show('xmjsDiv');">项目介绍</a>
+        <a href="javascript:void(0);" id="jkrxx" class="jkrxx" onclick="show('jkrxxDiv');">借款人/机构信息</a>
     </div>
     <em class="em-line"></em>
 </div>
@@ -193,3 +193,10 @@
         </div>
     </div>
 </div>
+
+<script>
+    function show(divId) {
+        $(".about-content").hide();
+        $("#" + divId).show();
+    }
+</script>

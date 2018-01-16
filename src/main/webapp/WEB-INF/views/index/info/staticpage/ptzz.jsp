@@ -10,8 +10,9 @@
 
 <div class="about-content">
 <div class="title-link">
-    <a href="javascript:;" class="left active">公司证件</a>
-    <a href="javascript:;" class="right">荣誉资质</a>
+    <a href="javascript:;" class="left active" onclick="showMessage();">公司证件</a>
+
+    <a href="javascript:;" class="right" onclick="hideMessage();">荣誉资质</a>
 </div>
 <div id="zhengjian" class="content">
     <div class="text-banner clearfix" style="display: block;">
@@ -45,6 +46,7 @@
         </div>
     </div>
 </div>
+
 <div id="zizhi" class="content" style="display: none;">
     <div class="text-banner clearfix text-banner-two" style="position: relative;">
         <p class="credit-pic">
@@ -74,3 +76,19 @@
     </div>
 </div>
 </div>
+<script>
+    function  showMessage() {
+        $("#zhengjian").show();
+        $("#zizhi").hide();
+    }
+
+    function hideMessage() {
+        $("#zhengjian").hide();
+        $("#zizhi").show();
+    }
+
+    function defaultMeaasge() {
+        $("#zhengjian").show();
+    }
+
+</script>
