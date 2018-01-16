@@ -45,8 +45,7 @@
 <div class="top" id="top">
 </div>
 <!-- nav -->
-<%@include file="../../user/head.jsp"%>
-<!-- banner -->
+<%@include file="../../common/index/head_page.jsp"%><!-- banner -->
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- 轮播（Carousel）指标 -->

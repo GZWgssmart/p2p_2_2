@@ -393,6 +393,11 @@ public class UserController {
         return userVO;
     }
 
+    @RequestMapping("withdrawal")
+    public String withdrawal(){
+        return "user/withdrawal";
+    }
+
     @RequestMapping("all_bankcard")
     public String allBankcard(){
         return "user/bankcard/all_bankcard";

@@ -46,6 +46,9 @@
                             <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">账户充值</a>
                         </li>
                         <li>
+                            <a class="J_menuItem" href="<%=path%>/user/withdrawal">提现</a>
+                        </li>
+                        <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_bankcard">银行卡</a>
                         </li>
                         <li>
