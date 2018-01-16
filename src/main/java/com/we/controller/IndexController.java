@@ -16,6 +16,12 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/index")
 public class IndexController {
 
+    //投资理财
+    @RequestMapping("tzlc")
+    public String allTz() {
+     return "index/info/staticpage/tzlc";
+    }
+
     //公司动态
     @RequestMapping("dynamic")
     public String allDynamic() {

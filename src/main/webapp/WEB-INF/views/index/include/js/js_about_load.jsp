@@ -5,11 +5,6 @@
         $('.about-right').load(url);
     }
 
-   /* //公司动态
-    function gsdt() {
-        loadPage("/index/gsdt");
-    }*/
-
     //平台运营信息
     function ptyy() {
         //平台运营

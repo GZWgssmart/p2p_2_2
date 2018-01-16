@@ -52,7 +52,7 @@
                         </div>
                     </li>
                 </ul>
-                <%-- <ul class="paging" style="width: 500px; margin: 30px auto 0px;">
+                 <ul class="paging" style="width: 500px; margin: 30px auto 0px;">
                      <li>
                          <button type="button" class="pre">上一页</button>
                      </li>
@@ -81,7 +81,7 @@
                      <li>
                          <button type="button" class="next">下一页</button>
                      </li>
-                 </ul>--%>
+                 </ul>
             </div>
         </div>
     </div>

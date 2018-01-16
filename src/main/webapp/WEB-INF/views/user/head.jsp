@@ -11,7 +11,7 @@
                 <li><a href="<%=headPath %>/index/about">信息披露 </a></li>
                 <li><a href="<%=headPath %>/index/security">安全保障</a></li>
                 <li>
-                    <a href="investlist.html">投资理财</a>
+                    <a href="<%=headPath %>/index/tzlc">投资理财</a>
                     <div class="sub-nav">
                         <a href="investlist.html#006">恒金保</a>
                         <a href="investlist.html#004">普金保</a>

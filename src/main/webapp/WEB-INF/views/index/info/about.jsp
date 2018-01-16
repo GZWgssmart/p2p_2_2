@@ -125,5 +125,6 @@
     }
 
 </script>
+<jsp:include page="../../common/index/foot.jsp"></jsp:include>
 </body>
 </html>
