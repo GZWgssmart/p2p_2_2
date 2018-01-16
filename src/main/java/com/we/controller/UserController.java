@@ -1,14 +1,12 @@
 package com.we.controller;
 
-import com.we.bean.Recommend;
-import com.we.bean.User;
+import com.we.bean.*;
 import com.we.common.EncryptUtils;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
+import com.we.common.TicketUtils;
 import com.we.enums.RequestResultEnum;
-import com.we.service.HkbService;
-import com.we.service.RecommendService;
-import com.we.service.UserService;
+import com.we.service.*;
 import com.we.vo.RequestResultVO;
 import com.we.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -35,6 +35,15 @@ public class UserController {
 
     @Autowired
     private RecommendService recommendService;
+
+    @Autowired
+    private TicketService ticketService;
+
+    @Autowired
+    private UserTicketService userTicketService;
+
+    @Autowired
+    private UsermoneyService usermoneyService;
 
     @RequestMapping("all_invest_log_page")
     public String allInvestLogPage() {
@@ -131,6 +140,15 @@ public class UserController {
                 //无推荐码
                 user.setRegisterTime(new Date());
                 userService.saveSelective(user);
+
+                //生成注册优惠券
+                Ticket ticket = TicketUtils.createUserRegisterTicket();
+                ticketService.save(ticket);
+
+                //保存优惠券
+                UserTicket userTicket = TicketUtils.createUserTicket(user.getUid(),ticket.getUmid());
+                userTicketService.saveSelective(userTicket);
+
                 statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_SUCCESS);
             }else{
                 //有推荐码  先判断该推荐码是否存在
@@ -142,6 +160,23 @@ public class UserController {
                     Recommend recommend = new Recommend();
                     recommend.setTid(user.getTid());
                     recommend.setUid(user.getUid());
+                    recommend.setDate(Calendar.getInstance().getTime());
+
+                    //生成新用户注册优惠券
+                    Ticket ticket = TicketUtils.createUserRegisterTicket();
+                    ticketService.save(ticket);
+
+                    //保存新用户优惠券
+                    UserTicket userTicket = TicketUtils.createUserTicket(user.getUid(),ticket.getUmid());
+                    userTicketService.saveSelective(userTicket);
+
+                    //生成推荐用户注册优惠券
+                    Ticket ticket1 = TicketUtils.createUserRegisterTicket();
+                    ticketService.save(ticket1);
+
+                    //保存推荐优惠券
+                    UserTicket userTicket1 = TicketUtils.createUserTicket(user.getTid(),ticket.getUmid());
+                    userTicketService.saveSelective(userTicket1);
 
                     recommendService.saveSelective(recommend);
                     phoneCode = "";
@@ -182,7 +217,9 @@ public class UserController {
             //登入失败
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
         }else{
+            Usermoney usermoney = usermoneyService.getByUid(user.getUid());
             session.setAttribute("user",userLogin);
+            session.setAttribute("usermoney",usermoney);
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
         }
         return statusVO;

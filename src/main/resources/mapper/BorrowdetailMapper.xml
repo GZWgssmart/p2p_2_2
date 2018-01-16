@@ -238,4 +238,17 @@
       SELECT * FROM borrowdetail
       WHERE baid = #{baid}
   </select>
+
+  <select id="getDetail" resultType="com.we.vo.BorrowDetailVO" parameterType="java.lang.Integer">
+    select ba.*,bd.*,bz.bzname as bidType from borrowapply ba,borrowdetail bd,bz where
+    ba.baid = bd.baid and ba.baid = #{borrowId} and ba.bzid = bz.bzid;
+  </select>
+
+  <select id="countBid" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+     select count(sid) from tzb where baid = #{borrowId};
+  </select>
+
+  <select id="pagerInvestHistory">
+    
+  </select>
 </mapper>

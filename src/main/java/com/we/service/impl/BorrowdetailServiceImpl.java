@@ -3,10 +3,12 @@ package com.we.service.impl;
 import com.we.bean.Borrowapply;
 import com.we.bean.Borrowdetail;
 import com.we.common.OurConstants;
+import com.we.common.Pager;
 import com.we.dao.BorrowapplyDAO;
 import com.we.dao.BorrowdetailDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.BorrowdetailService;
+import com.we.vo.BorrowDetailVO;
 import com.we.vo.ComboboxVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,9 +36,17 @@ public class BorrowdetailServiceImpl extends AbstractBaseService implements Borr
         return super.updateSelective(obj);
     }
 
+
     @Override
     public Borrowdetail getByApplyId(Integer baid) {
         return borrowdetailDAO.getByApplyId(baid);
+    }
+
+    @Override
+    public BorrowDetailVO getDetail(Integer borrowId) {
+        BorrowDetailVO borrowDetailVO = borrowdetailDAO.getDetail(borrowId);
+        borrowDetailVO.setBidCount(borrowdetailDAO.countBid(borrowId));
+        return borrowDetailVO;
     }
 
     @Autowired

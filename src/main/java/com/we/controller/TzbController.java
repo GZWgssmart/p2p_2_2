@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -77,6 +78,12 @@ public class TzbController {
         TzbVO tzbVO = new TzbVO();
         tzbVO.setAllMoney(allMoney);
         return tzbVO;
+    }
+
+    @RequestMapping("pager_invest_history_by_borrowId/{borrowId}")
+    @ResponseBody
+    public Pager pagerInvestHistory(@PathVariable Integer borrowId){
+        return tzbService.listCriteria(null,null,null);
     }
 
     @Resource
