@@ -48,12 +48,6 @@ public abstract class AbstractBaseService implements BaseService {
 
     @Override
     public Pager listCriteria(Long offset, Long limit, Object object) {
-        if (offset == null) {
-            offset = 0L;
-        }
-        if (limit == null) {
-            limit = 10L;
-        }
         Pager pager = new Pager(offset, limit);
         pager.setRows(baseDAO.listCriteria(pager, object));
         pager.setTotal(baseDAO.countCriteria(object));

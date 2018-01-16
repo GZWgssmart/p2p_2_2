@@ -80,4 +80,14 @@ public interface BorrowapplyService extends BaseService {
 
 
     List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2,String nysy1, String nysy2,String xmlx1, String search);
+
+    /**
+     * 后台用户查看所有已发布的借款
+     *
+     * @param offset
+     * @param limit
+     * @param query
+     * @return
+     */
+    Pager listAllOkborrow(Long offset, Long limit, Object query);
 }

@@ -33,6 +33,19 @@ public class BorrowapplyController {
 
     private BorrowapplyService borrowapplyService;
 
+    /**
+     * 后台用户查看已发布的借款
+     * @param offset
+     * @param limit
+     * @param borrowapply
+     * @return
+     */
+    @RequestMapping("list_okborrow")
+    @ResponseBody
+    public Pager listOkborrow(Long offset, Long limit, Borrowapply borrowapply) {
+        return borrowapplyService.listAllOkborrow(offset, limit, borrowapply);
+    }
+
     @Autowired
     private TzbService tzbService;
     /**

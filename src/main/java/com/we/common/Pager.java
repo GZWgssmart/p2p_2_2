@@ -38,6 +38,12 @@ public class Pager {
      * @param limit 每页条目数
      */
     public Pager(Long offset, Long limit) {
+        if (offset == null) {
+            offset = 0L;
+        }
+        if (limit == null) {
+            limit = 10L;
+        }
         this.offset = offset;
         this.limit = limit;
     }

@@ -101,7 +101,7 @@
                             <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">未审核</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_shok_page">已审核</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_okborrow_page">已审核</a>
                         </li>
                     </ul>
                 </li>
