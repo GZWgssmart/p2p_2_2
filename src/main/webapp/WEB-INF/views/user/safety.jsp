@@ -144,11 +144,15 @@
     //修改手机号
     $("#changePhone").click(function () {
         $("#verifyPhoneModal").modal("show");
+        $("#code").val("");
     });
 
     $("#phoneCode").click(function () {
         getPhone(${sessionScope.user.phone});
     })
+
+
+
     //验证手机号
     function vrifyPhone() {
         var code = $("#code").val();
@@ -165,6 +169,8 @@
                         swtAlert.request_success(data.messgae);
                         $("#verifyPhoneModal").modal("hide");
                         $("#updatePhoneModal").modal("show");
+                    }else{
+                        swtAlert.request_fail(data.message);
                     }
                 },"json"
             );
@@ -249,26 +255,16 @@
                 phone:phone
             },
             function (data) {
-                if(data.message === "验证码发送成功,请注意查收"){
-                    swtAlert.request_success(data.messgae)
+                if(data.message == "验证码已发送，请注意查收"){
+                    swtAlert.request_success(data.messgae);
+                }else{
+                    swtAlert.request_fail(data.message);
                 }
             },"json"
         );
     }
 
-    //获取未注册的手机号的验证码
-    function getPhone(phone) {
-        $.post("/user/verify_phone",
-            {
-                phone:phone
-            },
-            function (data) {
-                if(data.message === "验证码发送成功,请注意查收"){
-                    swtAlert.request_success(data.messgae)
-                }
-            },"json"
-        );
-    }
+
 
     //绑定邮箱
     $("#changeEmail").click(function () {
@@ -386,7 +382,7 @@
                 success:  function (data) {
                     if(data.message === "修改成功"){
                         swtAlert.request_success("密码修改成功，请重新登入");
-                        window.location.href = "/user/login_page";
+                        window.top.location.href = "<%=path%>/user/login_page";
                     }else{
                         swtAlert.request_fail(data.message);
                     }

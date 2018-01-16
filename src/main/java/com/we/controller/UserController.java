@@ -269,7 +269,7 @@ public class UserController {
     @RequestMapping("update_user")
     public RequestResultVO updatePhoneByUid(User user,String old, HttpSession session){
         RequestResultVO statusVO = null;
-        if(user.getUpwd() != null || user.getUpwd() != ""){
+        if(!(user.getUpwd() == null || user.getUpwd() == "")){
             //修改密码
             User user1 = (User) userService.getById(user.getUid());
             if(user1.getUpwd().equals(EncryptUtils.md5(old))){

@@ -75,7 +75,7 @@
                 <form id="updatePhoneForm" class="form-horizontal">
                     <input type="hidden" name="uid" value="${sessionScope.user.uid}" />
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">原手机号</label>
+                        <label class="col-sm-2 control-label">现手机号</label>
                         <div class="col-sm-8">
                             <input name="phone" class="form-control" id="newPhone" placeholder="输入您的手机号码">
                         </div>
@@ -147,19 +147,19 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">原始密码</label>
                         <div class="col-sm-8">
-                            <input id="oldPwd" name="oldPwd" class="form-control" placeholder="输入原始密码">
+                            <input id="oldPwd" name="oldPwd" class="form-control" type="password" placeholder="输入原始密码">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">新密码</label>
                         <div class="col-sm-8">
-                            <input id="newPwd" name="newPwd" class="form-control" placeholder="输入新密码">
+                            <input id="newPwd" name="newPwd" class="form-control" type="password" placeholder="输入新密码">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">确认密码</label>
                         <div class="col-sm-8">
-                            <input id="copPwd" class="form-control" placeholder="输入新密码">
+                            <input id="copPwd" class="form-control" type="password" placeholder="输入新密码">
                         </div>
                     </div>
                     <div class="modal-footer">
