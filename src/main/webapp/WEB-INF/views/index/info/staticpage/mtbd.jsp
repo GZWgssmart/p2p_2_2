@@ -19,7 +19,8 @@
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
 
-<%@include file="../../../user/head.jsp" %>
+<%@include file="../../../user/top.jsp" %>
+<%@include file="../../../common/index/head_page.jsp"%>
 
 <div class="about cl">
     <div class="about-left">

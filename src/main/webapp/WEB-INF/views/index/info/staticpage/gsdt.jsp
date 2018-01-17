@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: xdp
@@ -18,6 +19,8 @@
 <!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
 
+<%@include file="../../../user/top.jsp" %>
+<%@include file="../../../common/index/head_page.jsp"%>
 
 <div class="about cl">
     <div class="about-left">
@@ -40,7 +43,6 @@
                 <a href="javascript:void(0);" class="active" id="gsdt">公司动态</a>
                 <a href="<%=ptggPath %>/media/media_page" class="" id="xyxw">媒体报道</a>
             </div>
-            <%--<em class="em-line" style="left: 0px;"></em>--%>
         </div>
 
         <div class="about-content">

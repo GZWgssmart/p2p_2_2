@@ -19,7 +19,7 @@
 <body>
 
 <!-- nav -->
-<%@include file="../../index/info/staticpage/topPage.jsp" %>
+<%@include file="../../user/top.jsp" %>
 <%@include file="../../common/index/head_page.jsp"%>
 
 <div class="about cl">
@@ -50,6 +50,7 @@
 <%--<script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>--%>
 
 <%@include file="../include/js/js_about_load.jsp"%>
-<jsp:include page="../../common/index/foot.jsp"></jsp:include>
+<%@include file="../../common/index/foot_page.jsp"%>
+<%--<jsp:include page="../../common/index/foot.jsp"></jsp:include>--%>
 </body>
 </html>

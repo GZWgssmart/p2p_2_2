@@ -16,8 +16,8 @@
 </head>
 <!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
-<%@include file="../../../index/info/staticpage/topPage.jsp" %>
-<%@include file="../../../user/head.jsp"%>
+<%@include file="../../../user/top.jsp" %>
+<%@include file="../../../common/index/head_page.jsp"%>
 <div class="about cl">
     <div class="about-left">
         <div class="about-left-nav">

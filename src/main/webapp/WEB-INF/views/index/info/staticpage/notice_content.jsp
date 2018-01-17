@@ -16,8 +16,8 @@
 </head>
 <!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
-<%@include file="../../../index/info/staticpage/topPage.jsp" %>
-<%@include file="../../../common/index/head_page.jsp" %>
+<%@include file="../../../user/top.jsp" %>
+<%@include file="../../../common/index/head_page.jsp"%>
 <div class="news cl">
 <div class="news-contents" style="display: block;">
     <h3 id="news-title">{{notice.title}}</h3>

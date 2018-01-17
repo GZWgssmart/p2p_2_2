@@ -556,15 +556,6 @@
 <script type="text/javascript" src="<%=path %>/static/js/index/countup.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/index.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/jquery.js"></script>
-<script>
-    $("#myHome").click(function () {
-        if (${sessionScope.user.uid == null}) {
-            window.location.href = "/user/login_page";
-        } else {
-            window.location.href = "/user/home_page";
-        }
-    });
-</script>
 <script type="text/javascript">
     (function ($) {
         var app = angular.module("myApp", []);
