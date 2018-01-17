@@ -15,9 +15,7 @@
 
     <link rel="stylesheet" href="<%=path %>/static/css/our/huser/xdp/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/our/huser/xdp/account.css">
-    <link rel="stylesheet" href="<%=path %>/static/css/our/huser/xdp/datepicker.css">
-    <link rel="stylesheet" href="<%=path %>/static/css/our/huser/xdp/login.css">
-    <%--<link rel="icon" href="<%=path%>/static/images/logo_title.jpg">--%>
+    <%@include file="../common/css/css_sweetalert.jsp" %>
 
 </head>
 <body>
@@ -229,13 +227,8 @@
         </div>
     </div>
 </div>
+
+<%@include file="../common/js/js_jquery.jsp" %>
+<%@include file="../common/js/js_sweetalert.jsp" %>
 </body>
-
-<script type="text/javascript" src="<%=path %>/static/js/our/xdp/jsp/jquery.js"></script>
-<script type="text/javascript" src="<%=path %>/static/js/our/xdp/jsp/chart.js"></script>
-<script type="text/javascript" src="<%=path %>/static/js/our/xdp/jsp/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="<%=path %>/static/js/our/xdp/jsp/public.js"></script>
-<script type="text/javascript" src="<%=path %>/static/js/our/xdp/jsp/account.js"></script>
-<!-- 客服QQ -->
-
 </html>

@@ -1,8 +1,10 @@
 package com.we.bean;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class Bankcard {
+    @NotNull
     private Integer bcid;
 
     private Integer uid;

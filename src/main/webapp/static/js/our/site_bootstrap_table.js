@@ -54,6 +54,9 @@ var setTable = {
     showModal: function (modalId) {
         $('#' + modalId).modal('show');
     },
+    serialize: function (formId) {
+        return $('#' + formId).serialize();
+    },
     hideModal: function (modalId) {
         $('#' + modalId).modal('hide');
     },
