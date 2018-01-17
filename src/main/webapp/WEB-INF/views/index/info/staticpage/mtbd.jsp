@@ -52,7 +52,7 @@
                         <div class="children0">
                             <img class="news-img" src="<%=mtbdPath %>{{media.pic}}" width="200" height="120">
                             <div class="news-content">
-                                <a href="news.html?id=<%=mtbdPath %>" class="news-title">{{media.title}}</a>
+                                <a href="<%=mtbdPath %>/index/media_single/{{media.mid}}" class="news-title">{{media.title}}</a>
                                 <p class="news-about">{{media.title}}......</p>
                                 <p class="news-time">{{media.date | date:'yyyy-MM-dd hh-mm-ss'}}</p>
                             </div>

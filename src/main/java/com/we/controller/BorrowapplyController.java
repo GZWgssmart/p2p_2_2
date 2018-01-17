@@ -136,6 +136,10 @@ public class BorrowapplyController {
     @ResponseBody
     public List<BorrowdetailAndWapplyVO> listBorrow(Integer type) {
         List<BorrowdetailAndWapplyVO> borrowes = borrowapplyService.listBorrow(type);
+        System.out.println("com/we/controller/BorrowapplyController.java:139.." + type);
+        for (BorrowdetailAndWapplyVO borrowe : borrowes) {
+            System.out.println(borrowe);
+        }
         return borrowes;
     }
 

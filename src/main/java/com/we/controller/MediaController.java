@@ -105,9 +105,15 @@ public class MediaController {
         return pager;
     }
 
-    @RequestMapping("media_page")
-    public String mediaPage() {
-        return "index/info/staticpage/mtbd";
+    /**
+     * 根据id来查询媒体报道的内容
+     * @return
+     */
+    @RequestMapping("single_media")
+    @ResponseBody
+    public Media singleMedia(Integer mid) {
+        Media media = (Media) mediaService.getById(mid);
+        return media;
     }
 
 }

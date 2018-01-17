@@ -17,9 +17,9 @@ public class BorrowapplyServiceTest extends BaseTest {
 
     @Test
     public void testListBorrow() {
-        List<BorrowdetailAndWapplyVO> borrowes = borrowapplyService.listBorrow(1);
+        List<BorrowdetailAndWapplyVO> borrowes = borrowapplyService.listBorrow(11);
         for (BorrowdetailAndWapplyVO borrowe : borrowes) {
-            System.out.println(borrowe.getJdmoney());
+            System.out.println(borrowe.getBaid());
         }
     }
 

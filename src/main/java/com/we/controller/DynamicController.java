@@ -97,9 +97,20 @@ public class DynamicController {
      */
     @RequestMapping("pager_dynamic")
     @ResponseBody
-    public Pager pageMedia(Long pageNo, Long pageSize) {
+    public Pager pageDynamic(Long pageNo, Long pageSize) {
         Pager pager = dynamicService.pageDynamic(pageNo,pageSize);
         return pager;
+    }
+
+    /**
+     * 根据id来查询公司动态的内容
+     * @return
+     */
+    @RequestMapping("single_dynamic")
+    @ResponseBody
+    public Dynamic singleDynamic(Integer dyid) {
+        Dynamic dynamic = (Dynamic) dynamicService.getById(dyid);
+        return dynamic;
     }
 
     @RequestMapping("ueditor")

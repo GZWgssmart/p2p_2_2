@@ -97,4 +97,19 @@ public class BorrowdetailAndWapplyVO {
         return df.format((money.subtract(symoney)).divide(money));
     }
 
+    @Override
+    public String toString() {
+        return "BorrowdetailAndWapplyVO{" +
+                "bdid=" + bdid +
+                ", baid=" + baid +
+                ", money=" + money +
+                ", symoney=" + symoney +
+                ", jdmoney='" + jdmoney + '\'' +
+                ", nprofit=" + nprofit +
+                ", cpname='" + cpname + '\'' +
+                ", type=" + type +
+                ", state=" + state +
+                ", term=" + term +
+                '}';
+    }
 }

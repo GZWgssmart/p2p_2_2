@@ -29,12 +29,31 @@ public class IndexController {
         return "index/info/staticpage/gsdt";
     }
 
+    //单个公司动态的详情
+    @RequestMapping("dynamic_single/{dyid}")
+    public String dynamicSingle(@PathVariable("dyid") Integer dyid, HttpServletRequest request) {
+        request.setAttribute("dyid", dyid);
+        return "index/info/staticpage/gsdt_single";
+    }
+
     //公司动态
     @RequestMapping("gsdt")
     public String allGs() {
         return "index/info/staticpage/gsdt";
     }
 
+    //媒体报道
+    @RequestMapping("mtbd")
+    public String mediaPage() {
+        return "index/info/staticpage/mtbd";
+    }
+
+    //单个媒体报道的详情
+    @RequestMapping("media_single/{mid}")
+    public String mediaSingle(@PathVariable("mid") Integer mid, HttpServletRequest request) {
+        request.setAttribute("mid", mid);
+        return "index/info/staticpage/mtbd_single";
+    }
 
     //平台公告
     @RequestMapping("ptgg")

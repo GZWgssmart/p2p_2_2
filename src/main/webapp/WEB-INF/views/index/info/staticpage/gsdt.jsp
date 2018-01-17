@@ -41,7 +41,7 @@
         <div class="about-right-nav">
             <div class="sub-a-nav">
                 <a href="javascript:void(0);" class="active" id="gsdt">公司动态</a>
-                <a href="<%=ptggPath %>/media/media_page" class="" id="xyxw">媒体报道</a>
+                <a href="<%=ptggPath %>/index/mtbd" class="" id="xyxw">媒体报道</a>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
                         <div class="children0">
                             <img class="news-img" src="<%=ptggPath %>{{dynamic.pic}}" width="200" height="120">
                             <div class="news-content">
-                                <a href="news.html?id=<%=ptggPath %>" class="news-title">{{dynamic.title}}</a>
+                                <a href="<%=ptggPath %>/index/dynamic_single/{{dynamic.dyid}}" class="news-title">{{dynamic.title}}</a>
                                 <p class="news-about">{{dynamic.title}}......</p>
                                 <p class="news-time">{{dynamic.date | date:'yyyy-MM-dd hh-mm-ss'}}</p>
                             </div>

@@ -106,7 +106,7 @@
                 <li class="last"><p>累计注册投资人：<span id="userTotal">{{user.count}}</span><span class="small">人</span></p></li>
             </ul>
             <div class="explian cl">
-                <a href="#" class="first">
+                <a href="<%=path %>/index/about" class="first">
                     <p class="icon icon-ex1"></p>
                     <div class="text">
                         <h3>实力雄厚</h3>
@@ -481,16 +481,16 @@
     <div class="news-main-left" style="display: block;width: 760px;">
         <div class="news-main-top">
             <h3 style="height: 52px;padding-top: 13px;">媒体报道</h3>
-            <p class="more icon icon-more"><a href="about.html#gsdt?type=1">更多</a></p>
+            <p class="more icon icon-more"><a href="<%=path %>/index/gsdt">更多</a></p>
         </div>
         <div class="news-main-content" id="dynamic">
             <ul class="news-main-list">
                 <li ng-repeat="media in medias">
-                    <a href="news.html?mid={{media.mid}}" target="_blank" class="news-main-content-left">
+                    <a href="<%=path %>/index/media_{{media.mid}}" target="_blank" class="news-main-content-left">
                         <img src="{{media.pic}}" alt="{{media.title}}" style="width:210px;height:180px;">
                     </a>
                     <a href="news.html?mid={{media.mid}}" target="_blank" class="list-title">{{media.title}}</a>
-                    <a href="news.html?mid={{media.mid}}" target="_blank" class="list-main">
+                    <a href="news.html?mid={{media.mid}}" target="_blank" class="list-main">{{media.title}}
                     </a>
                 </li>
             </ul>
@@ -605,7 +605,7 @@
             //新手专享
             $http({
                 method: 'get',
-                params:{type:4},
+                params:{type:10},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.newpeople = response.data;
@@ -615,27 +615,29 @@
             //恒金宝
             $http({
                 method: 'get',
-                params:{type:3},
+                params:{type:9},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.hengjinbao = response.data;
+//                alert($scope.hengjinbao[0].cpname);
             }, function errorCallback(response) {
             });
 
             //普金宝
             $http({
                 method: 'get',
-                params:{type:2},
+                params:{type:'11'},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.pujinbao = response.data;
+                alert('WEB-INF/views/index.jsp:633');
             }, function errorCallback(response) {
             });
 
             //多金宝
             $http({
                 method: 'get',
-                params:{type:1},
+                params:{type:'7'},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.duojinbao = response.data;
