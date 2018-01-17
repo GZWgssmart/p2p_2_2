@@ -96,5 +96,8 @@
         <img class="wechart" src="<%=path %>/static/images/xdp/wechart.jpg">
     </div>
 </div>
+    $(function(){
+</script>
+
 </body>
 </html>

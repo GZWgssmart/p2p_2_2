@@ -88,6 +88,11 @@ public interface BorrowapplyDAO extends BaseDAO {
 
     List<BorrowapplyInvestVO> listByInvest(@Param("xmqx1")String xmqx1, @Param("xmqx2")String xmqx2,
                                            @Param("nysy1")String nysy1, @Param("nysy2")String nysy2,
+                                           @Param("xmlx1")String xmlx1, @Param("search")String search,
+                                           @Param("pageNum")Integer pageNum);
+
+    Integer countByInvest(@Param("xmqx1")String xmqx1, @Param("xmqx2")String xmqx2,
+                                           @Param("nysy1")String nysy1, @Param("nysy2")String nysy2,
                                            @Param("xmlx1")String xmlx1, @Param("search")String search);
 
     /**
