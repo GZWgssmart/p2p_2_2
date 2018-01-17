@@ -1,5 +1,6 @@
 package com.we.service;
 
+import com.we.common.Pager;
 import com.we.vo.MediaVO;
 
 import java.util.List;
@@ -14,5 +15,11 @@ public interface MediaService extends BaseService {
      * @return
      */
     List<MediaVO> listMedia();
+
+    /**
+     * 分页查询所有媒体报道
+     * @return
+     */
+    Pager pageMedia(Long beginIndex,Long pageSize);
 
 }

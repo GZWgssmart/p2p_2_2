@@ -1,6 +1,7 @@
 package com.we.service.impl;
 
 import com.we.bean.Media;
+import com.we.common.Pager;
 import com.we.service.MediaService;
 import com.we.vo.MediaVO;
 import org.junit.Test;
@@ -44,6 +45,12 @@ public class MediaServiceTest extends BaseTest {
     public void testListMedia() {
         List<MediaVO> mediaVOS = mediaService.listMedia();
         System.out.println(mediaVOS);
+    }
+
+    @Test
+    public void testPageMedia() {
+        Pager pager = mediaService.pageMedia(1l,2l);
+        System.out.println(pager);
     }
 
 }

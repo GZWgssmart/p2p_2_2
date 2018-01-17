@@ -40,4 +40,10 @@ public class DynamicServiceTest extends BaseTest {
         System.out.println(pager.getRows());
     }
 
+    @Test
+    public void testPageDynamic() {
+        Pager pager = dynamicService.pageDynamic(1l,2l);
+        System.out.println(pager);
+    }
+
 }

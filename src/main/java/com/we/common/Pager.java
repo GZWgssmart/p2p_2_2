@@ -8,13 +8,26 @@ import java.util.List;
  * @author mh
  */
 public class Pager {
+    /**
+     * 用于前台页面分页
+     * 当前页数
+     */
+    private Long pageNo;
 
     /**
+     * 用于前台页面分页
+     * 每页记录数
+     */
+    private Long pageSize;
+
+    /**
+     * 用于bootstraptable分页
      * 偏移量（开始索引）
      */
     private Long offset;
 
     /**
+     * 用于bootstraptable分页
      * 每页显示的条目个数（查询多少个）
      */
     private Long limit;
@@ -46,6 +59,51 @@ public class Pager {
         }
         this.offset = offset;
         this.limit = limit;
+    }
+
+    /**
+     * @return 一共有多少页
+     */
+    public Long getTotalPage() {
+        return (total) % pageSize == 0 ? (total) / pageSize : (total) / pageSize + 1;
+    }
+
+    /**
+     * 初始化pageSize和pageNo
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    public static Pager initNoSize(Long pageNo, Long pageSize){
+        Pager pager = new Pager();
+        pager.setPageNo(pageNo);
+        pager.setPageSize(pageSize);
+        return pager;
+    }
+
+    /**
+     * 用于前台分页
+     * (当前显示页-1)*每页显示的个数
+     * @return 开始索引
+     */
+    public Long getBeginIndex() {
+        return (pageNo - 1) * pageSize;
+    }
+
+    public Long getPageNo() {
+        return pageNo;
+    }
+
+    public void setPageNo(Long pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    public Long getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Long pageSize) {
+        this.pageSize = pageSize;
     }
 
     public Long getPages() {

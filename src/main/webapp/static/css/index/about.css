@@ -326,7 +326,7 @@
 	line-height:18px;
 	color:#999;
 	padding-left:25px;
-	background:url(../images/about/time.png) left center no-repeat;
+	background:url(/static/images/about/time.png) left center no-repeat;
 }
 .notice-list li{
 	height:60px;

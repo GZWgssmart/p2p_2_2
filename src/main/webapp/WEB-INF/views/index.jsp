@@ -91,10 +91,6 @@
 <!-- news -->
 <div class="news">
     <div class="wrap">
-        <div class="news-list icon icon-news">
-            <ul id="news-list">
-            </ul>
-        </div>
         <div class="bang-list">
             <a href="board.html" target="_blank" class="icon icon-bang">投资、推荐排行榜</a>
         </div>
@@ -549,31 +545,17 @@
         </div>
     </div>
 </div>
-<div id="ajaxFooter"></div>
-
-
-<div class="mod-sidebar">
-    <ul>
-        <li><a target="_blank" href="tencent://message/?uin=1332666988&amp;Site=&amp;Menu=yes" class="sidebar-qq"></a>
-        </li>
-        <li><a href="javascript:;" class="sidebar-wx"></a></li>
-        <li><a href="http://pujinziben.com/calculator.html" class="sidebar-cl"></a></li>
-        <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券"></a></li>
-        <li><a href="javascript:;" class="sidebar-top"></a></li>
-    </ul>
-</div>
-
 
 <jsp:include page="common/index/foot.jsp"></jsp:include>
 
 <script src="<%=path%>/static/js/angular/angular.min.js"></script>
-<script src="https://cdn.bootcss.com/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
 <!-- 客服QQ -->
 <script type="text/javascript" src="<%=path %>/static/js/index/countup.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/index.js"></script>
+<script type="text/javascript" src="<%=path %>/static/js/index/jquery.js"></script>
 <script>
     $("#myHome").click(function () {
         if (${sessionScope.user.uid == null}) {
@@ -585,7 +567,7 @@
 </script>
 <script type="text/javascript">
     (function ($) {
-        var app = angular.module("myApp", ['ngSanitize']);
+        var app = angular.module("myApp", []);
         app.config(function ($httpProvider) {
 
             $httpProvider.defaults.transformRequest = function (obj) {

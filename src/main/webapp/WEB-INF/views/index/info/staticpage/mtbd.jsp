@@ -1,23 +1,25 @@
 <%--
   Created by IntelliJ IDEA.
-  User: xdp
-  Date: 2018/1/11
-  Time: 9:06
+  User: ID.LQF
+  Date: 2018/1/16
+  Time: 10:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String ptggPath = request.getContextPath();%>
+<%
+    String mtbdPath = request.getContextPath();
+%>
 <html>
 <head>
-    <title>公司动态</title>
-    <link rel="stylesheet" href="<%=ptggPath %>/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=ptggPath%>/static/css/index/public.css">
-    <link rel="stylesheet" href="<%=ptggPath%>/static/css/index/about.css">
-    <link rel="icon" href="<%=ptggPath%>/static/images/logo_title.jpg">
+    <title>媒体报道</title>
+    <link rel="stylesheet" href="<%=mtbdPath %>/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=mtbdPath %>/static/css/index/public.css">
+    <link rel="stylesheet" href="<%=mtbdPath %>/static/css/index/about.css">
+    <link rel="icon" href="<%=mtbdPath %>/static/images/logo_title.jpg">
 </head>
-<!-- nav -->
 <body ng-app="myApp" ng-controller="myCtrl">
 
+<%@include file="../../../user/head.jsp" %>
 
 <div class="about cl">
     <div class="about-left">
@@ -25,7 +27,7 @@
             <div id="animateDiv" class="animateDiv">
                 <ul id="animateUl" class="sub-nav">
                     <li class="xxpl" class="active"><a href="javaScript:void(0);"
-                     onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>
+                                                       onClick="animate1()" class="icon-about about-xxpl">信息披露</a></li>
                 </ul>
             </div>
             <ul class="sub-nav">
@@ -37,22 +39,21 @@
     <div class="about-right">
         <div class="about-right-nav">
             <div class="sub-a-nav">
-                <a href="javascript:void(0);" class="active" id="gsdt">公司动态</a>
-                <a href="<%=ptggPath %>/media/media_page" class="" id="xyxw">媒体报道</a>
+                <a href="<%=mtbdPath %>/index/gsdt" class="" id="gsdt">公司动态</a>
+                <a href="javascript:void(0);" class="active" id="xyxw">媒体报道</a>
             </div>
-            <%--<em class="em-line" style="left: 0px;"></em>--%>
         </div>
 
         <div class="about-content">
             <div id="ptgg">
                 <ul class="news-list listData">
-                    <li class="interval" ng-repeat="dynamic in dynamics">
+                    <li class="interval" ng-repeat="media in mebdPage">
                         <div class="children0">
-                            <img class="news-img" src="<%=ptggPath %>{{dynamic.pic}}" width="200" height="120">
+                            <img class="news-img" src="<%=mtbdPath %>{{media.pic}}" width="200" height="120">
                             <div class="news-content">
-                                <a href="news.html?id=<%=ptggPath %>" class="news-title">{{dynamic.title}}</a>
-                                <p class="news-about">{{dynamic.title}}......</p>
-                                <p class="news-time">{{dynamic.date | date:'yyyy-MM-dd hh-mm-ss'}}</p>
+                                <a href="news.html?id=<%=mtbdPath %>" class="news-title">{{media.title}}</a>
+                                <p class="news-about">{{media.title}}......</p>
+                                <p class="news-time">{{media.date | date:'yyyy-MM-dd hh-mm-ss'}}</p>
                             </div>
                         </div>
                     </li>
@@ -61,6 +62,7 @@
         </div>
 
         <!--分页-->
+
         <div class="row">
             <div class="col-sm-7">
                 <nav aria-label="Page navigation" class="pull-right">
@@ -85,16 +87,14 @@
                 </nav>
             </div>
         </div>
-
     </div>
 </div>
 
 <jsp:include page="../../../common/index/foot.jsp"></jsp:include>
 
-<script src="<%=ptggPath%>/static/js/angular/angular.min.js"></script>
-<script src="<%=ptggPath%>/static/js/bootstrap.min.js"></script>
-<script src="<%=ptggPath%>/static/js/jquery.min.js"></script>
-<%@include file="../../include/js/js_about_load.jsp" %>
+<script src="<%=mtbdPath %>/static/js/angular/angular.min.js"></script>
+<script src="<%=mtbdPath %>/static/js/bootstrap.min.js"></script>
+<script src="<%=mtbdPath %>/static/js/jquery.min.js"></script>
 <script type="text/javascript">
     (function ($) {
         var app = angular.module('myApp', []);
@@ -123,10 +123,10 @@
             function extracted(x) {
                 $http({
                     method: 'post',
-                    url: "/dynamic/pager_dynamic",
+                    url: "/media/pager_media",
                     data: {"pageNo": x,"pageSize":10}
-                }).then(function successCallback(response) {
-                    $scope.dynamics = response.data.rows;   //查询的所有结果
+            }).then(function successCallback(response) {
+                    $scope.mebdPage = response.data.rows;   //查询的所有结果
                     $scope.total = response.data.total;     //总结果数
                     $scope.totalPage = response.data.totalPage;  //总页数
                     $scope.count1 = response.data.pageNo;   //当前页数

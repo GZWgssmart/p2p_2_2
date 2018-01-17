@@ -91,6 +91,17 @@ public class DynamicController {
         return dynamicVOS;
     }
 
+    /**
+     * 分页查询所有公司动态
+     * @return
+     */
+    @RequestMapping("pager_dynamic")
+    @ResponseBody
+    public Pager pageMedia(Long pageNo, Long pageSize) {
+        Pager pager = dynamicService.pageDynamic(pageNo,pageSize);
+        return pager;
+    }
+
     @RequestMapping("ueditor")
     public String uEditor() {
         return "huser/dynamic/uEditor";

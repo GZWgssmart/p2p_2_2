@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.common.Pager;
 import com.we.dao.DynamicDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.DynamicService;
@@ -27,4 +28,14 @@ public class DynamicServiceImpl extends AbstractBaseService implements DynamicSe
     public List<DynamicVO> listDynamic() {
         return dynamicDAO.listDynamic();
     }
+
+    @Override
+    public Pager pageDynamic(Long beginIndex, Long pageSize) {
+        Pager pager = Pager.initNoSize(beginIndex, pageSize);
+        pager.setRows(dynamicDAO.pageDynamic(pager));
+        pager.setTotal(dynamicDAO.countCriteria(null));
+        return pager;
+    }
+
+
 }
