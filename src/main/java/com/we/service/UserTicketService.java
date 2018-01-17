@@ -1,6 +1,10 @@
 package com.we.service;
 
 import com.we.bean.UserTicket;
+import com.we.vo.UserTicketVO;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by hasee on 2017/12/22.
@@ -20,4 +24,13 @@ public interface UserTicketService extends BaseService {
      * @param ticketIds
      */
     void deletesByTicketId(String ticketIds);
+
+    /**
+     * 查询用户可用的优惠券
+     * @param userId
+     * @return
+     */
+    List<UserTicketVO> queryUserTicket(Integer userId);
+
+
 }

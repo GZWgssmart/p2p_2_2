@@ -8,9 +8,12 @@ import com.we.enums.RequestResultEnum;
 import com.we.service.TicketService;
 import com.we.service.UserTicketService;
 import com.we.vo.RequestResultVO;
+import com.we.vo.UserTicketVO;
+import org.apache.ibatis.annotations.Param;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/ticket")
@@ -82,5 +86,16 @@ public class TicketController {
         ticketService.deletes(ticketIds);
         userTicketService.deletesByTicketId(ticketIds);
         return RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
+    }
+
+    /**
+     * 查询用户可使用的优惠券
+     * @return
+     */
+    @RequestMapping("query_user_ticket/{userId}")
+    @ResponseBody
+    public List<UserTicketVO> queryUserTicket(@PathVariable("userId") Integer userId){
+        List<UserTicketVO> userTicketVOS  = userTicketService.queryUserTicket(userId);
+        return userTicketVOS;
     }
 }

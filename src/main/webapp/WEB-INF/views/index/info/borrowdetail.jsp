@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="<%=path%>/static/css/index/qrl/index.css">
     <link rel="icon" href="https://www.pujinziben.com/resources/front/v01/src/images/logo_title.jpg" type="image/x-icon">
     <%@include file="../../common/css/css_bootstrap-table.jsp"%>
+    <%@include file="../../common/css/css_sweetalert.jsp"%>
     <%--<%@include file="../../common/css/css_bootstrap.jsp"%>--%>
 </head>
 <body>
@@ -57,6 +58,8 @@
     </div>
 
 </div>
+<input type="hidden" id="user" value="${sessionScope.user.uid}"/>
+
 <!-- nav -->
 <div class="nav">
     <div class="wrap cl">
@@ -146,6 +149,7 @@
                 </c:if>
             </div>
             <div class="subject-s-r-c">
+                <input value="${sessionScope.usermoney.kymoney}" type="hidden" id="kymoney"/>
                 <p>可用余额：<span id="canUseSum">
                     <c:if test="${sessionScope.user == null}">
                         登录后可显示余额
@@ -161,20 +165,20 @@
                 <p class="rate active" id="increaseP">加息收益：<span class="color" id="increase">0.00</span></p>
             </div>
             <div class="input">
-                <%--<input type="text" placeholder="请输入投资金额" id="amount" onkeyup="reckon()" onblur="focusblur(this)">--%>
                 <input type="text" placeholder="请输入投资金额" id="amount" onkeyup="reckon()" onblur="focusblur(this)">
-                <button type="button" id="pushAll">全投</button>
+                <button type="button" id="pushAll" onclick="invsetAll()">全投</button>
             </div>
             <div class="quan">
                 <select id="selectQuan">
-                    <option value="0">当前没有可用的优惠券</option>
+
                 </select>
                 <a href="https://www.pujinziben.com/calculator.html?repayWay=3&amp;showRate=9+1&amp;time=6" class="icon icon-cal" id="calculator">详细收益明细</a>
             </div>
-            <button class="btn" id="investBtn" type="button">立即投标</button>
+            <button class="btn" id="investBtn" type="button" onclick="bid()">立即投标</button>
         </div>
     </div>
 </div>
+
 <div class="sub-about">
     <div class="sub-a-nav">
         <a href="javascript:void(0);" class="active" onclick="getDetail(this)">项目详情</a>
@@ -357,13 +361,89 @@
         </div>
     </div>
 </div>
+
 <%@include file="../../common/js/js_jquery.jsp"%>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/jquery.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/public.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/invest.js"></script>
 <%@include file="../../common/js/js_boostrap_table.jsp"%>
-<%--<%@include file="../../common/js/js_boostrap.jsp"%>--%>
+<%@include file="../../common/js/js_sweetalert.jsp"%>
+<%@include file="../../common/js/js_boostrap.jsp"%>
 <script>
+
+    $(function () {
+        var userId = $('#user').val();
+        if(userId != null && userId != "" && userId != undefined){
+            $.post(contextPath + "/ticket/query_user_ticket/"+$('#user').val(),
+                null,
+                function (data) {
+                    if (data.length != 0) {
+                        for(i = 0; i < data.length;i++){
+                            $('#selectQuan').append("<option value="+ data[i].id+">"+data[i].value+"元优惠券"+"</option>");
+                        }
+                    } else {
+                        $('#selectQuan').append("<option value='0'>当前没有可用的优惠券</option>");
+                    }
+                }, "json"
+            );
+        }else {
+            $('#selectQuan').append("<option>当前没有可用的优惠券</option>");
+        }
+    })
+
+//    $(function () {
+//        var userId = $('#user').val();
+//        if(userId != null && userId != "" && userId != undefined){
+//            $.post(contextPath + "/user/user_money/"+userId,
+//                null,
+//                function (data) {
+//                    if (data != null) {
+//                        $('#canUseSum').text(data.kymoney);
+//                    }
+//                }, "json"
+//            );
+//        }else {
+//        }
+//    })
+
+    function bid(){
+        var value = $('#amount').val();
+        alert(value)
+        if(value >= 100){
+            var text = $('#selectQuan').find("option:selected").text();
+            text = text.substring(0, text.lastIndexOf('元优惠券'));
+            $('#money').val(value - text);
+            swal({
+                title: '输入交易密码',
+                text:'asdf',
+                input: 'password',
+                preConfirm: function () {
+                    
+                }
+            });
+        }else{
+            swal("投资金额必须大于100","","warning");
+        }
+    }
+
+    function invsetAll() {
+        var user = $('#user').val();
+        if(user != null && user != "" && user != undefined){
+            var residueMoney = $('#kymoney').val();
+            var residueInvset = ${requestScope.borrow.symoney};
+            if(residueMoney != 0){
+                if(residueMoney <= residueInvset){
+                    $('#amount').val(residueMoney);
+                }else {
+                    $('#amount').val(residueInvset);
+                }
+            }else{
+                swal("您的可用余额为0，请您先充值","","warning");
+            }
+        }else {
+            swal("您还未登录登录，请先登陆","","warning");
+        }
+    }
 
     function formatPhone(value) {
         var phone = "";

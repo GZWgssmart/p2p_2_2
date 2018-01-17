@@ -4,6 +4,7 @@ import com.we.bean.UserTicket;
 import com.we.dao.UserTicketDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.UserTicketService;
+import com.we.vo.UserTicketVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -37,5 +38,10 @@ public class UserTicketServiceImpl extends AbstractBaseService implements UserTi
             ticketIdsList.add(Integer.valueOf(classId));
         }
         userTicketDAO.deletesByTicketId(ticketIdsList);
+    }
+
+    @Override
+    public List<UserTicketVO> queryUserTicket(Integer userId) {
+        return userTicketDAO.queryUserTicket(userId);
     }
 }

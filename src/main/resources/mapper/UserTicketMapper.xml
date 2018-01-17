@@ -102,4 +102,9 @@
       #{ticketId}
     </foreach>
   </delete>
+
+  <select id="queryUserTicket" resultType="com.we.vo.UserTicketVO">
+    select tkmoney as value,ut.kid as id from user_ticket ut,ticket t
+    where ut.kid = t.umid and ut.state = 2 and t.tktime > now() and ut.uid = #{userId};
+  </select>
 </mapper>

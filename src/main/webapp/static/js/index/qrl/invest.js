@@ -872,18 +872,20 @@ function getPlan(obj){
 
 //投资记录
 function getInvest(obj){
-    if($(obj).hasClass('active')){
-        return;
-    };
-    if($('.plan').is(':visible')){
-        $('.em-line').animate({'left':'520px'},500);
-    }else{
-        $('.em-line').animate({'left':'280px'},500);
-    }
+ 	var user = $('#user').val();
+ 	if(user != null && user != "" && user != undefined){
+        if($('.plan').is(':visible')){
+            $('.em-line').animate({'left':'520px'},500);
+        }else{
+            $('.em-line').animate({'left':'280px'},500);
+        }
 
-    $('.sub-a-box').hide();
-    $(obj).addClass('active').siblings().removeClass('active');
-    $('#invest').show();
+        $('.sub-a-box').hide();
+        $(obj).addClass('active').siblings().removeClass('active');
+        $('#invest').show();
+	}else {
+		swal("您还未登录登录，请先登陆","","warning");
+    }
 
 };
 function dangger(obj){

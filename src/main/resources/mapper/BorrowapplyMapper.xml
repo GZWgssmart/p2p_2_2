@@ -303,7 +303,6 @@
   
   
     <select id="listByInvest" resultType="com.we.vo.BorrowapplyInvestVO">
-
         select ba.baid, bd.cpname, ba.money, bd.nprofit, ba.term, bz.bzname, jklx.lxname, ba.state
         from borrowapply ba, borrowdetail bd, bz bz, jklx jklx
         where ba.baid = bd.baid and ba.bzid = bz.bzid and ba.type = jklx.lxid and (ba.state = 1 or ba.state = 4)

@@ -1,9 +1,11 @@
 package com.we.dao;
 
 import com.we.bean.UserTicket;
+import com.we.vo.UserTicketVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -22,4 +24,11 @@ public interface UserTicketDAO extends BaseDAO {
      * @param ticketIds
      */
     void deletesByTicketId(@Param("ticketIds") List<Integer> ticketIds);
+
+    /**
+     * 查询用户可用的优惠券
+     * @param userId
+     * @return
+     */
+    List<UserTicketVO> queryUserTicket(Integer userId);
 }

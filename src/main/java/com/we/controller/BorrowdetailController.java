@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Calendar;
 import java.util.List;
 
@@ -85,18 +86,11 @@ public class BorrowdetailController {
     public ModelAndView seeDetail(@PathVariable Integer borrowId){
         ModelAndView modelAndView = new ModelAndView("index/info/borrowdetail");
         BorrowDetailVO borrowDetailVO = borrowdetailService.getDetail(borrowId);
-//        borrowDetailVO.setSchedule((borrowDetailVO.getMoney().subtract(borrowDetailVO.getSymoney())).divide(borrowDetailVO.getMoney()).doubleValue());
+        borrowDetailVO.setSchedule((borrowDetailVO.getMoney().subtract(borrowDetailVO.getSymoney()).multiply(BigDecimal.valueOf(100))).divide(borrowDetailVO.getMoney(),2, RoundingMode.CEILING));
         modelAndView.addObject("borrow",borrowDetailVO);
         return modelAndView;
     }
 
-    @RequestMapping("detail_page1/{borrowId}")
-    @ResponseBody
-    public ModelAndView seeDetail1(@PathVariable Integer borrowId){
-        ModelAndView modelAndView = new ModelAndView("index/info/borrowdetail1");
-        modelAndView.addObject("borrow",borrowdetailService.getDetail(borrowId));
-        return modelAndView;
-    }
 
     @Resource
     public void setBorrowdetailService(BorrowdetailService borrowdetailService) {

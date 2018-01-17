@@ -58,7 +58,7 @@ public class BorrowDetailVO {
 
     private Integer bidCount;
 
-    private Double schedule;
+    private BigDecimal schedule;
 
     public Integer getBaid() {
         return baid;
@@ -260,11 +260,11 @@ public class BorrowDetailVO {
         this.bidCount = bidCount;
     }
 
-    public Double getSchedule() {
+    public BigDecimal getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(Double schedule) {
+    public void setSchedule(BigDecimal schedule) {
         this.schedule = schedule;
     }
 

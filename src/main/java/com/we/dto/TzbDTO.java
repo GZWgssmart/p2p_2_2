@@ -27,6 +27,8 @@ public class TzbDTO {
     @NotNull
     private Integer baid;
 
+    private String payPwd;
+
     public Integer getSid() {
         return sid;
     }
@@ -97,5 +99,13 @@ public class TzbDTO {
 
     public void setTid(Integer tid) {
         this.tid = tid;
+    }
+
+    public String getPayPwd() {
+        return payPwd;
+    }
+
+    public void setPayPwd(String payPwd) {
+        this.payPwd = payPwd;
     }
 }

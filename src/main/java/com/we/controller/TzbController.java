@@ -4,6 +4,7 @@ import com.we.bean.Tzb;
 import com.we.bean.User;
 import com.we.common.OurConstants;
 import com.we.common.Pager;
+import com.we.common.UserUtils;
 import com.we.dto.TzbDTO;
 import com.we.enums.RequestResultEnum;
 import com.we.exception.InvestException;
@@ -83,7 +84,10 @@ public class TzbController {
     @RequestMapping("pager_invest_history_by_borrowId")
     @ResponseBody
     public Pager pagerInvestHistory(Long offset,Long limit,Integer borrowId){
-        return tzbService.pagerInvestHistoryByBorrowId(offset,limit,borrowId);
+        if(UserUtils.isLogin()){
+            return tzbService.pagerInvestHistoryByBorrowId(offset,limit,borrowId);
+        }
+        return null;
     }
 
     @Resource

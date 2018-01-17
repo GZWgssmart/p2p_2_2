@@ -217,7 +217,7 @@ public class UserController {
             //登入失败
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
         }else{
-            Usermoney usermoney = usermoneyService.getByUid(user.getUid());
+            Usermoney usermoney = usermoneyService.getByUid(userLogin.getUid());
             session.setAttribute("user",userLogin);
             session.setAttribute("usermoney",usermoney);
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
@@ -406,5 +406,11 @@ public class UserController {
     @RequestMapping("ydate")
     public String ydate(){
         return "user/ydate";
+    }
+
+    @RequestMapping("user_money/{userId}")
+    @ResponseBody
+    public Usermoney getUserMonney(@PathVariable Integer userId){
+        return usermoneyService.getByUid(userId);
     }
 }
