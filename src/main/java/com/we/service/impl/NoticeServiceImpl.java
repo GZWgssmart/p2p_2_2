@@ -24,6 +24,14 @@ public class NoticeServiceImpl extends AbstractBaseService implements NoticeServ
     }
 
     @Override
+    public Pager pageNotice(Long beginIndex, Long pageSize) {
+        Pager pager = Pager.initNoSize(beginIndex,pageSize);
+        pager.setRows(noticeDAO.pageNotice(pager));
+        pager.setTotal(noticeDAO.countCriteria(null));
+        return pager;
+    }
+
+    @Override
     public Pager listAllNotice(Long offset, Long limit, Object query) {
         Pager pager = new Pager(offset,limit);
         pager.setRows(noticeDAO.listAllNotice(pager, query));

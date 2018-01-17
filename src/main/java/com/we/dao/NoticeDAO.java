@@ -28,4 +28,11 @@ public interface NoticeDAO extends BaseDAO {
      */
     List<NoticeVO> listNotice();
 
+    /**
+     * 分页查询所有公司动态
+     * @return
+     */
+    List<Object> pageNotice(@Param("pager") Pager pager);
+
+
 }

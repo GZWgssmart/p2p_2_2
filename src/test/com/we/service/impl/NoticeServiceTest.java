@@ -16,6 +16,12 @@ public class NoticeServiceTest extends BaseTest {
     private NoticeService noticeService;
 
     @Test
+    public void testPager() {
+        noticeService.pageNotice(1l,2l);
+    }
+
+
+    @Test
     public void testSave() {
         Notice notice = new Notice();
         notice.setTitle("最新通告");

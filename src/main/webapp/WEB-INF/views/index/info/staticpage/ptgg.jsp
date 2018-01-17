@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>关于我们-普金资本-为用户提供详尽安全可靠的投资理财信息，网络贷款、融资服务</title>
+    <link rel="stylesheet" href="<%=ptggPath %>/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=ptggPath%>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=ptggPath%>/static/css/index/about.css">
     <link rel="icon" href="<%=ptggPath%>/static/images/logo_title.jpg">
@@ -51,42 +52,38 @@
                         </div>
                     </li>
                 </ul>
-                 <ul class="paging" style="width: 500px; margin: 30px auto 0px;">
-                     <li>
-                         <button type="button" class="pre">上一页</button>
-                     </li>
-                     <li class="active">
-                         <button type="button" data-num="1">1</button>
-                     </li>
-                     <li>
-                         <button type="button" data-num="2">2</button>
-                     </li>
-                     <li>
-                         <button type="button" data-num="3">3</button>
-                     </li>
-                     <li>
-                         <button type="button" data-num="4">4</button>
-                     </li>
-                     <li>
-                         <button type="button" data-num="5">5</button>
-                     </li>
-                     <li>
-                         <button type="button" data-num="6">6</button>
-                     </li>
-                     <li><span>...</span></li>
-                     <li>
-                         <button type="button" data-num="17">17</button>
-                     </li>
-                     <li>
-                         <button type="button" class="next">下一页</button>
-                     </li>
-                 </ul>
+            </div>
+        </div>
+        <!--分页-->
+        <div class="row">
+            <div class="col-sm-7">
+                <nav aria-label="Page navigation" class="pull-right">
+                    <ul class="pagination">
+                        <li ng-click="top()"><a>上一页</a></li>
+                        <li><a class="page" ng-show="count1>=5 " ng-click="page(count1-4)">{{count1-4}}</a></li>
+                        <li><a class="page" ng-show="count1>=4 " ng-click="page(count1-3)">{{count1-3}}</a></li>
+                        <li><a class="page" ng-show="count1>=3 " ng-click="page(count1-2)">{{count1-2}}</a></li>
+                        <li><a class="page" ng-show="count1>=2 " ng-click="page(count1-1)">{{count1-1}}</a></li>
+                        <li class="active"><a class="page" ng-show="count1>0" ng-click="page(count1)" title="{{count1}}">{{count1}}</a>
+                        </li>
+                        <li><a class="page" ng-show="count1>0 && totalPage-1>= count1"
+                               ng-click="page(count1+1)">{{count1+1}}</a></li>
+                        <li><a class="page" ng-show="count1>0 && (totalPage-2) >= count1"
+                               ng-click="page(count1+2)">{{count1+2}}</a></li>
+                        <li><a class="page" ng-show="count1<3 && (totalPage-3) >= count1"
+                               ng-click="page(count1+3)">{{count1+3}}</a></li>
+                        <li><a class="page" ng-show="count1<2 && (totalPage-4) >= count1"
+                               ng-click="page(count1+4)">{{count1+4}}</a></li>
+                        <li ng-click="down()"><a>下一页</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
 </div>
 
 <script src="<%=ptggPath%>/static/js/angular/angular.min.js"></script>
+<script src="<%=ptggPath%>/static/js/bootstrap.min.js"></script>
 <script src="<%=ptggPath%>/static/js/jquery.min.js"></script>
 <%@include file="../../include/js/js_about_load.jsp"%>
 <script type="text/javascript">
@@ -107,7 +104,7 @@
             }
 
         });
-        app.controller('myCtrl', function ($scope, $http) {
+      /*  app.controller('myCtrl', function ($scope, $http) {
             var offset = 1;
             var limit = 10;
             $http({
@@ -120,6 +117,48 @@
                 $scope.total = response.data.total;// 总页数
             }, function errorCallback(response) {
             });
+
+*/
+            app.controller('myCtrl', function ($scope, $http) {
+                $scope.totalPage = 0;
+                $scope.pageSize = 10;
+                $scope.total = 0;
+                $scope.count1 = 1;
+                extracted($scope.count1);
+
+                function extracted(x) {
+                    $http({
+                        method: 'POST',
+                        url: "/notice/pager_notice",
+                        data: {"pageNo": x,"pageSize":10}
+                    }).then(function successCallback(response) {
+                        $scope.notice = response.data.rows;   //查询的所有结果
+                        $scope.total = response.data.total;     //总结果数
+                        $scope.totalPage = response.data.totalPage;  //总页数
+                        $scope.count1 = response.data.pageNo;   //当前页数
+                    }, function errorCallback(response) {
+                    });
+                }
+
+            //分页算法
+            $scope.page = function (x) {//点击页号事件
+                if ($scope.count1 == x) {
+                    return;
+                }
+                extracted(x);
+            };
+            $scope.down = function () {//下一页
+                if ($scope.count1 == $scope.totalPage) {
+                    return;
+                }
+                extracted($scope.count1 + 1);
+            };
+            $scope.top = function () {//上一页
+                if ($scope.count1 == 1) {
+                    return;
+                }
+                extracted($scope.count1 - 1);
+            };
         });
     }(jQuery));
 </script>

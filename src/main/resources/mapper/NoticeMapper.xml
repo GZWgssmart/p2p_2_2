@@ -166,4 +166,11 @@
     ]]>
   </select>
 
+  <select id="pageNotice" resultType="com.we.vo.NoticeVO">
+    <![CDATA[
+      SELECT n.nid,n.title,n.date FROM notice n
+      ORDER BY n.date DESC limit #{pager.beginIndex} ,#{pager.pageSize}
+    ]]>
+  </select>
+
 </mapper>
