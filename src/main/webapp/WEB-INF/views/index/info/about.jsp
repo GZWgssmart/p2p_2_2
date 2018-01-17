@@ -52,5 +52,10 @@
 <%@include file="../include/js/js_about_load.jsp"%>
 <%@include file="../../common/index/foot_page.jsp"%>
 <%--<jsp:include page="../../common/index/foot.jsp"></jsp:include>--%>
+<script>
+    $(function () {
+        gdbj();
+    });
+</script>
 </body>
 </html>

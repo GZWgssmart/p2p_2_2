@@ -325,7 +325,7 @@
         <if test="search != null and search != ''">
             and bd.cpname like concat('%',#{search},'%')
         </if>
-        <if test="pageNum != null and pageNum != ''">
+        <if test="pageNum != null">
             limit #{pageNum},10
         </if>
     </select>

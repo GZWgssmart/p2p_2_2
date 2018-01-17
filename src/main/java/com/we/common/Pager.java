@@ -65,7 +65,11 @@ public class Pager {
      * @return 一共有多少页
      */
     public Long getTotalPage() {
-        return (total) % pageSize == 0 ? (total) / pageSize : (total) / pageSize + 1;
+        if(!(total == null || pageSize == null)) {
+            return (total) % pageSize == 0 ? (total) / pageSize : (total) / pageSize + 1;
+        }else{
+            return 1L;
+        }
     }
 
     /**
@@ -87,7 +91,11 @@ public class Pager {
      * @return 开始索引
      */
     public Long getBeginIndex() {
-        return (pageNo - 1) * pageSize;
+        if(!(pageNo == null || pageSize == null)) {
+            return (pageNo - 1) * pageSize;
+        }else{
+            return 0L;
+        }
     }
 
     public Long getPageNo() {

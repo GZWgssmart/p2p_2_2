@@ -142,7 +142,6 @@ public class BorrowapplyController {
     @RequestMapping("pager_criteria_byinvest")
     @ResponseBody
     public List<BorrowapplyInvestVO> pagerInvest(String xmqx1, String xmqx2, String nysy1, String nysy2, String xmlx1, String search, Integer pageNum) {
-
         List<BorrowapplyInvestVO> borrowapplyInvestVOList = borrowapplyService.listByInvest(xmqx1,xmqx2,nysy1,nysy2,xmlx1,search,(pageNum - 1)*10);
         List<BorrowapplyInvestVO> borrowapplyInvestVOList1 = new ArrayList<>();
         for(BorrowapplyInvestVO borrowapplyInvestVO : borrowapplyInvestVOList){

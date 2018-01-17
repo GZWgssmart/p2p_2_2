@@ -1,9 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script>
 
-    $(function () {
-        gdbj();
-    });
+
 
     function loadPage(url) {
         $('.about-right').load(url);
