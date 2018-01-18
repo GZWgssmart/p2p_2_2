@@ -172,7 +172,7 @@
                 <select id="selectQuan">
 
                 </select>
-                <a href="https://www.pujinziben.com/calculator.html?repayWay=3&amp;showRate=9+1&amp;time=6" class="icon icon-cal" id="calculator">详细收益明细</a>
+                <a href="javaScript:;" onclick="calculuteEarn()" class="icon icon-cal" id="calculator">详细收益明细</a>
             </div>
             <button class="btn" id="investBtn" type="button" onclick="bid()">立即投标</button>
         </div>
@@ -405,6 +405,10 @@
 //        }else {
 //        }
 //    })
+
+    function calculuteEarn() {
+        window.location.href='/borrowdetail/calculate_earn_page'
+    }
 
     function bid(){
         var value = $('#amount').val();

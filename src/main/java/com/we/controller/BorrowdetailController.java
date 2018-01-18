@@ -3,26 +3,28 @@ package com.we.controller;
 import com.we.bean.Borrowapply;
 import com.we.bean.Borrowdetail;
 import com.we.common.OurConstants;
-import com.we.common.Pager;
 import com.we.common.PathUtils;
+import com.we.common.loan.Loan;
+import com.we.common.loan.LoanCalculatorAdapter;
+import com.we.common.loan.LoanUtil;
+import com.we.controller.quertz.borrowapply;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BorrowapplyService;
 import com.we.service.BorrowdetailService;
 import com.we.vo.BorrowDetailVO;
+import com.we.vo.ClaculateEarnVO;
 import com.we.vo.RequestResultVO;
-import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Calendar;
-import java.util.List;
 
 @Controller
 @RequestMapping("/borrowdetail")
@@ -91,6 +93,22 @@ public class BorrowdetailController {
         return modelAndView;
     }
 
+    @RequestMapping("calculate_earn_page")
+    public String calculatEarnPage(HttpServletRequest request){
+        request.setAttribute("test","1");
+        return "index/info/calculateEarn";
+    }
+
+    @RequestMapping("calculate_earn")
+    @ResponseBody
+    public Loan calculatEarn(ClaculateEarnVO claculateEarnVO){
+        LoanCalculatorAdapter calculator = LoanUtil.getCalculator(claculateEarnVO.getBzid());
+        Loan loan = calculator.calLoan(LoanUtil.totalLoanMoney(claculateEarnVO.getMoney(), LoanUtil.PERCENT),
+                claculateEarnVO.getTerm(),
+                LoanUtil.rate(claculateEarnVO.getNprofit().doubleValue(), LoanUtil.RATEDISCOUNT),
+                LoanUtil.RATE_TYPE_YEAR);
+        return loan;
+    }
 
     @Resource
     public void setBorrowdetailService(BorrowdetailService borrowdetailService) {
@@ -101,6 +119,5 @@ public class BorrowdetailController {
     public void setBorrowapplyService(BorrowapplyService borrowapplyService) {
         this.borrowapplyService = borrowapplyService;
     }
-
 
 }

@@ -140,21 +140,32 @@
     function deleteHuser() {
         var select = $("#allHuser").bootstrapTable('getSelections');
         if (select.length > 0) {
-            var huserIds = "";
-            for (i = 0; i < select.length; i++) {
-                huserIds = huserIds + select[i].huid + ',';
-            }
-            $.post(contextPath + "/huser/deletes",
-                {"huserIds": huserIds},
-                function (data) {
-                    if (data.result == 'success') {
-                        $("#allHuser").bootstrapTable('refresh');
-                        swal(data.message, "", "success");
-                    } else {
-                        swal(data.message, "", "error");
+            swal({
+                    title: "确定删除吗？",
+                    text: "你将无法恢复该文件！",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定删除！",
+                    closeOnConfirm: false
+                },
+                function(){
+                    var huserIds = "";
+                    for (i = 0; i < select.length; i++) {
+                        huserIds = huserIds + select[i].huid + ',';
                     }
-                }, "json"
-            );
+                    $.post(contextPath + "/huser/deletes",
+                        {"huserIds": huserIds},
+                        function (data) {
+                            if (data.result == 'success') {
+                                $("#allHuser").bootstrapTable('refresh');
+                                swal(data.message, "", "success");
+                            } else {
+                                swal(data.message, "", "error");
+                            }
+                        }, "json"
+                    );
+                });
         } else {
             swal("请选择数据", "", "warning");
         }
