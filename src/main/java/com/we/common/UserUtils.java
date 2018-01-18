@@ -17,7 +17,7 @@ public class UserUtils {
     public static boolean isAdmin() {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
-            return subject.hasRole("admin");
+            return (subject.hasRole("admin") || subject.hasRole("superadmin"));
         }
         return false;
     }

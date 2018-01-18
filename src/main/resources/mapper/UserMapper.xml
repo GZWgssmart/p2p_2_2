@@ -280,4 +280,8 @@
     ]]>
   </select>
 
+  <select id="listCriteria" resultType="com.we.vo.AllUserVO">
+    select * from user ORDER  by register_time desc limit #{pager.offset},#{pager.limit}
+  </select>
+
 </mapper>

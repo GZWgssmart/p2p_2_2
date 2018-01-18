@@ -9,6 +9,7 @@ public class OurConstants {
 
     public static final String SESSION_IN_CODE = "code";
     public static final String SESSION_IN_USER = "user";
+    public static final String SESSION_IN_HUSER = "huser";
 
     public static final Integer IS_VIP = 1;
     public static final Integer NO_VIP = 0;

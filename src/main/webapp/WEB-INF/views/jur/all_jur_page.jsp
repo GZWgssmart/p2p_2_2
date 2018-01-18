@@ -158,21 +158,33 @@
     function deleteJur() {
         var select= $("#allJur").bootstrapTable('getSelections');
         if(select.length > 0){
-            var jurIds = "";
-            for(i = 0; i<select.length; i++){
-                jurIds = jurIds + select[i].id + ",";
-            }
-            $.post("/jur/deletes",
-                {"jurIds":jurIds},
-                function (data) {
-                    if (data.result === 'success') {
-                        swal(data.message,"","success");
-                        $('#allJur').bootstrapTable("refresh");
-                    } else {
-                        swal(data.message,"","error");
-                    }
+            swal({
+                title: '你确定要删除吗',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的',
+                cancelButtonText: '点错了',
+            }).then((result) => {
+                if (result.value) {
+                var jurIds = "";
+                for(i = 0; i<select.length; i++){
+                    jurIds = jurIds + select[i].id + ",";
                 }
-            );
+                $.post("/jur/deletes",
+                    {"jurIds":jurIds},
+                    function (data) {
+                        if (data.result === 'success') {
+                            swal(data.message,"","success");
+                            $('#allJur').bootstrapTable("refresh");
+                        } else {
+                            swal(data.message,"","error");
+                        }
+                    }
+                );
+            }
+        })
         }else{
             swal("请选择一行数据","","warning");
         }

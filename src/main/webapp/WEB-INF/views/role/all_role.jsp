@@ -35,7 +35,7 @@
            data-side-pagination="server">
         <thead>
         <tr>
-            <th data-checkbox="true"></th>
+            <th data-radio="true"></th>
             <th data-field="rname" >角色名称</th>
             <th data-field="content">备注</th>
             <th data-field="createTime"  data-formatter=formatDate>创建时间</th>
@@ -200,21 +200,33 @@
     function deleteRole() {
         var select= $("#allRole").bootstrapTable('getSelections');
         if(select.length > 0){
-            var roleIds = "";
-            for(i = 0; i < select.length; i++){
-               roleIds = roleIds + select[i].jid +',';
+            swal({
+                title: '你确定要删除吗',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的',
+                cancelButtonText: '点错了',
+            }).then((result) => {
+                if (result.value) {
+                var roleIds = "";
+                for(i = 0; i < select.length; i++){
+                    roleIds = roleIds + select[i].jid +',';
+                }
+                $.post(contextPath + "/role/deletes",
+                    {"roleIds":roleIds},
+                    function (data) {
+                        if (data.result == 'success') {
+                            $("#allRole").bootstrapTable('refresh');
+                            swal(data.message,"","success");
+                        } else {
+                            swal(data.message,"","error");
+                        }
+                    }, "json"
+                );
             }
-            $.post(contextPath + "/role/deletes",
-                {"roleIds":roleIds},
-                function (data) {
-                    if (data.result == 'success') {
-                        $("#allRole").bootstrapTable('refresh');
-                        swal(data.message,"","success");
-                    } else {
-                        swal(data.message,"","error");
-                    }
-                }, "json"
-            );
+        })
         }else{
             swal("请选择数据","","warning");
         }

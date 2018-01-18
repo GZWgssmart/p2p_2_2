@@ -89,7 +89,7 @@
     </div>
     <div class="calculator-bottom">
         <div class="auth">
-            <p><span class="big">计算结果</span>（ 还款/收到本息总额：<span class="color" id="allPay"></span>元）</p>
+            <p><span class="big">计算结果</span>（ 还款/收到总利息：<span class="color" id="abc">0.00</span>元&nbsp;&nbsp; 还款/收到本息总额：<span class="color" id="allPay">0.00</span>元）</p>
         </div>
         <ul class="list-box" id="qishu1">
             <li class="title">

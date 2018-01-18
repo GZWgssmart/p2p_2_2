@@ -50,10 +50,10 @@
                 /js/**=anon
                 /huser/login = anon
                 /huser/login_page = anon
-                /huser/home_page = role["spueradmin,admin"]
-                /huser/** = role["spueradmin,admin"]
-                /role/** = role["spueradmin,admin"]
-                /jur/** = role["spueradmin,admin"]
+                /huser/home_page = role["superadmin,admin"]
+                /huser/** = role["superadmin,admin"]
+                /role/** = role["superadmin,admin"]
+                /jur/** = role["superadmin,admin"]
             </value>
         </property>
     </bean>

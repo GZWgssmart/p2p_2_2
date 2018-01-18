@@ -198,7 +198,6 @@ public class HuserController {
         }
         try{
             subject.login(token);
-            session.setAttribute(OurConstants.SESSION_IN_USER, huser);
             return RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
         }catch(Exception e){
             e.printStackTrace();
@@ -243,6 +242,16 @@ public class HuserController {
             return RequestResultVO.status(RequestResultEnum.NEW_PWDS_IS_DIFFERENT);
         }
 
+    }
+
+    @RequestMapping("logout")
+    public String logout(Huser huser, HttpSession session){
+        session.removeAttribute(OurConstants.SESSION_IN_HUSER);
+        Subject subject = SecurityUtils.getSubject();
+        if (subject != null) {
+            subject.logout();
+        }
+        return "redirect:/";
     }
 }
 

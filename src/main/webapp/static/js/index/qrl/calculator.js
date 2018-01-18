@@ -81,6 +81,9 @@ function initData(){
         function (data) {
             if (data.allLoans != null) {
 				for(i = 0; i < data.allLoans.length; i++){
+                    $('#abc').text("");
+                    $('#allPay').text("");
+					$('#abc').text(data.totalInterest);
 					$('#allPay').text(data.totalRepayment);
 					if(i%2 == 1){
                         $('#qishu2').append(

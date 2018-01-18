@@ -1,6 +1,7 @@
 package com.we.realm;
 
 import com.we.bean.Huser;
+import com.we.common.OurConstants;
 import com.we.service.HuserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -66,7 +67,7 @@ public class MyRealm extends AuthorizingRealm {
         }else {
             Huser huser = huserService.getByPhone(emailOrPhone);
             if (huser != null) {
-                session.setAttribute("huser",huser);
+                session.setAttribute(OurConstants.SESSION_IN_HUSER,huser);
                 AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(huser.getPhone(), huser.getPassword(), "xx");
                 return authcInfo;
             } else {

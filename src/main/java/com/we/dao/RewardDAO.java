@@ -10,4 +10,5 @@ public interface RewardDAO extends BaseDAO {
 
     Reward getByIdAndTime(@Param("id") Integer id, @Param("time") String time);
 
+
 }

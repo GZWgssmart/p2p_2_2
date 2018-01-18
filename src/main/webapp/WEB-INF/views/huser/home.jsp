@@ -152,7 +152,7 @@
                             <a class="J_menuItem" href="<%=path%>/huser/all_huser_page">所有员工</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_user_page">普通用户</a>
+                            <a class="J_menuItem" href="<%=path%>/user/all_user_page">普通用户</a>
                         </li>
                     </ul>
                 </li>

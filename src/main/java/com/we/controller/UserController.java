@@ -1,10 +1,7 @@
 package com.we.controller;
 
 import com.we.bean.*;
-import com.we.common.EncryptUtils;
-import com.we.common.OurConstants;
-import com.we.common.Pager;
-import com.we.common.TicketUtils;
+import com.we.common.*;
 import com.we.enums.RequestResultEnum;
 import com.we.service.*;
 import com.we.vo.RequestResultVO;
@@ -204,7 +201,14 @@ public class UserController {
 
     @RequestMapping("all_user_page")
     public String allUserPage() {
-        return "user/pager_user";
+//        return "user/all_user_page";
+
+        if(UserUtils.isAdmin()){
+            return "user/all_user_page";
+        }else{
+            return "";
+        }
+
     }
 
     @PostMapping("login")
@@ -412,5 +416,11 @@ public class UserController {
     @ResponseBody
     public Usermoney getUserMonney(@PathVariable Integer userId){
         return usermoneyService.getByUid(userId);
+    }
+
+    @RequestMapping("pager_user")
+    @ResponseBody
+    public Pager pagerUser(Long offset,Long limit){
+        return userService.listCriteria(offset,limit,null);
     }
 }

@@ -34,7 +34,7 @@
                data-side-pagination="server">
             <thead>
             <tr>
-                <th data-checkbox="true"></th>
+                <th data-radio="true"></th>
                 <th data-field="huname">用户名</th>
                 <th data-field="rname">真实姓名</th>
                 <th data-field="email">邮箱</th>
@@ -141,34 +141,37 @@
         var select = $("#allHuser").bootstrapTable('getSelections');
         if (select.length > 0) {
             swal({
-                    title: "确定删除吗？",
-                    text: "你将无法恢复该文件！",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "确定删除！",
-                    closeOnConfirm: false
-                },
-                function(){
-                    var huserIds = "";
-                    for (i = 0; i < select.length; i++) {
-                        huserIds = huserIds + select[i].huid + ',';
-                    }
-                    $.post(contextPath + "/huser/deletes",
-                        {"huserIds": huserIds},
-                        function (data) {
-                            if (data.result == 'success') {
-                                $("#allHuser").bootstrapTable('refresh');
-                                swal(data.message, "", "success");
-                            } else {
-                                swal(data.message, "", "error");
-                            }
-                        }, "json"
-                    );
-                });
+                title: '你确定要删除吗',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的',
+                cancelButtonText: '点错了',
+            }).then((result) => {
+                if (result.value) {
+                var huserIds = "";
+                for (i = 0; i < select.length; i++) {
+                    huserIds = huserIds + select[i].huid + ',';
+                }
+                $.post(contextPath + "/huser/deletes",
+                    {"huserIds": huserIds},
+                    function (data) {
+                        if (data.result == 'success') {
+                            $("#allHuser").bootstrapTable('refresh');
+                            swal(data.message, "", "success");
+                        } else {
+                            swal(data.message, "", "error");
+                        }
+                    }, "json"
+                );
+            }
+        })
+
         } else {
             swal("请选择数据", "", "warning");
         }
+
     }
 
     function seeDetail() {
