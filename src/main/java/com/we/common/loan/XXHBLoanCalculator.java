@@ -15,7 +15,7 @@ public class XXHBLoanCalculator extends LoanCalculatorAdapter {
     public Loan calLoan(BigDecimal totalLoanMoney, int totalMonth, double loanRate, int rateType) {
         Loan loan = new Loan();
         double monthRate = loanRate / totalMonth / 100;
-        BigDecimal monthInterest = totalLoanMoney.multiply(new BigDecimal(monthRate));
+        BigDecimal monthInterest = totalLoanMoney.multiply(new BigDecimal(monthRate)).setScale(2, BigDecimal.ROUND_HALF_UP);
         List<LoanByMonth> allLoans = new ArrayList<>();
         for (int i = 1; i <= totalMonth; i++) {
             LoanByMonth loanByMonth = new LoanByMonth();
@@ -30,7 +30,7 @@ public class XXHBLoanCalculator extends LoanCalculatorAdapter {
         lastMonth.setPayPrincipal(totalLoanMoney);
         lastMonth.setRepayment(totalLoanMoney.add(monthInterest));
         allLoans.set(totalMonth - 1, lastMonth);
-        loan.setTotalInterest(monthInterest.multiply(new BigDecimal(totalMonth)));
+        loan.setTotalInterest(monthInterest.multiply(new BigDecimal(totalMonth)).setScale(2, BigDecimal.ROUND_HALF_UP));
         loan.setAllLoans(allLoans);
         return loan;
     }
