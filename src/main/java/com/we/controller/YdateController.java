@@ -2,6 +2,7 @@ package com.we.controller;
 
 import com.we.bean.Ydate;
 import com.we.common.DateUtil;
+import com.we.common.Pager;
 import com.we.service.*;
 import com.we.vo.NowDateVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,5 +108,17 @@ public class YdateController {
         nowDateVO.setOverdueMoney(BigDecimal.valueOf(overdueMoney));
         nowDateVO.setOverdueNumber(hkbService.countOverdueNumber());
         return nowDateVO;
+    }
+
+    @RequestMapping("list_pager")
+    @ResponseBody
+    public Pager listPager(Long offset, Long limit){
+        if(offset == null){
+            offset = 0L;
+        }
+        if(limit == null){
+            limit = 0L;
+        }
+        return ydateService.listCriteria(offset,limit,null);
     }
 }

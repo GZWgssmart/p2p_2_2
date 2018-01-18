@@ -181,4 +181,12 @@
   <select id="getYearYdate" resultType="com.we.vo.YdataVO">
     select yid,date from ydate order by date desc limit 0 , 12
   </select>
+
+  <select id="listCriteria" resultType="com.we.bean.Ydate">
+    select * from ydate limit #{pager.offset}, #{pager.limit};
+  </select>
+
+  <select id="countCriteria" resultType="long">
+    select count(yid) from ydate;
+  </select>
 </mapper>
