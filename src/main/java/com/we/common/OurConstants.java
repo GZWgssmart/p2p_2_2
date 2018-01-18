@@ -140,4 +140,20 @@ public class OurConstants {
      */
     public static final Integer SKB_YS = 2;
 
+    /**
+     * 提现记录状态：审核中
+     */
+    public static final Integer TX_CHECKING = 2;
+
+    /**
+     * 提现记录状态：审核通过
+     */
+    public static final Integer TX_CHECK_OK = 1;
+
+    /**
+     * 提现记录状态：审核不通过
+     */
+    public static final Integer TX_CHECK_NO = 0;
+
+
 }

@@ -33,6 +33,11 @@ public class HuserController {
     @Autowired
     private RoleuserService roleuserService;
 
+    @RequestMapping("all_tx_check_page")
+    public String txCheckPage() {
+        return "huser/txcheck/all_tx_check";
+    }
+
     @RequestMapping("all_okborrow_page")
     public String allOkBorrowPage() {
         return "huser/borrow/all_okborrow";
@@ -129,9 +134,9 @@ public class HuserController {
         return pager;
     }
 
-    //后台管理员跳转到提现审核页面
+    //后台管理员跳转到提现记录页面
     @RequestMapping("all_tx_log_page")
-    public String toUserTxCheck() {
+    public String txLogPage() {
         return "huser/txlog/all_tx_log";
     }
 

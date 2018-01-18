@@ -127,7 +127,10 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_tx_log_page">提现审核</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_tx_check_page">提现审核</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_tx_log_page">提现记录</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/huser/all_invest_page">投资记录</a>

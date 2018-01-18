@@ -1,5 +1,6 @@
 package com.we.common;
 
+import com.we.bean.Huser;
 import com.we.bean.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -29,4 +30,7 @@ public class UserUtils {
         return (User) session.getAttribute(OurConstants.SESSION_IN_USER);
     }
 
+    public static Huser getHuser (HttpSession session) {
+        return (Huser) session.getAttribute(OurConstants.SESSION_IN_USER);
+    }
 }

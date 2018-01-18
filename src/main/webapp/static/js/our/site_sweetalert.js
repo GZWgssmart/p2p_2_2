@@ -13,6 +13,13 @@ var swtAlert = {
             timer: 1500
         });
     },
+    warnNoTimer: function (message) {
+        swal({
+            title: '提示！',
+            text: message,
+            type: 'warning'
+        });
+    },
     request_success: function (message) {
         swal({
             title: '成功！',

@@ -1,106 +1,128 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.dao.TxCheckDAO" >
-  <resultMap id="BaseResultMap" type="com.we.bean.TxCheck" >
-    <id column="rcid" property="rcid" jdbcType="INTEGER" />
-    <result column="txid" property="txid" jdbcType="INTEGER" />
-    <result column="huid" property="huid" jdbcType="INTEGER" />
-    <result column="isok" property="isok" jdbcType="INTEGER" />
-    <result column="excuse" property="excuse" jdbcType="VARCHAR" />
-    <result column="date" property="date" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    rcid, txid, huid, isok, excuse, date
-  </sql>
-  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from tx_check
-    where rcid = #{rcid,jdbcType=INTEGER}
-  </select>
-  <delete id="removeById" parameterType="java.lang.Integer" >
-    delete from tx_check
-    where rcid = #{rcid,jdbcType=INTEGER}
-  </delete>
-  <insert id="save" parameterType="com.we.bean.TxCheck" >
-    insert into tx_check (rcid, txid, huid, 
-      isok, excuse, date
-      )
-    values (#{rcid,jdbcType=INTEGER}, #{txid,jdbcType=INTEGER}, #{huid,jdbcType=INTEGER}, 
-      #{isok,jdbcType=INTEGER}, #{excuse,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="saveSelective" parameterType="com.we.bean.TxCheck" >
-    insert into tx_check
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="rcid != null" >
-        rcid,
-      </if>
-      <if test="txid != null" >
-        txid,
-      </if>
-      <if test="huid != null" >
-        huid,
-      </if>
-      <if test="isok != null" >
-        isok,
-      </if>
-      <if test="excuse != null" >
-        excuse,
-      </if>
-      <if test="date != null" >
-        date,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="rcid != null" >
-        #{rcid,jdbcType=INTEGER},
-      </if>
-      <if test="txid != null" >
-        #{txid,jdbcType=INTEGER},
-      </if>
-      <if test="huid != null" >
-        #{huid,jdbcType=INTEGER},
-      </if>
-      <if test="isok != null" >
-        #{isok,jdbcType=INTEGER},
-      </if>
-      <if test="excuse != null" >
-        #{excuse,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null" >
-        #{date,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateSelective" parameterType="com.we.bean.TxCheck" >
-    update tx_check
-    <set >
-      <if test="txid != null" >
-        txid = #{txid,jdbcType=INTEGER},
-      </if>
-      <if test="huid != null" >
-        huid = #{huid,jdbcType=INTEGER},
-      </if>
-      <if test="isok != null" >
-        isok = #{isok,jdbcType=INTEGER},
-      </if>
-      <if test="excuse != null" >
-        excuse = #{excuse,jdbcType=VARCHAR},
-      </if>
-      <if test="date != null" >
-        date = #{date,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where rcid = #{rcid,jdbcType=INTEGER}
-  </update>
-  <update id="update" parameterType="com.we.bean.TxCheck" >
-    update tx_check
-    set txid = #{txid,jdbcType=INTEGER},
-      huid = #{huid,jdbcType=INTEGER},
-      isok = #{isok,jdbcType=INTEGER},
-      excuse = #{excuse,jdbcType=VARCHAR},
-      date = #{date,jdbcType=TIMESTAMP}
-    where rcid = #{rcid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.we.dao.TxCheckDAO">
+    <resultMap id="BaseResultMap" type="com.we.bean.TxCheck">
+        <id column="rcid" property="rcid" jdbcType="INTEGER"/>
+        <result column="txid" property="txid" jdbcType="INTEGER"/>
+        <result column="huid" property="huid" jdbcType="INTEGER"/>
+        <result column="isok" property="isok" jdbcType="INTEGER"/>
+        <result column="excuse" property="excuse" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        rcid, txid, huid, isok, excuse, date
+    </sql>
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from tx_check
+        where rcid = #{rcid,jdbcType=INTEGER}
+    </select>
+    <delete id="removeById" parameterType="java.lang.Integer">
+        DELETE FROM tx_check
+        WHERE rcid = #{rcid,jdbcType=INTEGER}
+    </delete>
+    <insert id="save" parameterType="com.we.bean.TxCheck">
+        INSERT INTO tx_check (rcid, txid, huid,
+                              isok, excuse, date
+        )
+        VALUES (#{rcid,jdbcType=INTEGER}, #{txid,jdbcType=INTEGER}, #{huid,jdbcType=INTEGER},
+                #{isok,jdbcType=INTEGER}, #{excuse,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="saveSelective" parameterType="com.we.bean.TxCheck">
+        insert into tx_check
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rcid != null">
+                rcid,
+            </if>
+            <if test="txid != null">
+                txid,
+            </if>
+            <if test="huid != null">
+                huid,
+            </if>
+            <if test="isok != null">
+                isok,
+            </if>
+            <if test="excuse != null">
+                excuse,
+            </if>
+            <if test="date != null">
+                date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="rcid != null">
+                #{rcid,jdbcType=INTEGER},
+            </if>
+            <if test="txid != null">
+                #{txid,jdbcType=INTEGER},
+            </if>
+            <if test="huid != null">
+                #{huid,jdbcType=INTEGER},
+            </if>
+            <if test="isok != null">
+                #{isok,jdbcType=INTEGER},
+            </if>
+            <if test="excuse != null">
+                #{excuse,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSelective" parameterType="com.we.bean.TxCheck">
+        update tx_check
+        <set>
+            <if test="txid != null">
+                txid = #{txid,jdbcType=INTEGER},
+            </if>
+            <if test="huid != null">
+                huid = #{huid,jdbcType=INTEGER},
+            </if>
+            <if test="isok != null">
+                isok = #{isok,jdbcType=INTEGER},
+            </if>
+            <if test="excuse != null">
+                excuse = #{excuse,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                date = #{date,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where rcid = #{rcid,jdbcType=INTEGER}
+    </update>
+    <update id="update" parameterType="com.we.bean.TxCheck">
+        UPDATE tx_check
+        SET txid   = #{txid,jdbcType=INTEGER},
+            huid   = #{huid,jdbcType=INTEGER},
+            isok   = #{isok,jdbcType=INTEGER},
+            excuse = #{excuse,jdbcType=VARCHAR},
+            date   = #{date,jdbcType=TIMESTAMP}
+        WHERE rcid = #{rcid,jdbcType=INTEGER}
+    </update>
+
+    <sql id="criteriaQuery">
+        FROM tx_log l, user u, huser h, tx_check c
+        WHERE 1=1
+        AND u.uid = l.uid
+        AND l.tid = c.txid
+        AND (h.huid = c.huid OR c.huid is null)
+    </sql>
+
+    <select id="countCriteria" resultType="Long">
+        SELECT count(l.tid)
+        <include refid="criteriaQuery"/>
+    </select>
+
+    <select id="listCriteria" resultType="com.we.vo.TxCheckVO">
+        SELECT l.uid, l.bankcard, l.banktype, l.money, l.date AS 'applyTime', l.state,
+            u.rname as 'uName', h.rname as 'hName',
+            c.excuse, c.date AS 'checkTime', c.rcid, c.txid
+        <include refid="criteriaQuery"/>
+        ORDER BY l.state DESC , l.date DESC
+        LIMIT #{pager.offset}, #{pager.limit}
+    </select>
 </mapper>

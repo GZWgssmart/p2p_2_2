@@ -32,13 +32,6 @@ CREATE TABLE `bankcard` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='银行卡表';
 
 -- ----------------------------
--- Records of bankcard
--- ----------------------------
-INSERT INTO `bankcard` VALUES ('1', '100000', '6226822013100490873', '前台', '360724199909088822', '农业银行', '1', '2017-12-25 11:29:33');
-INSERT INTO `bankcard` VALUES ('14', '100000', '6226822013100490873', '前台', '360724199909088822', '建设银行', '1', '2018-01-15 16:03:58');
-INSERT INTO `bankcard` VALUES ('15', '100000', '1234561999090888221', '前台', '360724199909088822', '交通银行', '1', '2018-01-15 19:51:01');
-
--- ----------------------------
 -- Table structure for borrowapply
 -- ----------------------------
 DROP TABLE IF EXISTS `borrowapply`;
@@ -56,23 +49,6 @@ CREATE TABLE `borrowapply` (
   `symoney` decimal(10,2) DEFAULT NULL COMMENT '剩余可投余额',
   PRIMARY KEY (`baid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='申请借款表';
-
--- ----------------------------
--- Records of borrowapply
--- ----------------------------
-INSERT INTO `borrowapply` VALUES ('1', '我们', '100000.00', '100000', '1', '2017-12-28 14:04:33', '3', '9', '6', '2018-06-25 12:43:44', '100000.00');
-INSERT INTO `borrowapply` VALUES ('2', '我们', '100000.00', '100000', '1', '2017-12-28 14:04:34', '0', '9', '3', '2017-12-27 14:19:53', '100000.00');
-INSERT INTO `borrowapply` VALUES ('3', '我们', '100000.00', '100000', '1', '2017-12-28 14:04:08', '1', '9', '9', '2017-12-27 14:19:56', '100000.00');
-INSERT INTO `borrowapply` VALUES ('4', '我们', '100000.00', '100000', '3', '2017-12-28 14:04:10', '1', '10', '9', '2017-12-27 14:19:55', '100000.00');
-INSERT INTO `borrowapply` VALUES ('5', '我们', '666666.00', '100000', '1', '2017-12-28 14:04:12', '1', '11', '6', '2018-04-12 00:00:00', '10000.00');
-INSERT INTO `borrowapply` VALUES ('11', 'name', '400000.00', '100000', '2', '2017-12-28 16:17:14', '1', '11', '9', '2018-03-03 00:00:00', '400000.00');
-INSERT INTO `borrowapply` VALUES ('12', 'asd', '100000.00', '100001', '1', '2018-01-02 08:59:45', '3', '11', '3', '2222-12-05 00:00:00', '100000.00');
-INSERT INTO `borrowapply` VALUES ('13', 'QWE', '200000.00', '100001', '1', '2018-01-02 14:06:39', '3', '7', '3', '2018-01-12 00:00:00', '200000.00');
-INSERT INTO `borrowapply` VALUES ('16', 'asd', '250000.00', '100001', '2', '2018-01-03 10:37:02', '3', '9', '3', '2018-01-09 00:00:00', '250000.00');
-INSERT INTO `borrowapply` VALUES ('17', 'ads', '300000.00', '100001', '2', '2018-01-03 10:38:39', '3', '9', '3', '2018-01-20 00:00:00', '300000.00');
-INSERT INTO `borrowapply` VALUES ('18', 'asd', '500000.00', '100001', '2', '2018-01-03 10:41:41', '4', '7', '3', '2018-01-20 00:00:00', '0.00');
-INSERT INTO `borrowapply` VALUES ('24', '前台', '600000.00', '100000', '3', '2018-01-16 13:19:27', '3', '9', '6', '2018-03-01 00:00:00', '600000.00');
-INSERT INTO `borrowapply` VALUES ('25', 'li', '600000.00', '100008', '4', '2018-01-17 20:42:09', '1', '11', '6', '2018-04-03 00:00:00', '600000.00');
 
 -- ----------------------------
 -- Table structure for borrowdetail
@@ -96,17 +72,6 @@ CREATE TABLE `borrowdetail` (
   `baid` int(11) DEFAULT NULL COMMENT '关联的借款id',
   PRIMARY KEY (`bdid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='借款详情表';
-
--- ----------------------------
--- Records of borrowdetail
--- ----------------------------
-INSERT INTO `borrowdetail` VALUES ('3', '361724199912313259', '/static/uploads/img/wallpaper_a37179.jpg', '1234567890123456780', null, '修改——完成SSM项目', '修改——项目上线后的收入', '修改——项目组成员', '修改——SSM项目', '修改——王总担保', '350000.00', '9.00', '修改——广告收入', 'PJB1514874513719', '11');
-INSERT INTO `borrowdetail` VALUES ('4', '360724201801031439', '/static/uploads/img/wallpaper_a219901.jpg', '9876543210123456789', null, '新SSM项目', '新SSM项目收入', '新SSM项目', '新SSM项目', '无', '100000.00', '8.00', '广告', 'HJB1514961532166', '2');
-INSERT INTO `borrowdetail` VALUES ('5', '360724201801090831', '/static/uploads/img/wallpaper_a219901.jpg', '1234567899876543222', null, '项目开发', '有', '自己', '当前项目', '有', '500000.00', '8.00', '有', 'DJB1515457882799', '18');
-INSERT INTO `borrowdetail` VALUES ('7', '360724199712297043', '/static/uploads/img/201704281028507815.png', '1234567812345678111', null, 'w', 'w', 'w', 'w', 'w', '100000.00', '9.00', 'w', 'HJB1515746799817', '3');
-INSERT INTO `borrowdetail` VALUES ('8', '360724191212297043', '/static/uploads/img/201707181720447073.jpg', '1234556712345678111', null, 'w', 'w', 'w', 'w', 'w', '100000.00', '9.00', 'w', 'SXB1515747145446', '4');
-INSERT INTO `borrowdetail` VALUES ('9', '360724191212297043', '/static/uploads/img/ptzz_05.jpg', '1222256712345678111', null, 'y', 'y', 'y', 'yy', 'y', '666666.00', '9.00', 'y', 'PJB1515747320149', '5');
-INSERT INTO `borrowdetail` VALUES ('10', '360723199812312359', '/static/uploads/img/201707181722219748.jpg', '1234567890098765432', null, '无', '无', '无', '无无', '无', '600000.00', '8.00', '无', 'PJB1516193784211', '25');
 
 -- ----------------------------
 -- Table structure for bz
@@ -206,7 +171,6 @@ INSERT INTO `friend` VALUES ('3', '/static/images/xdp/3.jpg', 'http://www.taobao
 INSERT INTO `friend` VALUES ('4', '/static/images/xdp/4.jpg', 'http://www.huawei.com', '华为');
 INSERT INTO `friend` VALUES ('9', '/static/images/xdp/5.jpg', 'http://www.geshanhuacom', '格桑花');
 INSERT INTO `friend` VALUES ('10', '/static/images/xdp/6.jpg', 'http://www.iphone.com', '苹果');
-INSERT INTO `friend` VALUES ('11', '/static/uploads/img/1.jpg', 'kkjkjkj', '');
 
 -- ----------------------------
 -- Table structure for hkb
@@ -237,13 +201,6 @@ CREATE TABLE `hkb` (
   `huid` int(11) DEFAULT NULL COMMENT '贷后负责人id',
   PRIMARY KEY (`skid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='还款表';
-
--- ----------------------------
--- Records of hkb
--- ----------------------------
-INSERT INTO `hkb` VALUES ('1', '100001', 'asd', 'PJB1515457882799', '1', '3', '2018-02-10 18:08:20', '2018-01-12 18:43:13', '等额本金', '168888.89', '168888.89', '2222.22', '2222.22', '166666.67', '166666.67', '0.00', '0.00', '0', '2', '18', '2018-02-11 18:08:20', '15');
-INSERT INTO `hkb` VALUES ('2', '100001', 'asd', 'PJB1515457882799', '0', '3', '2018-03-10 18:08:20', null, '等额本金', '167777.78', '0.00', '1111.11', '0.00', '166666.67', '0.00', '0.00', '0.00', '0', '0', '18', '2018-03-11 18:08:20', '15');
-INSERT INTO `hkb` VALUES ('3', '100001', 'asd', 'PJB1515457882799', '0', '3', '2018-04-10 18:08:20', null, '等额本金', '166666.67', '0.00', '0.00', '0.00', '166666.67', '0.00', '0.00', '0.00', '0', '0', '18', '2018-04-11 18:08:20', '15');
 
 -- ----------------------------
 -- Table structure for home_img
@@ -284,7 +241,7 @@ CREATE TABLE `huser` (
 -- ----------------------------
 -- Records of huser
 -- ----------------------------
-INSERT INTO `huser` VALUES ('46', '李四', '男', '15087654321', 'superamdin', 'admin@gmail.com', '2018-01-09 08:56:30', 'Qpf0SxOVUjUkWySXOZ16kw==');
+INSERT INTO `huser` VALUES ('1', '李四', '男', '15087654321', 'superamdin', 'admin@163.com', '2018-01-09 08:56:30', 'Qpf0SxOVUjUkWySXOZ16kw==');
 
 -- ----------------------------
 -- Table structure for jklx
@@ -300,10 +257,10 @@ CREATE TABLE `jklx` (
 -- ----------------------------
 -- Records of jklx
 -- ----------------------------
-INSERT INTO `jklx` VALUES ('7', '多金宝', '1');
-INSERT INTO `jklx` VALUES ('9', '恒金保', '1');
-INSERT INTO `jklx` VALUES ('10', '新手标', '1');
-INSERT INTO `jklx` VALUES ('11', '普金保', '1');
+INSERT INTO `jklx` VALUES ('1', '多金宝', '1');
+INSERT INTO `jklx` VALUES ('2', '恒金保', '1');
+INSERT INTO `jklx` VALUES ('3', '新手标', '1');
+INSERT INTO `jklx` VALUES ('4', '普金保', '1');
 
 -- ----------------------------
 -- Table structure for jur
@@ -335,23 +292,6 @@ CREATE TABLE `letter` (
   `state` int(11) DEFAULT '1' COMMENT '状态，0不可用，1可用',
   PRIMARY KEY (`lid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='站内信表';
-
--- ----------------------------
--- Records of letter
--- ----------------------------
-INSERT INTO `letter` VALUES ('1', '奖励通知', '恭喜您，中奖100万', '2017-12-22 15:58:38', '1');
-INSERT INTO `letter` VALUES ('2', '元旦通知', '元旦三天假', '2017-12-27 10:17:00', '1');
-INSERT INTO `letter` VALUES ('3', '圣诞通知', '圣诞礼物', '2017-12-27 10:16:30', '1');
-INSERT INTO `letter` VALUES ('4', '春节通知', '春节半个月假', '2017-12-25 07:16:39', '1');
-INSERT INTO `letter` VALUES ('5', '元宵通知', '元宵半天', '2017-12-28 08:14:50', '1');
-INSERT INTO `letter` VALUES ('7', '站内信最新公告', '<p>站内信通知</p>', '2018-01-02 15:38:59', '1');
-INSERT INTO `letter` VALUES ('8', '添加', '<p>站内信通知</p>', '2018-01-02 15:41:33', '1');
-INSERT INTO `letter` VALUES ('9', '投标通知', '<p>投资奖励通知</p>', '2018-01-02 15:53:53', '1');
-INSERT INTO `letter` VALUES ('10', '投标奖励通知', '<p>投标额度越多，奖励越多</p>', '2018-01-02 16:39:17', '1');
-INSERT INTO `letter` VALUES ('11', '游标通知', '<p>您发放的表没有投满，导致游标</p>', '2018-01-02 16:43:29', '1');
-INSERT INTO `letter` VALUES ('12', '站内信通知', '<p>站内信通知</p>', '2018-01-02 16:47:47', '1');
-INSERT INTO `letter` VALUES ('13', '下标', '<p>下标</p>', '2018-01-02 19:24:20', '1');
-INSERT INTO `letter` VALUES ('14', '这是一条站内信', '年假放一个月', '2018-01-04 14:10:16', '1');
 
 -- ----------------------------
 -- Table structure for media
@@ -387,15 +327,6 @@ CREATE TABLE `money_log` (
   `date` datetime DEFAULT NULL COMMENT '时间',
   PRIMARY KEY (`mid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='资金流向表';
-
--- ----------------------------
--- Records of money_log
--- ----------------------------
-INSERT INTO `money_log` VALUES ('17', '100000', '2', null, '20000.00', '2018-01-10 11:29:07');
-INSERT INTO `money_log` VALUES ('18', '100000', '2', null, '20000.00', '2018-01-10 11:43:29');
-INSERT INTO `money_log` VALUES ('19', '100000', '2', null, '460000.00', '2018-01-10 18:08:13');
-INSERT INTO `money_log` VALUES ('20', '100001', '4', null, '168888.89', '2018-01-12 18:43:13');
-INSERT INTO `money_log` VALUES ('21', '100000', '3', '168888.89', null, '2018-01-15 15:28:41');
 
 -- ----------------------------
 -- Table structure for notice
@@ -454,14 +385,6 @@ CREATE TABLE `recommend` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='推荐管理表';
 
 -- ----------------------------
--- Records of recommend
--- ----------------------------
-INSERT INTO `recommend` VALUES ('1', '100000', '', '100001', '', '2018-01-05 15:12:04');
-INSERT INTO `recommend` VALUES ('2', '100001', '', '100004', '', '2018-01-05 15:44:59');
-INSERT INTO `recommend` VALUES ('3', '100000', null, '100005', null, '2018-01-07 16:16:00');
-INSERT INTO `recommend` VALUES ('4', '100005', null, '100006', null, '2018-01-12 11:11:47');
-
--- ----------------------------
 -- Table structure for reward
 -- ----------------------------
 DROP TABLE IF EXISTS `reward`;
@@ -492,21 +415,6 @@ CREATE TABLE `reward_setting` (
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='投资奖励设置表';
 
 -- ----------------------------
--- Records of reward_setting
--- ----------------------------
-INSERT INTO `reward_setting` VALUES ('1', '0.00', '50000.00', '5');
-INSERT INTO `reward_setting` VALUES ('2', '50000.00', '100000.00', '3');
-INSERT INTO `reward_setting` VALUES ('3', '100000.00', null, '1');
-INSERT INTO `reward_setting` VALUES ('5', '10000.00', '20000.00', '2');
-INSERT INTO `reward_setting` VALUES ('8', '30000.00', '60000.00', '3');
-INSERT INTO `reward_setting` VALUES ('9', '20000.00', '50000.00', '2');
-INSERT INTO `reward_setting` VALUES ('10', '1000.00', '50000.00', '5');
-INSERT INTO `reward_setting` VALUES ('11', '10000.00', '100000.00', '5');
-INSERT INTO `reward_setting` VALUES ('12', '10000.00', '90000.00', '1');
-INSERT INTO `reward_setting` VALUES ('13', '2001.00', '6001.00', '61');
-INSERT INTO `reward_setting` VALUES ('14', '1000.00', '5000.00', '0.8');
-
--- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
@@ -521,8 +429,8 @@ CREATE TABLE `role` (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('25', 'spueradmin', '超级管理员，拥有所有权限', '2018-01-09 08:45:44');
-INSERT INTO `role` VALUES ('27', 'admin', '管理员', '2018-01-18 11:41:12');
+INSERT INTO `role` VALUES ('1', 'spueradmin', '超级管理员，拥有所有权限', '2018-01-09 08:45:44');
+INSERT INTO `role` VALUES ('2', 'admin', '管理员', '2018-01-18 11:41:12');
 
 -- ----------------------------
 -- Table structure for rolejur
@@ -551,11 +459,6 @@ CREATE TABLE `roleuser` (
 ) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8 COMMENT='用户角色表';
 
 -- ----------------------------
--- Records of roleuser
--- ----------------------------
-INSERT INTO `roleuser` VALUES ('112', '25', '46');
-
--- ----------------------------
 -- Table structure for rzvip
 -- ----------------------------
 DROP TABLE IF EXISTS `rzvip`;
@@ -572,10 +475,6 @@ CREATE TABLE `rzvip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='认证表';
 
 -- ----------------------------
--- Records of rzvip
--- ----------------------------
-
--- ----------------------------
 -- Table structure for rzvip_check
 -- ----------------------------
 DROP TABLE IF EXISTS `rzvip_check`;
@@ -590,10 +489,6 @@ CREATE TABLE `rzvip_check` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='认证审核表';
 
 -- ----------------------------
--- Records of rzvip_check
--- ----------------------------
-
--- ----------------------------
 -- Table structure for shborrow
 -- ----------------------------
 DROP TABLE IF EXISTS `shborrow`;
@@ -606,23 +501,6 @@ CREATE TABLE `shborrow` (
   `baid` int(11) DEFAULT NULL COMMENT '借款id',
   PRIMARY KEY (`shid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='借款审核表';
-
--- ----------------------------
--- Records of shborrow
--- ----------------------------
-INSERT INTO `shborrow` VALUES ('1', null, '3', '', null, '1');
-INSERT INTO `shborrow` VALUES ('2', '15', '0', '无理由拒绝', '2018-01-03 14:42:47', '2');
-INSERT INTO `shborrow` VALUES ('3', null, '1', '', '2018-01-12 17:57:39', '3');
-INSERT INTO `shborrow` VALUES ('4', null, '1', '', '2018-01-12 17:57:33', '4');
-INSERT INTO `shborrow` VALUES ('5', null, '1', '', '2018-01-12 17:57:27', '5');
-INSERT INTO `shborrow` VALUES ('6', '15', '1', '', '2018-01-05 11:03:14', '11');
-INSERT INTO `shborrow` VALUES ('7', null, '3', null, null, '12');
-INSERT INTO `shborrow` VALUES ('8', null, '3', null, null, '13');
-INSERT INTO `shborrow` VALUES ('11', null, '3', null, null, '16');
-INSERT INTO `shborrow` VALUES ('12', null, '3', null, null, '17');
-INSERT INTO `shborrow` VALUES ('13', '15', '1', '', '2018-01-09 16:50:03', '18');
-INSERT INTO `shborrow` VALUES ('14', null, '3', null, null, '24');
-INSERT INTO `shborrow` VALUES ('15', null, '1', '', '2018-01-17 21:02:21', '25');
 
 -- ----------------------------
 -- Table structure for skb
@@ -647,13 +525,6 @@ CREATE TABLE `skb` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='收款表';
 
 -- ----------------------------
--- Records of skb
--- ----------------------------
-INSERT INTO `skb` VALUES ('1', '100000', '100001', '168888.89', '168888.89', '2222.22', '2222.22', '166666.67', '166666.67', '1', '0', '2018-01-15 15:28:40', '18', '2');
-INSERT INTO `skb` VALUES ('2', '100000', '100001', '167777.78', '0.00', '1111.11', '0.00', '166666.67', '166666.67', '0', '0', null, '18', '0');
-INSERT INTO `skb` VALUES ('3', '100000', '100001', '166666.67', '0.00', '0.00', '0.00', '166666.67', '166666.67', '0', '0', null, '18', '0');
-
--- ----------------------------
 -- Table structure for sway
 -- ----------------------------
 DROP TABLE IF EXISTS `sway`;
@@ -664,14 +535,6 @@ CREATE TABLE `sway` (
   `state` int(11) DEFAULT '1' COMMENT '状态, 0不可用， 1可用',
   PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='还款方式表';
-
--- ----------------------------
--- Records of sway
--- ----------------------------
-INSERT INTO `sway` VALUES ('1', '信用卡', '算法', '1');
-INSERT INTO `sway` VALUES ('2', '等额本金', '8ufdij', '1');
-INSERT INTO `sway` VALUES ('3', '信用卡1', '方法1', '1');
-INSERT INTO `sway` VALUES ('6', '信用卡2', '算法2', '1');
 
 -- ----------------------------
 -- Table structure for ticket
@@ -687,18 +550,6 @@ CREATE TABLE `ticket` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='优惠券表';
 
 -- ----------------------------
--- Records of ticket
--- ----------------------------
-INSERT INTO `ticket` VALUES ('6', '2', '100.00', '2018-01-31 00:00:00', '2018-01-11 10:41:32');
-INSERT INTO `ticket` VALUES ('7', '2', '100.00', '2018-02-08 00:00:00', '2018-01-11 10:53:24');
-INSERT INTO `ticket` VALUES ('8', '2', '99.00', '2018-01-19 00:00:00', '2018-01-11 14:50:11');
-INSERT INTO `ticket` VALUES ('9', '2', '200.00', '2018-02-14 00:00:00', '2018-01-11 15:45:30');
-INSERT INTO `ticket` VALUES ('10', '1', '20.00', '2018-04-12 10:58:51', '2018-01-12 10:58:51');
-INSERT INTO `ticket` VALUES ('11', '1', '20.00', '2018-04-12 10:58:52', '2018-01-12 10:58:52');
-INSERT INTO `ticket` VALUES ('12', '1', '99.00', '2018-04-12 11:11:47', '2018-01-12 11:11:47');
-INSERT INTO `ticket` VALUES ('13', '1', '20.00', '2018-04-12 11:11:47', '2018-01-12 11:11:47');
-
--- ----------------------------
 -- Table structure for tx_check
 -- ----------------------------
 DROP TABLE IF EXISTS `tx_check`;
@@ -711,54 +562,6 @@ CREATE TABLE `tx_check` (
   `date` datetime DEFAULT NULL COMMENT '时间',
   PRIMARY KEY (`rcid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 COMMENT='提现审核表';
-
--- ----------------------------
--- Records of tx_check
--- ----------------------------
-INSERT INTO `tx_check` VALUES ('33', '2', '15', null, '二锅头和借口', '2018-01-08 10:54:52');
-INSERT INTO `tx_check` VALUES ('34', '2', '15', null, null, '2018-01-08 10:59:05');
-INSERT INTO `tx_check` VALUES ('35', '2', '15', null, '提现理由不够充分！', '2018-01-08 10:59:29');
-INSERT INTO `tx_check` VALUES ('36', '2', '15', null, null, '2018-01-08 11:24:28');
-INSERT INTO `tx_check` VALUES ('37', '2', '15', null, '答复', '2018-01-08 11:25:07');
-INSERT INTO `tx_check` VALUES ('38', '2', '15', null, null, '2018-01-08 11:25:32');
-INSERT INTO `tx_check` VALUES ('39', '2', '15', null, '答复', '2018-01-08 11:25:42');
-INSERT INTO `tx_check` VALUES ('40', '1', '15', null, '答复', '2018-01-08 11:26:54');
-INSERT INTO `tx_check` VALUES ('41', '2', '15', null, null, '2018-01-08 11:29:33');
-INSERT INTO `tx_check` VALUES ('42', '2', '15', null, '答复', '2018-01-08 11:30:03');
-INSERT INTO `tx_check` VALUES ('43', '2', '15', null, null, '2018-01-08 11:33:13');
-INSERT INTO `tx_check` VALUES ('44', '1', '15', null, null, '2018-01-08 11:33:40');
-INSERT INTO `tx_check` VALUES ('45', '1', '15', null, null, '2018-01-08 11:36:44');
-INSERT INTO `tx_check` VALUES ('46', '2', '15', null, null, '2018-01-08 11:40:42');
-INSERT INTO `tx_check` VALUES ('47', '2', '15', null, '飞', '2018-01-08 11:40:49');
-INSERT INTO `tx_check` VALUES ('48', '2', '15', null, '飞', '2018-01-08 11:40:51');
-INSERT INTO `tx_check` VALUES ('49', '1', '15', null, '飞第三方', '2018-01-08 11:41:23');
-INSERT INTO `tx_check` VALUES ('50', '1', '15', null, null, '2018-01-08 11:43:47');
-INSERT INTO `tx_check` VALUES ('51', '1', '15', null, '鸡口牛后', '2018-01-08 11:43:57');
-INSERT INTO `tx_check` VALUES ('52', '2', '15', null, null, '2018-01-08 14:17:00');
-INSERT INTO `tx_check` VALUES ('53', null, '15', null, null, '2018-01-08 14:33:58');
-INSERT INTO `tx_check` VALUES ('54', null, '15', null, null, '2018-01-08 14:34:02');
-INSERT INTO `tx_check` VALUES ('55', null, '15', null, null, '2018-01-08 14:34:10');
-INSERT INTO `tx_check` VALUES ('56', '2', '15', null, '二恶', '2018-01-08 14:34:21');
-INSERT INTO `tx_check` VALUES ('57', null, '15', null, null, '2018-01-08 14:34:25');
-INSERT INTO `tx_check` VALUES ('58', null, '15', null, null, '2018-01-08 14:35:33');
-INSERT INTO `tx_check` VALUES ('59', null, '15', null, null, '2018-01-08 14:35:51');
-INSERT INTO `tx_check` VALUES ('60', null, '15', null, null, '2018-01-08 14:36:55');
-INSERT INTO `tx_check` VALUES ('61', null, '15', null, null, '2018-01-08 14:39:41');
-INSERT INTO `tx_check` VALUES ('62', null, '15', null, null, '2018-01-08 14:41:03');
-INSERT INTO `tx_check` VALUES ('63', null, '15', null, null, '2018-01-08 14:44:44');
-INSERT INTO `tx_check` VALUES ('64', null, '15', null, null, '2018-01-08 14:49:51');
-INSERT INTO `tx_check` VALUES ('65', null, '15', null, null, '2018-01-08 14:53:06');
-INSERT INTO `tx_check` VALUES ('66', '2', '15', null, null, '2018-01-08 14:55:20');
-INSERT INTO `tx_check` VALUES ('67', '2', '15', null, '而的封锁', '2018-01-08 15:25:05');
-INSERT INTO `tx_check` VALUES ('68', '2', '15', null, null, '2018-01-08 15:29:55');
-INSERT INTO `tx_check` VALUES ('69', '1', '15', null, null, '2018-01-08 15:32:43');
-INSERT INTO `tx_check` VALUES ('70', '2', '15', null, null, '2018-01-09 11:38:27');
-INSERT INTO `tx_check` VALUES ('71', '2', '15', null, null, '2018-01-09 11:40:53');
-INSERT INTO `tx_check` VALUES ('72', '1', '15', null, null, '2018-01-09 11:41:19');
-INSERT INTO `tx_check` VALUES ('73', '2', '15', null, null, '2018-01-09 11:45:17');
-INSERT INTO `tx_check` VALUES ('74', '1', '15', null, null, '2018-01-09 11:50:09');
-INSERT INTO `tx_check` VALUES ('75', '2', '15', null, null, '2018-01-09 11:52:09');
-INSERT INTO `tx_check` VALUES ('76', '1', '15', null, null, '2018-01-09 11:53:14');
 
 -- ----------------------------
 -- Table structure for tx_log
@@ -776,12 +579,6 @@ CREATE TABLE `tx_log` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='提现记录表';
 
 -- ----------------------------
--- Records of tx_log
--- ----------------------------
-INSERT INTO `tx_log` VALUES ('1', '100000', '6226822013100490873', '农业银行', '10000.00', '2017-12-26 16:40:37', '1');
-INSERT INTO `tx_log` VALUES ('2', '100000', '6226822013100490873', '农业银行', '10000.00', '2017-12-27 11:00:57', '1');
-
--- ----------------------------
 -- Table structure for tzb
 -- ----------------------------
 DROP TABLE IF EXISTS `tzb`;
@@ -796,13 +593,6 @@ CREATE TABLE `tzb` (
   `baid` int(11) DEFAULT NULL COMMENT '借款id',
   PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='投资表';
-
--- ----------------------------
--- Records of tzb
--- ----------------------------
-INSERT INTO `tzb` VALUES ('18', '100000', '100001', '20000.00', '2018-01-10 11:29:07', '8.00', 'PJB1515457882799', '18');
-INSERT INTO `tzb` VALUES ('19', '100000', '100001', '20000.00', '2018-01-10 11:43:29', '8.00', 'PJB1515457882799', '18');
-INSERT INTO `tzb` VALUES ('20', '100000', '100001', '460000.00', '2018-01-10 18:08:13', '8.00', 'PJB1515457882799', '18');
 
 -- ----------------------------
 -- Table structure for user
@@ -828,16 +618,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=100009 DEFAULT CHARSET=utf8 COMMENT='前台用户表';
 
 -- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES ('100000', 'Save', 'Qpf0SxOVUjUkWySXOZ16kw==', '12345678987', 'Qpf0SxOVUjUkWySXOZ16kw==', '驾驶证', '360724199909088822', 'tabo@tao.com', '前台', null, null, null, '0', '2018-01-09 08:09:46');
-INSERT INTO `user` VALUES ('100001', 'We', 'Qpf0SxOVUjUkWySXOZ16kw==', '18888888888', 'Qpf0SxOVUjUkWySXOZ16kw==', '身份证', '360724199909099999', 'email@qq.com', '我们', '100000', '', '男', '0', '2018-01-09 08:09:43');
-INSERT INTO `user` VALUES ('100004', 'Update', 'Qpf0SxOVUjUkWySXOZ16kw==', '18870798912', 'Qpf0SxOVUjUkWySXOZ16kw==', '护照', '360724199909088889', 'gitHub@qq.com', '后台', '100001', null, null, '0', '2018-01-09 08:09:45');
-INSERT INTO `user` VALUES ('100005', null, 'Qpf0SxOVUjUkWySXOZ16kw==', '18279708906', 'Qpf0SxOVUjUkWySXOZ16kw==', null, null, null, '', '100000', null, null, '0', '2018-01-12 10:58:51');
-INSERT INTO `user` VALUES ('100006', null, 'Qpf0SxOVUjUkWySXOZ16kw==', '17370134238', 'Qpf0SxOVUjUkWySXOZ16kw==', null, '360781199811123617', '2621706171@qq.com', 'wang', '100005', null, null, '0', '2018-01-12 11:11:47');
-INSERT INTO `user` VALUES ('100008', null, 'Qpf0SxOVUjUkWySXOZ16kw==', '15507970968', 'Qpf0SxOVUjUkWySXOZ16kw==', null, null, null, null, null, null, null, '0', '2018-01-16 08:28:38');
-
--- ----------------------------
 -- Table structure for usermoney
 -- ----------------------------
 DROP TABLE IF EXISTS `usermoney`;
@@ -855,14 +635,6 @@ CREATE TABLE `usermoney` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户资金表';
 
 -- ----------------------------
--- Records of usermoney
--- ----------------------------
-INSERT INTO `usermoney` VALUES ('1', '100001', '1000000.00', '831111.11', '0.00', '0.00', '0.00', '0.00', '0.00');
-INSERT INTO `usermoney` VALUES ('2', '100000', '668888.89', '168938.89', '2222.22', '500000.00', '0.00', '334444.44', '0.00');
-INSERT INTO `usermoney` VALUES ('3', '15', '500000.00', '500000.00', '0.00', '0.00', '0.00', '0.00', '0.00');
-INSERT INTO `usermoney` VALUES ('4', '100005', null, '500.00', null, null, null, null, null);
-
--- ----------------------------
 -- Table structure for user_letter
 -- ----------------------------
 DROP TABLE IF EXISTS `user_letter`;
@@ -873,15 +645,6 @@ CREATE TABLE `user_letter` (
   `state` int(11) DEFAULT '2' COMMENT '状态，0删除，1已读，2未读',
   PRIMARY KEY (`luid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='用户站内信关联表';
-
--- ----------------------------
--- Records of user_letter
--- ----------------------------
-INSERT INTO `user_letter` VALUES ('1', '100000', '1', '1');
-INSERT INTO `user_letter` VALUES ('2', '100000', '2', '1');
-INSERT INTO `user_letter` VALUES ('3', '100000', '3', '1');
-INSERT INTO `user_letter` VALUES ('4', '100000', '4', '1');
-INSERT INTO `user_letter` VALUES ('5', '100000', '5', '2');
 
 -- ----------------------------
 -- Table structure for user_ticket
@@ -895,14 +658,6 @@ CREATE TABLE `user_ticket` (
   `state` int(11) DEFAULT NULL COMMENT '状态：0已使用，1已过期，2可用',
   PRIMARY KEY (`rwid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='领券表';
-
--- ----------------------------
--- Records of user_ticket
--- ----------------------------
-INSERT INTO `user_ticket` VALUES ('2', '100005', '10', '2018-01-12 10:58:52', '2');
-INSERT INTO `user_ticket` VALUES ('3', '100000', '10', '2018-01-12 10:58:52', '2');
-INSERT INTO `user_ticket` VALUES ('4', '100006', '12', '2018-01-12 11:11:47', '2');
-INSERT INTO `user_ticket` VALUES ('5', '100005', '12', '2018-01-12 11:11:47', '2');
 
 -- ----------------------------
 -- Table structure for ydate
@@ -923,9 +678,3 @@ CREATE TABLE `ydate` (
   `mdkbno` int(11) DEFAULT NULL COMMENT '月贷款笔数',
   PRIMARY KEY (`yid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='运营数据表';
-
--- ----------------------------
--- Records of ydate
--- ----------------------------
-INSERT INTO `ydate` VALUES ('1', '2018-01-01 00:00:00', '500000.01', '500000.01', '5', '0', '500000', '0', '1', '1', '4', '4');
-INSERT INTO `ydate` VALUES ('2', '2018-01-01 00:00:00', '500000.01', '500000.01', '6', '0', '500000', '0', '1', '1', '4', '4');

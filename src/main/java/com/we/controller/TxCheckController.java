@@ -1,92 +1,41 @@
 package com.we.controller;
 
-import com.we.bean.*;
-import com.we.enums.RequestResultEnum;
-import com.we.service.MoneyLogService;
+import com.we.bean.Huser;
+import com.we.bean.TxCheck;
+import com.we.bean.TxLog;
+import com.we.common.Pager;
+import com.we.common.UserUtils;
 import com.we.service.TxCheckService;
-import com.we.service.TxLogService;
-import com.we.service.UsermoneyService;
 import com.we.vo.RequestResultVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.math.BigDecimal;
-import java.util.Date;
 
 @Controller
-@RequestMapping("/txCheck")
+@RequestMapping("/tx_check")
 public class TxCheckController {
 
     private TxCheckService txCheckService;
-    private TxLogService txLogService;
-    private MoneyLogService moneyLogService;
-    private UsermoneyService usermoneyService;
 
-    @RequestMapping("TxCheckSuccess")
+
+    @RequestMapping("check")
     @ResponseBody
-    public RequestResultVO TxCheckSuccess(BigDecimal money, Integer uid, Integer tid, HttpSession session) {
-        RequestResultVO resultVO = null;
-        TxCheck txCheck = new TxCheck();
-        txCheck.setTxid(tid);
-        txCheck.setDate(new Date());
-        txCheck.setHuid(Integer.valueOf(((Huser)session.getAttribute("user")).getHuid()));
-        txCheckService.save(txCheck);
-        TxLog txLog = new TxLog();
-        txLog.setTid(tid);
-        txLog.setState(1);
-        txLogService.update(txLog);
-        Usermoney usermoney = usermoneyService.getByUid(uid);
-        BigDecimal kyMoney = usermoney.getKymoney();
-        usermoney.setKymoney(kyMoney.subtract(money));
-        usermoneyService.updateByTx(usermoney);
-        MoneyLog moneyLog = new MoneyLog();
-        moneyLog.setOutMoney(money);
-        moneyLog.setDate(new Date());
-        moneyLog.setUid(uid);
-        moneyLog.setType(1);
-        moneyLogService.save(moneyLog);
-        resultVO = RequestResultVO.status(RequestResultEnum.UPDSTE_TXCHECK_SUCCESS);
-        return resultVO;
+    public RequestResultVO check(TxCheck txCheck, HttpSession session) {
+        Huser huser = UserUtils.getHuser(session);
+        txCheck.setHuid(huser.getHuid());
+        return txCheckService.updateCheck(txCheck);
     }
 
-    @RequestMapping("TxCheckNoSuccess")
+    @RequestMapping("pager_criteria")
     @ResponseBody
-    public RequestResultVO TxCheckNoSuccess(Integer tid, String excuse, HttpSession session) {
-        RequestResultVO resultVO = null;
-        TxCheck txCheck = new TxCheck();
-        txCheck.setTxid(tid);
-        txCheck.setDate(new Date());
-        txCheck.setExcuse(excuse);
-        txCheck.setHuid(Integer.valueOf(((Huser)session.getAttribute("user")).getHuid()));
-        txCheckService.save(txCheck);
-        TxLog txLog = new TxLog();
-        txLog.setTid(tid);
-        txLog.setState(0);
-        txLogService.update(txLog);
-        resultVO = RequestResultVO.status(RequestResultEnum.UPDSTE_TXCHECK_NO_SUCCESS);
-        return resultVO;
+    public Pager pagerCriteria(Long offset, Long limit, TxCheck txCheck){
+        return txCheckService.listCriteria(offset, limit, txCheck);
     }
 
-
-    @Resource
-    public void setUsermoneyService(UsermoneyService usermoneyService) {
-        this.usermoneyService = usermoneyService;
-    }
-
-    @Resource
-    public void setMoneyLogService(MoneyLogService moneyLogService) {
-        this.moneyLogService = moneyLogService;
-    }
-
-    @Resource
-    public void setTxLogService(TxLogService txLogService) {
-        this.txLogService = txLogService;
-    }
-
-    @Resource
+    @Autowired
     public void setTxCheckService(TxCheckService txCheckService) {
         this.txCheckService = txCheckService;
     }
