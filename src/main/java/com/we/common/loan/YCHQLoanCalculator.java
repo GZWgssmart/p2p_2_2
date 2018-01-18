@@ -24,8 +24,10 @@ public class YCHQLoanCalculator extends LoanCalculatorAdapter {
         lastMonth.setPayPrincipal(totalLoanMoney);
         lastMonth.setRepayment(totalLoanMoney.add(totalInterest));
         allLoans.add(lastMonth);
+        loan.setTotalLoanMoney(totalLoanMoney);
         loan.setAllLoans(allLoans);
         loan.setTotalInterest(totalInterest);
+        loan.setTotalRepayment(loan.getTotalInterest().add(totalLoanMoney));
         return loan;
     }
 }
