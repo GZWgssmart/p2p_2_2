@@ -54,6 +54,9 @@
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/safety">安全设置</a>
                         </li>
+                        <li>
+                            <a class="J_menuItem" href="javaScript:void(0);" onclick="checkVip();">VIP</a>
+                        </li>
                     </ul>
                 </li>
 
