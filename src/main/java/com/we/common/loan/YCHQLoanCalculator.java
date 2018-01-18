@@ -15,8 +15,8 @@ public class YCHQLoanCalculator extends LoanCalculatorAdapter {
     public Loan calLoan(BigDecimal totalLoanMoney, int totalMonth, double loanRate, int rateType) {
         Loan loan = new Loan();
         double monthRate = loanRate / totalMonth / 100;
-        BigDecimal monthInterest = totalLoanMoney.multiply(new BigDecimal(monthRate));
-        BigDecimal totalInterest = monthInterest.multiply(new BigDecimal(totalMonth));
+        BigDecimal monthInterest = totalLoanMoney.multiply(new BigDecimal(monthRate)).setScale(2, BigDecimal.ROUND_HALF_UP);;
+        BigDecimal totalInterest = monthInterest.multiply(new BigDecimal(totalMonth)).setScale(2, BigDecimal.ROUND_HALF_UP);;
         List<LoanByMonth> allLoans = new ArrayList<>();
         LoanByMonth lastMonth = new LoanByMonth();
         lastMonth.setMonth(totalMonth);

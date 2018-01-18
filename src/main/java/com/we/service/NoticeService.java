@@ -9,6 +9,13 @@ import java.util.List;
 
 public interface NoticeService extends BaseService {
 
+    /**
+     * 分页查询所有平台公告
+     * @return
+     */
+    Pager pageNotice(Long beginIndex,Long pageSize);
+
+
     /***
      * 后台管理员查询所有的最新公告
      * @param offset

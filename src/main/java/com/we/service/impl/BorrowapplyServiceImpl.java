@@ -144,9 +144,24 @@ public class BorrowapplyServiceImpl extends AbstractBaseService implements Borro
         return borrowapplyDAO.listBorrow(type);
     }
     @Override
-    public List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2, String nysy1, String nysy2, String xmlx1, String search) {
-        return borrowapplyDAO.listByInvest(xmqx1,xmqx2,nysy1,nysy2,xmlx1,search);
+    public List<BorrowapplyInvestVO> listByInvest(String xmqx1, String xmqx2, String nysy1, String nysy2, String xmlx1, String search, Integer pageNum) {
+        return borrowapplyDAO.listByInvest(xmqx1,xmqx2,nysy1,nysy2,xmlx1,search,pageNum);
     }
+
+    @Override
+    public Pager listAllOkborrow(Long offset, Long limit, Object query) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(borrowapplyDAO.listAllOkborrow(pager, query));
+        pager.setTotal(borrowapplyDAO.countAllOkborrow(query));
+        return pager;
+    }
+
+
+    @Override
+    public Integer countByInvest(String xmqx1, String xmqx2, String nysy1, String nysy2, String xmlx1, String search) {
+        return borrowapplyDAO.countByInvest(xmqx1,xmqx2,nysy1,nysy2,xmlx1,search);
+    }
+
     @Autowired
     public void setBorrowapplyDAO(BorrowapplyDAO borrowapplyDAO) {
         super.setBaseDAO(borrowapplyDAO);

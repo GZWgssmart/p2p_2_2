@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created on 2017/12/8 19:07
@@ -16,10 +16,11 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/index")
 public class IndexController {
 
-    //投资理财
-    @RequestMapping("tzlc")
-    public String allTz() {
-     return "index/info/staticpage/tzlc";
+    //最新公告详情页
+    @RequestMapping("notice_info/{nid}")
+    public String noticeInfo(@PathVariable("nid") Integer nid, HttpServletRequest request) {
+        request.setAttribute("nid", nid);
+        return "index/info/staticpage/notice_content";
     }
 
     //公司动态
@@ -28,12 +29,31 @@ public class IndexController {
         return "index/info/staticpage/gsdt";
     }
 
+    //单个公司动态的详情
+    @RequestMapping("dynamic_single/{dyid}")
+    public String dynamicSingle(@PathVariable("dyid") Integer dyid, HttpServletRequest request) {
+        request.setAttribute("dyid", dyid);
+        return "index/info/staticpage/gsdt_single";
+    }
+
     //公司动态
     @RequestMapping("gsdt")
     public String allGs() {
         return "index/info/staticpage/gsdt";
     }
 
+    //媒体报道
+    @RequestMapping("mtbd")
+    public String mediaPage() {
+        return "index/info/staticpage/mtbd";
+    }
+
+    //单个媒体报道的详情
+    @RequestMapping("media_single/{mid}")
+    public String mediaSingle(@PathVariable("mid") Integer mid, HttpServletRequest request) {
+        request.setAttribute("mid", mid);
+        return "index/info/staticpage/mtbd_single";
+    }
 
     //平台公告
     @RequestMapping("ptgg")

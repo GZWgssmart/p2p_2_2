@@ -15,8 +15,9 @@
         </div>
         <div class="about-content">
             <div class="title-link">
-                <a href="javascript:;" class="left active">城兴投资</a>
-                <a href="javascript:;" class="right">盛汇资产</a>
+                <a href="javascript:;" class="left active" onclick="showMessage();">城兴投资</a>
+
+                <a href="javascript:;" class="right" onclick="hideMessage();">盛汇资产</a>
             </div>
             <div id="chengtou" class="content">
                 <p class="text">赣州城兴投资管理有限公司隶属于赣州城市开发投资集团有限责任公司
@@ -58,6 +59,7 @@
                     </li>
                 </ul>
             </div>
+
             <div id="shzc" class="content" style="display: none;">
                 <p class="text">盛汇资产管理有限公司（简称：赣州盛汇）是由江西盛汇资产管理有限公司和赣州盛汇高管共同持股于
                     2015年5月18日正式成立，主要从事融资担保、产业投资、资产收购、股权管理等主要业务。赣州盛汇因改革而生、
@@ -88,3 +90,20 @@
                 </ul>
             </div>
         </div>
+
+<script>
+    function  showMessage() {
+        $("#chentou").show();
+        $("#shzc").hide();
+    }
+
+    function hideMessage() {
+        $("#chentou").hide();
+        $("#shzc").show();
+    }
+
+    function defaultMeaasge() {
+        $("#chengtou").show();
+    }
+
+</script>

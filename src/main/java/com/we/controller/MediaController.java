@@ -8,8 +8,10 @@ import com.we.enums.RequestResultEnum;
 import com.we.service.MediaService;
 import com.we.vo.MediaVO;
 import com.we.vo.RequestResultVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -90,6 +92,28 @@ public class MediaController {
     public List<MediaVO> listMoney() {
         List<MediaVO> mediaVOS = mediaService.listMedia();
         return mediaVOS;
+    }
+
+    /**
+     * 分页查询所有媒体报道
+     * @return
+     */
+    @RequestMapping("pager_media")
+    @ResponseBody
+    public Pager pageMedia(Long pageNo, Long pageSize) {
+        Pager pager = mediaService.pageMedia(pageNo,pageSize);
+        return pager;
+    }
+
+    /**
+     * 根据id来查询媒体报道的内容
+     * @return
+     */
+    @RequestMapping("single_media")
+    @ResponseBody
+    public Media singleMedia(Integer mid) {
+        Media media = (Media) mediaService.getById(mid);
+        return media;
     }
 
 }

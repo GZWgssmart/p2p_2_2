@@ -326,7 +326,7 @@
 	line-height:18px;
 	color:#999;
 	padding-left:25px;
-	background:url(../images/about/time.png) left center no-repeat;
+	background:url(/static/images/about/time.png) left center no-repeat;
 }
 .notice-list li{
 	height:60px;
@@ -382,7 +382,7 @@
 .news-contents .news-contents-top>a.links{
 	width:36px;
 	height:36px;
-	background-image: url(../images/about/news-top.png);
+	background-image: url(/static/images/about/news-top.png);
     background-repeat: no-repeat;
 	margin-right:10px;
 }
@@ -416,7 +416,7 @@
 	height:36px;
 	line-height:36px;
 	color:#999;
-	background:url(../images/about/time.png) left center no-repeat;
+	background:url(/static/images/about/time.png) left center no-repeat;
 	text-indent:24px;
 }
 .news-contents .news-back{

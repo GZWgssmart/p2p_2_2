@@ -153,8 +153,9 @@
   <select id="listQueryAllNotice" resultType="com.we.bean.Notice">
     <![CDATA[
         SELECT
-        * FROM notice n
-         ORDER BY n.nid
+        n.nid, n."date",n.title
+        FROM notice n
+        ORDER BY n.nid
     ]]>
   </select>
 
@@ -162,6 +163,13 @@
     <![CDATA[
         SELECT n.date,n.nid,n.title FROM notice n
         limit 0,4
+    ]]>
+  </select>
+
+  <select id="pageNotice" resultType="com.we.vo.NoticeVO">
+    <![CDATA[
+      SELECT n.nid,n.title,n.date FROM notice n
+      ORDER BY n.date DESC limit #{pager.beginIndex} ,#{pager.pageSize}
     ]]>
   </select>
 

@@ -91,6 +91,28 @@ public class DynamicController {
         return dynamicVOS;
     }
 
+    /**
+     * 分页查询所有公司动态
+     * @return
+     */
+    @RequestMapping("pager_dynamic")
+    @ResponseBody
+    public Pager pageDynamic(Long pageNo, Long pageSize) {
+        Pager pager = dynamicService.pageDynamic(pageNo,pageSize);
+        return pager;
+    }
+
+    /**
+     * 根据id来查询公司动态的内容
+     * @return
+     */
+    @RequestMapping("single_dynamic")
+    @ResponseBody
+    public Dynamic singleDynamic(Integer dyid) {
+        Dynamic dynamic = (Dynamic) dynamicService.getById(dyid);
+        return dynamic;
+    }
+
     @RequestMapping("ueditor")
     public String uEditor() {
         return "huser/dynamic/uEditor";

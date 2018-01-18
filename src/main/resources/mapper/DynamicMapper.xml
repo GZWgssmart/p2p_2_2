@@ -125,4 +125,11 @@
     ]]>
   </select>
 
+  <select id="pageDynamic" resultType="com.we.vo.DynamicVO">
+    <![CDATA[
+      select d.dyid,d.title,d.pic,d.date from dynamic d
+      order by `date` desc limit #{pager.beginIndex} ,#{pager.pageSize}
+    ]]>
+  </select>
+
 </mapper>

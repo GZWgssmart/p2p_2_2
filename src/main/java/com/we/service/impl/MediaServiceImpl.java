@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.common.Pager;
 import com.we.dao.MediaDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.MediaService;
@@ -26,6 +27,14 @@ public class MediaServiceImpl extends AbstractBaseService implements MediaServic
     @Override
     public List<MediaVO> listMedia() {
         return mediaDAO.listMedia();
+    }
+
+    @Override
+    public Pager pageMedia(Long beginIndex,Long pageSize) {
+        Pager pager = Pager.initNoSize(beginIndex, pageSize);
+        pager.setRows(mediaDAO.pageMedia(pager));
+        pager.setTotal(mediaDAO.countCriteria(null));
+        return pager;
     }
 
 }

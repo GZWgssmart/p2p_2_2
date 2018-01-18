@@ -10,14 +10,15 @@
 
 <div class="about-right-nav">
     <div class="sub-a-nav">
-        <a href="javascript:void(0);" class="active" id="jbxx">基本信息</a>
-        <a href="javascript:void(0);" id="zlxx">治理信息</a>
-        <a href="javascript:void(0);" id="wzpt">网站或平台信息</a>
-        <a href="javascript:void(0);" id="hzhb">合作伙伴</a>
-        <a href="javascript:void(0);" id="zdsx">重大事项信息</a>
+        <a href="javascript:void(0);" class="active" id="jbxx" onclick="show('jbxxDiv');">基本信息</a>
+        <a href="javascript:void(0);" id="zlxx" onclick="show('zlxxDiv');">治理信息</a>
+        <a href="javascript:void(0);" id="wzpt" onclick="show('wzptDiv')">网站或平台信息</a>
+        <a href="javascript:void(0);" id="hzhb" onclick="show('hzhbDiv');">合作伙伴</a>
+        <a href="javascript:void(0);" id="zdsx" onclick="show('zdsxDiv');">重大事项信息</a>
     </div>
     <em class="em-line"></em>
 </div>
+
 <div class="about-content" id="jbxxDiv">
     <div id="chengtou1" class="content">
         <p class="text">全称及简称：<span class="textRight">普金资本运营（赣州）有限公司</span></p>
@@ -46,6 +47,7 @@
         </div>
     </div>
 </div>
+
 <div class="about-content" id="zlxxDiv" style="display: none;">
     <div id="chengtou2" class="content">
         <div class="zzjgDiv"></div><p class="zzjgText"><b>组织机构情况</b></p>
@@ -290,3 +292,13 @@
         </div>
     </div>
 </div>
+
+
+<script>
+
+    function show(divID) {
+        $(".about-content").hide();
+        $("#" + divID).show();
+    }
+
+</script>

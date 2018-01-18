@@ -96,12 +96,8 @@
         <img class="wechart" src="<%=path %>/static/images/xdp/wechart.jpg">
     </div>
 </div>
-
-<script type="text/javascript" src="<%=path %>/static/js/index/jquery.js"></script>
-<script type="text/javascript">
-    $(function(){
-        utils.initPage();
-    })
+<script>
+    $(function(){});
 </script>
 
 </body>

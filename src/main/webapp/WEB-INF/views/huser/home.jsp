@@ -92,6 +92,19 @@
 
                 <li>
                     <a href="#">
+                        <i class="fa fa-google-plus"></i>
+                        <span class="nav-label">运营数据</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_ydata_page">数据总揽</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
                         <i class="fa fa fa-bar-chart-o"></i>
                         <span class="nav-label">借款管理</span>
                         <span class="fa arrow"></span>
@@ -101,7 +114,7 @@
                             <a class="J_menuItem" href="<%=path%>/huser/all_shborrow_page">未审核</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_shok_page">已审核</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_okborrow_page">已审核</a>
                         </li>
                     </ul>
                 </li>

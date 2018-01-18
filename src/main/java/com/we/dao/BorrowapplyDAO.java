@@ -88,5 +88,25 @@ public interface BorrowapplyDAO extends BaseDAO {
 
     List<BorrowapplyInvestVO> listByInvest(@Param("xmqx1")String xmqx1, @Param("xmqx2")String xmqx2,
                                            @Param("nysy1")String nysy1, @Param("nysy2")String nysy2,
+                                           @Param("xmlx1")String xmlx1, @Param("search")String search,
+                                           @Param("pageNum")Integer pageNum);
+
+    Integer countByInvest(@Param("xmqx1")String xmqx1, @Param("xmqx2")String xmqx2,
+                                           @Param("nysy1")String nysy1, @Param("nysy2")String nysy2,
                                            @Param("xmlx1")String xmlx1, @Param("search")String search);
+
+    /**
+     * 后台用户查看所有已发布的借款
+     * @param pager
+     * @param query
+     * @return
+     */
+    List<Object> listAllOkborrow(@Param("pager") Pager pager, @Param("query") Object query);
+
+    /**
+     * 计数所有已发布的借款
+     * @param query
+     * @return
+     */
+    Long countAllOkborrow(@Param("query") Object query);
 }

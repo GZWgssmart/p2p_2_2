@@ -91,10 +91,6 @@
 <!-- news -->
 <div class="news">
     <div class="wrap">
-        <div class="news-list icon icon-news">
-            <ul id="news-list">
-            </ul>
-        </div>
         <div class="bang-list">
             <a href="board.html" target="_blank" class="icon icon-bang">投资、推荐排行榜</a>
         </div>
@@ -110,7 +106,7 @@
                 <li class="last"><p>累计注册投资人：<span id="userTotal">{{user.count}}</span><span class="small">人</span></p></li>
             </ul>
             <div class="explian cl">
-                <a href="#" class="first">
+                <a href="<%=path %>/index/about" class="first">
                     <p class="icon icon-ex1"></p>
                     <div class="text">
                         <h3>实力雄厚</h3>
@@ -485,16 +481,16 @@
     <div class="news-main-left" style="display: block;width: 760px;">
         <div class="news-main-top">
             <h3 style="height: 52px;padding-top: 13px;">媒体报道</h3>
-            <p class="more icon icon-more"><a href="about.html#gsdt?type=1">更多</a></p>
+            <p class="more icon icon-more"><a href="<%=path %>/index/gsdt">更多</a></p>
         </div>
         <div class="news-main-content" id="dynamic">
             <ul class="news-main-list">
                 <li ng-repeat="media in medias">
-                    <a href="news.html?mid={{media.mid}}" target="_blank" class="news-main-content-left">
+                    <a href="<%=path %>/index/media_{{media.mid}}" target="_blank" class="news-main-content-left">
                         <img src="{{media.pic}}" alt="{{media.title}}" style="width:210px;height:180px;">
                     </a>
                     <a href="news.html?mid={{media.mid}}" target="_blank" class="list-title">{{media.title}}</a>
-                    <a href="news.html?mid={{media.mid}}" target="_blank" class="list-main">
+                    <a href="news.html?mid={{media.mid}}" target="_blank" class="list-main">{{media.title}}
                     </a>
                 </li>
             </ul>
@@ -549,43 +545,20 @@
         </div>
     </div>
 </div>
-<div id="ajaxFooter"></div>
-
-
-<div class="mod-sidebar">
-    <ul>
-        <li><a target="_blank" href="tencent://message/?uin=1332666988&amp;Site=&amp;Menu=yes" class="sidebar-qq"></a>
-        </li>
-        <li><a href="javascript:;" class="sidebar-wx"></a></li>
-        <li><a href="http://pujinziben.com/calculator.html" class="sidebar-cl"></a></li>
-        <li><a href="javascript:;" class="wenquan" title="填写即送5元代金券"></a></li>
-        <li><a href="javascript:;" class="sidebar-top"></a></li>
-    </ul>
-</div>
-
 
 <jsp:include page="common/index/foot.jsp"></jsp:include>
 
 <script src="<%=path%>/static/js/angular/angular.min.js"></script>
-<script src="https://cdn.bootcss.com/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
 <!-- 客服QQ -->
 <script type="text/javascript" src="<%=path %>/static/js/index/countup.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/index.js"></script>
-<script>
-    $("#myHome").click(function () {
-        if (${sessionScope.user.uid == null}) {
-            window.location.href = "/user/login_page";
-        } else {
-            window.location.href = "/user/home_page";
-        }
-    });
-</script>
+<script type="text/javascript" src="<%=path %>/static/js/index/jquery.js"></script>
 <script type="text/javascript">
     (function ($) {
-        var app = angular.module("myApp", ['ngSanitize']);
+        var app = angular.module("myApp", []);
         app.config(function ($httpProvider) {
 
             $httpProvider.defaults.transformRequest = function (obj) {
@@ -632,7 +605,7 @@
             //新手专享
             $http({
                 method: 'get',
-                params:{type:4},
+                params:{type:10},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.newpeople = response.data;
@@ -642,27 +615,29 @@
             //恒金宝
             $http({
                 method: 'get',
-                params:{type:3},
+                params:{type:9},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.hengjinbao = response.data;
+//                alert($scope.hengjinbao[0].cpname);
             }, function errorCallback(response) {
             });
 
             //普金宝
             $http({
                 method: 'get',
-                params:{type:2},
+                params:{type:'11'},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.pujinbao = response.data;
+                alert('WEB-INF/views/index.jsp:633');
             }, function errorCallback(response) {
             });
 
             //多金宝
             $http({
                 method: 'get',
-                params:{type:1},
+                params:{type:'7'},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.duojinbao = response.data;

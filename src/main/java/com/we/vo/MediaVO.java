@@ -1,5 +1,7 @@
 package com.we.vo;
 
+import java.util.Date;
+
 /**
  * Created by ID.LQF on 2018/1/15.
  */
@@ -9,6 +11,7 @@ public class MediaVO {
     private String title;   // 标题	String	title
     private String pic;     // 封面图片	String	pic
     private String content; // 内容	String	content
+    private Date date;      // 时间	date	date
 
     public Integer getMid() {
         return mid;
@@ -42,4 +45,11 @@ public class MediaVO {
         this.content = content;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

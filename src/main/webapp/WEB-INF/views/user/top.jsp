@@ -7,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String topPath = request.getContextPath();
+%>
 <style>
     .apps{
         display: none;
@@ -24,30 +27,30 @@
                         <li class="first"><a onclick="outUser();">退出</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="first"><a href="<%=path %>/page/reg">注册领红包</a></li>
+                        <li class="first"><a href="<%=topPath %>/page/reg">注册领红包</a></li>
                     </c:otherwise>
                 </c:choose>
-                <li><a href="<%=path %>/page/user/recommend" class="icon icon-inv">邀请有礼</a></li>
-                <li><a href="<%=path %>/page/about/partner">关于我们</a></li>
-                <li><a href="<%=path %>/index/help/helpPage">帮助中心</a></li>
-                <li><a href="<%=path%>/page/user/userBankCard" class="pay">充值</a></li>
+                <li><a href="<%=topPath %>/page/user/recommend" class="icon icon-inv">邀请有礼</a></li>
+                <li><a href="<%=topPath %>/page/about/partner">关于我们</a></li>
+                <li><a href="<%=topPath %>/index/help/helpPage">帮助中心</a></li>
+                <li><a href="<%=topPath%>/page/user/userBankCard" class="pay">充值</a></li>
                 <c:choose>
                     <c:when test="${user != null}">
-                        <li id="userName"><a href="<%=path %>/page/user/account" class="user">${user.phone}</a></li>
+                        <li id="userName"><a href="<%=topPath %>/page/user/account" class="user">${user.phone}</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="userName"><a href="<%=path %>/page/login">登录</a></li>
+                        <li class="userName"><a href="<%=topPath %>/page/login">登录</a></li>
                     </c:otherwise>
                 </c:choose>
                 <li class="no"><a href="javascript:;" class="icon icon-app" id="app">APP下载</a></li>
             </ul>
             <div id="qrCodeDiv" class="apps">
                 <div class="CodeDiv">
-                    <img src="<%=path%>/static/images/qrCode_ios.png">
+                    <img src="<%=topPath%>/static/images/qrCode_ios.png">
                     <p>IOS下载</p>
                 </div>
                 <div class="CodeDiv">
-                    <img src="<%=path%>/static/images/qrCode_android.png">
+                    <img src="<%=topPath%>/static/images/qrCode_android.png">
                     <p>Android下载</p>
                 </div>
             </div>

@@ -19,6 +19,10 @@ public class Huser {
 
     private String password;
 
+    public Integer getUid() {
+        return null;
+    }
+
     public Integer getHuid() {
         return huid;
     }

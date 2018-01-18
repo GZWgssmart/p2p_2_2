@@ -47,13 +47,13 @@
 
 <div id="ajaxFooter"></div>
 <%@include file="../../common/js/js_jquery.jsp" %>
-<%--<script type="text/javascript" src="<%=path%>/static/js/index/public.js"></script>--%>
 
 <%@include file="../include/js/js_about_load.jsp"%>
+<%@include file="../../common/index/foot_page.jsp"%>
 <script>
-
-
+    $(function () {
+        gdbj();
+    });
 </script>
-<jsp:include page="../../common/index/foot.jsp"></jsp:include>
 </body>
 </html>

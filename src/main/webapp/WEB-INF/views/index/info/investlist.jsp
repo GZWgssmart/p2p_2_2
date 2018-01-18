@@ -26,6 +26,7 @@
     <input type="hidden" name="nysy1" id="nysy1" />
     <input type="hidden" name="nysy2" id="nysy2" />
     <input type="hidden" name="xmlx1" id="xmlx1" />
+    <input type="hidden" name="pageNum" id="pageNum" value="1" />
 </form>
 <!-- invest list -->
 <div class="invest-list">
@@ -71,6 +72,12 @@
         <div class="invest-list-bottom">
             <ul class="invest-row listData" id="listAllDate">
             </ul>
+            <ul id="pageNumButton" class="paging cl" style="width: 500px; margin: 30px auto 0px auto;">
+                <li><button type='button' class='pre' style="margin-left: 100px;">上一页</button></li>
+                <li><button class='active' id='nowButton' type='button'>1</button></li>
+                <li><button type='button' class='next'>下一页</button></li>
+                <li><button type='button' class='next disabled' id="next"></button></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -98,6 +105,7 @@
             $("#xmqx1").val("9");
             $("#xmqx2").val("");
         }
+        $("#pageNum").val("1");
         getListData($("#condition").serialize());
     });
 
@@ -118,6 +126,7 @@
             $("#nysy1").val("15");
             $("#nysy2").val("20");
         }
+        $("#pageNum").val("1");
         getListData($("#condition").serialize());
     });
 
@@ -148,17 +157,18 @@
                 getListData($("#condition").serialize());
             },"json"
         );
+        //获取分页总页数
+
     });
 
     function xmlxBind() {
         $("#xmlx li").click(function () {
-            $("#xmlx li").removeClass("active");
-            $(this).addClass("active");
             if($(this).text() == "全部"){
                 $("#xmlx1").val("");
             }else{
                 $("#xmlx1").val($(this).text());
             }
+            $("#pageNum").val("1");
             getListData($("#condition").serialize());
         });
     }
@@ -167,11 +177,13 @@
         $.post("/borrowapply/pager_criteria_byinvest",
             data,
             function (data) {
+                var len = data.length;
                 $("#listAllDate").html("");
-                if(data.length == 0){
+                if(len == 0){
                     $("#listAllDate").append("<li class='none' style='line-height: 150px;'>没有符合条件的内容！</li>");
                 }else{
-                    for(var i = 0, len = data.length;i < len;i++){
+                    //初始化数据
+                    for(var i = 0;i < len;i++){
                         $("#listAllDate").append("<li>"+
                             "<div class='invest-title cl'>"+
                             "<p>"+data[i].lxname+"</p>"+
@@ -211,8 +223,47 @@
                         }
                     }
                 }
+                //初始化分页按钮 总页数
+               /* $("#next").text("共"+Math.ceil(len / 10)+"页");
+                $("#pageNumButton li").bind("click",aaaa(Math.ceil(len / 10)));*/
             },"json"
-        )
+        );
+        //总页数
+        $.post("/borrowapply/count_criteria_byinvest",
+            data,
+            function (data) {
+                $("#next").text("共"+Math.ceil(data / 10)+"页");
+            },"json"
+        );
     }
+
+        $("#pageNumButton li").click(function () {
+            //点击的值
+            var buttonText = $(this).text();
+            //当前页
+            var now = $("#pageNum").val();
+            //总页数
+            var num = $("#next").text().charAt(1);
+            //点击上一页
+            if(buttonText == "上一页"){
+                if(now == "1"){
+                    alert("已经是第一页");
+                    return
+                }else{
+                    $("#nowButton").text(Number(now) - 1);
+                    $("#pageNum").val(Number(now) - 1);
+                    getListData($("#condition").serialize());
+                }
+            }else if(buttonText == "下一页"){
+                if(Number(now) >= num){
+                    alert("已经是最后一页");
+                    return;
+                }else{
+                    $("#pageNum").val(Number(now)+1);
+                    $("#nowButton").text(Number(now)+1);
+                    getListData($("#condition").serialize());
+                }
+            }
+        });
 </script>
 </html>

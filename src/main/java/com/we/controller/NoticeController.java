@@ -24,6 +24,25 @@ public class NoticeController {
 
     private NoticeService noticeService;
 
+    /**
+     * 分页查询所有公司动态
+     * @return
+     */
+    @RequestMapping("pager_notice")
+    @ResponseBody
+    public Pager pageMedia(Long pageNo, Long pageSize) {
+        Pager pager = noticeService.pageNotice(pageNo,pageSize);
+        return pager;
+    }
+
+
+
+    @RequestMapping("detail")
+    @ResponseBody
+    public Notice getNoticeDetail(Integer nid) {
+        return (Notice) noticeService.getById(nid);
+    }
+
     /***
      * 更新最新公告
      * @param notice

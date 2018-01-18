@@ -33,6 +33,11 @@ public class HuserController {
     @Autowired
     private RoleuserService roleuserService;
 
+    @RequestMapping("all_okborrow_page")
+    public String allOkBorrowPage() {
+        return "huser/borrow/all_okborrow";
+    }
+
     @RequestMapping("welcome_page")
     public String welcomePage() {
         return "huser/welcome_huser";
@@ -55,7 +60,7 @@ public class HuserController {
 
     @RequestMapping("all_shborrow_page")
     public String allBorrowCheckPage() {
-        return "huser/shborrow/all_shborrow";
+        return "huser/borrow/all_shborrow";
     }
 
     @RequestMapping("all_letter_page")

@@ -139,4 +139,11 @@
     ]]>
   </select>
 
+  <select id="pageMedia" resultType="com.we.vo.MediaVO">
+    <![CDATA[
+      select m.mid,m.title,m.pic,m.date from media m
+      order by `date` desc limit #{pager.beginIndex} ,#{pager.pageSize}
+    ]]>
+  </select>
+
 </mapper>
