@@ -53,7 +53,9 @@
             <ul class="calculator-from">
                 <li>
                     <p class="top">投资金额（元）</p>
-                    <p class="bottom"><input type="text" maxlength="10" class="input-text" name="money" id="money"/></p>
+                    <p class="bottom">
+                        <input type="text" maxlength="10" class="input-text" name="money" id="money"/>
+                    </p>
                 </li>
                 <li>
                     <p class="top">年化收益率（%）</p>
@@ -72,7 +74,7 @@
                         <option value="1">先息后本</option>
                         <option value="2">等额本金</option>
                         <option value="3">等额本息</option>
-                        <option value="12">一次还清</option>
+                        <option value="4">一次还清</option>
                         </select>
                     </p>
                 </li>
@@ -103,13 +105,13 @@
         </ul>
     </div>
 </div>
-<%--<%@include file="../../common/index/foot.jsp"%>--%>
-
+<input type="hidden" value="${requestScope.claculateMoney.money}" id="money1">
+<input type="hidden" value="${requestScope.claculateMoney.nprofit}" id="nprofit1">
+<input type="hidden" value="${requestScope.claculateMoney.term}" id="term1">
+<input type="hidden" value="${requestScope.claculateMoney.bzid}" id="bzid1">
+<%@include file="../../common/js/js_jquery.jsp"%>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/jquery.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/public.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/calculator.js"></script>
-<script>
-
-</script>
 </body>
 </html>

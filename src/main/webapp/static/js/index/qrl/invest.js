@@ -896,7 +896,7 @@ function dangger(obj){
 	if($('.plan').is(':visible')){
 		$('.em-line').animate({'left':'520px'},500);
 	}else{
-		$('.em-line').animate({'left':'280px'},500);
+        $('.em-line').animate({'left':'400px'},500);
 	}
 
 	$('.sub-a-box').hide();

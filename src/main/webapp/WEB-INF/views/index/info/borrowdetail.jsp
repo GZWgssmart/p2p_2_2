@@ -93,20 +93,17 @@
         <div class="subject-submit-l" style="display: block;">
             <div class="subject-submit-title">
                 <p id="borrowWayName">
-                    <c:if test="${requestScope.borrow.type == 1}">
+                    <c:if test="${requestScope.borrow.type == 7}">
                         多金宝
                     </c:if>
-                    <c:if test="${requestScope.borrow.type == 2}">
+                    <c:if test="${requestScope.borrow.type == 11}">
                         普金保
                     </c:if>
-                    <c:if test="${requestScope.borrow.type == 3}">
+                    <c:if test="${requestScope.borrow.type == 9}">
                         恒金保
                     </c:if>
-                    <c:if test="${requestScope.borrow.type == 4}">
+                    <c:if test="${requestScope.borrow.type == 10}">
                         新手标
-                    </c:if>
-                    <c:if test="${requestScope.borrow.type == 5}">
-                        老手标
                     </c:if>
                 </p>
                 <h3 id="borrowTitle">${requestScope.borrow.cpname}</h3>
@@ -407,26 +404,34 @@
 //    })
 
     function calculuteEarn() {
-        window.location.href='/borrowdetail/calculate_earn_page'
+        var money = $('#amount').val();
+        var nprofit = ${requestScope.borrow.nprofit};
+        var term = ${requestScope.borrow.term};
+        var bzid = ${requestScope.borrow.bzid};
+        window.location.href='/borrowdetail/calculate_earn_page?money='+money+'&nprofit='+nprofit+'&term='+term+'&bzid='+bzid;
     }
 
     function bid(){
         var value = $('#amount').val();
-        alert(value)
-        if(value >= 100){
-            var text = $('#selectQuan').find("option:selected").text();
-            text = text.substring(0, text.lastIndexOf('元优惠券'));
-            $('#money').val(value - text);
-            swal({
-                title: '输入交易密码',
-                text:'asdf',
-                input: 'password',
-                preConfirm: function () {
-                    
-                }
-            });
+        var user = $('#user').val();
+        if(user != null && user != "" && user != undefined) {
+            if (value >= 100) {
+                var text = $('#selectQuan').find("option:selected").text();
+                text = text.substring(0, text.lastIndexOf('元优惠券'));
+                $('#money').val(value - text);
+                swal({
+                    title: '输入交易密码',
+                    text: 'asdf',
+                    input: 'password',
+                    preConfirm: function () {
+
+                    }
+                });
+            } else {
+                swal("投资金额必须大于100", "", "warning");
+            }
         }else{
-            swal("投资金额必须大于100","","warning");
+            swal("您还未登录登录，请先登陆","","warning");
         }
     }
 

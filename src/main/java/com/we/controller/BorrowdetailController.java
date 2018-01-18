@@ -94,9 +94,10 @@ public class BorrowdetailController {
     }
 
     @RequestMapping("calculate_earn_page")
-    public String calculatEarnPage(HttpServletRequest request){
-        request.setAttribute("test","1");
-        return "index/info/calculateEarn";
+    public ModelAndView calculatEarnPage(ClaculateEarnVO claculateEarnVO){
+        ModelAndView modelAndView = new ModelAndView("index/info/calculateEarn");
+        modelAndView.addObject("claculateMoney",claculateEarnVO);
+        return modelAndView;
     }
 
     @RequestMapping("calculate_earn")

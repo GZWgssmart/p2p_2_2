@@ -36,7 +36,27 @@ $(function(){
 		}
 		
 	})
-	
+
+    var  money = $('#money1').val();
+    var  nprofit = $('#nprofit1').val();
+    var  term = $('#term1').val();
+    var  bzid = $('#bzid1').val();
+
+	if((money != null && money != "" && money != undefined) && (nprofit != null && nprofit != "" && nprofit != undefined) &&
+        (term != null && term != "" && term != undefined) && (bzid != null && bzid != "" && bzid != undefined)){
+         $('#money').val(money);
+         $('#nprofit').val(nprofit);
+         $('#term').val(term);
+        $("#bzid option").each(function(){  //遍历所有option
+            var txt = $(this).val();   //获取option值
+            if(txt == bzid ){
+                $(this).prop("selected",true)
+            }
+        })
+        initData();
+	}
+
+
 });
 function initData(){
 	$('.listData').empty();
