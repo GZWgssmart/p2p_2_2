@@ -219,6 +219,13 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         return pager;
     }
 
+    @Override
+    public Pager listAllTz(Pager pager) {
+        pager.setRows(tzbDAO.listAllTz(pager));
+        pager.setTotal(tzbDAO.countDealNumber().longValue());
+        return pager;
+    }
+
     @Autowired
     public void setTzbDAO(TzbDAO tzbDAO) {
         super.setBaseDAO(tzbDAO);

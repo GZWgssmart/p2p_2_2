@@ -201,4 +201,11 @@ where t.uid = u.uid and  baid = #{borrowId} ORDER BY time DESC LIMIT #{query.off
     <select id="countInvestHistoryByBorrowId" resultType="java.lang.Long">
         select count(sid) from tzb where tzb.baid = #{borrowId};
     </select>
+
+    <select id="listAllTz" resultType="com.we.vo.TzRecordVO">
+        select tz.uid as tzUid, u.rname as tzName, tz.juid as juUid, tu.rname as juName, tz.money as tmoney, tz.baid ,tz.cpname, tz.time
+        from tzb tz, user u, user tu
+        where tz.uid = u.uid and tz.juid = tu.uid
+        limit #{query.offset}, #{query.limit}
+    </select>
 </mapper>

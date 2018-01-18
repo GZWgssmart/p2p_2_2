@@ -2,6 +2,7 @@ package com.we.dao;
 
 import com.we.common.Pager;
 import com.we.vo.InvestHistoryVO;
+import com.we.vo.TzRecordVO;
 import com.we.vo.TzbVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -74,4 +75,9 @@ public interface TzbDAO extends BaseDAO {
     List<Object> pagerInvestHistoryByBorrowId(@Param("query") Pager pager,@Param("borrowId") Integer borrowId);
 
     Long countInvestHistoryByBorrowId(Integer borrowId);
+
+    /**
+     * 分页查询所有投资记录
+     */
+    List<Object> listAllTz(@Param("query") Pager pager);
 }

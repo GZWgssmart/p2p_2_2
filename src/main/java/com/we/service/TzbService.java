@@ -53,4 +53,9 @@ public interface TzbService extends BaseService {
      * @return
      */
     Pager pagerInvestHistoryByBorrowId(Long offset, Long limit, Integer borrowId);
+
+    /**
+     * 分页查询所有投资记录
+     */
+    Pager listAllTz(@Param("query") Pager pager);
 }

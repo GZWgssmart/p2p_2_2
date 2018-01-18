@@ -90,6 +90,19 @@ public class TzbController {
         return null;
     }
 
+    @RequestMapping("list_pager")
+    @ResponseBody
+    public Pager listPager(Long offset,Long limit){
+        System.out.println(offset+"1213"+limit);
+        if(offset == null){
+            offset = 0L;
+        }
+        if(limit == null){
+            limit = 0L;
+        }
+        return tzbService.listAllTz(new Pager(offset,limit));
+    }
+
     @Resource
     public void setTzbService(TzbService tzbService) {
         this.tzbService = tzbService;

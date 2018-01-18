@@ -201,6 +201,11 @@ public class HuserController {
         }
     }
 
+    @RequestMapping("all_invest_page")
+    public String allInvestPage(){
+        return "huser/tz/all_invest_page";
+    }
+
     @RequestMapping("login_page")
     public String loginPage(){
         return "huser/login";
