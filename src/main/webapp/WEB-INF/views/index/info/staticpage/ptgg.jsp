@@ -104,21 +104,6 @@
             }
 
         });
-      /*  app.controller('myCtrl', function ($scope, $http) {
-            var offset = 1;
-            var limit = 10;
-            $http({
-                method: 'POST',
-                url: "/notice/pager_all_criteria",
-                data:{offset:offset,limit:limit}
-            }).then(function successCallback(response) {
-                $scope.notice = response.data.rows;// 数据
-                $scope.page = response.data.offset;// 偏移量
-                $scope.total = response.data.total;// 总页数
-            }, function errorCallback(response) {
-            });
-
-*/
             app.controller('myCtrl', function ($scope, $http) {
                 $scope.totalPage = 0;
                 $scope.pageSize = 10;

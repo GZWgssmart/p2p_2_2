@@ -92,6 +92,7 @@
         </div>
 
 <script>
+
     function  showMessage() {
         $("#chentou").show();
         $("#shzc").hide();
@@ -100,10 +101,6 @@
     function hideMessage() {
         $("#chentou").hide();
         $("#shzc").show();
-    }
-
-    function defaultMeaasge() {
-        $("#chengtou").show();
     }
 
 </script>

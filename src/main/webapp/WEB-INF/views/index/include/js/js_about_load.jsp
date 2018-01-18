@@ -48,10 +48,10 @@
         loadPage("/index/jkxmxx");
     }
 
-    //联系我们
+  /*  //联系我们
     function lxwm() {
         loadPage("/index/lxwm");
-    }
+    }*/
 
     var isClick = false;
     function animate1() {

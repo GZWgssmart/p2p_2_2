@@ -35,8 +35,6 @@ public class NoticeController {
         return pager;
     }
 
-
-
     @RequestMapping("detail")
     @ResponseBody
     public Notice getNoticeDetail(Integer nid) {
