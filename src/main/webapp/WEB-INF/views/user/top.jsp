@@ -27,19 +27,19 @@
                         <li class="first"><a onclick="outUser();">退出</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="first"><a href="<%=topPath %>/page/reg">注册领红包</a></li>
+                        <li class="first"><a href="<%=topPath %>/user/register_page">注册领红包</a></li>
                     </c:otherwise>
                 </c:choose>
-                <li><a href="<%=topPath %>/page/user/recommend" class="icon icon-inv">邀请有礼</a></li>
-                <li><a href="<%=topPath %>/page/about/partner">关于我们</a></li>
-                <li><a href="<%=topPath %>/index/help/helpPage">帮助中心</a></li>
+                <li><a href="<%=topPath %>/user/home_page" class="icon icon-inv">邀请有礼</a></li>
+                <li><a href="<%=topPath %>/index/about">关于我们</a></li>
+                <li><a href="<%=topPath %>/index/about">帮助中心</a></li>
                 <li><a href="<%=topPath%>/page/user/userBankCard" class="pay">充值</a></li>
                 <c:choose>
                     <c:when test="${user != null}">
-                        <li id="userName"><a href="<%=topPath %>/page/user/account" class="user">${user.phone}</a></li>
+                        <li id="userName"><a href="<%=topPath %>/user/home_page" class="user">${user.phone}</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="userName"><a href="<%=topPath %>/page/login">登录</a></li>
+                        <li class="userName"><a href="<%=topPath %>/user/login_page">登录</a></li>
                     </c:otherwise>
                 </c:choose>
                 <li class="no"><a href="javascript:;" class="icon icon-app" id="app">APP下载</a></li>

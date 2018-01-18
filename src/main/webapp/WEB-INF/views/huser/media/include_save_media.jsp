@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="url" class="col-sm-1 control-label">地&nbsp;&nbsp;址：</label>
+                        <label for="url" class="col-sm-1 control-label">链&nbsp;&nbsp;接：</label>
                         <div class="col-sm-10">
                             <input id="url" type="text" class="form-control" name="url" placeholder="请输入地址">
                         </div>

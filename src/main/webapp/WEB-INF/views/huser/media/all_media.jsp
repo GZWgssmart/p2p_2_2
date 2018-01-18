@@ -32,7 +32,7 @@
         <th data-field="title">标题</th>
         <th data-field="pic" data-formatter="setTable.formatImg">封面图片</th>
         <th data-field="date" data-formatter="setTable.formatDate">报道时间</th>
-        <th data-field="url">地址</th>
+        <th data-field="url">链接</th>
     </tr>
     </thead>
 </table>

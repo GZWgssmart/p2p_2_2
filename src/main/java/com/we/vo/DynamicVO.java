@@ -10,6 +10,7 @@ public class DynamicVO {
     private Integer dyid;   //主键	int	dyid
     private String title;   //标题	String	title
     private Date date;       //时间	date	date
+    private String pic;     //图片
 
     public Integer getDyid() {
         return dyid;
@@ -33,6 +34,14 @@ public class DynamicVO {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
 }

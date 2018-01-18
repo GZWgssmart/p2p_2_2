@@ -16,7 +16,7 @@ var allShborrow = {
         }
     },
     lookDetail: function () {
-        var row = setTable.isSingleSelected(allShborrow.id.priTab);
+        var row = setTable.isSingleSelected(allShborrow.id.tableId);
         if (row) {
             $.get('/borrowdetail/getByApplyId/' + row.baid,
                 function (data) {
@@ -27,7 +27,7 @@ var allShborrow = {
         }
     },
     okCheck: function () {
-        var row = setTable.isSingleSelected(allShborrow.id.priTab);
+        var row = setTable.isSingleSelected(allShborrow.id.tableId);
         if (row) {
             swal({
                 title: dataDict.manage.checkConfirm,
@@ -43,7 +43,7 @@ var allShborrow = {
                             'shid': row.shid,
                             'excuse': ''
                         }, function (data) {
-                            setTable.requestCall(data, allShborrow.id.priTab);
+                            setTable.requestCall(data, allShborrow.id.tableId);
                         }, 'json');
                 }
             });
@@ -51,7 +51,7 @@ var allShborrow = {
         }
     },
     showCheckForm: function () {
-        var row = setTable.isSingleSelected(allShborrow.id.priTab);
+        var row = setTable.isSingleSelected(allShborrow.id.tableId);
         if (row) {
             setTable.showModal(allShborrow.id.checkModal);
             $('#check-shid-input').val(row.shid);
@@ -76,7 +76,7 @@ var allShborrow = {
             $.post('/shborrow/updateStatus',
                 $('#' + allShborrow.id.checkForm).serialize(),
                 function (data) {
-                    setTable.requestCall(data, allShborrow.id.priTab, allShborrow.id.checkModal);
+                    setTable.requestCall(data, allShborrow.id.tableId, allShborrow.id.checkModal);
                 }, 'json');
         }
     }

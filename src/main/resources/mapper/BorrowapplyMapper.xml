@@ -296,7 +296,7 @@
   <select id="listBorrow" resultType="com.we.vo.BorrowdetailAndWapplyVO">
     SELECT bd.bdid,ba.baid,ba.money,ba.symoney,bd.cpname,bd.nprofit,ba.type,ba.term,ba.state
     from borrowapply ba, borrowdetail bd
-    where bd.baid = ba.baid and ba.type = #{query}
+    where bd.baid = ba.baid and ba.state != 0 and ba.state != 2 and ba.type = #{query}
     limit 0,3
   </select>
 
