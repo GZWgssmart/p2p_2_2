@@ -6,7 +6,7 @@ var txCheck = {
     },
     url: {
         pri: '/tx_check/pager_criteria',
-        checkOk: '/tx_check/check_ok',
+        check: '/tx_check/check',
         checkNo: '/tx_check/check_no'
     },
     fmt: {
@@ -20,7 +20,14 @@ var txCheck = {
     },
     open: {
         checkNo: function () {
-            setTable.showModal(txCheck.id.saveModal);
+            var row = setTable.isSingleSelected(txCheck.id.priTab);
+            if (row) {
+                if (row.state === 2) {
+                    setTable.showModal(txCheck.id.saveModal);
+                } else {
+                    swtAlert.warnNoTimer('请选择 审核中 的数据进行操作');
+                }
+            }
         }
     },
     submit: {
@@ -29,52 +36,58 @@ var txCheck = {
         checkOk: function () {
             var row = setTable.isSingleSelected(txCheck.id.priTab);
             if (row) {
-                var jsonData = {
-                    'rcid': row.rcid,
-                    'txid': row.txid,
-                    'isok': 1,
-                    'excuse': ''
-                };
-                txCheck.submit.check(jsonData);
+                if (row.state === 2) {
+                    var jsonData = {
+                        'rcid': row.rcid,
+                        'txid': row.txid,
+                        'isok': 1,
+                        'excuse': ''
+                    };
+                    swal({
+                        title: dataDict.manage.checkConfirm,
+                        text: dataDict.manage.noCancelMsg,
+                        type: 'warning',
+                        showCancelButton: true
+                    }).then(function (isConfirm) {
+                        if (isConfirm.value) {
+                            $.post(contextPath + txCheck.url.check,
+                                jsonData,
+                                function (data) {
+                                    if (data.result === 'success') {
+                                        swtAlert.request_success(data.message);
+                                        setTable.postRefresh(txCheck.id.priTab);
+                                    } else {
+                                        swtAlert.request_fail(data.message);
+                                    }
+                                }, 'json');
+                        }
+                    });
+                } else {
+                    swtAlert.warnNoTimer('请选择 审核中 的数据进行操作');
+                }
             }
         },
         checkNo: function () {
-            var row = setTable.isSingleSelected(txCheck.id.priTab);
-            if (row) {
-                var excuse = $('#excuse-input').val();
-                var jsonData = {
-                    'rcid': row.rcid,
-                    'txid': row.txid,
-                    'isok': 0,
-                    'excuse': excuse
-                };
-                txCheck.submit.check(jsonData);
-            }
-        },
-        check: function (jsonData) {
-            if (row.state === 2) {
-                swal({
-                    title: dataDict.manage.checkConfirm,
-                    text: dataDict.manage.noCancelMsg,
-                    type: 'warning',
-                    showCancelButton: true
-                }).then(function (isConfirm) {
-                    if (isConfirm.value) {
-                        $.post(contextPath + url,
-                            jsonData,
-                            function (data) {
-                                if (data.result === 'success') {
-                                    swtAlert.request_success(data.message);
-                                    $('#' + tableId).bootstrapTable('refresh');
-                                } else {
-                                    swtAlert.request_fail(data.message);
-                                }
-                            }, 'json');
+            var excuseInput = $('#excuse-input').val();
+            var excuse = excuseInput.val();
+            var jsonData = {
+                'rcid': row.rcid,
+                'txid': row.txid,
+                'isok': 0,
+                'excuse': excuse
+            };
+            $.post(contextPath + txCheck.url.check,
+                jsonData,
+                function (data) {
+                    if (data.result === 'success') {
+                        swtAlert.request_success(data.message);
+                        setTable.postRefresh(txCheck.id.priTab);
+                        setTable.hideModal(txCheck.id.saveModal);
+                        excuseInput.val('');
+                    } else {
+                        swtAlert.request_fail(data.message);
                     }
-                });
-            } else {
-                swtAlert.warnNoTimer('请选择 未审核 的数据进行操作');
-            }
+                }, 'json');
         }
     }
 };

@@ -31,6 +31,6 @@ public class UserUtils {
     }
 
     public static Huser getHuser (HttpSession session) {
-        return (Huser) session.getAttribute(OurConstants.SESSION_IN_USER);
+        return (Huser) session.getAttribute(OurConstants.SESSION_IN_HUSER);
     }
 }

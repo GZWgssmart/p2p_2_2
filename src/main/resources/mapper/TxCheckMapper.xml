@@ -110,6 +110,7 @@
         AND u.uid = l.uid
         AND l.tid = c.txid
         AND (h.huid = c.huid OR c.huid is null)
+        AND l.state != 1
     </sql>
 
     <select id="countCriteria" resultType="Long">
