@@ -27,8 +27,12 @@
                                 <span class="text-muted text-xs block">${sessionScope.user.uname}<b class="caret"></b></span>
                                 </span>
                         </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="<%=path %>/">返回首页</a></li>
+                            <li><a href="<%=path%>/user/logout">退出</a></li>
+                        </ul>
                     </div>
-                    <div class="logo-element">XXX信息管理
+                    <div class="logo-element">${sessionScope.user.uname}信息管理
                     </div>
                 </li>
 

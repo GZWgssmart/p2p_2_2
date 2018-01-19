@@ -84,7 +84,6 @@
 <script>
 
     $(function () {
-        alert(!(${requestScope.uid == null || requestScope.uid == ""}));
         if(!(${requestScope.uid == null || requestScope.uid == ""})){
             var tuid = ${requestScope.uid}+"";
             $("#useCode").val(tuid);

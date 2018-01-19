@@ -7,6 +7,8 @@ import com.we.service.*;
 import com.we.vo.CheckVipVO;
 import com.we.vo.RequestResultVO;
 import com.we.vo.UserVO;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -472,5 +474,20 @@ public class UserController {
     @ResponseBody
     public Pager pagerUser(Long offset,Long limit){
         return userService.listCriteria(offset,limit,null);
+    }
+
+    /**
+     * 用户退出
+     * @param session
+     * @return
+     */
+    @RequestMapping("logout")
+    public String logout(HttpSession session){
+        session.removeAttribute(OurConstants.SESSION_IN_USER);
+        Subject subject = SecurityUtils.getSubject();
+        if (subject != null) {
+            subject.logout();
+        }
+        return "redirect:/";
     }
 }

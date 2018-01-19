@@ -28,6 +28,7 @@
                                 </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="<%=path %>/">返回首页</a></li>
                             <li><a href="javascript:void(0);" onclick="seeDetail()">我的信息</a></li>
                             <li><a href="javascript:void(0);" onclick="openChangePassword()">修改密码</a></li>
                         </ul>
