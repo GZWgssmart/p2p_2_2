@@ -106,15 +106,25 @@
 
   <select id="listCriteria" resultType="com.we.vo.RzvipCheckVO">
     <![CDATA[
-        SELECT vip.rcid,vip.huid,vip.isok,vip.excuse,vip.date
-        FROM rzvip_check vip
-        ORDER BY vip.date DESC
+        SELECT vip.rcid,vip.huid,vip.uid,vip.isok,vip.excuse,vip.date,
+        u.uid,h.huid,
+        u.rname as 'uName',
+        if(vip.huid IS NOT NULL, h.rname, '') as 'hName'
+        FROM rzvip_check vip,user u,huser h
+        WHERE u.uid = vip.uid
+        AND (h.huid = vip.huid or vip.huid IS NULL)
+        GROUP BY vip.rcid
+        ORDER BY vip.isok DESC, vip.date DESC
         limit #{pager.offset},#{pager.limit}
     ]]>
   </select>
 
   <select id="countCriteria" resultType="java.lang.Long">
-        SELECT count(rcid) FROM rzvip_check
+        SELECT count(vip.rcid)  FROM  rzvip_check vip
+      /* FROM rzvip_check vip,user u,huser h
+        WHERE u.uid = vip.uid
+        AND (h.huid = vip.huid or vip.huid IS NULL)
+        GROUP BY vip.rcid*/
   </select>
 
 </mapper>

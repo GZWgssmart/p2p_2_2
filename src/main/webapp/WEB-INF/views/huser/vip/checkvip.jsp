@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="tool-bar" id="tool-bar">
-    <button class="btn btn-primary" data-toggle="modal" onclick="lookContent();">查看内容</button>
+    <button class="btn btn-primary" data-toggle="modal" onclick="lookCheckDetail.lookDetail();">查看内容</button>
 </div>
 <table id="checkVip-list" class="table table-hover"
        data-url="<%=path%>/rzvip/pager_criteria">
@@ -48,28 +48,12 @@
 
 <script>
 
-    /*lookDetail: function () {
-        var row = setTable.isSingleSelected(allShborrow.id.priTab);
-        if (row) {
-            $.get('/borrowdetail/getByApplyId/' + row.baid,
-                function (data) {
-                    $('#ypic-img').attr('src', contextPath + data.ypic);
-                    $('#look-detail-form').form('load', data);
-                }, 'json');
-            setTable.showModal('look-detail-modal');
-        }
-    }*/
+    var lookCheckDetail = {
 
-    var lookDetail = {
-        id: {
-            tableId: 'checkVip-list',
-            checkForm: 'check-form',
-            checkModal: 'look-checkvip-modal'
-        },
         lookDetail:function () {
-            var row = setTable.isSingleSelected(lookDetail.id.checkVip-list);
+            var row = setTable.isSingleSelected('checkVip-list');
             if(row) {
-                $.get('user/rz_info/' + row.uid,
+                $.get('/user/rz_info/' + row.uid,
                     function (data) {
                         $('excuse').attributes('src',contentPath + data.rnid);
                         $('#look-detail-modal').form('load',data);
@@ -78,14 +62,6 @@
             }
         }
     };
-
-   /* function lookContent() {
-        var row = setTable.isSingleSelected('checkVip-list');
-        if(row) {
-            $('#look-checkvip-modal').modal('show');
-            $('#content-body').html(row.content);
-        }
-    }*/
 
 </script>
 </body>
