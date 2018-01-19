@@ -63,4 +63,6 @@
 
 五：优化
 1、许多查询都用到uid，能否在query对象的属性中自动注入HttpSession中的uid？
+2、在url中需看出哪些角色能访问此url
+3、Controller中只能注入相应Service， 跳转页面也需有相应角色的controller专门跳转。
 

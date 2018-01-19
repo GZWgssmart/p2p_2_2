@@ -146,4 +146,9 @@
         SELECT count(bcid)
         <include refid="criteriaQuery"/>
     </select>
+
+    <select id="listCard" resultType="com.we.vo.ComboboxVO">
+        SELECT bcid as 'id', concat(type, cardno) AS 'text' FROM d_ssm_pujinziben.bankcard
+        WHERE uid=#{uid}
+    </select>
 </mapper>

@@ -51,6 +51,25 @@ var setTable = {
         swtAlert.warn_info(dataDict.manage.noSelected);
         return false;
     },
+    idLoadSelectData: function (selectId, listData) {
+        var select = $('#' + selectId);
+        select.empty();
+        for (var item in listData) {
+            var option = '<option value="' + listData[item].id + '">' + listData[item].text + '</option>';
+            select.append(option);
+        }
+    },
+    classLoadSelectData: function (selectCalss, listData) {
+        var selectList = $('.' + selectCalss);
+        for (var select in selectList) {
+            var $select = $(select);
+            $select.empty();
+            for (var item in listData) {
+                var option = '<option value="' + listData[item].id + '">' + listData[item].text + '</option>';
+                $select.append(option);
+            }
+        }
+    },
     showModal: function (modalId) {
         $('#' + modalId).modal('show');
     },

@@ -8,9 +8,11 @@ import com.we.common.Pager;
 import com.we.common.UserUtils;
 import com.we.enums.RequestResultEnum;
 import com.we.service.BankcardService;
+import com.we.vo.ComboboxVO;
 import com.we.vo.RequestResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +21,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/12/25.
@@ -29,6 +32,12 @@ import java.util.Date;
 public class BankcardController {
 
     private BankcardService bankcardService;
+
+    @RequestMapping("list_card/{uid}")
+    @ResponseBody
+    public List<ComboboxVO> listCard(@PathVariable Integer uid) {
+        return bankcardService.listCard(uid);
+    }
 
     @PostMapping("update")
     @ResponseBody
