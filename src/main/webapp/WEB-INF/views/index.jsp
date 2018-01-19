@@ -161,7 +161,9 @@
                 <li>
                     <div class="button">
                         <div ng-if="newpeople[0].state == 1">
-                            <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                            <a href="<%=path %>/borrowdetail/detail_page/{{newpeople[0].baid}}">
+                                <button type="button" class="submit">立即投标</button>
+                            </a>
                         </div>
                         <div ng-if="newpeople[0].state == 4">
                             <button type="button" class="submit disabled">还款中</button>
@@ -191,7 +193,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="<%=path %>/?id=414">{{hengjinbao[0].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{hengjinbao[0].baid}}">{{hengjinbao[0].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{hengjinbao[0].nprofit}}</span>
@@ -214,7 +216,9 @@
                         </div>
                         <div class="submit">
                             <div ng-if="hengjinbao[0].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{hengjinbao[0].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="hengjinbao[0].state == 4">
                                 <button type="button" class="submit disabled">还款中</button>
@@ -232,7 +236,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="<%=path %>/?id=391">{{hengjinbao[1].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{hengjinbao[1].baid}}">{{hengjinbao[1].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{hengjinbao[1].nprofit}}</span>
@@ -255,7 +259,9 @@
                         </div>
                         <div class="submit">
                             <div ng-if="hengjinbao[1].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{hengjinbao[1].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="hengjinbao[1].state == 4">
                                 <button type="button" class="submit disabled">还款中</button>
@@ -273,7 +279,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="<%=path %>/?id=386">{{hengjinbao[2].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{hengjinbao[2].baid}}">{{hengjinbao[2].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{hengjinbao[2].nprofit}}</span>
@@ -296,7 +302,9 @@
                         </div>
                         <div class="submit">
                             <div ng-if="hengjinbao[2].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{hengjinbao[2].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="hengjinbao[2].state == 4">
                                 <button type="button" class="submit disabled">还款中</button>
@@ -327,7 +335,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=414">{{pujinbao[0].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{pujinbao[0].baid}}">{{pujinbao[0].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{pujinbao[0].nprofit}}</span>
@@ -350,16 +358,18 @@
                         </div>
                         <div class="submit">
                             <div ng-if="pujinbao[0].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{pujinbao[0].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="pujinbao[0].state == 4">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
+                                <button type="button" class="submit disabled">还款中</button>
                             </div>
                             <div ng-if="pujinbao[0].state == 6">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">已还完</button>
+                                <button type="button" class="submit disabled">已还完</button>
                             </div>
                             <div ng-if="pujinbao[0].state == null">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)"></button>
+                                <button type="button" class="submit disabled"></button>
                             </div>
                         </div>
                     </div>
@@ -368,7 +378,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=391">{{pujinbao[1].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{pujinbao[1].baid}}">{{pujinbao[1].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{pujinbao[1].nprofit}}</span>
@@ -391,16 +401,18 @@
                         </div>
                         <div class="submit">
                             <div ng-if="pujinbao[1].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{pujinbao[1].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="pujinbao[1].state == 4">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
+                                <button type="button" class="submit disabled">还款中</button>
                             </div>
                             <div ng-if="pujinbao[1].state == 6">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">已还完</button>
+                                <button type="button" class="submit disabled">已还完</button>
                             </div>
                             <div ng-if="pujinbao[1].state == null">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)"></button>
+                                <button type="button" class="submit disabled"></button>
                             </div>
                         </div>
                     </div>
@@ -409,7 +421,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="invest.html?id=386">{{pujinbao[2].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{pujinbao[2].baid}}">{{pujinbao[2].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{pujinbao[2].nprofit}}</span>
@@ -432,16 +444,18 @@
                         </div>
                         <div class="submit">
                             <div ng-if="pujinbao[2].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{pujinbao[2].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="pujinbao[2].state == 4">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
+                                <button type="button" class="submit disabled">还款中</button>
                             </div>
                             <div ng-if="pujinbao[2].state == 6">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">已还完</button>
+                                <button type="button" class="submit disabled">已还完</button>
                             </div>
                             <div ng-if="pujinbao[2].state == null">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)"></button>
+                                <button type="button" class="submit disabled"></button>
                             </div>
                         </div>
                     </div>
@@ -462,7 +476,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="<%=path %>/?id=414">{{duojinbao[0].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{duojinbao[0].baid}}">{{duojinbao[0].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{duojinbao[0].nprofit}}</span>
@@ -485,16 +499,18 @@
                         </div>
                         <div class="submit">
                             <div ng-if="duojinbao[0].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{duojinbao[0].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="duojinbao[0].state == 4">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
+                                <button type="button" class="submit disabled">还款中</button>
                             </div>
                             <div ng-if="duojinbao[0].state == 6">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">已还完</button>
+                                <button type="button" class="submit disabled">已还完</button>
                             </div>
                             <div ng-if="duojinbao[0].state == null">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)"></button>
+                                <button type="button" class="submit disabled"></button>
                             </div>
                         </div>
                     </div>
@@ -503,7 +519,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="<%=path %>/?id=391">{{duojinbao[1].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{duojinbao[1].baid}}">{{duojinbao[1].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{duojinbao[1].nprofit}}</span>
@@ -526,16 +542,18 @@
                         </div>
                         <div class="submit">
                             <div ng-if="duojinbao[1].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{duojinbao[1].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="duojinbao[1].state == 4">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
+                                <button type="button" class="submit disabled">还款中</button>
                             </div>
                             <div ng-if="duojinbao[1].state == 6">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">已还完</button>
+                                <button type="button" class="submit disabled">已还完</button>
                             </div>
                             <div ng-if="duojinbao[1].state == null">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)"></button>
+                                <button type="button" class="submit disabled"></button>
                             </div>
                         </div>
                     </div>
@@ -544,7 +562,7 @@
                     <div class="product-content">
                         <div class="top">
                             <p class="product-title">
-                                <a href="<%=path %>/?id=386">{{duojinbao[2].cpname}}</a>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{duojinbao[2].baid}}">{{duojinbao[2].cpname}}</a>
                             </p>
                             <p class="p-rate">
                                 <span>{{duojinbao[2].nprofit}}</span>
@@ -567,16 +585,18 @@
                         </div>
                         <div class="submit">
                             <div ng-if="duojinbao[2].state == 1">
-                                <button type="button" class="submit" onclick="toInvest(414,2)">立即投标</button>
+                                <a href="<%=path %>/borrowdetail/detail_page/{{duojinbao[2].baid}}">
+                                    <button type="button" class="submit">立即投标</button>
+                                </a>
                             </div>
                             <div ng-if="duojinbao[2].state == 4">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">还款中</button>
+                                <button type="button" class="submit disabled">还款中</button>
                             </div>
                             <div ng-if="duojinbao[2].state == 6">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)">已还完</button>
+                                <button type="button" class="submit disabled">已还完</button>
                             </div>
                             <div ng-if="duojinbao[2].state == null">
-                                <button type="button" class="submit disabled" onclick="toInvest(391,4)"></button>
+                                <button type="button" class="submit disabled"></button>
                             </div>
                         </div>
                     </div>

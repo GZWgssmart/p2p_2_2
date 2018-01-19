@@ -1,9 +1,8 @@
 package com.we.service.impl;
 
-import com.we.dao.BaseDAO;
+import com.we.common.Pager;
 import com.we.dao.MoneyLogDAO;
 import com.we.service.AbstractBaseService;
-import com.we.service.BaseService;
 import com.we.service.MoneyLogService;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +20,13 @@ public class MoneyLogServiceImpl extends AbstractBaseService implements MoneyLog
     public void setMoneylLogDAO(MoneyLogDAO moneylLogDAO) {
         this.moneylLogDAO = moneylLogDAO;
         super.setBaseDAO(moneylLogDAO);
+    }
+
+    @Override
+    public Pager listQueryDate(Long offset, Long limit, Object object) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(moneylLogDAO.listQueryDate(pager, object));
+        pager.setTotal(moneylLogDAO.countQueryDate(object));
+        return pager;
     }
 }

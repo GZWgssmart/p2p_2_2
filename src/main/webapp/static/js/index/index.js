@@ -270,7 +270,7 @@ function start(){
 }
 function toInvest(id,status){
 	if(status!=2){return};
-	window.location.href = 'invest.html?id='+id;
+	window.location.href = 'borrowdetail/detail_page/'+id;
 }
 function getStatus(borrow){
 	if(borrow == 1){

@@ -103,4 +103,40 @@
       date = #{date,jdbcType=TIMESTAMP}
     where mid = #{mid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="com.we.bean.MoneyLog">
+    <![CDATA[
+      select * from money_log
+      order by date desc limit #{pager.offset} ,#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="countCriteria" resultType="long">
+    <![CDATA[
+	  select count(mid) from money_log
+    ]]>
+  </select>
+
+  <sql id="queryDate">
+    <if test="query != null and query.startTime != null">
+      and `date` <![CDATA[>=]]> #{query.startTime}
+    </if>
+    <if test="query != null and query.endTime != null ">
+      and `date` <![CDATA[<=]]> #{query.endTime}
+    </if>
+  </sql>
+
+  <select id="listQueryDate" resultType="com.we.bean.MoneyLog">
+    select * from money_log
+    WHERE 1=1
+    <include refid="queryDate"/>
+    order by `date` desc limit #{pager.offset} ,#{pager.limit}
+  </select>
+
+  <select id="countQueryDate" resultType="java.lang.Long" parameterType="com.we.query.MoneyLogQuery">
+    select count(mid) from money_log
+    WHERE 1=1
+    <include refid="queryDate"/>
+  </select>
+
 </mapper>

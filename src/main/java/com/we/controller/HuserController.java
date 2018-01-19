@@ -220,6 +220,15 @@ public class HuserController {
         return "huser/all_ydata_page";
     }
 
+    /**
+     * 所有的资金流向
+     * @return
+     */
+    @RequestMapping("all_moneylog_page")
+    public String allMoneyLog(){
+        return "huser/moneylog/all_money_log";
+    }
+
     @RequestMapping("login_page")
     public String loginPage(){
         return "huser/login";
