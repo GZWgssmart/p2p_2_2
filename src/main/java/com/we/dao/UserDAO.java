@@ -1,6 +1,7 @@
 package com.we.dao;
 
 import com.we.bean.User;
+import com.we.vo.CheckVipVO;
 import com.we.vo.UserVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -56,5 +57,12 @@ public interface UserDAO extends BaseDAO {
      * @return
      */
     Long countUser();
+
+    /***
+     * 查询用户详情
+     * @param uid
+     * @return
+     */
+    CheckVipVO getRzInfoById(Integer uid);
 
 }

@@ -154,6 +154,9 @@
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_user_page">普通用户</a>
                         </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=path%>/huser/check_vip">审核VIP</a>
+                        </li>
                     </ul>
                 </li>
 

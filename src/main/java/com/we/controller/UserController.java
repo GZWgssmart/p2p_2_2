@@ -4,6 +4,7 @@ import com.we.bean.*;
 import com.we.common.*;
 import com.we.enums.RequestResultEnum;
 import com.we.service.*;
+import com.we.vo.CheckVipVO;
 import com.we.vo.RequestResultVO;
 import com.we.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,17 @@ public class UserController {
     public String allBorrowMoneyPage() {
         return "user/borrow/check/all_borrow_money";
     }
+
+    /**
+     * 后台用户审核VIP时，查看用户的认证信息
+     * @return
+     */
+    @GetMapping("rz_info/{uid}")
+    @ResponseBody
+    public CheckVipVO rzInfo(@PathVariable Integer uid) {
+       return userService.getRzInfoById(uid);
+    }
+
 
     /**
      * 用户点击 所有借款 时，检查用户是否为VIP

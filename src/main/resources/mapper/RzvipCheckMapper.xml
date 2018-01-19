@@ -103,4 +103,18 @@
       date = #{date,jdbcType=TIMESTAMP}
     where rcid = #{rcid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="com.we.vo.RzvipCheckVO">
+    <![CDATA[
+        SELECT vip.rcid,vip.huid,vip.isok,vip.excuse,vip.date
+        FROM rzvip_check vip
+        ORDER BY vip.date DESC
+        limit #{pager.offset},#{pager.limit}
+    ]]>
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+        SELECT count(rcid) FROM rzvip_check
+  </select>
+
 </mapper>

@@ -1,6 +1,7 @@
 package com.we.service;
 
 import com.we.bean.User;
+import com.we.vo.CheckVipVO;
 import com.we.vo.UserVO;
 
 import java.util.List;
@@ -53,5 +54,13 @@ public interface UserService extends BaseService {
      * @return
      */
     Long countUser();
+
+    /***
+     *
+     * @param uid
+     * @return
+     */
+    CheckVipVO getRzInfoById(Integer uid);
+
 
 }

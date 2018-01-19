@@ -33,6 +33,11 @@ public class HuserController {
     @Autowired
     private RoleuserService roleuserService;
 
+    @RequestMapping("check_vip")
+    public String checkVip() {
+        return "huser/vip/checkvip";
+    }
+
     @RequestMapping("all_tx_check_page")
     public String txCheckPage() {
         return "huser/txcheck/all_tx_check";

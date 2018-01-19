@@ -15,9 +15,9 @@
         </div>
         <div class="about-content">
             <div class="title-link">
-                <a href="javascript:;" class="left active" onclick="showMessage();">城兴投资</a>
+                <a href="javascript:;" class="left active" onclick="show('chengtou');">城兴投资</a>
 
-                <a href="javascript:;" class="right" onclick="hideMessage();">盛汇资产</a>
+                <a href="javascript:;" class="right" onclick="show('shzc');">盛汇资产</a>
             </div>
             <div id="chengtou" class="content">
                 <p class="text">赣州城兴投资管理有限公司隶属于赣州城市开发投资集团有限责任公司
@@ -93,14 +93,10 @@
 
 <script>
 
-    function  showMessage() {
-        $("#chentou").show();
-        $("#shzc").hide();
-    }
 
-    function hideMessage() {
-        $("#chentou").hide();
-        $("#shzc").show();
+    function show(divID) {
+        $(".content").hide();
+        $("#" + divID).show();
     }
 
 </script>

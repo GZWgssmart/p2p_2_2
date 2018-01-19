@@ -6,6 +6,7 @@ import com.we.dao.BaseDAO;
 import com.we.dao.UserDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.UserService;
+import com.we.vo.CheckVipVO;
 import com.we.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +63,11 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
     @Override
     public Long countUser() {
         return userDAO.countUser();
+    }
+
+    @Override
+    public CheckVipVO getRzInfoById(Integer uid) {
+        return userDAO.getRzInfoById(uid);
     }
 
 
