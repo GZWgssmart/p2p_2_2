@@ -43,7 +43,7 @@
             <th data-field="rname" data-formatter=formatNull>真实姓名</th>
             <th data-field="email" data-formatter=formatNull>邮箱</th>
             <th data-field="sex" data-formatter=formatNull>性别</th>
-            <th data-field="is_vip" data-formatter=formatVip>是否为vip</th>
+            <th data-field="isVip" data-formatter=formatVip>是否为vip</th>
             <th data-field="registerTime" data-formatter=formatDate>注册时间</th>
         </tr>
         </thead>
@@ -61,42 +61,41 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <form class="form-horizontal" id="addHuser">
-                            <input id="huid" name="huid" type="hidden">
+                        <form class="form-horizontal" id="rzDetail">
                             <div class="form-group">
-                                <div class="col-sm-2 control-label">用户名</div>
+                                <div class="col-sm-2 control-label">学历</div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="huname" id="huname"
-                                           placeholder="用户名"/>
+                                    <input type="text" class="form-control" name="xl" id="xl" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-2 control-label">邮箱</div>
+                                <div class="col-sm-2 control-label">婚否</div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="邮箱"/>
+                                    <input type="text" class="form-control" name="ism" id="ism"  readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-2 control-label">手机</div>
+                                <div class="col-sm-2 control-label">毕业院校</div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="手机"/>
+                                    <input type="text" class="form-control" name="bschool" id="bschool" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-2 control-label">姓名</div>
+                                <div class="col-sm-2 control-label">居住地</div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="rname" id="rname" placeholder="姓名"/>
+                                    <input type="text" class="form-control" name="addr" id="addr"  readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-2 control-label">性别</div>
+                                <div class="col-sm-2 control-label">工作</div>
                                 <div class="col-sm-10">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="sex" id="men" value="男" checked> 男
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="sex" id="women" value="女"> 女
-                                    </label>
+                                    <input type="text" class="form-control" name="work" id="work"  readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-2 control-label">年龄</div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="age" id="age"  readonly/>
                                 </div>
                             </div>
                         </form>
@@ -104,7 +103,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" onclick="updateHuser()">保存</button>
                 </div>
             </div>
         </div>
@@ -125,10 +123,12 @@
     function seeDetail() {
         var select = $("#allUser").bootstrapTable('getSelections');
         if(select.length == 1){
-            if(select.is_vip == 1){
-                $.get('user/get_rz_detail/' + select.uid,
+            if(select[0].isVip == 1){
+                $.post('/user/get_rz_detail/' + select[0].uid,
+                    null,
                     function (data) {
-                        $('#look-detail-form').form('load', data);
+                        $('#myModal').modal();
+                        $('#rzDetail').form('load', data);
                     }, 'json');
             }else{
                 swal("请选择一个vip用户","","warning")
@@ -136,7 +136,7 @@
         }else{
             swal("请选择一个用户","","warning")
         }
-        $('#myModal').modal();
+
     }
 
     function formatVip(value) {

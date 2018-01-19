@@ -284,4 +284,8 @@
     select * from user ORDER  by register_time desc limit #{pager.offset},#{pager.limit}
   </select>
 
+  <select id="getPayPwdByUserId" resultType="java.lang.String">
+    select zpwd from user where uid = #{userId}
+  </select>
+
 </mapper>

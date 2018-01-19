@@ -48,6 +48,9 @@ public class UserController {
     @Autowired
     private UsermoneyService usermoneyService;
 
+    @Autowired
+    private RzvipService rzvipService;
+
     @RequestMapping("all_invest_log_page")
     public String allInvestLogPage() {
         return "user/invest/log/all_invest_log";
@@ -489,5 +492,22 @@ public class UserController {
             subject.logout();
         }
         return "redirect:/";
+    }
+
+    @RequestMapping("get_rz_detail/{userId}")
+    @ResponseBody
+    public Rzvip getRzDetail(@PathVariable Integer userId){
+        return rzvipService.getByUid(userId);
+    }
+
+    @RequestMapping("con_pay_pwd/{userId}/{payPwd}")
+    @ResponseBody
+    public RequestResultVO conPayPwd(@PathVariable Integer userId,@PathVariable String payPwd){
+        Boolean pwd = userService.getPayPwdByUserId(userId,EncryptUtils.md5(payPwd));
+        if(pwd){
+            return RequestResultVO.status(RequestResultEnum.PAY_PWD_TRUE);
+        }else{
+            return RequestResultVO.status(RequestResultEnum.PAY_PWD_ERROR);
+        }
     }
 }

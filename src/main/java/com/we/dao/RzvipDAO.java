@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 public interface RzvipDAO extends BaseDAO {
 
-    Rzvip getByUid(Integer UserId);
+    Rzvip getByUid(Integer userId);
 }

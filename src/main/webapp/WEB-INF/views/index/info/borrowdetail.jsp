@@ -155,7 +155,7 @@
                         ${sessionScope.usermoney.kymoney}元
                     </c:if>
                 </span></p>
-                <p class="rate">预期收益：<span class="color" id="reckon">0.00</span></p>
+                <%--<p class="rate">预期收益：<span class="color" id="reckon">0.00</span></p>--%>
             </div>
             <div class="subject-s-r-c">
                 <p>剩余可投：<span id="investAmount">${requestScope.borrow.symoney}元</span></p>
@@ -358,7 +358,10 @@
         </div>
     </div>
 </div>
-
+<input type="hidden" id="juid" value="${requestScope.borrow.uid}">
+<input type="hidden" id="nprofit" value="${requestScope.borrow.nprofit}">
+<input type="hidden" id="cpname" value="${requestScope.borrow.cpname}">
+<input type="hidden" id="baid" value="${requestScope.borrow.baid}">
 <%@include file="../../common/js/js_jquery.jsp"%>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/jquery.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/public.js"></script>
@@ -418,15 +421,46 @@
             if (value >= 100) {
                 var text = $('#selectQuan').find("option:selected").text();
                 text = text.substring(0, text.lastIndexOf('元优惠券'));
-                $('#money').val(value - text);
-                swal({
-                    title: '输入交易密码',
-                    text: 'asdf',
-                    input: 'password',
-                    preConfirm: function () {
+                var money = value - text;
 
-                    }
+                swal({
+                    title: '需支付'+money+'元',
+                    text: '请输入支付密码',
+                    input: 'password'
+                }).then(function(obj) {
+                    $.post(contextPath + "/user/con_pay_pwd/"+user+"/"+obj.value,
+                        null,
+                        function (data) {
+                            if (data.result == "success") {
+                                //支付密码正确
+                                $.post(contextPath + "/tzb/save/",
+                                    {
+                                        "uid":user,
+                                        "juid":$('#juid').val(),
+                                        "money":value,
+                                        "nprofit":$('#nprofit').val(),
+                                        "cpname":$('#cpname').val(),
+                                        "baid":$('#baid').val(),
+                                        "tid": $('#selectQuan').find("option:selected").val()
+                                    },
+                                    function (data) {
+                                        if (data.result == "success") {
+                                            swal(data.message,"","success" )
+                                            window.location.reload();
+                                        }else{
+                                            swal(data.message,"","warning" )
+                                        }
+                                    }, "json"
+                                );
+                            }else{
+                                //支付密码错误
+                                swal(data.message,"","warning" )
+                            }
+                        }, "json"
+                    );
                 });
+
+
             } else {
                 swal("投资金额必须大于100", "", "warning");
             }

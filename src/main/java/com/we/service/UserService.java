@@ -63,4 +63,10 @@ public interface UserService extends BaseService {
     CheckVipVO getRzInfoById(Integer uid);
 
 
+    /**
+     * 查询支付码密码
+     * @param userId
+     * @return
+     */
+    Boolean getPayPwdByUserId (Integer userId,String payPwd);
 }

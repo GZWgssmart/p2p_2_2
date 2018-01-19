@@ -36,6 +36,8 @@ public enum RequestResultEnum {
     HK_SUCCESS(205, "success", "还款成功！"),
     HK_FAIL(505, "fail", "还款失败，请稍后再试！"),
     HK_FAIL_ZPWD(506, "fail", "还款失败，支付密码错误"),
+    PAY_PWD_ERROR(507, "fail", "支付密码错误"),
+    PAY_PWD_TRUE(508, "success", "支付密码正确"),
     SK_SUCCESS(206, "success", "收款成功！");
 
     private Integer code;

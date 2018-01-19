@@ -14,7 +14,7 @@ public class RzvipServiceImpl extends AbstractBaseService implements RzvipServic
     private RzvipDAO rzvipDAO;
 
     @Override
-    public Rzvip getByUid(Integer UserId) {
-        return null;
+    public Rzvip getByUid(Integer userId) {
+        return rzvipDAO.getByUid(userId);
     }
 }

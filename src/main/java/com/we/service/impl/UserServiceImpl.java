@@ -69,6 +69,15 @@ public class UserServiceImpl extends AbstractBaseService implements UserService 
     public CheckVipVO getRzInfoById(Integer uid) {
         return userDAO.getRzInfoById(uid);
     }
+    @Override
+    public Boolean getPayPwdByUserId(Integer userId, String payPwd) {
+        String pay = userDAO.getPayPwdByUserId(userId);
+        if (pay.equals(payPwd)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 }

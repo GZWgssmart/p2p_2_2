@@ -65,4 +65,10 @@ public interface UserDAO extends BaseDAO {
      */
     CheckVipVO getRzInfoById(Integer uid);
 
+    /**
+     * 查询支付码密码
+     * @param userId
+     * @return
+     */
+    String getPayPwdByUserId (Integer userId);
 }

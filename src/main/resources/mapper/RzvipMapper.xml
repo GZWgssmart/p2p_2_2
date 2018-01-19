@@ -126,7 +126,7 @@
     where rid = #{rid,jdbcType=INTEGER}
   </update>
 
-  <select id="getByUid" parameterType="com.we.bean.Rzvip">
+  <select id="getByUid" resultType="com.we.bean.Rzvip">
     SELECT * from rzvip where uid = #{userId};
   </select>
 </mapper>

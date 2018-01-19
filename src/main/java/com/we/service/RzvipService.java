@@ -7,5 +7,5 @@ import com.we.bean.Rzvip;
  */
 public interface RzvipService extends BaseService {
 
-    Rzvip getByUid(Integer UserId);
+    Rzvip getByUid(Integer userId);
 }

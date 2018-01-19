@@ -739,7 +739,6 @@
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.pujinbao = response.data;
-                alert('WEB-INF/views/index.jsp:633');
             }, function errorCallback(response) {
             });
 

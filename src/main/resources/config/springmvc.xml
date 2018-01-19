@@ -49,6 +49,7 @@
     <mvc:resources location="/static/ueditor/" mapping="/static/ueditor/**" />
     <mvc:resources location="/static/ztree/" mapping="/static/ztree/**" />
     <mvc:resources location="/static/plugins/" mapping="/static/plugins/**" />
+    <mvc:resources location="/static/sweetalert/" mapping="/static/sweetalert/**" />
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">
