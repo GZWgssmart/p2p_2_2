@@ -91,7 +91,7 @@
                 </c:if>
             </div>
             <div class="subject-s-r-c">
-                <input value="${sessionScope.usermoney.kymoney}" type="hidden" id="kymoney"/>
+                <input  type="hidden" id="kymoney"/>
                 <p>可用余额：<span id="canUseSum">
                     <c:if test="${sessionScope.user == null}">
                         登录后可显示余额
@@ -103,12 +103,15 @@
                 <%--<p class="rate">预期收益：<span class="color" id="reckon">0.00</span></p>--%>
             </div>
             <div class="subject-s-r-c">
+                <input type="hidden" id="symoney" value="${requestScope.borrow.symoney}"/>
                 <p>剩余可投：<span id="investAmount">${requestScope.borrow.symoney}元</span></p>
                 <p class="rate active" id="increaseP">加息收益：<span class="color" id="increase">0.00</span></p>
             </div>
             <div class="input">
                 <input type="text" placeholder="请输入投资金额" id="amount" onkeyup="reckon()" onblur="focusblur(this)">
-                <button type="button" id="pushAll" onclick="invsetAll()">全投</button>
+                <c:if test="${requestScope.borrow.state ==1}">
+                    <button type="button" id="pushAll" onclick="invsetAll()">全投</button>
+                </c:if>
             </div>
             <div class="quan">
                 <select id="selectQuan">
@@ -116,7 +119,12 @@
                 </select>
                 <a href="javaScript:;" onclick="calculuteEarn()" class="icon icon-cal" id="calculator">详细收益明细</a>
             </div>
-            <button class="btn" id="investBtn" type="button" onclick="bid()">立即投标</button>
+            <c:if test="${requestScope.borrow.state ==1}">
+                <button class="btn" id="investBtn" type="button" onclick="bid()">立即投标</button>
+            </c:if>
+            <c:if test="${requestScope.borrow.state ==4}">
+                <button class="btn  disabled" id="investBtn" type="button" style="">还款中</button>
+            </c:if>
         </div>
     </div>
 </div>
@@ -135,7 +143,7 @@
             <p class="title">产品名称：</p><p class="content" id="projectTitle">${requestScope.borrow.cpname}</p>
         </div>
         <div class="detail cl">
-            <p class="title">募集资金：</p><p class="content" id="projectAmount">132,254.00元</p>
+            <p class="title">募集资金：</p><p class="content" id="projectAmount">${requestScope.borrow.money - requestScope.borrow.symoney}元</p>
         </div>
         <div class="detail cl">
             <p class="title">预期年化收益：</p><p class="content" id="projectRate">${requestScope.borrow.nprofit}%</p>
@@ -168,8 +176,16 @@
     <div class="sub-a-box files" id="files">
         <p class="icon icon-danger files-title">普金资本将以客观、公正的原则，最大程度地核实借入者信息的真实性，但不保证审核信息100%真实。如果借入者长期逾期，其提供的信息将被公布。</p>
         <ul class="files-box">
+            <li class="">
+                <img alt="" width="320" height="200" src="<%=path%>"+${requestScope.borrow.qpic}>
+                <p>
+                    <span class="icon icon-true">营业执照</span>
+                </p>
+                <a href="javascript:;" onclick="showBigImg(0,2)" style="display: none;">点击查看大图</a>
+            </li>
         </ul>
     </div>
+
     <div class="sub-a-box plan" id="plan">
         <ul class="">
             <li class="title"><div class="children0">序号</div><div class="children1">计划还款日期</div><div class="children2">实际还款日期</div><div class="children3">已还本息</div><div class="children4">待还本息</div><div class="children5">已付罚息</div><div class="children6">待还罚息</div><div class="children7">状态</div></li>
@@ -250,15 +266,6 @@
 <div id="ajaxFooter">
 
 
-    <div class="mod-sidebar">
-        <ul>
-            <li><a target="_blank" href="tencent://message/?uin=1332666988&amp;Site=&amp;Menu=yes" class="sidebar-qq"></a></li>
-            <li><a href="javascript:void(0);" class="sidebar-wx"></a></li>
-            <li><a href="https://www.pujinziben.com/calculator.html" class="sidebar-cl"></a></li>
-            <li><a href="javascript:void(0);" class="wenquan" title="填写即送5元代金券"></a></li>
-            <li><a href="javascript:void(0);" class="sidebar-top"></a></li>
-        </ul>
-    </div>
     <!-- concat -->
     <div class="index-concat">
         <div class="wrap cl">
@@ -336,20 +343,21 @@
         }
     })
 
-//    $(function () {
-//        var userId = $('#user').val();
-//        if(userId != null && userId != "" && userId != undefined){
-//            $.post(contextPath + "/user/user_money/"+userId,
-//                null,
-//                function (data) {
-//                    if (data != null) {
-//                        $('#canUseSum').text(data.kymoney);
-//                    }
-//                }, "json"
-//            );
-//        }else {
-//        }
-//    })
+    $(function () {
+        var userId = $('#user').val();
+        if(userId != null && userId != "" && userId != undefined){
+            $.post(contextPath + "/user/user_money/"+userId,
+                null,
+                function (data) {
+                    if (data != null) {
+                        $('#canUseSum').text(data.kymoney+".00元");
+                        $('#kymoney').val(data.kymoney);
+                    }
+                }, "json"
+            );
+        }else {
+        }
+    })
 
     function calculuteEarn() {
         var money = $('#amount').val();
@@ -364,48 +372,52 @@
         var user = $('#user').val();
         if(user != null && user != "" && user != undefined) {
             if (value >= 100) {
-                var text = $('#selectQuan').find("option:selected").text();
-                text = text.substring(0, text.lastIndexOf('元优惠券'));
-                var money = value - text;
 
-                swal({
-                    title: '需支付'+money+'元',
-                    text: '请输入支付密码',
-                    input: 'password'
-                }).then(function(obj) {
-                    $.post(contextPath + "/user/con_pay_pwd/"+user+"/"+obj.value,
-                        null,
-                        function (data) {
-                            if (data.result == "success") {
-                                //支付密码正确
-                                $.post(contextPath + "/tzb/save/",
-                                    {
-                                        "uid":user,
-                                        "juid":$('#juid').val(),
-                                        "money":value,
-                                        "nprofit":$('#nprofit').val(),
-                                        "cpname":$('#cpname').val(),
-                                        "baid":$('#baid').val(),
-                                        "tid": $('#selectQuan').find("option:selected").val()
-                                    },
-                                    function (data) {
-                                        if (data.result == "success") {
-                                            swal(data.message,"","success" )
-                                            window.location.reload();
-                                        }else{
-                                            swal(data.message,"","warning" )
-                                        }
-                                    }, "json"
-                                );
-                            }else{
-                                //支付密码错误
-                                swal(data.message,"","warning" )
-                            }
-                        }, "json"
-                    );
-                });
+                var symoney = $('#symoney').val();
+                if(value <= symoney){
+                    var text = $('#selectQuan').find("option:selected").text();
+                    text = text.substring(0, text.lastIndexOf('元优惠券'));
+                    var money = value - text;
 
-
+                    swal({
+                        title: '需支付'+money+'元',
+                        text: '请输入支付密码',
+                        input: 'password'
+                    }).then(function(obj) {
+                        $.post(contextPath + "/user/con_pay_pwd/"+user+"/"+obj.value,
+                            null,
+                            function (data) {
+                                if (data.result == "success") {
+                                    //支付密码正确
+                                    $.post(contextPath + "/tzb/save/",
+                                        {
+                                            "uid":user,
+                                            "juid":$('#juid').val(),
+                                            "money":value,
+                                            "nprofit":$('#nprofit').val(),
+                                            "cpname":$('#cpname').val(),
+                                            "baid":$('#baid').val(),
+                                            "tid": $('#selectQuan').find("option:selected").val()
+                                        },
+                                        function (data) {
+                                            if (data.result == "success") {
+                                                swal(data.message,"","success" )
+                                                window.location.reload();
+                                            }else{
+                                                swal(data.message,"","warning" )
+                                            }
+                                        }, "json"
+                                    );
+                                }else{
+                                    //支付密码错误
+                                    swal(data.message,"","warning" )
+                                }
+                            }, "json"
+                        );
+                    });
+                }else{
+                    swal("您输入的金额大于剩余可投金额","","warning" )
+                }
             } else {
                 swal("投资金额必须大于100", "", "warning");
             }

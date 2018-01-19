@@ -656,66 +656,16 @@ function getDetail(obj){
 }
 //获取相关文件
 function getFile(obj){
-	if($(obj).hasClass('active')){
-		return;
-	};
-	if(!productDetail.userMap){
-		utils.alert('您还未登录，请先登录！',function(){
-			window.location.href=utils.getBasePath()+'login.html?href=invest&ev=getFile&id='+proTypeId;
-		});
-		return;
-	};
-	$('.em-line').animate({'left':'160px'},500);
-	$('.sub-a-box').hide();
-	$(obj).addClass('active').siblings().removeClass('active');
-	if($('.files-box').children('li').size()>0){
-		$('#files').show();
-		return;
-	};
-	var param = {borrowId:proTypeId}
-	utils.ajax({
-		url:'front/financeAuditByBorrowId.do',
-		data:JSON.stringify(param),
-		dataType:'json',
-		success: function(data){
-			if(data.error=='0'){
-				var files = $('#files');
-				var filesBox = $('.files-box');
-				//绑定事件
-				fileList = data.auditList;
-				//生成列表
-				for(var i = 1;i<=fileList.length;i++){
-					var classes="";
-					if(i%3 == 0){
-						classes = 'nomargin';
-					};
-					if(fileList[i-1].materAuthTypeId =='22'){
-						if(fileList[i-1].imgPath){
-							var li = $('<li class="'+classes+'" onclick="showImg('+fileList[i-1].userId+')"><img alt=""  width="320" height="200" src="'+fileList[i-1].imgPath+'" /><p><span class="icon icon-true">'+fileList[i-1].name+'</span></p><a href="javascript:void(0);">查看更多</a></li>');
-							li.find('img').mouseenter(function(){
-								$(this).siblings('a').fadeIn(100).mouseout(function(){
-									$(this).fadeOut();
-								});
-							});
-						}else{
-							var li = $('<li class="'+classes+'"><img alt=""  width="320" height="200" src="/WEB-PC/src/images/nullimg.jpg" /><p><span class="icon icon-false">'+fileList[i-1].name+'</span></p></li>');
-						}
-					}else{
-						var li = $('<li class="'+classes+'"><img alt=""  width="320" height="200" src="'+fileList[i-1].imgPath+'" /><p><span class="icon icon-true">'+fileList[i-1].name+'</span></p><a href="javascript:;" onclick="showBigImg(0,'+i+')">点击查看大图</a></li>');
-						li.find('img').mouseenter(function(){
-							$(this).siblings('a').fadeIn(100).mouseout(function(){
-								$(this).fadeOut();
-							});
-						});
-					};
-					li.appendTo(filesBox);
-				};
-				files.show();
-			}else{
-				utils.alert(data.msg);
-			}
-		}
-	})
+    var user = $('#user').val();
+    if(user != null && user != "" && user != undefined){
+        $('.em-line').animate({'left':'160px'},500);
+        $('.sub-a-box').hide();
+        $(obj).addClass('active').siblings().removeClass('active');
+        $('#files').show();
+    }else {
+        swal("您还未登录登录，请先登陆","","warning");
+    }
+
 };
 //查看更多资料
 function showImg(user){

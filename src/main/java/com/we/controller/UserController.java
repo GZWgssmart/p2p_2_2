@@ -246,9 +246,9 @@ public class UserController {
             //登入失败
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
         }else{
-            Usermoney usermoney = usermoneyService.getByUid(userLogin.getUid());
+//            Usermoney usermoney = usermoneyService.getByUid(userLogin.getUid());
             session.setAttribute(OurConstants.SESSION_IN_USER,userLogin);
-            session.setAttribute("usermoney",usermoney);
+//            session.setAttribute("usermoney",usermoney);
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
         }
         return statusVO;
