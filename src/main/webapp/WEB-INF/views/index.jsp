@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <title>普金资本-安全可靠专注于供应链金融的国资背景P2P理财平台</title>
     <%@include file="./common/manage/index_head.jsp" %>
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=path %>/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path %>/static/css/index/index.css">
 </head>
@@ -659,8 +659,8 @@
 <jsp:include page="common/index/foot.jsp"></jsp:include>
 
 <script src="<%=path%>/static/js/angular/angular.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="<%=path %>/static/js/jquery.min.js"></script>
+<script src="<%=path %>/static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=path %>/static/js/index/public.js"></script>
 <!-- 客服QQ -->
 <script type="text/javascript" src="<%=path %>/static/js/index/countup.min.js"></script>

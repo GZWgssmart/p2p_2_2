@@ -10,9 +10,12 @@ import com.we.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -223,6 +226,11 @@ public class UserController {
 
     }
 
+    @RequestMapping("user_message")
+    public String userMessage() {
+        return "user/user_message";
+    }
+
     @PostMapping("login")
     @ResponseBody
     public RequestResultVO login(User user, String code, HttpSession session) {
@@ -234,7 +242,7 @@ public class UserController {
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
         }else{
             Usermoney usermoney = usermoneyService.getByUid(userLogin.getUid());
-            session.setAttribute("user",userLogin);
+            session.setAttribute(OurConstants.SESSION_IN_USER,userLogin);
             session.setAttribute("usermoney",usermoney);
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
         }
@@ -334,7 +342,7 @@ public class UserController {
                 user.setUpwd(EncryptUtils.md5(user.getUpwd()));
                 userService.updateSelective(user);
                 statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_PHONE_SUCCESS);
-                session.removeAttribute("user");
+                session.removeAttribute(OurConstants.SESSION_IN_USER);
             }else{
                 //原始密码错误
                 statusVO = RequestResultVO.status(RequestResultEnum.OLD_PWD_FAIL);
@@ -342,7 +350,37 @@ public class UserController {
         }else{
             userService.updateSelective(user);
             statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_PHONE_SUCCESS);
-            session.setAttribute("user",userService.getById(user.getUid()));
+            session.setAttribute(OurConstants.SESSION_IN_USER,userService.getById(user.getUid()));
+        }
+        return statusVO;
+    }
+
+    /**
+     * 跟新头像、性别和昵称
+     * @param user
+     * @param file
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("update_user_message")
+    public RequestResultVO updateUserMessage(User user,MultipartFile file,HttpSession session){
+        RequestResultVO statusVO = null;
+        try {
+            if (!user.getFace().equals("")) {
+                String imgPath = PathUtils.mkUploadImgs();
+                file.transferTo(new File(imgPath, file.getOriginalFilename()));
+                user.setFace(OurConstants.PERFIX_IMG_PATH + user.getFace());
+            }
+            userService.updateSelective(user);
+            User user1 = (User) userService.getById(user.getUid());
+            session.setAttribute(OurConstants.SESSION_IN_USER,user1);
+            statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        } catch (IOException e) {
+            e.printStackTrace();
+            statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            statusVO = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return statusVO;
     }

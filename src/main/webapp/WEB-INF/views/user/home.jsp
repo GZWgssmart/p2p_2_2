@@ -20,11 +20,11 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element">
                         <span><img alt="image" class="img-circle"
-                                   src="<%=path%>/static/images/profile_small.jpg"/></span>
+                                   src="<%=path%>${sessionScope.user.face}" style="width: 80px;height: 80px;"/></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                <span class="block m-t-xs"><strong class="font-bold">昵称</strong></span>
-                                <span class="text-muted text-xs block">${sessionScope.user.rname}<b class="caret"></b></span>
+                                <span class="text-muted text-xs block">${sessionScope.user.uname}<b class="caret"></b></span>
                                 </span>
                         </a>
                     </div>
@@ -40,7 +40,7 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">基本信息</a>
+                            <a class="J_menuItem" href="<%=path%>/user/user_message">基本信息</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">账户充值</a>

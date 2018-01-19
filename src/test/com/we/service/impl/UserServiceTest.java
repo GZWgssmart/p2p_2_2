@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.User;
 import com.we.service.UserService;
 import com.we.vo.UserVO;
 import org.junit.Test;
@@ -17,5 +18,12 @@ public class UserServiceTest extends BaseTest{
         System.out.println(userVO.getCount());
     }
 
+    @Test
+    public void user(){
+        User user = new User();
+        user.setUid(100008);
+        user.setUname("123");
+        userService.updateSelective(user);
+    }
 
 }
