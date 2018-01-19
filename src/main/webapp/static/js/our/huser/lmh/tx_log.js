@@ -1,8 +1,7 @@
 var txLog = {
     id: {
         priTab: 'txLog-list',
-        saveModal: 'save-excuse-modal',
-        saveForm: 'save-excuse-form'
+        search: 'txlog-search-form'
     },
     url: {
         pri: '/tx_log/pager_criteria'
@@ -11,14 +10,9 @@ var txLog = {
 
     },
     submit: {
-        search: function (select) {
-            if (select.value === '-1') {
-                setTable.postRefresh(txLog.id.priTab);
-            } else {
-                setTable.doSearch(txLog.id.searchForm,
-                    txLog.id.priTab,
-                    contextPath + txLog.url.pri);
-            }
+        search: function () {
+            setTable.doSearch(txLog.id.search,
+                txLog.id.priTab, txLog.url.pri);
         }
     }
 };

@@ -68,26 +68,29 @@ var txCheck = {
             }
         },
         checkNo: function () {
-            var excuseInput = $('#excuse-input').val();
-            var excuse = excuseInput.val();
-            var jsonData = {
-                'rcid': row.rcid,
-                'txid': row.txid,
-                'isok': 0,
-                'excuse': excuse
-            };
-            $.post(contextPath + txCheck.url.check,
-                jsonData,
-                function (data) {
-                    if (data.result === 'success') {
-                        swtAlert.request_success(data.message);
-                        setTable.postRefresh(txCheck.id.priTab);
-                        setTable.hideModal(txCheck.id.saveModal);
-                        excuseInput.val('');
-                    } else {
-                        swtAlert.request_fail(data.message);
-                    }
-                }, 'json');
+            var row = setTable.isSingleSelected(txCheck.id.priTab);
+            if (row) {
+                var excuseInput = $('#excuse-input');
+                var excuse = excuseInput.val();
+                var jsonData = {
+                    'rcid': row.rcid,
+                    'txid': row.txid,
+                    'isok': 0,
+                    'excuse': excuse
+                };
+                $.post(contextPath + txCheck.url.check,
+                    jsonData,
+                    function (data) {
+                        if (data.result === 'success') {
+                            swtAlert.request_success(data.message);
+                            setTable.postRefresh(txCheck.id.priTab);
+                            setTable.hideModal(txCheck.id.saveModal);
+                            excuseInput.val('');
+                        } else {
+                            swtAlert.request_fail(data.message);
+                        }
+                    }, 'json');
+            }
         }
     }
 };

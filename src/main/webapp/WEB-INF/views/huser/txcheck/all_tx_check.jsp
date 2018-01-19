@@ -30,10 +30,11 @@
         <th data-checkbox="true"></th>
         <th data-field="uName">申请人</th>
         <th data-field="hName">审核人</th>
-        <th data-field="money">提现金额（元）</th>
-        <th data-field="bankcard">提现卡号</th>
-        <th data-field="banktype">所属银行</th>
+        <th data-field="money">金额（元）</th>
+        <th data-field="bankcard">卡号</th>
+        <th data-field="banktype">银行</th>
         <th data-field="applyTime" data-formatter="setTable.formatDate">申请时间</th>
+        <th data-field="excuse">审核理由</th>
         <th data-field="checkTime" data-formatter="setTable.formatDate">审核时间</th>
         <th data-field="state" data-formatter="txCheck.fmt.fmtState">审核状态</th>
     </tr>
@@ -54,8 +55,7 @@
                     <div class="form-group">
                         <label for="excuse-input" class="col-sm-2 control-label">审核理由</label>
                         <div class="col-sm-10">
-                            <textarea name="excuse" class="form-control" id="excuse-input" placeholder="输入您的审核理由！">
-                            </textarea>
+                            <textarea name="excuse" class="form-control" id="excuse-input" placeholder="输入您的审核理由"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

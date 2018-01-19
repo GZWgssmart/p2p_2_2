@@ -5,6 +5,7 @@ import com.we.bean.TxCheck;
 import com.we.bean.TxLog;
 import com.we.bean.Usermoney;
 import com.we.common.OurConstants;
+import com.we.common.Pager;
 import com.we.dao.MoneyLogDAO;
 import com.we.dao.TxCheckDAO;
 import com.we.dao.TxLogDAO;
@@ -35,6 +36,15 @@ public class TxCheckServiceImpl extends AbstractBaseService implements TxCheckSe
     public void setTxCheckDAO(TxCheckDAO txCheckDAO) {
         super.setBaseDAO(txCheckDAO);
         this.txCheckDAO = txCheckDAO;
+    }
+
+    @Override
+    public Pager listCriteria(Long offset, Long limit, Object object) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(txCheckDAO.listCriteria(pager, object));
+        long size = txCheckDAO.listCount(object).size();
+        pager.setTotal(size);
+        return pager;
     }
 
     @Override

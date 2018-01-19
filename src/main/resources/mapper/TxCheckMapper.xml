@@ -111,16 +111,17 @@
         AND l.tid = c.txid
         AND (h.huid = c.huid OR c.huid is null)
         AND l.state != 1
+        GROUP BY l.tid
     </sql>
 
-    <select id="countCriteria" resultType="Long">
-        SELECT count(l.tid)
+    <select id="listCount" resultType="Long">
+        SELECT l.tid
         <include refid="criteriaQuery"/>
     </select>
 
     <select id="listCriteria" resultType="com.we.vo.TxCheckVO">
         SELECT l.uid, l.bankcard, l.banktype, l.money, l.date AS 'applyTime', l.state,
-            u.rname as 'uName', h.rname as 'hName',
+            u.rname as 'uName', if(c.huid IS not NULL,h.rname, '') AS 'hName',
             c.excuse, c.date AS 'checkTime', c.rcid, c.txid
         <include refid="criteriaQuery"/>
         ORDER BY l.state DESC , l.date DESC

@@ -1,6 +1,7 @@
 package com.we.service.impl;
 
 import com.we.bean.*;
+import com.we.common.Pager;
 import com.we.dao.MoneyLogDAO;
 import com.we.dao.TxCheckDAO;
 import com.we.dao.TxLogDAO;
@@ -23,6 +24,15 @@ import java.util.Date;
 public class TxLogServiceImpl extends AbstractBaseService implements TxLogService {
 
     private TxLogDAO txLogDAO;
+
+    @Override
+    public Pager listCriteria(Long offset, Long limit, Object object) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(txLogDAO.listCriteria(pager, object));
+        long size = txLogDAO.listCount(object).size();
+        pager.setTotal(size);
+        return pager;
+    }
 
     @Resource
     public void setTxLogDAO(TxLogDAO txLogDAO) {

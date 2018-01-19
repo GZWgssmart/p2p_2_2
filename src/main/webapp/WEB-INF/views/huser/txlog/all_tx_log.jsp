@@ -12,8 +12,12 @@
 </head>
 <body>
 <div class="tool-bar" id="tool-bar">
-    <form id="okborrow-search-form" class="form-inline">
-
+    <form id="txlog-search-form" class="form-inline">
+            申请时间
+            <input type="date" id="startTime" name="startTime" class="form-control">
+            至
+            <input type="date" id="endTime" name="endTime" class="form-control">
+            <a onclick="txLog.submit.search();" href="javascript:void(0);" class="btn btn-primary">搜索</a>
     </form>
 </div>
 <table id="txLog-list" class="table table-hover"
@@ -22,12 +26,13 @@
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="usrname">用户名</th>
+        <th data-field="uName">申请人</th>
+        <th data-field="hName">审核人</th>
         <th data-field="money">提现金额（元）</th>
         <th data-field="bankcard">提现卡号</th>
         <th data-field="banktype">所属银行</th>
-        <th data-field="date" data-formatter="setTable.formatDate">申请时间</th>
-        <th data-field="date" data-formatter="setTable.formatDate">审核时间</th>
+        <th data-field="applyTime" data-formatter="setTable.formatDate">申请时间</th>
+        <th data-field="checkTime" data-formatter="setTable.formatDate">审核时间</th>
     </tr>
     </thead>
 </table>
@@ -36,7 +41,6 @@
 <%@include file="../../common/js/js_boostrap.jsp" %>
 <%@include file="../../common/js/js_boostrap_table.jsp" %>
 <%@include file="../../common/js/js_sweetalert.jsp" %>
-<%@include file="../../common/js/js_form.jsp" %>
 <%@include file="../../common/js/js_data_dict.jsp" %>
 
 <script src="<%=path%>/static/js/our/huser/lmh/tx_log.js"></script>

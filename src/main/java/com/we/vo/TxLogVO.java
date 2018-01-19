@@ -8,7 +8,9 @@ public class TxLogVO {
 
     private Integer uid;
 
-    private Integer username;
+    private String uName;
+
+    private String hName;
 
     private String bankcard;
 
@@ -16,9 +18,9 @@ public class TxLogVO {
 
     private BigDecimal money;
 
-    private Date date;
+    private Date applyTime;
 
-    private Integer state;
+    private Date checkTime;
 
     public Integer getTid() {
         return tid;
@@ -36,12 +38,28 @@ public class TxLogVO {
         this.uid = uid;
     }
 
+    public String getuName() {
+        return uName;
+    }
+
+    public void setuName(String uName) {
+        this.uName = uName;
+    }
+
+    public String gethName() {
+        return hName;
+    }
+
+    public void sethName(String hName) {
+        this.hName = hName;
+    }
+
     public String getBankcard() {
         return bankcard;
     }
 
     public void setBankcard(String bankcard) {
-        this.bankcard = bankcard == null ? null : bankcard.trim();
+        this.bankcard = bankcard;
     }
 
     public String getBanktype() {
@@ -49,7 +67,7 @@ public class TxLogVO {
     }
 
     public void setBanktype(String banktype) {
-        this.banktype = banktype == null ? null : banktype.trim();
+        this.banktype = banktype;
     }
 
     public BigDecimal getMoney() {
@@ -60,19 +78,19 @@ public class TxLogVO {
         this.money = money;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getApplyTime() {
+        return applyTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setApplyTime(Date applyTime) {
+        this.applyTime = applyTime;
     }
 
-    public Integer getState() {
-        return state;
+    public Date getCheckTime() {
+        return checkTime;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setCheckTime(Date checkTime) {
+        this.checkTime = checkTime;
     }
 }

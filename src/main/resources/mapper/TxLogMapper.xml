@@ -113,24 +113,32 @@
     </update>
 
     <sql id="criteriaQuery">
-        FROM tx_log t, user u
+        FROM tx_log t, user u, huser h, tx_check c
         WHERE 1=1
         AND u.uid = t.uid
-        AND
+        AND t.tid = c.txid
+        AND h.huid = c.huid
+        AND t.state = 1
         <if test="query != null">
-            <if test="query.state != null">
-                AND state = #{query.state}
+            <if test="query.startTime != null">
+                and t.date <![CDATA[>=]]> #{query.startTime}
+            </if>
+            <if test="query.endTime != null ">
+                and t.date <![CDATA[<=]]> #{query.endTime}
             </if>
         </if>
+        group by t.tid
     </sql>
 
-    <select id="countCriteria" resultType="Long">
-        SELECT count(tid)
+    <select id="listCount" resultType="Long">
+        SELECT t.tid
         <include refid="criteriaQuery"/>
     </select>
 
     <select id="listCriteria" resultType="com.we.vo.TxLogVO">
-        SELECT t.*, u.rname as 'username'
+        SELECT t.tid, t.uid, t.bankcard, t.banktype, t.money, t.date AS 'applyTime',
+        h.rname AS 'hName', c.date AS 'checkTime',
+        u.rname as 'uName'
         <include refid="criteriaQuery"/>
         ORDER BY t.state ASC , t.date DESC
         LIMIT #{pager.offset}, #{pager.limit}
