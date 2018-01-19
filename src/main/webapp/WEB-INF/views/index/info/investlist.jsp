@@ -17,9 +17,9 @@
     <meta name="description" content="普金资本是目前国内知名的拥有国资背景的资理财公司，为投资理财用户提供多样的投资理财产品。投资额度小，短期投资周转快，高收益的安全理财尽在普金资本。" />
     <link rel="stylesheet" href="<%=path%>/static/css/index/public.css">
     <link rel="stylesheet" href="<%=path%>/static/css/index/index.css">
-    <%@include file="../../common/css/css_sweetalert.jsp" %>
 </head>
 <body>
+<%@include file="../../user/top.jsp"%>
 <%@include file="../../common/index/head_page.jsp" %>
 <form id="condition">
     <input type="hidden" name="xmqx1" id="xmqx1" />
@@ -85,7 +85,7 @@
 <div id="ajaxFooter"></div>
 </body>
 <script type="text/javascript" src="<%=path%>/static/js/jquery.min.js"></script>
-<%@include file="../../common/css/css_sweetalert.jsp" %>
+<%@include file="../../common/js/js_sweetalert.jsp" %>
 <script>
     $("#xmqx li").click(function () {
         $("#xmqx li").removeClass("active");
@@ -189,7 +189,7 @@
                         $("#listAllDate").append("<li>"+
                             "<div class='invest-title cl'>"+
                             "<p>"+data[i].lxname+"</p>"+
-                            "<h3>"+data[i].cpname+"</h3>"+
+                            "<h3 onclick='aaaa(\""+data[i].baid+"\")'>"+data[i].cpname+"</h3>"+
                             "</div>"+
                             "<div class='invest-content cl'>"+
                             "<ul>"+
@@ -215,7 +215,7 @@
                             "<p class='progress-text'>"+data[i].jindu+"%</p>"+
                             "</div><p class='row-top'>募集进度</p>"+
                             "</li>"+
-                            "<li class='row6' id='row6"+i+"'>"+
+                            "<li onclick='aaaa(\""+data[i].baid+"\")' class='row6' id='row6"+i+"'>"+
                             "<button type='button' class='btn '>立即投标</button>"+
                             "</li>"+
                             "</ul></div></li>");
@@ -249,7 +249,7 @@
             //点击上一页
             if(buttonText == "上一页"){
                 if(now == "1"){
-                    swal("已经是第一页","","warning");
+                    swa("已经是第一页","","warning");
                     return
                 }else{
                     $("#nowButton").text(Number(now) - 1);
@@ -267,5 +267,9 @@
                 }
             }
         });
+
+    function aaaa(id) {
+        window.location.href = "<%=path%>/borrowdetail/detail_page/"+id;
+    }
 </script>
 </html>

@@ -16,36 +16,10 @@
     <link rel="stylesheet" href="<%=path%>/static/css/index/qrl/index.css">
 </head>
 <body>
-
-<%--<%@include file="../../common/index/head.jsp"%>--%>
+<%@include file="../../user/top.jsp"%>
+<%@include file="../../common/index/head_page.jsp"%>
 <!-- nav -->
-<div class="nav">
-    <div class="wrap cl">
-        <div class="logo"><a href="https://www.pujinziben.com/"><img src="picture/logo.png" alt="普金资本"></a></div>
-        <div class="nav-bar">
-            <ul>
-                <li class="icon icon-acc"><a href="account.html">我的账户</a></li>
-                <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
-                <li><a href="about.html">信息披露</a></li>
-                <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
-                <li><a href="safety.html">安全保障</a></li>
-                <li class="active">
-                    <a href="investlist.html">投资理财</a>
-                    <div class="sub-nav">
-                        <a href="investlist.html#006">恒金保</a>
-                        <a href="investlist.html#004">普金保</a>
-                        <a href="investlist.html#003">多金宝</a>
-                        <a href="investlist.html#005">新手标</a>
-                        <a href="creditorlist.html">债权转让</a>
-                        <p class="left"></p>
-                        <p class="right"></p>
-                    </div>
-                </li>
-                <li><a href="https://www.pujinziben.com/">首页</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+
 <div class="calculator">
     <div class="calculator-top">
         <h3>收益计算器</h3>

@@ -28,66 +28,11 @@
 <div class="show-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a> 来提升用户体验.</div>
 <![endif]-->
 <!-- top -->
-<div class="top" id="top">
-    <!-- top -->
-    <div class="wrap">
-        <div class="top-left icon icon-phone">
-            <span>客服热线：</span>400-606-2079 <span>（8:30～17:30）</span>
-        </div>
-        <div class="top-right cl">
-            <ul class="top-list">
-                <li class="first"><a href="javascript:void(0);" class="">退出</a></li>
-                <li><a href="https://www.pujinziben.com/account.html#tuijian" class="icon icon-inv">邀请有礼</a></li>
-                <li><a href="https://www.pujinziben.com/about.html#gdbj">关于我们</a></li>
-                <li><a href="https://www.pujinziben.com/help.html">帮助中心</a></li>
-                <li><a href="https://www.pujinziben.com/account.html#ipay" class="pay">充值</a></li>
-                <li id="userName"><a href="<%=path%>/user/login_page" >登录</a></li>
-                <li class="no"><a href="javascript:void(0);" class="icon icon-app" id="app">APP下载</a></li>
-            </ul>
-            <div id="qrCodeDiv" style="display: none;">
-                <div class="CodeDiv">
-                    <img src="<%=path%>/static/images/index/qrl/qrCode_ios.png">
-                    <p>IOS下载</p>
-                </div>
-                <div class="CodeDiv">
-                    <img src="<%=path%>/static/images/index/qrl/qrCode_android.png">
-                    <p>Android下载</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
+<%@include file="../../user/top.jsp"%>
+<%@include file="../../common/index/head_page.jsp"%>
 <input type="hidden" id="user" value="${sessionScope.user.uid}"/>
 
-<!-- nav -->
-<div class="nav">
-    <div class="wrap cl">
-        <div class="logo"><a href="<%=path%>/"><img src="<%=path%>/static/images/index/qrl/logo.png" alt="普金资本"></a></div>
-        <div class="nav-bar">
-            <ul>
-                <li class="icon icon-acc"><a href="https://www.pujinziben.com/account.html">我的账户</a></li>
-                <!-- <li><a href="javascript:void(0);">信息披露</a></li> -->
-                <li><a href="https://www.pujinziben.com/about.html">信息披露</a></li>
-                <!-- <li><a href="javascript:void(0);" onclick="newPointer()">新手指导</a></li> -->
-                <li><a href="https://www.pujinziben.com/safety.html">安全保障</a></li>
-                <li class="active">
-                    <a href="https://www.pujinziben.com/investlist.html">投资理财</a>
-                    <div class="sub-nav">
-                        <a href="https://www.pujinziben.com/investlist.html#006">恒金保</a>
-                        <a href="https://www.pujinziben.com/investlist.html#004">普金保</a>
-                        <a href="https://www.pujinziben.com/investlist.html#003">多金宝</a>
-                        <a href="https://www.pujinziben.com/investlist.html#005">新手标</a>
-                        <a href="https://www.pujinziben.com/creditorlist.html">债权转让</a>
-                        <p class="left"></p>
-                        <p class="right"></p>
-                    </div>
-                </li>
-                <li><a href="<%=path%>/">首页</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+
 <div class="subject">
     <div class="subject-submit">
         <div class="subject-submit-l" style="display: block;">
