@@ -13,10 +13,15 @@
     <%@include file="../../common/css/css_bootstrap.jsp" %>
     <%@include file="../../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../../common/css/css_sweetalert.jsp" %>
+    <%@include file="include_checkVip.jsp" %>
+    <%@include file="include_user_look_detail.jsp"%>
 </head>
 <body>
 <div class="tool-bar" id="tool-bar">
-    <button class="btn btn-primary" data-toggle="modal" onclick="lookCheckDetail.lookDetail();">查看内容</button>
+    <a class="btn btn-primary" href="javascript:void(0);" onclick="lookCheckDetail.lookDetail();">查看内容</a>
+    <a class="btn btn-success" href="javascript:void(0);" onclick="lookCheckDetail.checkPass();">审核通过</a>
+    <a class="btn btn-danger" href="javascript:void(0);" onclick="lookCheckDetail.checkNoPass();">拒绝通过</a>
+    <a class="btn btn-warning" href="javascript:void(0);" onclick="lookCheckDetail.lookDetail();">搜索</a>
 </div>
 <table id="checkVip-list" class="table table-hover"
        data-url="<%=path%>/rzvip/pager_criteria">
@@ -25,7 +30,7 @@
         <th data-checkbox="true"></th>
         <th data-field="uName">申请人</th>
         <th data-field="huid">审核人</th>
-        <th data-field="isok">审核是否通过</th>
+        <th data-field="isok"  data-formatter="txCheck.fmt.fmtState">审核是否通过</th>
         <th data-field="excuse">审核理由</th>
         <th data-field="date" data-formatter="setTable.formatDate">审核时间</th>
     </tr>
@@ -44,21 +49,38 @@
     });
 </script>
 <script src="<%=path%>/static/js/our/jquery-form.js"></script>
-
+<script src="<%=path%>/static/js/our/huser/lmh/tx_check.js"></script>
 
 <script>
 
     var lookCheckDetail = {
-
         lookDetail:function () {
             var row = setTable.isSingleSelected('checkVip-list');
             if(row) {
                 $.get('/user/rz_info/' + row.uid,
                     function (data) {
-                        $('excuse').attributes('src',contentPath + data.rnid);
-                        $('#look-detail-modal').form('load',data);
+                        $('#face').attr('src', contextPath + data.rnid);
+                        $('#look-detail-form').form('load',data);
                     },'json');
                 setTable.showModal('look-detail-modal');
+            }
+        },
+        checkPass:function(){
+            var row = setTable.isSingleSelected('checkVip-list');
+            if(row) {
+                if(row.state === 2) {
+
+                }
+            }
+        },
+        checkNoPass:function () {
+            var row = setTable.isSingleSelected('checkVip-list');
+            if(row) {
+                if(row.state === 2) {
+                    setTable.showModal(setTable.request_success);
+                } else {
+                    swtAlert.warnNoTimer("请选择一条数据进行操作");
+                }
             }
         }
     };

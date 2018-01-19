@@ -292,7 +292,9 @@
     SELECT u.uid,u.phone,u.idtype,u.idno,u.email,u.rname,u.face,u.sex,u.register_time,
     rz.xl,rz.ism,rz.bschool,rz.addr,rz.work,rz.age
     FROM user u ,rzvip rz
-    limit #{pager.offset},#{pager.limit}
+    WHERE
+    u.uid = rz.uid
+    AND u.uid = #{uid}
   </select>
 
 </mapper>
