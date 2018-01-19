@@ -83,6 +83,7 @@
 <input type="hidden" value="${requestScope.claculateMoney.nprofit}" id="nprofit1">
 <input type="hidden" value="${requestScope.claculateMoney.term}" id="term1">
 <input type="hidden" value="${requestScope.claculateMoney.bzid}" id="bzid1">
+<%@include file="../../common/index/foot_page.jsp" %>
 <%@include file="../../common/js/js_jquery.jsp"%>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/jquery.js"></script>
 <script type="text/javascript" src="<%=path%>/static/js/index/qrl/public.js"></script>
