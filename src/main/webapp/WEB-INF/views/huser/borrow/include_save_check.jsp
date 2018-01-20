@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <form id="check-form" class="form-horizontal">
-                    <input type="hidden" name="huid" value="${sessionScope.user.huid}"/>
+                    <input type="hidden" name="huid" value="${sessionScope.huser.huid}"/>
                     <input type="hidden" name="isok" value="0"/>
                     <input type="hidden" name="shid" id="check-shid-input"/>
                     <input type="hidden" name="baid" id="check-baid-input"/>

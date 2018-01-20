@@ -167,7 +167,7 @@
       <if test="tid != null">
         tid = #{tid,jdbcType=INTEGER},
       </if>
-      <if test="face != null">
+      <if test="face != null and face != '' ">
         face = #{face,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">

@@ -23,6 +23,7 @@ public class UserServiceTest extends BaseTest{
         User user = new User();
         user.setUid(100008);
         user.setUname("123");
+        user.setFace("");
         userService.updateSelective(user);
     }
 

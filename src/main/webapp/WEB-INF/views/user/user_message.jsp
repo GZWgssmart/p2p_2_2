@@ -56,6 +56,13 @@
                 <label><input type="radio" name="sex" id="sex6" value="保密" checked>保密</label>
             </div>
         </c:if>
+        <c:if test='${sessionScope.user.sex == null}'>
+            <div class="radio col-sm-7">
+                <label><input type="radio" name="sex" id="sex11" value="男">男</label>
+                <label><input type="radio" name="sex" id="sex12" value="女">女</label>
+                <label><input type="radio" name="sex" id="sex13" value="保密" checked>保密</label>
+            </div>
+        </c:if>
     </div>
     <div class="form-group">
         <label for="uname" class="col-sm-2 control-label">昵称：</label>

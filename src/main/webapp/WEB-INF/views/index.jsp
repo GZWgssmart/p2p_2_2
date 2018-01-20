@@ -765,7 +765,7 @@
             //多金宝
             $http({
                 method: 'get',
-                params:{type:'7'},
+                params:{type:8},
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.duojinbao = response.data;

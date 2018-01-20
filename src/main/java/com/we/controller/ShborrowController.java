@@ -37,7 +37,7 @@ public class ShborrowController {
             borrowapply.setBaid(shborrow.getBaid());
             borrowapply.setState(shborrow.getIsok());
             borrowapplyService.updateSelective(borrowapply);
-            Huser huser = (Huser) session.getAttribute(OurConstants.SESSION_IN_USER);
+            Huser huser = (Huser) session.getAttribute(OurConstants.SESSION_IN_HUSER);
             shborrow.setHuid(huser.getHuid());
             shborrow.setDate(Calendar.getInstance().getTime());
             shborrowService.updateSelective(shborrow);
@@ -77,7 +77,7 @@ public class ShborrowController {
     @RequestMapping("pager_criteria")
     @ResponseBody
     public Pager pagerCriteria(Long offset, Long limit, Shborrow shborrow, HttpSession session) {
-        Huser huser = (Huser) session.getAttribute(OurConstants.SESSION_IN_USER);
+        Huser huser = (Huser) session.getAttribute(OurConstants.SESSION_IN_HUSER);
         shborrow.setHuid(huser.getHuid());
         return shborrowService.listCriteria(offset, limit, shborrow);
     }
