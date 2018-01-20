@@ -67,7 +67,7 @@
         <div class="form-group" style="margin-top: 10px">
             <div class="col-sm-2 control-label"></div>
             <input type="button" class="btn btn-primary" onclick="addHuser()" value="确定"/>
-            &nbsp;&nbsp;<a type="button" class="btn btn-warning" a href="javascript:history.go(-1)">返回</a>
+            &nbsp;&nbsp;<a type="button" class="btn btn-warning"  href="javascript:history.go(-1)">返回</a>
         </div>
     </form>
 </div>

@@ -1,4 +1,6 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%
     String path = request.getContextPath();
 %>
@@ -149,9 +151,11 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_huser_page">所有员工</a>
-                        </li>
+                        <shiro:hasRole name="superadmin">
+                            <li>
+                                <a class="J_menuItem" href="<%=path%>/huser/all_huser_page">所有员工</a>
+                            </li>
+                        </shiro:hasRole>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_user_page">普通用户</a>
                         </li>

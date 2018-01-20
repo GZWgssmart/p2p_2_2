@@ -7,6 +7,13 @@
 
     <context:component-scan base-package="com.we.controller" />
     <mvc:annotation-driven />
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
@@ -49,7 +56,6 @@
     <mvc:resources location="/static/ueditor/" mapping="/static/ueditor/**" />
     <mvc:resources location="/static/ztree/" mapping="/static/ztree/**" />
     <mvc:resources location="/static/plugins/" mapping="/static/plugins/**" />
-    <mvc:resources location="/static/sweetalert/" mapping="/static/sweetalert/**" />
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">

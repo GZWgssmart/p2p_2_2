@@ -30,7 +30,7 @@
         phone, huname,email,create_time,password)
         values (#{huid,jdbcType=INTEGER}, #{rname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
         #{phone,jdbcType=CHAR}, #{huname,jdbcType=VARCHAR},
-        #{email,jdbcType=VARCHAR},#{createTime},#{passworld})
+        #{email,jdbcType=VARCHAR},#{createTime},#{password})
     </insert>
     <insert id="saveSelective" parameterType="com.we.bean.Huser">
         insert into huser
@@ -101,7 +101,7 @@
     </update>
 
     <select id="listCriteria" resultType="com.we.bean.Huser">
-        select * from huser order by create_time desc
+        select * from huser where huname !='superadmin' order by create_time desc
         <if test="pager.offset != null and pager.limit != null">
             limit #{pager.offset},#{pager.limit}
         </if>
