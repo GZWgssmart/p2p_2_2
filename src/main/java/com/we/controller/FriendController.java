@@ -58,16 +58,22 @@ public class FriendController {
 
     @PostMapping("update")
     @ResponseBody
-    public RequestResultVO update(Friend friend,BindingResult bindingResult) {
+    public RequestResultVO update(Friend friend,MultipartFile file) {
         RequestResultVO vo = null;
-        try{
-            if(bindingResult.hasErrors()) {
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
-            }else {
-                friendService.updateSelective(friend);
-                vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        try {
+            friend.setFid(friend.getFid());
+            if (!friend.getImgpath().equals("")) {
+                String imgPath = PathUtils.mkUploadImgs();
+                file.transferTo(new File(imgPath, file.getOriginalFilename()));
+                friend.setImgpath(OurConstants.PERFIX_IMG_PATH + friend.getImgpath());
             }
-        }catch (RuntimeException e) {
+            friendService.updateSelective(friend);
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
+        } catch (IOException e) {
+            e.printStackTrace();
+            vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return vo;

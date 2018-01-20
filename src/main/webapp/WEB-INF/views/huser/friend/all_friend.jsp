@@ -11,7 +11,7 @@
 %>
 <html>
 <head>
-    <title>公司动态页面</title>
+    <title>合作公司页面</title>
     <%@include file="../../common/css/css_bootstrap.jsp" %>
     <%@include file="../../common/css/css_bootstrap-table.jsp" %>
     <%@include file="../../common/css/css_sweetalert.jsp" %>
@@ -24,6 +24,7 @@
     <button class="btn btn-default" data-toggle="modal" onclick="pagerHuserFriend.updateFriend();">修改合作公司</button>
 </div>
 <table id="friend-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/friend/pager_criteria">
     <thead>
     <tr>
@@ -35,8 +36,8 @@
     </thead>
 </table>
 
-<%@include file="include_save_friend.jsp"%>
 <%@include file="include_update_friend.jsp"%>
+<%@include file="include_save_friend.jsp"%>
 
 <%@include file="../../common/js/js_jquery.jsp" %>
 <%@include file="../../common/js/js_boostrap.jsp" %>
@@ -47,20 +48,18 @@
 <%@include file="../../common/js/js_data_dict.jsp" %>
 <%@include file="../../common/js/js_fileinput.jsp" %>
 
-<script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
-<script src="<%=path %>/static/ueditor/ueditor.all.js"></script>
 <script src="<%=path%>/static/js/our/huser/xdp/pager_huser_friend.js"></script>
 <script>
     $(function () {
         setTable.setBootstrapTable('friend-list');
     });
 
-    $("#pic").fileinput({
+    $("#update-imgpath").fileinput({
         'allowedFileExtensions' : ['jpg', 'png','gif'],
         showUpload: false //是否显示上传按钮
     });
 
-    $("#pic1").fileinput({
+    $("#imgpath").fileinput({
         'allowedFileExtensions' : ['jpg', 'png','gif'],
         showUpload: false, //是否显示上传按钮
     });

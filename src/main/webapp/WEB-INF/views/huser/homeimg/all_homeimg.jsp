@@ -24,6 +24,7 @@
     <button class="btn btn-default" data-toggle="modal" onclick="pagerHuserHomeImg.updateHomeImg();">修改</button>
 </div>
 <table id="homeImg-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/homeImg/pager_criteria">
     <thead>
     <tr>

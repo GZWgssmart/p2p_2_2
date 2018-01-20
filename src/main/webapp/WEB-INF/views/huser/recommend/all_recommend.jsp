@@ -37,6 +37,7 @@
     </form>
 </div>
 <table id="recommend-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/recommend/pager_criteria">
     <thead>
     <tr>

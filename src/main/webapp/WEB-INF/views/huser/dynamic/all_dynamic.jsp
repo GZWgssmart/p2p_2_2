@@ -25,6 +25,7 @@
     <button class="btn btn-default" data-toggle="modal" onclick="pagerHuserDynamic.updateDynamic();">修改</button>
 </div>
 <table id="dynamic-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/dynamic/pager_criteria">
     <thead>
     <tr>

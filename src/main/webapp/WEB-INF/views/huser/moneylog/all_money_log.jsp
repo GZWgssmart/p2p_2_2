@@ -35,6 +35,7 @@
     </form>
 </div>
 <table id="money-log-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/money_log/pager_criteria">
     <thead>
     <tr>

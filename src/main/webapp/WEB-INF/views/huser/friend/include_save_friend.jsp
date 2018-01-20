@@ -37,8 +37,6 @@
     </div>
 </div>
 
-<script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
-<script src="<%=path %>/static/ueditor/ueditor.all.js"></script>
 <script>
     function showForm () {
         return $('#addForm').validate({
@@ -48,28 +46,11 @@
             debug:false,
             onkeyup:false,
             rules:{
-                'title':{
+                'imgalert':{
                     required: true
-                }
-            },
-            messages:{
-                'title': {
-
                 }
             }
         });
-    }
-
-    var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
-    }
-
-    var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
     }
 
     function save() {

@@ -25,6 +25,7 @@
     <button class="btn btn-default" data-toggle="modal" onclick="pagerHuserMedia.updateMedia();">修改</button>
 </div>
 <table id="media-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/media/pager_criteria">
     <thead>
     <tr>

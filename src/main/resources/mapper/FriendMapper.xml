@@ -60,7 +60,7 @@
   <update id="updateSelective" parameterType="com.we.bean.Friend" >
     update friend
     <set >
-      <if test="imgpath != null" >
+      <if test="imgpath != null and imgpath != '' " >
         imgPath = #{imgpath,jdbcType=VARCHAR},
       </if>
       <if test="imghref != null" >

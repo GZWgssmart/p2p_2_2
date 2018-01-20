@@ -8,10 +8,6 @@ var pagerHuserFriend = {
     }
 };
 
-var updateUe = UE.getEditor('imgalert',{
-    initialFrameHeight: 400
-});
-
 function showForm1 () {
     return $('#updateForm').validate({
         onfocusout: function(element){
@@ -20,7 +16,7 @@ function showForm1 () {
         debug:false,
         onkeyup:false,
         rules:{
-            'title':{
+            'imgalert':{
                 required: true
             }
         }
@@ -32,9 +28,9 @@ function update() {
     if (updateForm.valid() === false) {
         swtAlert.warn_info(dataDict.form.validForm);
     } else {
-        var picName = $('#imgpath').val();
+        var picName = $('#update-imgpath').val();
         picName = picName.substr(picName.lastIndexOf('\\') + 1);
-        var realImg = $('#realImg1').val(picName);
-        submitForm.update('/letter/update_huser','updateForm','letter-list','update-letter-modal');
+        $('#realImg1').val(picName);
+        submitForm.ajaxSave('/friend/update','updateForm','friend-list','update-friend-modal');
     }
 };
