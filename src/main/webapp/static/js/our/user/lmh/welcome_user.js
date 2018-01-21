@@ -7,6 +7,7 @@ var wecUsr = {
         noBindCard: '请先绑定银行卡'
     },
     id: {
+        priTab: '',
         txModal: 'welcome-tx-modal',
         czModal: 'welcome-cz-modal',
         txSelect: 'tx-select',
@@ -16,7 +17,9 @@ var wecUsr = {
     },
     url: {
         binding: '/bankcard/list_card/',
-        money: '/usermoney/get/'
+        money: '/usermoney/get/',
+        tx: '/moneyLog/tx',
+        cz: '/moneyLog/cz'
     },
     open: {
         txModal: function () {
@@ -50,16 +53,40 @@ var wecUsr = {
                     'zpwd': {
                         required: true
                     },
-                    'cardno': {
+                    'bcid': {
                         required: true
                     }
                 },
                 messages:{
-                    'cardno':{
+                    'bcid':{
                         required: dataDict.form.noSelected
                     }
                 }
             });
+        }
+    },
+    submit: {
+        tx: function () {
+            wecUsr.submit.txOrcz(wecUsr.url.tx, wecUsr.id.txForm, wecUsr.id.txModal);
+        },
+        cz: function () {
+            wecUsr.submit.txOrcz(wecUsr.url.cz, wecUsr.id.czForm, wecUsr.id.czModal);
+        },
+        txOrcz: function (url, formId, modalId) {
+            var $form = $('#' + formId);
+            if ($form.valid()) {
+                $.post(url, $form.serialize(),
+                    function (data) {
+                        if (data.result === 'success') {
+                            swtAlert.request_success(data.message);
+                            setTimeout("location.reload()", 1500);
+                        } else {
+                            swtAlert.request_fail_no_timer(data.message);
+                        }
+                    }, 'json');
+            } else {
+                swtAlert.warnNoTimer(dataDict.form.validForm);
+            }
         }
     },
     getBindData: function (userId) {

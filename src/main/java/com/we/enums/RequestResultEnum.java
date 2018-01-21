@@ -37,8 +37,13 @@ public enum RequestResultEnum {
     HK_FAIL(505, "fail", "还款失败，请稍后再试！"),
     HK_FAIL_ZPWD(506, "fail", "还款失败，支付密码错误"),
     PAY_PWD_ERROR(507, "fail", "支付密码错误"),
-    PAY_PWD_TRUE(508, "success", "支付密码正确"),
-    SK_SUCCESS(206, "success", "收款成功！");
+    PAY_PWD_TRUE(207, "success", "支付密码错误，请重新输入"),
+    SK_SUCCESS(206, "success", "收款成功！"),
+    TX_FAIL(508, "fail", "申请提现失败！请稍后再试"),
+    TX_FAIL_NO_KYMONEY(509, "fail", "申请提现失败！ 可用余额不足"),
+    TX_SUCCESS(208, "success", "申请成功！请耐心等待结果"),
+    CZ_FAIL(510, "fail", "充值失败！请稍后再试"),
+    CZ_SUCCESS(210, "success", "充值成功！");
 
     private Integer code;
     private String result;

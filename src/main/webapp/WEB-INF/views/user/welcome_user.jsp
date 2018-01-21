@@ -62,6 +62,8 @@
 <%@include file="../common/js/js_sweetalert.jsp" %>
 <%@include file="../common/js/js_boostrap.jsp" %>
 <%@include file="../common/js/js_boostrap_table.jsp" %>
+<%@include file="../common/js/js_data_dict.jsp" %>
+<%@include file="../common/js/js_form.jsp" %>
 <script src="<%=path%>/static/js/our/user/lmh/welcome_user.js"></script>
 <script>
     $(function () {

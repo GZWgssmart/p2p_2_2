@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label for="tx-select" class="col-sm-2 control-label">银行卡</label>
                         <div class="col-sm-10">
-                            <select name="cardno" id="tx-select" class="load-data form-control">
+                            <select name="bcid" id="tx-select" class="load-data form-control">
 
                             </select>
                         </div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="reset" class="btn btn-default" value="重置"/>
-                        <a href="javascript:void(0);" onclick="pagerBorrow.submitForm.save();" class="btn btn-primary">申请提现</a>
+                        <a href="javascript:void(0);" onclick="wecUsr.submit.tx();" class="btn btn-primary">申请提现</a>
                     </div>
                 </form>
             </div>

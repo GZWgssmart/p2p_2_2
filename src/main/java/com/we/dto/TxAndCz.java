@@ -11,7 +11,7 @@ public class TxAndCz {
 
     private Integer uid;
 
-    private Integer cardno;
+    private Integer bcid;
 
     private String zpwd;
 
@@ -25,12 +25,12 @@ public class TxAndCz {
         this.uid = uid;
     }
 
-    public Integer getCardno() {
-        return cardno;
+    public Integer getBcid() {
+        return bcid;
     }
 
-    public void setCardno(Integer cardno) {
-        this.cardno = cardno;
+    public void setBcid(Integer bcid) {
+        this.bcid = bcid;
     }
 
     public String getZpwd() {

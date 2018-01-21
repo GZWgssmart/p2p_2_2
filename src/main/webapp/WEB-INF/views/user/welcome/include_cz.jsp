@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label for="cz-select" class="col-sm-2 control-label">银行卡</label>
                         <div class="col-sm-10">
-                            <select name="cardno" id="cz-select" class="load-data form-control"></select>
+                            <select name="bcid" id="cz-select" class="load-data form-control"></select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="reset" class="btn btn-default" value="重置"/>
-                        <a href="javascript:void(0);" onclick="pagerBorrow.submitForm.save();" class="btn btn-primary">立即充值</a>
+                        <a href="javascript:void(0);" onclick="wecUsr.submit.cz();" class="btn btn-primary">立即充值</a>
                     </div>
                 </form>
             </div>

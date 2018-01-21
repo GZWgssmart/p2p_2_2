@@ -33,6 +33,9 @@
                 #{state,jdbcType=INTEGER})
     </insert>
     <insert id="saveSelective" parameterType="com.we.bean.TxLog">
+        <selectKey keyProperty="tid" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into tx_log
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="tid != null">

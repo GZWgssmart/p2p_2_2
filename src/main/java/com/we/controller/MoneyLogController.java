@@ -1,7 +1,12 @@
 package com.we.controller;
 
+import com.we.bean.User;
+import com.we.common.EncryptUtils;
+import com.we.common.OurConstants;
 import com.we.common.Pager;
+import com.we.common.UserUtils;
 import com.we.dto.TxAndCz;
+import com.we.enums.RequestResultEnum;
 import com.we.query.MoneyLogQuery;
 import com.we.service.MoneyLogService;
 import com.we.vo.RequestResultVO;
@@ -24,13 +29,31 @@ public class MoneyLogController {
     @RequestMapping("tx")
     @ResponseBody
     public RequestResultVO tx(TxAndCz tx, HttpSession session) {
-        return moneyLogService.tx(tx);
+        RequestResultVO resultVO = RequestResultVO.status(RequestResultEnum.PAY_PWD_ERROR);
+        if (checkZpwd(tx.getZpwd(), session)) {
+            tx.setUid(UserUtils.getUser(session).getUid());
+            resultVO = moneyLogService.tx(tx);
+        }
+        return resultVO;
     }
 
     @RequestMapping("cz")
     @ResponseBody
     public RequestResultVO cz(TxAndCz cz, HttpSession session) {
-        return moneyLogService.cz(cz);
+        RequestResultVO resultVO = RequestResultVO.status(RequestResultEnum.PAY_PWD_ERROR);
+        if (checkZpwd(cz.getZpwd(), session)) {
+            cz.setUid(UserUtils.getUser(session).getUid());
+            resultVO = moneyLogService.cz(cz);
+        }
+        return resultVO;
+    }
+
+    private boolean checkZpwd(String zpwd, HttpSession session) {
+        User user = UserUtils.getUser(session);
+        if (zpwd != null && EncryptUtils.md5(zpwd).equals(user.getZpwd())) {
+            return true;
+        }
+        return false;
     }
 
 	@RequestMapping("pager_criteria")
