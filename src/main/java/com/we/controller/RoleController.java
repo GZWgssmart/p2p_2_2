@@ -54,8 +54,15 @@ public class RoleController {
     @ResponseBody
     public RequestResultVO update(Role role, String jurIds){
         roleService.update(role);
-        rolejurService.deletes(String.valueOf(role.getJid()));
-        rolejurService.saveRoleJur(role.getJid(),jurIds);
+        if(jurIds == ""){
+            //去除用户的权限
+            rolejurService.deletes(String.valueOf(role.getJid()));
+        }
+        if(jurIds != null &&  jurIds != ""){
+            //更新用户的权限
+            rolejurService.deletes(String.valueOf(role.getJid()));
+            rolejurService.saveRoleJur(role.getJid(),jurIds);
+        }
         return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
     }
 

@@ -165,21 +165,23 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-picture-o"></i>
-                        <span class="nav-label">角色权限</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/role/all_role_page">所有角色</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/jur/all_jur_page">所有权限</a>
-                        </li>
-                    </ul>
-                </li>
+                <shiro:hasRole name="superadmin">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="nav-label">角色权限</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<%=path%>/role/all_role_page">所有角色</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<%=path%>/jur/all_jur_page">所有权限</a>
+                            </li>
+                        </ul>
+                    </li>
+                </shiro:hasRole>
 
                 <li>
                     <a href="#">
@@ -213,7 +215,7 @@
                             <div class="col-sm-2 control-label">用户名</div>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="huname" id="huname"
-                                       placeholder="用户名"/>
+                                       placeholder="用户名" readonly/>
                             </div>
                         </div>
                         <div class="form-group">

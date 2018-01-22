@@ -10,6 +10,7 @@ import com.we.service.RoleuserService;
 import com.we.vo.RequestResultVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.junit.Test;
@@ -177,11 +178,21 @@ public class HuserController {
         return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
     }
 
+    @RequiresRoles("superadmin")
     @RequestMapping("update")
     @ResponseBody
-    public RequestResultVO update(Huser huser, String roleIds) {
+    public RequestResultVO update(Huser huser, String roleIds,HttpSession session) {
         huserService.update(huser);
+        if (roleIds == null){
+            //管理员更新自己的信息
+            session.setAttribute(OurConstants.SESSION_IN_HUSER,huserService.getById(huser.getHuid()));
+        }
+        if (roleIds == ""){
+            //去掉用户的权限
+            roleuserService.deletes(String.valueOf(huser.getHuid()));
+        }
         if(roleIds != null && roleIds != ""){
+            //更新用户权限
             roleuserService.deletes(String.valueOf(huser.getHuid()));
             roleuserService.saveRoleuser(huser.getHuid(),roleIds);
         }
