@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -117,17 +118,14 @@ public class UserController {
      * @return 请求结果
      */
     @RequestMapping("checkVip")
-    @ResponseBody
-    public RequestResultVO checkVip(HttpSession session) throws IOException {
-        RequestResultVO requestResultVO = null;
+    public String checkVip(HttpSession session) throws IOException {
         User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
         //充值金额大于一万，投资金额大于一千
         if(moneyLogService.countMoneyByUid(user.getUid()) < 10000 || tzbService.sumMoneyByUid(user.getUid()) < 1000){
-            requestResultVO = RequestResultVO.status(RequestResultEnum.NO_PERMISSION_BORROW_MONEY);
+            return "user/no_vip";
         }else{
-            requestResultVO = RequestResultVO.status(RequestResultEnum.HAVE_PERMISSION);
+            return"user/vipPage";
         }
-        return requestResultVO;
     }
 
     @RequestMapping("vip_page")

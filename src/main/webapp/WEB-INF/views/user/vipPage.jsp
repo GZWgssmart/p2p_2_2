@@ -15,20 +15,20 @@
     <link rel="stylesheet" href="<%=path %>/static/css/bootstrap.min.css">
 </head>
 <body>
-<div class="form-group" style="text-align: center;margin-top: 60px;">
+<div class="container" style="text-align: center;margin-top: 60px;">
     <input type="hidden" id="rid">
     <input type="hidden" id="rcid">
-    <span id="vipState"style="font-size: 22px;"></span>
+    <span id="vipState" style="font-size: 22px;"></span>
     <form id="vipForm" class="form-horizontal">
         <input type="hidden" name="uid" value="${sessionScope.user.uid}"/>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">学历：</label>
+            <label for="xl" class="col-sm-2 control-label">学历：</label>
             <div class="col-sm-8">
             <input type="text" name="xl" id="xl" class="form-control" >
             </div>
         </div>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label"> 婚否：</label>
+            <label for="ism" class="col-sm-2 control-label"> 婚否：</label>
             <div class="col-sm-2" style="margin-left: -45px;">
                 <div class="checkbox" id="ism">
                     <label><input name="ism" type="radio" value="是">是</label>
@@ -37,28 +37,20 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label"> 毕业院校：</label>
+            <label for="bschool" class="col-sm-2 control-label"> 毕业院校：</label>
             <div class="col-sm-8">
             <input name="bschool" id="bschool"class="form-control" >
             </div>
         </div>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">居住地：</label>
+            <label for="addr" class="col-sm-2 control-label">居住地：</label>
             <div class="col-sm-8">
                 <input name="addr" id="addr" class="form-control" >
             </div>
         </div>
+
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label"> 婚否：</label>
-            <div class="col-sm-2" style="margin-left: -45px;">
-                <div class="checkbox" id="work">
-                    <label><input name="work" type="radio" value="是">是</label>
-                    <label><input name="work" type="radio" value="否">否</label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">  年龄：</label>
+            <label for="age" class="col-sm-2 control-label">  年龄：</label>
             <div class="col-sm-8">
             <input  name="age" id="age"class="form-control" >
             </div>
@@ -192,24 +184,24 @@
         onkeyup:false,
         rules:{
             'xl':{
-                required: true,
+                required: true
             },
             'ism':{
-                required: true,
+                required: true
             },
             'bschool':{
-                required: true,
+                required: true
             },
             'addr':{
-                required: true,
+                required: true
             },
             'work':{
-                required: true,
+                required: true
             },
             'age':{
                 required: true,
-                isNumberGtZero:true,
-            },
+                isNumberGtZero:true
+            }
         }
     });
 </script>

@@ -59,7 +59,7 @@
                             <a class="J_menuItem" href="<%=path%>/user/safety">安全设置</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="javaScript:void(0);" onclick="checkVip();">VIP</a>
+                            <a class="J_menuItem" href="<%=path%>/user/checkVip" >VIP</a>
                         </li>
                     </ul>
                 </li>
@@ -144,7 +144,6 @@
 
 <%@include file="../common/manage/index_js.jsp" %>
 <%@include file="../common/js/js_sweetalert.jsp" %>
-<script src="<%=path%>/static/js/our/user/lmh/home_check_vip.js"></script>
 </body>
 <script>
     $(function () {
