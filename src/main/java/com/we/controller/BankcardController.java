@@ -33,6 +33,16 @@ public class BankcardController {
 
     private BankcardService bankcardService;
 
+    @RequestMapping("remove/{bcid}")
+    @ResponseBody
+    public RequestResultVO remove(@PathVariable Integer bcid) {
+        Integer result = bankcardService.removeById(bcid);
+        if (result == 1) {
+            return RequestResultVO.status(RequestResultEnum.UNBIND_SUCCESS);
+        }
+        return RequestResultVO.status(RequestResultEnum.UNBIND_FAIL);
+    }
+
     @RequestMapping("list_card/{uid}")
     @ResponseBody
     public List<ComboboxVO> listCard(@PathVariable Integer uid) {
@@ -50,28 +60,23 @@ public class BankcardController {
                 bankcardService.updateSelective(bankcard);
                 vo = RequestResultVO.status(RequestResultEnum.UPDATE_SUCCESS);
             }
-        }catch (RuntimeException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
             vo = RequestResultVO.status(RequestResultEnum.UPDATE_FAIL);
         }
         return vo;
     }
 
-    @RequestMapping("addBankcard")
+    @PostMapping("save")
     @ResponseBody
-    public RequestResultVO bindingBankcard(HttpSession session, Bankcard bankcard){
-       RequestResultVO resultVO = null;
-        User user = (User)session.getAttribute(OurConstants.SESSION_IN_USER);
-        bankcard.setUid(user.getUid());
-        bankcard.setDate(new Date());
-        bankcardService.save(bankcard);
-        resultVO = RequestResultVO.status(RequestResultEnum.BINDING_BANKCARD_SUCCESS);
-        return resultVO;
+    public RequestResultVO bindingBankcard(HttpSession session, Bankcard bankcard) {
+        User user = UserUtils.getUser(session);
+        return bankcardService.save(user, bankcard);
     }
 
     @RequestMapping("pager_criteria")
     @ResponseBody
-    public Pager allBankcard(Long offset, Long limit, Bankcard bankcard, HttpSession session){
+    public Pager allBankcard(Long offset, Long limit, Bankcard bankcard, HttpSession session) {
         User user = UserUtils.getUser(session);
         bankcard.setUid(user.getUid());
         return bankcardService.listCriteria(offset, limit, bankcard);

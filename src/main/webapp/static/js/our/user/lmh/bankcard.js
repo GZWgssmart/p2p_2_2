@@ -9,7 +9,8 @@ var bkCd = {
     url: {
         pri: '/bankcard/pager_criteria',
         save: '/bankcard/save',
-        update: '/bankcard/update'
+        update: '/bankcard/update',
+        unbind: '/bankcard/remove/'
     },
     open: {
         saveModal: function () {
@@ -62,6 +63,29 @@ var bkCd = {
         update: function () {
             submitForm.update(contextPath + bkCd.url.update,
                 bkCd.id.updateForm, bkCd.id.priTab, bkCd.id.updateModal);
+        },
+        unbind: function () {
+            var row = setTable.isSingleSelected(bkCd.id.priTab);
+            if (row) {
+                swal({
+                    title: dataDict.manage.removeConfirm,
+                    text: dataDict.manage.noCancelMsg,
+                    type: 'warning',
+                    showCancelButton: true
+                }).then(function (isConfirm) {
+                    if (isConfirm.value) {
+                        $.post(contextPath + bkCd.url.unbind + row.bcid,
+                            function (data) {
+                                if (data.result === 'success') {
+                                    swtAlert.request_success(data.message);
+                                    $('#' + bkCd.id.priTab).bootstrapTable('refresh');
+                                } else {
+                                    swtAlert.request_fail(data.message);
+                                }
+                            },'json');
+                    }
+                });
+            }
         }
     }
 };

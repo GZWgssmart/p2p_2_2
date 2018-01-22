@@ -43,7 +43,11 @@ public enum RequestResultEnum {
     TX_FAIL_NO_KYMONEY(509, "fail", "申请提现失败！ 可用余额不足"),
     TX_SUCCESS(208, "success", "申请成功！请耐心等待结果"),
     CZ_FAIL(510, "fail", "充值失败！请稍后再试"),
-    CZ_SUCCESS(210, "success", "充值成功！");
+    CZ_SUCCESS(210, "success", "充值成功！"),
+    BIND_WITHIOUT_AUTHEN(511, "fail", "绑定失败，请前往 安全设置 进行实名认证"),
+    BIND_FAIL(512, "fail", "绑定失败，请稍后再试"),
+    UNBIND_SUCCESS(209, "success", "解绑成功"),
+    UNBIND_FAIL(513, "fail", "解绑失败，请稍后再试");
 
     private Integer code;
     private String result;

@@ -110,7 +110,7 @@
                 <form id="userForm" class="form-horizontal">
                     <input type="hidden" name="uid" value="${sessionScope.user.uid}" />
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">真是姓名</label>
+                        <label class="col-sm-2 control-label">真实姓名</label>
                         <div class="col-sm-8">
                             <input name="rname" class="form-control" id="rname" placeholder="输入真实姓名">
                         </div>

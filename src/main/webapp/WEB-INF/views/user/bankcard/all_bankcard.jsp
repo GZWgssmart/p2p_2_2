@@ -13,6 +13,7 @@
 <div class="tool-bar" id="tool-bar">
     <button onclick="bkCd.open.saveModal();" class="btn btn-primary">添加</button>
     <button onclick="bkCd.open.updateModal();" class="btn btn-primary">修改</button>
+    <button onclick="bkCd.submit.unbind();" class="btn btn-danger">解绑</button>
 </div>
 
 <table id="bankcard-list" class="table table-hover"
