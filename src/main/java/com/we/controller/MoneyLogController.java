@@ -71,11 +71,13 @@ public class MoneyLogController {
     }
 
 
+    @RequiresUser
     @RequestMapping("user_money_log_page")
     public String  userMoneyLogPage() {
         return "user/user_money_log_page";
     }
 
+    @RequiresUser
     @RequestMapping("list_criteria_by_user")
     @ResponseBody
     public Pager listCriteriaByUser(Long offset, Long limit,QueryUserMoneyLogVO queryUserMoneyLogVO,HttpSession session) {

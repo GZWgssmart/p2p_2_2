@@ -10,12 +10,14 @@
     <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
 
     <bean id="myRealm" class="com.we.realm.MyRealm"></bean>
+    <bean id="userRealm" class="com.we.realm.UserRealm"></bean>
 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <!-- 我们自定义的realm -->
         <property name="realms">
             <set>
                 <ref bean="myRealm" />
+                <ref bean="userRealm" />
             </set>
         </property>
         <!-- 缓存管理器 -->

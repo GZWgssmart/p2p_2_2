@@ -34,12 +34,14 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String eamilOrPhone = (String) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        if(eamilOrPhone.endsWith(".com")){
-            authorizationInfo.setRoles(huserService.getRolesByEmail(eamilOrPhone));
-            authorizationInfo.setStringPermissions(huserService.getPermissionsByEmail(eamilOrPhone));
-        }else{
-            authorizationInfo.setRoles(huserService.getRolesByPhone(eamilOrPhone));
-            authorizationInfo.setStringPermissions(huserService.getPermissionsByPhone(eamilOrPhone));
+        if(eamilOrPhone != null && eamilOrPhone != ""){
+            if(eamilOrPhone.endsWith(".com")){
+                authorizationInfo.setRoles(huserService.getRolesByEmail(eamilOrPhone));
+                authorizationInfo.setStringPermissions(huserService.getPermissionsByEmail(eamilOrPhone));
+            }else{
+                authorizationInfo.setRoles(huserService.getRolesByPhone(eamilOrPhone));
+                authorizationInfo.setStringPermissions(huserService.getPermissionsByPhone(eamilOrPhone));
+            }
         }
         return authorizationInfo;
     }
@@ -55,25 +57,28 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String emailOrPhone = (String) token.getPrincipal();
         HttpSession session = request.getSession();
-        if(emailOrPhone.endsWith(".com")){
-            Huser huser = huserService.getByEmail(emailOrPhone);
-            if (huser != null) {
-                session.setAttribute("huser",huser);
-                AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(huser.getEmail(), huser.getPassword(), "xx");
-                return authcInfo;
-            } else {
-                return null;
-            }
-        }else {
-            Huser huser = huserService.getByPhone(emailOrPhone);
-            if (huser != null) {
-                session.setAttribute(OurConstants.SESSION_IN_HUSER,huser);
-                AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(huser.getPhone(), huser.getPassword(), "xx");
-                return authcInfo;
-            } else {
-                return null;
+        if(emailOrPhone != null && emailOrPhone != ""){
+            if(emailOrPhone.endsWith(".com")){
+                Huser huser = huserService.getByEmail(emailOrPhone);
+                if (huser != null) {
+                    session.setAttribute("huser",huser);
+                    AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(huser.getEmail(), huser.getPassword(), "xx");
+                    return authcInfo;
+                } else {
+                    return null;
+                }
+            }else {
+                Huser huser = huserService.getByPhone(emailOrPhone);
+                if (huser != null) {
+                    session.setAttribute(OurConstants.SESSION_IN_HUSER,huser);
+                    AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(huser.getPhone(), huser.getPassword(), "xx");
+                    return authcInfo;
+                } else {
+                    return null;
+                }
             }
         }
+        return null;
     }
 
 }

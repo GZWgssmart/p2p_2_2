@@ -7,7 +7,9 @@ import com.we.service.*;
 import com.we.vo.CheckVipVO;
 import com.we.vo.RequestResultVO;
 import com.we.vo.UserVO;
+import jdk.nashorn.internal.parser.Token;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.ServerHttpRequest;
@@ -346,10 +348,17 @@ public class UserController {
             //登入失败
             statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
         }else{
-//            Usermoney usermoney = usermoneyService.getByUid(userLogin.getUid());
-            session.setAttribute(OurConstants.SESSION_IN_USER,userLogin);
-//            session.setAttribute("usermoney",usermoney);
-            statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
+            try{
+                session.setAttribute(OurConstants.SESSION_IN_USER,userLogin);
+                Subject subject = SecurityUtils.getSubject();
+                String userName  = (userLogin.getEmail() == null || userLogin.getEmail() == "") ? userLogin.getPhone() :userLogin.getEmail();
+                UsernamePasswordToken token = new UsernamePasswordToken(userName,userLogin.getUpwd());
+                subject.login(token);
+                statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_SUCCESS);
+            }catch (Exception e){
+                statusVO = RequestResultVO.status(RequestResultEnum.LOGIN_FAIL_ACCOUNT);
+            }
+
         }
         return statusVO;
     }
