@@ -13,6 +13,12 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="<%=path %>/static/css/bootstrap.min.css">
+    <style>
+        /*使表单的错误提示变为红色*/
+        form .form-group div label.error {
+            color:red;
+        }
+    </style>
 </head>
 <body>
 <div class="container" style="text-align: center;margin-top: 60px;">

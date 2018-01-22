@@ -232,6 +232,7 @@ public class UserController {
             if(user.getTid() == null || "".equals(user.getTid())){
                 //无推荐码
                 user.setRegisterTime(new Date());
+                user.setZpwd(user.getUpwd());
                 userService.saveSelective(user);
 
                 //生成注册优惠券
@@ -260,6 +261,7 @@ public class UserController {
                 if(userService.getById(user.getTid()) != null){
                     //推荐码存在
                     user.setRegisterTime(new Date());
+                    user.setZpwd(user.getUpwd());
                     userService.saveSelective(user);
                     Recommend recommend = new Recommend();
                     recommend.setTid(user.getTid());

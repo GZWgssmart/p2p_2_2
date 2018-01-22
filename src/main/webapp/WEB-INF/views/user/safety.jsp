@@ -5,6 +5,12 @@
 %>
 <link href="<%=path%>/static/css/www/safety.css" rel="stylesheet">
 <link href="<%=path%>/static/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /*使表单的错误提示变为红色*/
+    form .form-group div label.error {
+        color:red;
+    }
+</style>
 <%--top--%>
 <div class="account-right-nav">
     <div class="sub-a-nav">
