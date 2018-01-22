@@ -131,6 +131,11 @@ public class HuserController {
         return "huser/jklx/all_jklx";
     }
 
+ @RequestMapping("all_dxmodel_page")
+    public String allDxmodelPage() {
+        return "huser/dxmodel/all_dxmodel";
+    }
+
 
     @ResponseBody
     @RequestMapping("list_pager")

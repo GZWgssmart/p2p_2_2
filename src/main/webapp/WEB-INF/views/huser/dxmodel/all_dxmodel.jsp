@@ -19,24 +19,20 @@
 <body>
 <body class="gray-bg">
 <div class="tool-bar" id="tool-bar">
-    <button class="btn btn-primary" onclick="addBzButton();">添加</button>
-    <button onclick="updateBzButton();" class="btn btn-default">修改</button>
-    <button onclick="remove();" class="btn btn-danger">删除</button>
-    <button onclick="updateState('激活');" class="btn btn-default">激活</button>
-    <button onclick="updateState('冻结');" class="btn btn-default">冻结</button>
+    <button class="btn btn-primary" onclick="addDxmodelButton();">添加</button>
+    <button onclick="updateDxmodelButton();" class="btn btn-default">修改</button>
 </div>
-<table id="allBz" class="table table-hover"
-       data-url="<%=path%>/bz/pager_criteria">
+<table id="allDxmodel" class="table table-hover"
+       data-url="<%=path%>/dxmodel/pager_criteria">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="bzid" data-visible="false">id</th>
-        <th data-field="bzname">方式名称</th>
-        <th data-field="state" data-formatter="stateFormatter">状态</th>
+        <th data-field="dxid" data-visible="false">id</th>
+        <th data-field="content">短信模版</th>
     </tr>
     </thead>
 </table>
-<%@include file="BzModel.jsp" %>
+<%@include file="DxmodelModel.jsp" %>
 
 <%@include file="../../common/js/js_jquery.jsp" %>
 <%@include file="../../common/js/js_boostrap.jsp" %>
@@ -49,47 +45,39 @@
 </body>
 <script>
     $(function () {
-        setTable.setBootstrapTable('bz-list');
+        setTable.setBootstrapTable('dxmodel-list');
     });
 </script>
 <script>
     $(function () {
-        setTable.setBootstrapTable('allBz');
+        setTable.setBootstrapTable('allDxmodel');
     });
 
-    function stateFormatter(value) {
-        if (value == 0) {
-            return "不可用";
-        } else if (value == 1) {
-            return "可用";
-        }
-    }
-
-    function addBzButton() {
-        $("#addBz").modal("show");
-        return $("#addBzForm").validate({
+    function addDxmodelButton() {
+        $("#addDxmodel").modal("show");
+        return $("#addDxmodelForm").validate({
             onfocusout: function (element) {
                 $(element).valid();
             },
             debug: false,
             onkeyup: false,
             rules: {
-                'bzname': {
+                'content': {
                     required: true
                 }
             }
         });
     }
 
-    function addBz() {
-        if ($('#addBzForm').valid() === false) return;
-        $.post("/bz/save",
-            $("#addBzForm").serialize(),
+    function addDxmodel() {
+        if ($('#addDxmodelForm').valid() === false) return;
+        $.post("/dxmodel/save",
+            $("#addDxmodelForm").serialize(),
             function (data) {
                 if (data.message === "保存成功！") {
                     swtAlert.request_success("保存成功");
-                    $("#addBz").modal("hide");
-                    $("#allBz").bootstrapTable("refresh");
+                    $("#addDxmodel").modal("hide");
+                    $("#allDxmodel").bootstrapTable("refresh");
                 } else {
                     swtAlert.request_fail(data.message);
                 }
@@ -107,37 +95,37 @@
         }
     }
 
-    function updateBzButton() {
-        var row = changeOne("allBz");
+    function updateDxmodelButton() {
+        var row = changeOne("allDxmodel");
         if (row == false) {
             return;
         }
-        $("#updateBz").modal("show");
-        $("#bzname").val(row.bzname);
-        $("#bzid").val(row.bzid);
-        return $("#updateBzForm").validate({
+        $("#updateDxmodel").modal("show");
+        $("#content").val(row.content);
+        $("#dxid").val(row.dxid);
+        return $("#updateDxmodelForm").validate({
             onfocusout: function (element) {
                 $(element).valid();
             },
             debug: false,
             onkeyup: false,
             rules: {
-                'bzname': {
+                'content': {
                     required: true
                 }
             }
         });
     }
 
-    function updateBz() {
-        if ($('#updateBzForm').valid() === false) return;
-        $.post("/bz/update",
-            $("#updateBzForm").serialize(),
+    function updateDxmodel() {
+        if ($('#updateDxmodelForm').valid() === false) return;
+        $.post("/dxmodel/update",
+            $("#updateDxmodelForm").serialize(),
             function (data) {
                 if (data.message == "更新成功") {
                     swtAlert.request_success(data.message);
-                    $("#updateBz").modal("hide");
-                    $("#allBz").bootstrapTable("refresh");
+                    $("#updateDxmodel").modal("hide");
+                    $("#allDxmodel").bootstrapTable("refresh");
                 } else {
                     swtAlert.request_fail(data.message);
                 }
@@ -145,48 +133,22 @@
         );
     }
 
-    function remove() {
-        var row = $("#allBz").bootstrapTable('getSelections');
-        if (row.length == 0) {
-            swtAlert.request_fail_no_timer("请选择数据");
-        } else {
-            var ids = [];
-            for (var i = 0, len = row.length; i < len; i++) {
-                ids.push(row[i].bzid);
-            }
-            $.ajax({
-                type: 'post',
-                url: '/bz/remove',
-                dataType: 'json',
-                data: {
-                    "ids": ids.join()
-                },
-                success: function (data) {
-                    swtAlert.request_success(data.message);
-                    $("#allBz").bootstrapTable('refresh');
-                },
-                error: function () {
-                    swtAlert.request_fail("删除失败")
-                }
-            });
-        }
-    }
     function updateState(state) {
-        var row = changeOne("allBz");
+        var row = changeOne("allDxmodel");
         if (row == false) {
             return;
         }
         if ((state == "激活" && row.state == 1) || (state == "冻结" && row.state == 0)) {
             swtAlert.request_fail_no_timer("已是" + state + "状态");
         } else {
-            $.post("/bz/updateState",
+            $.post("/dxmodel/updateState",
                 {
-                    bzid: row.bzid,
+                    dxid: row.dxid,
                     state: state
                 }, function (data) {
                     if (data.message === "更新成功") {
                         swtAlert.request_success(state + "成功");
-                        $("#allBz").bootstrapTable("refresh");
+                        $("#allDxmodel").bootstrapTable("refresh");
                     }
                 }, "json"
             );

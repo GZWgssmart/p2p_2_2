@@ -56,7 +56,7 @@
                             <a class="J_menuItem" href="<%=path%>/huser/all_bz_page">还款方式</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<%=path%>/huser/all_bz_page">短信模版</a>
+                            <a class="J_menuItem" href="<%=path%>/huser/all_dxmodel_page">短信模版</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/huser/all_jklx_page">标种</a>

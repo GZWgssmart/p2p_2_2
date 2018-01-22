@@ -62,4 +62,13 @@
     set content = #{content,jdbcType=LONGVARCHAR}
     where dxid = #{dxid,jdbcType=INTEGER}
   </update>
+
+  <select id="listCriteria" resultType="dxmodel">
+    SELECT * FROM dxmodel
+    LIMIT #{pager.offset}, #{pager.limit}
+  </select>
+
+  <select id="countCriteria" resultType="java.lang.Long">
+    SELECT count(dxid) FROM dxmodel
+  </select>
 </mapper>
