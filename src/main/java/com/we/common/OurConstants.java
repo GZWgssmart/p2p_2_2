@@ -156,5 +156,20 @@ public class OurConstants {
      */
     public static final Integer TX_CHECK_NO = 0;
 
+    /**
+     * 认证vip审核： 不通过
+     */
+    public static final Integer VIP_CHECK_NO = 0;
+
+    /**
+     * 认证vip审核： 通过
+     */
+    public static final Integer VIP_CHECK_OK = 1;
+
+    /**
+     * 认证vip审核： 审核中
+     */
+    public static final Integer VIP_CHECK_CHECKING = 2;
+
 
 }

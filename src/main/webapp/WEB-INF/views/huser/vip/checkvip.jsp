@@ -65,24 +65,67 @@
                 setTable.showModal('look-detail-modal');
             }
         },
-        checkPass:function(){
+        //审核不通过
+        checkNoPass:function(){
             var row = setTable.isSingleSelected('checkVip-list');
             if(row) {
-                if(row.state === 2) {
-
-                }
+                var jsonData = {
+                    'rcid': row.rcid,
+                    'txid': row.txid,
+                    'isok': 0,
+                    'excuse': excuse
+                };
+                $.post(contentPath + '/rzvip/check',
+                    jsonData,
+                    function(date) {
+                        if(date.result === 'success') {
+                            swtAlert.request_success(date.message);
+                            setTable.postRefresh('checkVip-list');
+                            setTable.hideModal('look-checkvip-modal')
+                        }else {
+                            swtAlert.request_fail(date.message);
+                        }
+                    }
+                );
             }
         },
-        checkNoPass:function () {
+        //审核通过
+        checkPass:function () {
             var row = setTable.isSingleSelected('checkVip-list');
             if(row) {
                 if(row.state === 2) {
-                    setTable.showModal(setTable.request_success);
+                    var jasonData = {
+                        'rcnid' : row.rcid,
+                        'uid' : row.huid,
+                        'isok' : 1,
+                        'execute' : ''
+                    };
+                    swal({
+                        title : dataDict.manage.checkConfirm,
+                        text : dataDict.manage.noCancelMsg,
+                        type : 'waring',
+                        showCancelButton : true
+                    }).then(function (check) {
+                        if(check.value) {
+                            $.post(contextPath + '/rzvip/check',
+                                jasonData,
+                                function (date) {
+                                    if(date.result === 'success') {
+                                        swtAlert.request_success(data.message);
+                                        setTable.postRefresh('checkVip-list');
+                                    }else {
+                                        swtAlert.request_fail(date.message);
+                                    }
+                                },'json'
+                            );
+                        }
+                    });
                 } else {
                     swtAlert.warnNoTimer("请选择一条数据进行操作");
                 }
             }
         }
+
     };
 
 </script>

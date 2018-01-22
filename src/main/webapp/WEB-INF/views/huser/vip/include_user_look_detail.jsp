@@ -47,12 +47,12 @@
                             <input name="rname" class="form-control" id="update-rname-input">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <%--<div class="form-group">
                         <label for="face-img" class="col-sm-2 control-label">头像：</label>
                         <div class="col-sm-10">
                             <img id="face-img" src="" alt="" class="img img-responsive"/>
                         </div>
-                    </div>
+                    </div>--%>
                     <div class="form-group">
                         <label for="update-sex-input" class="col-sm-2 control-label">性别</label>
                         <div class="col-sm-10">
