@@ -39,4 +39,12 @@ public class TxLogServiceImpl extends AbstractBaseService implements TxLogServic
         super.setBaseDAO(txLogDAO);
         this.txLogDAO = txLogDAO;
     }
+
+    @Override
+    public Pager listWithdrawalByUserId(Long offset,Long limit,Integer userId) {
+        Pager pager = new Pager(offset, limit);
+        pager.setRows(txLogDAO.listWithdrawalByUserId(pager,userId));
+        pager.setTotal(txLogDAO.countWithdrawalByUserId(userId));
+        return pager;
+    }
 }

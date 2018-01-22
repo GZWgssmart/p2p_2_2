@@ -69,4 +69,6 @@ public interface UserService extends BaseService {
      * @return
      */
     Boolean getPayPwdByUserId (Integer userId,String payPwd);
+
+
 }

@@ -9,7 +9,9 @@ import com.we.dto.TxAndCz;
 import com.we.enums.RequestResultEnum;
 import com.we.query.MoneyLogQuery;
 import com.we.service.MoneyLogService;
+import com.we.vo.QueryUserMoneyLogVO;
 import com.we.vo.RequestResultVO;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -66,6 +68,19 @@ public class MoneyLogController {
     @ResponseBody
     public Pager search(Long offset, Long limit,MoneyLogQuery moneyLogQuery) {
         return moneyLogService.listQueryDate(offset,limit,moneyLogQuery);
+    }
+
+
+    @RequestMapping("user_money_log_page")
+    public String  userMoneyLogPage() {
+        return "user/user_money_log_page";
+    }
+
+    @RequestMapping("list_criteria_by_user")
+    @ResponseBody
+    public Pager listCriteriaByUser(Long offset, Long limit,QueryUserMoneyLogVO queryUserMoneyLogVO,HttpSession session) {
+        queryUserMoneyLogVO.setUserId(UserUtils.getUser(session).getUid());
+        return moneyLogService.listCriteria(offset,limit,queryUserMoneyLogVO);
     }
 
     @Resource

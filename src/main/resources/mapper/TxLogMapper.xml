@@ -146,4 +146,13 @@
         ORDER BY t.state ASC , t.date DESC
         LIMIT #{pager.offset}, #{pager.limit}
     </select>
+
+    <select id="listWithdrawalByUserId" resultType="com.we.vo.AllWithdrawal">
+        select tl.*,tc.excuse from tx_log tl,tx_check tc where
+        tl.tid = tc.txid and tl.uid = #{userId} LIMIT #{query.offset},#{query.limit};
+    </select>
+
+    <select id="countWithdrawalByUserId" resultType="long">
+        select count(tid) from tx_log where uid = #{userId};
+    </select>
 </mapper>

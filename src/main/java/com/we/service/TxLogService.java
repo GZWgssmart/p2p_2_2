@@ -1,6 +1,7 @@
 package com.we.service;
 
 import com.we.bean.TxLog;
+import com.we.common.Pager;
 import com.we.vo.RequestResultVO;
 
 /**
@@ -8,5 +9,12 @@ import com.we.vo.RequestResultVO;
  */
 public interface TxLogService extends BaseService {
 
-
+    /**
+     * 查询用户的提现记录
+     * @param offset
+     * @param limit
+     * @param userId
+     * @return
+     */
+    Pager listWithdrawalByUserId(Long offset,Long limit,Integer userId);
 }

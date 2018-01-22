@@ -61,6 +61,7 @@ public class UserController {
     @Autowired
     private RzvipCheckService rzvipCheckService;
 
+
     @RequestMapping("all_invest_log_page")
     public String allInvestLogPage() {
         return "user/invest/log/all_invest_log";
@@ -592,5 +593,18 @@ public class UserController {
         }else{
             return RequestResultVO.status(RequestResultEnum.PAY_PWD_ERROR);
         }
+    }
+
+    @RequestMapping("all_withdrawal_page")
+    public String allWithdrawalPage(){
+        return "user/all_withdrawal_page";
+    }
+
+
+    @RequestMapping("list_withdrawal/{userId}")
+    @ResponseBody
+    public Pager conPayPwd(@PathVariable Integer userId){
+
+        return null;
     }
 }

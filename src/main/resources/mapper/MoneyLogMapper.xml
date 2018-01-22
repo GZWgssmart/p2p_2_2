@@ -104,18 +104,27 @@
     where mid = #{mid,jdbcType=INTEGER}
   </update>
 
-  <select id="listCriteria" resultType="com.we.bean.MoneyLog">
-    <![CDATA[
+  <select id="listCriteria" parameterType="com.we.vo.QueryUserMoneyLogVO" resultType="com.we.bean.MoneyLog">
       select * from money_log
+      <include refid="queryCriteria"/>
       order by date desc limit #{pager.offset} ,#{pager.limit}
-    ]]>
   </select>
 
   <select id="countCriteria" resultType="long">
-    <![CDATA[
-	  select count(mid) from money_log
-    ]]>
+    select count(mid) from money_log
+    <include refid="queryCriteria"/>
   </select>
+
+  <sql id="queryCriteria">
+    <where >
+      <if test="query != null and query.userId != null">
+        and uid = #{query.userId}
+      </if>
+      <if test="query != null and query.type != null">
+       and  type = #{query.type}
+      </if>
+    </where>
+  </sql>
 
   <sql id="queryDate">
     <if test="query != null and query.startTime != null">
