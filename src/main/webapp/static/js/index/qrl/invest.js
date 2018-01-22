@@ -663,7 +663,7 @@ function getFile(obj){
         $(obj).addClass('active').siblings().removeClass('active');
         $('#files').show();
     }else {
-        swal("您还未登录登录，请先登陆","","warning");
+        swal("您还未登录，请先登陆","","warning");
     }
 
 };
@@ -834,7 +834,7 @@ function getInvest(obj){
         $(obj).addClass('active').siblings().removeClass('active');
         $('#invest').show();
 	}else {
-		swal("您还未登录登录，请先登陆","","warning");
+		swal("您还未登录，请先登陆","","warning");
     }
 
 };
