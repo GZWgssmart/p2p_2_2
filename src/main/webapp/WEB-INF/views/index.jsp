@@ -749,7 +749,6 @@
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.hengjinbao = response.data;
-//                alert($scope.hengjinbao[0].cpname);
             }, function errorCallback(response) {
             });
 
@@ -760,7 +759,6 @@
                 url: "/borrowapply/list_borrow"
             }).then(function successCallback(response) {
                 $scope.pujinbao = response.data;
-                alert('WEB-INF/views/index.jsp:633');
             }, function errorCallback(response) {
             });
 

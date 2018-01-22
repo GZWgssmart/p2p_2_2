@@ -36,7 +36,7 @@
 </div>
 <table id="money-log-list" class="table table-hover"
        data-single-select="true"
-       data-url="<%=path%>/money_log/pager_criteria">
+       data-url="<%=path%>/moneyLog/pager_criteria">
     <thead>
     <tr>
         <th data-checkbox="true"></th>

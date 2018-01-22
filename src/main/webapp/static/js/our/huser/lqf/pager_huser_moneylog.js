@@ -22,7 +22,7 @@ function search() {
     if (CompareDate(startTime,endTime) || CompareDate(endTime,myTime) || CompareDate(startTime,myTime)) {
         swtAlert.warn_info(dataDict.form.time);
     } else {
-        setTable.doSearch('checkForm', 'money-log-list', '/money_log/search');
+        setTable.doSearch('checkForm', 'money-log-list', '/moneyLog/search');
     }
 }
 
