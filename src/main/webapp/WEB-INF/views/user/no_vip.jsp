@@ -19,6 +19,7 @@
     <div class="panel panel-default">
         <div class="panel-heading text-center">
             <h2>充值10000元，投标1000元可申请成为VIP</h2>
+            <h2>还需充值${requestScope.message}元、投资${requestScope.message1}元</h2>
         </div>
     </div>
 </div>

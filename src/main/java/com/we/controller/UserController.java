@@ -10,12 +10,14 @@ import com.we.vo.UserVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -119,10 +121,22 @@ public class UserController {
      * @return 请求结果
      */
     @RequestMapping("checkVip")
-    public String checkVip(HttpSession session) throws IOException {
+    public String checkVip(HttpSession session, HttpServletRequest request) throws IOException {
         User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
         //充值金额大于一万，投资金额大于一千
-        if(moneyLogService.countMoneyByUid(user.getUid()) < 10000 || tzbService.sumMoneyByUid(user.getUid()) < 1000){
+        Long money = moneyLogService.countMoneyByUid(user.getUid());
+        Long money1 = tzbService.sumMoneyByUid(user.getUid());
+        if(money < 10000 || money1 < 1000){
+            if(money < 10000 && money1 > 1000){
+                request.setAttribute("message",10000 - money);
+                request.setAttribute("message1",0);
+            }else if(money > 10000 && money1 < 1000){
+                request.setAttribute("message",0);
+                request.setAttribute("message1",1000 - money1);
+            }else if(money < 10000 && money1 < 1000){
+                request.setAttribute("message",10000 - money);
+                request.setAttribute("message1",1000 - money1);
+            }
             return "user/no_vip";
         }else{
             return"user/vipPage";

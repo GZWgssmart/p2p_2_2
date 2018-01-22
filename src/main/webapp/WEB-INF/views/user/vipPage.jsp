@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label for="ism" class="col-sm-2 control-label"> 婚否：</label>
-            <div class="col-sm-2" style="margin-left: -45px;">
+            <div class="col-sm-2" style="margin-left: -35px;">
                 <div class="checkbox" id="ism">
                     <label><input name="ism" type="radio" value="是">是</label>
                     <label><input name="ism" type="radio" value="否">否</label>
@@ -46,6 +46,13 @@
             <label for="addr" class="col-sm-2 control-label">居住地：</label>
             <div class="col-sm-8">
                 <input name="addr" id="addr" class="form-control" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="work" class="col-sm-2 control-label">现工作：</label>
+            <div class="col-sm-8">
+                <input name="work" id="work" class="form-control" >
             </div>
         </div>
 
@@ -76,73 +83,72 @@
             },
             function (data) {
                 isVip = data.isVip+"";
+                if(isVip == "1"){
+                    //是vip
+                    $.post("/user/isvip",
+                        {
+                            uid:${sessionScope.user.uid}
+                        },
+                        function (data) {
+                            //$("#id").attr("disabled","disabled");
+                            //$("#id").removeAttr("disabled");
+                            $("#vipState").text("vip用户");
+                            $("#vipForm input").attr("disabled","disabled");
+                            $("#xl").val(data.xl);
+                            $(':radio[name="ism"]').text(data.ism).attr("checked",true);
+                            $("#bschool").val(data.bschool);
+                            $("#addr").val(data.addr);
+                            $("#work").val(data.work);
+                            $("#age").val(data.age);
+                        },"json"
+                    );
+                }else{
+                    //不是vip
+//          //返回数据为空   未提交审核    不为空则正在审核
+                    $.post("/user/isvip",
+                        {
+                            uid:${sessionScope.user.uid}
+                        },
+                        function (data) {
+                            if(data.rid == null){
+                                //不是vip 且未提交审核
+                                $("#vipForm input").removeAttr("disabled");
+                                $("#vipState").text("申请成为vip");
+                                $("#btn").show();
+
+                            }else{
+                                $("#rid").val(data.rid);
+                                //不是vip 但已经提交vip申请
+                                $("#vipForm input").attr("disabled","disabled");
+                                $("#xl").val(data.xl);
+                                $(':radio[name="ism"]').text(data.ism).attr("checked",true);
+                                $("#bschool").val(data.bschool);
+                                $("#addr").val(data.addr);
+                                $("#work").val(data.work);
+                                $("#age").val(data.age);
+                                $("#btn").hide();
+                                //查询审核状态
+                                $.post("/rzvip/get_rzvip_by_uid",
+                                    {
+                                        uid:${sessionScope.user.uid}
+                                    },
+                                    function (data) {
+                                        $("#rcid").val(data.rcid);
+                                        if(data.isok == "2"){
+                                            $("#vipState").text("审核中");
+                                        }else if(data.isok == "0" && data.rcid != null){
+                                            $("#vipState").text("审核未通过:"+data.excuse);
+                                            $("#btnCheck").show();
+                                        }
+                                    },"json"
+                                );
+                            }
+
+                        },"json"
+                    );
+                }
             },"json"
         )
-
-        if(isVip == "1"){
-            //是vip
-            $.post("/user/isvip",
-                {
-                    uid:${sessionScope.user.uid}
-                },
-                function (data) {
-                    //$("#id").attr("disabled","disabled");
-                    //$("#id").removeAttr("disabled");
-                    $("#vipState").text("vip用户");
-                    $("#vipForm input").attr("disabled","disabled");
-                    $("#xl").val(data.xl);
-                    $(':radio[name="ism"]').text(data.ism).attr("checked",true);
-                    $("#bschool").val(data.bschool);
-                    $("#addr").val(data.addr);
-                    $(':radio[name="work"]').text(data.work).attr("checked",true);
-                    $("#age").val(data.age);
-                },"json"
-            );
-        }else{
-            //不是vip
-//          //返回数据为空   未提交审核    不为空则正在审核
-            $.post("/user/isvip",
-                {
-                    uid:${sessionScope.user.uid}
-                },
-                function (data) {
-                    if(data.rid == null){
-                        //不是vip 且未提交审核
-                        $("#vipForm input").removeAttr("disabled");
-                        $("#vipState").text("申请成为vip");
-                        $("#btn").show();
-
-                    }else{
-                        $("#rid").val(data.rid);
-                        //不是vip 但已经提交vip申请
-                        $("#vipForm input").attr("disabled","disabled");
-                        $("#xl").val(data.xl);
-                        $(':radio[name="ism"]').text(data.ism).attr("checked",true);
-                        $("#bschool").val(data.bschool);
-                        $("#addr").val(data.addr);
-                        $(':radio[name="work"]').text(data.work).attr("checked",true);
-                        $("#age").val(data.age);
-                        $("#btn").hide();
-                        //查询审核状态
-                        $.post("/rzvip/get_rzvip_by_uid",
-                            {
-                                uid:${sessionScope.user.uid}
-                            },
-                            function (data) {
-                                $("#rcid").val(data.rcid);
-                                if(data.isok == "2"){
-                                    $("#vipState").text("审核中");
-                                }else if(data.isok == "0" && data.rcid != null){
-                                    $("#vipState").text("审核未通过:"+data.excuse);
-                                    $("#btnCheck").show();
-                                }
-                            },"json"
-                        );
-                    }
-
-                },"json"
-            );
-        }
     });
 
     $("#btn").click(function () {
@@ -152,7 +158,7 @@
             function (data) {
                 if(data.message == "保存成功！"){
                     swtAlert.request_success(data.message);
-                    window.location.href = "/user/vip_page";
+                    setTimeout("location.reload()", 1500);
                 }else{
                     swtAlert.request_fail(data.message);
                 }
@@ -168,7 +174,7 @@
             },
             function (data) {
                 if(data.message == "删除成功！"){
-                    window.location.href = "/user/vip_page";
+                    location.reload();
                 }else{
                     swtAlert.request_fail(data.message);
                 }
@@ -184,9 +190,6 @@
         onkeyup:false,
         rules:{
             'xl':{
-                required: true
-            },
-            'ism':{
                 required: true
             },
             'bschool':{
