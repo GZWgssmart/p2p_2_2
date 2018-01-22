@@ -126,18 +126,20 @@ public class UserController {
     public String checkVip(HttpSession session, HttpServletRequest request) throws IOException {
         User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
         //充值金额大于一万，投资金额大于一千
-        Long money = moneyLogService.countMoneyByUid(user.getUid());
-        Long money1 = tzbService.sumMoneyByUid(user.getUid());
-        if(money < 10000 || money1 < 1000){
-            if(money < 10000 && money1 > 1000){
-                request.setAttribute("message",10000 - money);
+        Long rCzMoney = moneyLogService.countMoneyByUid(user.getUid());
+        Long rTzMoney = tzbService.sumMoneyByUid(user.getUid());
+        int czMoney = 10000;
+        int tzMoney = 1000;
+        if(rCzMoney < czMoney || rTzMoney < tzMoney){
+            if(rCzMoney <= czMoney && rTzMoney >= tzMoney){//充值小于一万，投资大于一千
+                request.setAttribute("message", czMoney - rCzMoney);
                 request.setAttribute("message1",0);
-            }else if(money > 10000 && money1 < 1000){
+            }else if(rCzMoney >= czMoney && rTzMoney <= tzMoney){
                 request.setAttribute("message",0);
-                request.setAttribute("message1",1000 - money1);
-            }else if(money < 10000 && money1 < 1000){
-                request.setAttribute("message",10000 - money);
-                request.setAttribute("message1",1000 - money1);
+                request.setAttribute("message1", tzMoney - rTzMoney);
+            }else if(rCzMoney < czMoney && rTzMoney < tzMoney){
+                request.setAttribute("message", czMoney - rCzMoney);
+                request.setAttribute("message1", tzMoney - rTzMoney);
             }
             return "user/no_vip";
         }else{

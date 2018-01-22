@@ -10,7 +10,7 @@
                 <h4 class="modal-title" id="myModalLabel">借款详情</h4>
             </div>
             <div class="modal-body">
-                <form id="look-detail-form" class="form-horizontal">
+                <form id="ok-look-detail-form" class="form-horizontal">
                     <div class="form-group">
                         <label for="update-fpic-input" class="col-sm-2 control-label">法人身份证</label>
                         <div class="col-sm-10">

@@ -2,7 +2,7 @@ var okBorrow = {
     id: {
         priTab: 'okborrow-list',
         lookModal: 'look-detail-modal',
-        lookForm: 'look-detail-form',
+        lookForm: 'ok-look-detail-form',
         searchForm:'okborrow-search-form'
     },
     url: {
@@ -27,7 +27,7 @@ var okBorrow = {
             $.get('/borrowdetail/getByApplyId/' + row.baid,
                 function (data) {
                     $('#ypic-img').attr('src', contextPath + data.ypic);
-                    $(okBorrow.id.lookForm).form('load', data);
+                    $('#' + okBorrow.id.lookForm).form('load', data);
                 }, 'json');
             setTable.showModal('look-detail-modal');
         }
