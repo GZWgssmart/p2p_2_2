@@ -29,8 +29,11 @@
         </div>
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label"> 婚否：</label>
-            <div class="col-sm-8">
-            <input type="text"name="ism" id="ism"  class="form-control" >
+            <div class="col-sm-2" style="margin-left: -45px;">
+                <div class="checkbox" id="ism">
+                    <label><input name="ism" type="radio" value="是">是</label>
+                    <label><input name="ism" type="radio" value="否">否</label>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -46,9 +49,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">  婚否：</label>
-            <div class="col-sm-8">
-            <input name="work" id="work" class="form-control" >
+            <label for="inputEmail3" class="col-sm-2 control-label"> 婚否：</label>
+            <div class="col-sm-2" style="margin-left: -45px;">
+                <div class="checkbox" id="work">
+                    <label><input name="work" type="radio" value="是">是</label>
+                    <label><input name="work" type="radio" value="否">否</label>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -93,10 +99,10 @@
                     $("#vipState").text("vip用户");
                     $("#vipForm input").attr("disabled","disabled");
                     $("#xl").val(data.xl);
-                    $("#ism").val(data.ism);
+                    $(':radio[name="ism"]').text(data.ism).attr("checked",true);
                     $("#bschool").val(data.bschool);
                     $("#addr").val(data.addr);
-                    $("#work").val(data.work);
+                    $(':radio[name="work"]').text(data.work).attr("checked",true);
                     $("#age").val(data.age);
                 },"json"
             );
@@ -119,10 +125,10 @@
                         //不是vip 但已经提交vip申请
                         $("#vipForm input").attr("disabled","disabled");
                         $("#xl").val(data.xl);
-                        $("#ism").val(data.ism);
+                        $(':radio[name="ism"]').text(data.ism).attr("checked",true);
                         $("#bschool").val(data.bschool);
                         $("#addr").val(data.addr);
-                        $("#work").val(data.work);
+                        $(':radio[name="work"]').text(data.work).attr("checked",true);
                         $("#age").val(data.age);
                         $("#btn").hide();
                         //查询审核状态
@@ -132,7 +138,7 @@
                             },
                             function (data) {
                                 $("#rcid").val(data.rcid);
-                                if(data.rcid == null){
+                                if(data.isok == "2"){
                                     $("#vipState").text("审核中");
                                 }else if(data.isok == "0" && data.rcid != null){
                                     $("#vipState").text("审核未通过:"+data.excuse);

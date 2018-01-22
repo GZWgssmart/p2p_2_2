@@ -167,6 +167,11 @@ public class UserController {
         RequestResultVO requestResultVO = null;
         try {
             rzvipService.save(rzvip);
+            RzvipCheck rzvipCheck = new RzvipCheck();
+            rzvipCheck.setUid(rzvip.getUid());
+            rzvipCheck.setDate(new Date());
+            rzvipCheck.setIsok(2);
+            rzvipCheckService.saveSelective(rzvipCheck);
             requestResultVO = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
         }catch (RuntimeException e){
             requestResultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
