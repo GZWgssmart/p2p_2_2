@@ -8,6 +8,7 @@ import com.we.service.RolejurService;
 import com.we.service.RoleuserService;
 import com.we.vo.RequestResultVO;
 import com.we.vo.RoleZTreeVO;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +51,7 @@ public class RoleController {
         return RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
     }
 
+    @RequiresRoles("superadmin")
     @RequestMapping("update")
     @ResponseBody
     public RequestResultVO update(Role role, String jurIds){
@@ -76,6 +78,7 @@ public class RoleController {
     /**
      * 批量删除角色
      */
+    @RequiresRoles("superadmin")
     @RequestMapping("deletes")
     @ResponseBody
     public RequestResultVO deletes(String roleIds){
