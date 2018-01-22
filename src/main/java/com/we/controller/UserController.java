@@ -51,6 +51,15 @@ public class UserController {
     @Autowired
     private RzvipService rzvipService;
 
+    @Autowired
+    private MoneyLogService moneyLogService;
+
+    @Autowired
+    private TzbService tzbService;
+
+    @Autowired
+    private RzvipCheckService rzvipCheckService;
+
     @RequestMapping("all_invest_log_page")
     public String allInvestLogPage() {
         return "user/invest/log/all_invest_log";
@@ -109,17 +118,66 @@ public class UserController {
      */
     @RequestMapping("checkVip")
     @ResponseBody
-    public RequestResultVO checkVip(HttpSession session) {
+    public RequestResultVO checkVip(HttpSession session) throws IOException {
         RequestResultVO requestResultVO = null;
         User user = (User) session.getAttribute(OurConstants.SESSION_IN_USER);
-        if (OurConstants.IS_VIP.equals(user.getIsVip())) {
-            //是VIP，用js跳转页面 显示所有借款的页面
-            requestResultVO = RequestResultVO.status(RequestResultEnum.HAVE_PERMISSION);
-        } else {
-            // 不是VIP， js弹窗提示
+        //充值金额大于一万，投资金额大于一千
+        if(moneyLogService.countMoneyByUid(user.getUid()) < 10000 || tzbService.sumMoneyByUid(user.getUid()) < 1000){
             requestResultVO = RequestResultVO.status(RequestResultEnum.NO_PERMISSION_BORROW_MONEY);
+        }else{
+            requestResultVO = RequestResultVO.status(RequestResultEnum.HAVE_PERMISSION);
         }
         return requestResultVO;
+    }
+
+    @RequestMapping("vip_page")
+    public String vipPage(){
+        return "user/vipPage";
+    }
+
+    @ResponseBody
+    @RequestMapping("/isvip")
+    public Rzvip vip(Integer uid){
+        Rzvip rzvip = rzvipService.getByUid(uid);
+        if(rzvip == null){
+            rzvip = new Rzvip();
+        }
+        return rzvip;
+    }
+
+    @ResponseBody
+    @RequestMapping("/remove_check")
+    public RequestResultVO notVip(Integer rid, Integer rcid){
+        RequestResultVO requestResultVO = null;
+        try {
+            rzvipService.removeById(rid);
+            rzvipCheckService.removeById(rcid);
+            requestResultVO = RequestResultVO.status(RequestResultEnum.REMOVE_SUCCESS);
+        }catch (RuntimeException e){
+            requestResultVO = RequestResultVO.status(RequestResultEnum.REMOVE_FAIL);
+        }
+
+        return requestResultVO;
+    }
+
+    @ResponseBody
+    @RequestMapping("add_check")
+    public RequestResultVO addCheck(Rzvip rzvip){
+        System.out.println(rzvip);
+        RequestResultVO requestResultVO = null;
+        try {
+            rzvipService.save(rzvip);
+            requestResultVO = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
+        }catch (RuntimeException e){
+            requestResultVO = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
+        }
+        return requestResultVO;
+    }
+
+    @ResponseBody
+    @RequestMapping("get_user")
+    public User getUserByID(Integer uid) {
+        return(User) userService.getById(uid);
     }
 
     @RequestMapping("login_page")
@@ -167,6 +225,17 @@ public class UserController {
                 userTicketService.saveSelective(userTicket);
 
                 statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_SUCCESS);
+                //初始化用户资金表
+                Usermoney usermoney = new Usermoney();
+                usermoney.setUid(user.getUid());
+                usermoney.setDsmoney(BigDecimal.ZERO);
+                usermoney.setDjmoney(BigDecimal.ZERO);
+                usermoney.setJlmoney(BigDecimal.ZERO);
+                usermoney.setKymoney(BigDecimal.ZERO);
+                usermoney.setSymoney(BigDecimal.ZERO);
+                usermoney.setTzmoney(BigDecimal.ZERO);
+                usermoney.setZymoney(BigDecimal.ZERO);
+                usermoneyService.saveSelective(usermoney);
             }else{
                 //有推荐码  先判断该推荐码是否存在
                 //推荐码是否存在
@@ -198,6 +267,17 @@ public class UserController {
                     recommendService.saveSelective(recommend);
                     phoneCode = "";
                     statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_SUCCESS);
+                    //初始化用户资金表
+                    Usermoney usermoney = new Usermoney();
+                    usermoney.setUid(user.getUid());
+                    usermoney.setDsmoney(BigDecimal.ZERO);
+                    usermoney.setDjmoney(BigDecimal.ZERO);
+                    usermoney.setJlmoney(BigDecimal.ZERO);
+                    usermoney.setKymoney(BigDecimal.ZERO);
+                    usermoney.setSymoney(BigDecimal.ZERO);
+                    usermoney.setTzmoney(BigDecimal.ZERO);
+                    usermoney.setZymoney(BigDecimal.ZERO);
+                    usermoneyService.saveSelective(usermoney);
                 }else{
                     //推荐码不存在
                     statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_FAIL_NOT_TID);

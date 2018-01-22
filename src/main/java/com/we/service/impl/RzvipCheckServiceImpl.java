@@ -1,5 +1,6 @@
 package com.we.service.impl;
 
+import com.we.bean.RzvipCheck;
 import com.we.dao.RzvipCheckDAO;
 import com.we.service.AbstractBaseService;
 import com.we.service.RzvipCheckService;
@@ -17,4 +18,9 @@ public class RzvipCheckServiceImpl extends AbstractBaseService implements RzvipC
         this.rzvipCheckDAO = rzvipCheckDAO;
     }
 
+
+    @Override
+    public RzvipCheck getByUid(Integer uid) {
+        return rzvipCheckDAO.getByUid(uid);
+    }
 }

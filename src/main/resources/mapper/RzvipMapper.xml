@@ -22,13 +22,13 @@
   </select>
   <delete id="removeById" parameterType="java.lang.Integer" >
     delete from rzvip
-    where rid = #{rid,jdbcType=INTEGER}
+    where rid = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="save" parameterType="com.we.bean.Rzvip" >
-    insert into rzvip (rid, uid, xl, 
+    insert into rzvip (uid, xl,
       ism, bschool, addr, 
       work, age)
-    values (#{rid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{xl,jdbcType=VARCHAR}, 
+    values (#{uid,jdbcType=INTEGER}, #{xl,jdbcType=VARCHAR},
       #{ism,jdbcType=VARCHAR}, #{bschool,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
       #{work,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})
   </insert>

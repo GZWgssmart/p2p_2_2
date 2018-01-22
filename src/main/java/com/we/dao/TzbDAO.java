@@ -80,4 +80,9 @@ public interface TzbDAO extends BaseDAO {
      * 分页查询所有投资记录
      */
     List<Object> listAllTz(@Param("query") Pager pager);
+
+    /**
+     * 查询用户投资金额
+     */
+    Long sumMoneyByUid(Integer uid);
 }

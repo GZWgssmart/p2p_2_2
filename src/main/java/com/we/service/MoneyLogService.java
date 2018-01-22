@@ -33,4 +33,11 @@ public interface MoneyLogService extends BaseService {
      */
     Pager listQueryDate(Long offset, Long limit, Object object);
 
+    /**
+     * 查询用户充值金额
+     * @param uid
+     * @return
+     */
+    Long countMoneyByUid(Integer uid);
+
 }

@@ -80,4 +80,18 @@ public class Rzvip {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "Rzvip{" +
+                "rid=" + rid +
+                ", uid=" + uid +
+                ", xl='" + xl + '\'' +
+                ", ism='" + ism + '\'' +
+                ", bschool='" + bschool + '\'' +
+                ", addr='" + addr + '\'' +
+                ", work='" + work + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

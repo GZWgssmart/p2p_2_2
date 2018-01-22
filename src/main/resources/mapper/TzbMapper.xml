@@ -208,4 +208,8 @@ where t.uid = u.uid and  baid = #{borrowId} ORDER BY time DESC LIMIT #{query.off
         where tz.uid = u.uid and tz.juid = tu.uid
         limit #{query.offset}, #{query.limit}
     </select>
+
+    <select id="sumMoneyByUid" resultType="long">
+        select IFNULL(sum(money),0) from tzb where uid = #{uid}
+    </select>
 </mapper>

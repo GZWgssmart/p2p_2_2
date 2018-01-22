@@ -29,5 +29,14 @@ public class RzvipCheckController {
         return rzvipCheckService.listCriteria(offset, limit, rzvipCheck);
     }
 
+    @RequestMapping("get_rzvip_by_uid")
+    @ResponseBody
+    public RzvipCheck getByUid(Integer uid){
+        RzvipCheck rzvipCheck = rzvipCheckService.getByUid(uid);
+        if(rzvipCheck == null){
+            rzvipCheck = new RzvipCheck();
+        }
+        return rzvipCheck;
+    }
 
 }

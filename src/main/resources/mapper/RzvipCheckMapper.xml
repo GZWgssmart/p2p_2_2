@@ -20,7 +20,7 @@
   </select>
   <delete id="removeById" parameterType="java.lang.Integer" >
     delete from rzvip_check
-    where rcid = #{rcid,jdbcType=INTEGER}
+    where rcid = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="save" parameterType="com.we.bean.RzvipCheck" >
     insert into rzvip_check (rcid, uid, huid, 
@@ -125,6 +125,10 @@
         WHERE u.uid = vip.uid
         AND (h.huid = vip.huid or vip.huid IS NULL)
         GROUP BY vip.rcid*/
+  </select>
+
+  <select id="getByUid" resultType="com.we.bean.RzvipCheck">
+    select * from rzvip_check where uid = #{uid}
   </select>
 
 </mapper>

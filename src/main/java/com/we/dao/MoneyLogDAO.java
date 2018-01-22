@@ -25,4 +25,10 @@ public interface MoneyLogDAO extends BaseDAO {
      */
     Long countQueryDate(@Param("query") Object obj);
 
+    /**
+     * 查询用户充值金额
+     * @param uid
+     * @return
+     */
+    Long countMoneyByUid(Integer uid);
 }

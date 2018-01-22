@@ -99,11 +99,18 @@ public class MoneyLogServiceImpl extends AbstractBaseService implements MoneyLog
         return pager;
     }
 
+    @Override
+    public Long countMoneyByUid(Integer uid) {
+        return moneylLogDAO.countMoneyByUid(uid);
+    }
+
     @Resource
     public void setMoneylLogDAO(MoneyLogDAO moneylLogDAO) {
         this.moneylLogDAO = moneylLogDAO;
         super.setBaseDAO(moneylLogDAO);
     }
+
+
 
     @Autowired
     public void setUsermoneyDAO(UsermoneyDAO usermoneyDAO) {

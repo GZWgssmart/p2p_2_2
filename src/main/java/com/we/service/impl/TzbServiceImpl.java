@@ -226,6 +226,11 @@ public class TzbServiceImpl extends AbstractBaseService implements TzbService {
         return pager;
     }
 
+    @Override
+    public Long sumMoneyByUid(Integer uid) {
+        return tzbDAO.sumMoneyByUid(uid);
+    }
+
     @Autowired
     public void setTzbDAO(TzbDAO tzbDAO) {
         super.setBaseDAO(tzbDAO);

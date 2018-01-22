@@ -58,4 +58,10 @@ public interface TzbService extends BaseService {
      * 分页查询所有投资记录
      */
     Pager listAllTz(@Param("query") Pager pager);
+
+
+    /**
+     * 查询用户投资金额
+     */
+    Long sumMoneyByUid(Integer uid);
 }

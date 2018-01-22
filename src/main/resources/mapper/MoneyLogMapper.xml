@@ -139,4 +139,8 @@
     <include refid="queryDate"/>
   </select>
 
+  <select id="countMoneyByUid" resultType="long">
+    select IFNULL(sum(in_money),0) from money_log where uid = #{uid} and type = 0
+  </select>
+
 </mapper>
