@@ -81,6 +81,7 @@ public class LetterController {
                 letterService.saveSelective(letter);
                 vo = RequestResultVO.status(RequestResultEnum.SAVE_SUCCESS);
             } catch (RuntimeException e) {
+                e.printStackTrace();
                 vo = RequestResultVO.status(RequestResultEnum.SAVE_FAIL);
             }
         } else {

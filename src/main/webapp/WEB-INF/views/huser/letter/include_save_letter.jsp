@@ -9,15 +9,15 @@
             <div class="modal-body">
                 <form class="form-horizontal" role="form" id="addForm" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="title" class="col-sm-1 control-label">标&nbsp;&nbsp;题：</label>
+                        <label for="title" class="col-sm-2 control-label">标题：</label>
                         <div class="col-sm-10">
                             <input id="title" type="text" class="form-control" name="title"  placeholder="请输入标题">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="content" class="col-sm-1 control-label">内&nbsp;&nbsp;容：</label>
+                        <label for="content" class="col-sm-2 control-label">内容：</label>
                         <div class="col-sm-10">
-                            <script id="content" name="content" type="text/plain"></script>
+                            <input id="content" class="form-control" name="content" />
                         </div>
                     </div>
                 </form>
@@ -31,8 +31,6 @@
 </div>
 
 
-<script src="<%=path %>/static/ueditor/ueditor.config.js"></script>
-<script src="<%=path %>/static/ueditor/ueditor.all.js"></script>
 <script>
     function showForm () {
         return $('#addForm').validate({
@@ -54,18 +52,6 @@
         });
     }
 
-    var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
-    }
-
-    var ue = UE.getEditor('content');
-
-    function getContent() {
-        alert(ue.getContent());
-    }
-
     function save() {
         var $addForm = $('#addForm');
         if ($addForm.valid() === false) {
@@ -73,8 +59,6 @@
         } else {
             submitForm.save('/letter/save','addForm','letter-list','saveLetterModal');
         }
-    };
+    }
 
 </script>
-</body>
-</html>

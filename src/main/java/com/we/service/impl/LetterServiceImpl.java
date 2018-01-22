@@ -32,7 +32,7 @@ public class LetterServiceImpl extends AbstractBaseService implements LetterServ
         Letter letter = (Letter) obj;
         result += letterDAO.saveSelective(letter);
         List<Integer> uidList = userDAO.listUid();
-        result += userLetterDAO.saveRelation(uidList, letter.getLid());
+        userLetterDAO.saveRelation(uidList, letter.getLid());
         return result;
     }
 

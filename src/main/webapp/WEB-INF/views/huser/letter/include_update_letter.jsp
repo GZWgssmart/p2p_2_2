@@ -10,15 +10,15 @@
                 <form class="form-horizontal" role="form" id="updateForm">
                     <input type="hidden" id="lid" name="lid">
                     <div class="form-group">
-                        <label for="title1" class="col-sm-1 control-label">标&nbsp;&nbsp;题：</label>
+                        <label for="title1" class="col-sm-2 control-label">标题：</label>
                         <div class="col-sm-10">
                             <input id="title1" type="text" class="form-control" name="title"  placeholder="请输入标题">
                         </div>
                     </div>
                     <div class="form-group" >
-                        <label for="updateContent" class="col-sm-1 control-label">内&nbsp;&nbsp;容:</label>
+                        <label for="updateContent" class="col-sm-2 control-label">内容:</label>
                         <div class="col-sm-10">
-                            <script id="updateContent" name="content" type="text/plain" ></script>
+                            <input id="updateContent" class="form-control" name="content"/>
                         </div>
                     </div>
                 </form>
@@ -30,5 +30,3 @@
         </div>
     </div>
 </div>
-
-<script src="<%=path%>/static/js/our/huser/xdp/pager_huser_letter.js"></script>

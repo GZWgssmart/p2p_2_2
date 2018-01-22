@@ -25,11 +25,12 @@
             onclick="pagerHuserLetter.updateLetter();">修改</button>
 </div>
 <table id="letter-list" class="table table-hover"
+       data-single-select="true"
        data-url="<%=path%>/letter/all_pager_criteria">
     <thead>
     <tr>
         <th data-checkbox="true"></th>
-        <th data-field="title" data-formatter="pagerUserLetter.formatTitle">标题</th>
+        <th data-field="title">标题</th>
         <th data-field="content">内容</th>
     </tr>
     </thead>
@@ -52,7 +53,6 @@
 </script>
 
 <script src="<%=path%>/static/js/our/jquery-form.js"></script>
-<script src="<%=path%>/static/js/our/user/lmh/pager_user_letter.js"></script>
 <script src="<%=path%>/static/js/our/huser/xdp/pager_huser_letter.js"></script>
 
 </body>
