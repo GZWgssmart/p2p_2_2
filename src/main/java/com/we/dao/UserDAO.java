@@ -71,4 +71,10 @@ public interface UserDAO extends BaseDAO {
      * @return
      */
     String getPayPwdByUserId (Integer userId);
+
+    /**
+     * 后台用户添加站内信时，需要向每个用户插入关联数据
+     * @return 前台用户id集合
+     */
+    List<Integer> listUid();
 }

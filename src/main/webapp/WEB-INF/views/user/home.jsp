@@ -23,7 +23,6 @@
                                    src="<%=path%>${sessionScope.user.face}" style="width: 80px;height: 80px;"/></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">昵称</strong></span>
                                 <span class="text-muted text-xs block">${sessionScope.user.uname}<b class="caret"></b></span>
                                 </span>
                         </a>
@@ -45,12 +44,6 @@
                     <ul class="nav nav-second-level">
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/user_message">基本信息</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/clazz/clazzsPage">账户充值</a>
-                        </li>
-                        <li>
-                            <a class="J_menuItem" href="<%=path%>/user/withdrawal">提现</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/tx_log/all_withdrawal_page">提现记录</a>
@@ -77,9 +70,6 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li>
-                            <a class="J_menuItem" onclick="checkVip();" data-index="0">所有借款</a>
-                        </li>
                         <li>
                             <a class="J_menuItem" href="<%=path%>/user/all_borrow_money_page">未发布借款</a>
                         </li>

@@ -1,92 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.dao.UserLetterDAO" >
-  <resultMap id="BaseResultMap" type="com.we.bean.UserLetter" >
-    <id column="luid" property="luid" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="lid" property="lid" jdbcType="INTEGER" />
-    <result column="state" property="state" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    luid, uid, lid, state
-  </sql>
-  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from user_letter
-    where luid = #{luid,jdbcType=INTEGER}
-  </select>
-  <delete id="removeById" parameterType="java.lang.Integer" >
-    delete from user_letter
-    where luid = #{luid,jdbcType=INTEGER}
-  </delete>
-  <insert id="save" parameterType="com.we.bean.UserLetter" >
-    insert into user_letter (luid, uid, lid, 
-      state)
-    values (#{luid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{lid,jdbcType=INTEGER}, 
-      #{state,jdbcType=INTEGER})
-  </insert>
-  <insert id="saveSelective" parameterType="com.we.bean.UserLetter" >
-    insert into user_letter
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="luid != null" >
-        luid,
-      </if>
-      <if test="uid != null" >
-        uid,
-      </if>
-      <if test="lid != null" >
-        lid,
-      </if>
-      <if test="state != null" >
-        state,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="luid != null" >
-        #{luid,jdbcType=INTEGER},
-      </if>
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="lid != null" >
-        #{lid,jdbcType=INTEGER},
-      </if>
-      <if test="state != null" >
-        #{state,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateSelective" parameterType="com.we.bean.UserLetter" >
-    update user_letter
-    <set >
-      <if test="uid != null" >
-        uid = #{uid,jdbcType=INTEGER},
-      </if>
-      <if test="lid != null" >
-        lid = #{lid,jdbcType=INTEGER},
-      </if>
-      <if test="state != null" >
-        state = #{state,jdbcType=INTEGER},
-      </if>
-    </set>
-    where luid = #{luid,jdbcType=INTEGER}
-  </update>
-  <update id="update" parameterType="com.we.bean.UserLetter" >
-    update user_letter
-    set uid = #{uid,jdbcType=INTEGER},
-      lid = #{lid,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER}
-    where luid = #{luid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.we.dao.UserLetterDAO">
+    <resultMap id="BaseResultMap" type="com.we.bean.UserLetter">
+        <id column="luid" property="luid" jdbcType="INTEGER"/>
+        <result column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="lid" property="lid" jdbcType="INTEGER"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        luid, uid, lid, state
+    </sql>
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from user_letter
+        where luid = #{luid,jdbcType=INTEGER}
+    </select>
+    <delete id="removeById" parameterType="java.lang.Integer">
+        DELETE FROM user_letter
+        WHERE luid = #{luid,jdbcType=INTEGER}
+    </delete>
+    <insert id="save" parameterType="com.we.bean.UserLetter">
+        INSERT INTO user_letter (luid, uid, lid,
+                                 state)
+        VALUES (#{luid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{lid,jdbcType=INTEGER},
+                #{state,jdbcType=INTEGER})
+    </insert>
+    <insert id="saveSelective" parameterType="com.we.bean.UserLetter">
+        insert into user_letter
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="luid != null">
+                luid,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="lid != null">
+                lid,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="luid != null">
+                #{luid,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="lid != null">
+                #{lid,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateSelective" parameterType="com.we.bean.UserLetter">
+        update user_letter
+        <set>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="lid != null">
+                lid = #{lid,jdbcType=INTEGER},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER},
+            </if>
+        </set>
+        where luid = #{luid,jdbcType=INTEGER}
+    </update>
+    <update id="update" parameterType="com.we.bean.UserLetter">
+        UPDATE user_letter
+        SET uid   = #{uid,jdbcType=INTEGER},
+            lid   = #{lid,jdbcType=INTEGER},
+            state = #{state,jdbcType=INTEGER}
+        WHERE luid = #{luid,jdbcType=INTEGER}
+    </update>
 
-  <update id="updateStatus">
-    UPDATE  user_letter
-    set state = #{status}
-    WHERE luid IN
-    <foreach open="(" close=")" collection="ids" separator="," item="id">
-      #{id}
-    </foreach>
-  </update>
+    <update id="updateStatus">
+        UPDATE user_letter
+        set state = #{status}
+        WHERE luid IN
+        <foreach open="(" close=")" collection="ids" separator="," item="id">
+            #{id}
+        </foreach>
+    </update>
 
+    <select id="saveRelation" resultType="java.lang.Integer">
+        INSERT INTO d_ssm_pujinziben.user_letter
+        (uid, lid)
+        VALUES
+        <foreach open="(" close=")" collection="uidList" separator="," item="uid">
+            (#{uid}, #{lid})
+        </foreach>
+    </select>
 </mapper>

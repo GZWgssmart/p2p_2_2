@@ -18,11 +18,11 @@
     <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    uid, uname, upwd, phone, zpwd, idtype, idno, email, rname, tid, face, sex, is_vip, 
+    uid, uname, upwd, phone, zpwd, idtype, idno, email, rname, tid, face, sex, is_vip,
     register_time
   </sql>
   <select id="getById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from user
     where uid = #{uid,jdbcType=INTEGER}
@@ -32,14 +32,14 @@
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
   <insert id="save" parameterType="com.we.bean.User">
-    insert into user (uid, uname, upwd, 
-      phone, zpwd, idtype, idno, 
-      email, rname, tid, 
+    insert into user (uid, uname, upwd,
+      phone, zpwd, idtype, idno,
+      email, rname, tid,
       face, sex, is_vip, register_time
       )
-    values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=CHAR}, #{zpwd,jdbcType=VARCHAR}, #{idtype,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, 
+    values (#{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR},
+      #{phone,jdbcType=CHAR}, #{zpwd,jdbcType=VARCHAR}, #{idtype,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER},
       #{face,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{isVip,jdbcType=INTEGER}, #{registerTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -297,4 +297,7 @@
     AND u.uid = #{uid}
   </select>
 
+  <select id="listUid" resultType="java.lang.Integer">
+      select uid FROM d_ssm_pujinziben.user;
+  </select>
 </mapper>
