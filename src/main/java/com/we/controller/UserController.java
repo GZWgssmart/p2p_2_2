@@ -2,6 +2,7 @@ package com.we.controller;
 
 import com.we.bean.*;
 import com.we.common.*;
+import com.we.common.miaodi.IndustrySMS;
 import com.we.enums.RequestResultEnum;
 import com.we.service.*;
 import com.we.vo.CheckVipVO;
@@ -427,7 +428,7 @@ public class UserController {
         if(code == null || code == ""){
             //判断手机号码是否已经使用  未使用发送验证码  不存在退出
             if(userService.getByPhone(phone) == null){
-                phoneCode = "654321";//IndustrySMS.execute(phone);
+                phoneCode = "123456";//IndustrySMS.execute(phone);
                 statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
             }else{
                 statusVO = RequestResultVO.status(RequestResultEnum.REGISTER_FAIL_HAVE_PHONE);
@@ -550,7 +551,7 @@ public class UserController {
     @RequestMapping("get_phone_code")
     public RequestResultVO getPhoneCode(String phone){
         RequestResultVO statusVO = null;
-        phoneCode = "123456";//IndustrySMS.execute(phone);
+        phoneCode = IndustrySMS.execute(phone);
         statusVO = RequestResultVO.status(RequestResultEnum.Code_SUCCESS);
         return statusVO;
     }
