@@ -23,15 +23,31 @@
         <property name="cronExpression" value="00 00 0 30 3,6,9,12 ? *" />
     </bean>
 
+    <bean id="ydateJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="name" value="ydateJobDetail" />
+        <property name="group" value="group" />
+        <property name="jobClass" value="com.we.controller.quertz.ydate" />
+        <property name="durability" value="true" />
+    </bean>
+
+    <bean id="ydateJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="name" value="ydateJobTrigger" />
+        <property name="group" value="group" />
+        <property name="jobDetail" ref="ydateJobDetail" />
+        <property name="cronExpression" value="00 00 00 1 * ? *" />
+    </bean>
+
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
             <list>
                 <ref bean="cronJobDetail" />
+                <ref bean="ydateJobDetail" />
             </list>
         </property>
         <property name="triggers">
             <list>
                 <ref bean="cronJobTrigger" />
+                <ref bean="ydateJobTrigger" />
             </list>
         </property>
     </bean>
