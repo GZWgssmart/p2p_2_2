@@ -45,9 +45,9 @@
     </bean>
 
     <bean id="borrowapplyJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="name" value="borrowapplyJobDetail" />
+        <property name="name" value="borrowapplyJobTrigger" />
         <property name="group" value="group" />
-        <property name="jobDetail" ref="ydateJobDetail" />
+        <property name="jobDetail" ref="borrowapplyJobDetail" />
         <property name="cronExpression" value="00 00 00 * * ? *" />
     </bean>
 

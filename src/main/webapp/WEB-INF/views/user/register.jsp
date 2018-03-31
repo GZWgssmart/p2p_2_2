@@ -30,7 +30,7 @@
         <div class="regist-box">
             <h3>欢迎注册</h3>
             <p class="error-msg icon icon-error"></p>
-            <p class="ok-msg" style="display: none"></p>
+            <p id="ok-msg" style="display: none"></p>
             <!-- <div class="from">
                 <label for="username" class="icon icon-user"></label>
                 <input type="text" name="username" id="username" maxlength="18" autocomplete="new-password" onblur="choseUser(this)" placeholder="输入用户名"/>
@@ -146,7 +146,7 @@
                 function (data) {
                     if(data.message === "验证码已发送，请注意查收"){
                         $('.error-msg').removeClass('show');
-                        $('.ok-msg').text(data.message).show();
+                        $('#ok-msg').text(data.message).show();
                     }
                 },"json"
             );

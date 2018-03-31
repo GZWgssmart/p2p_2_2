@@ -81,6 +81,7 @@ public class reward implements Job{
                 //查询投资奖励比
                 Double num = rewardSettingService.getPercentByMoney(money);
                 //保存投资总额奖励表(reward)
+
                 //奖励金额
                 Double rewardMoney = (double) money * num / 100;
                 Reward rewardAdd = new Reward();
